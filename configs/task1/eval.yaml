@@ -1,0 +1,25 @@
+# Task 1 evaluation settings (inherits the model from base.yaml).
+_base_: base.yaml
+
+eval:
+  batch_size: 32            # fixed for every condition and benchmark (left-padded batched generation)
+  seed: 6304
+  bootstrap_iters: 1000
+  gsm8k:
+    task: gsm8k_cot         # zero-shot, non-thinking chat template, greedy, stock stop rules and filters
+    max_gen_toks: 1024
+    primary_filter: flexible-extract
+  likelihood_tasks:         # stock completion prompts, no chat template
+    hellaswag: {task: hellaswag, metrics: [acc_norm, acc]}
+    boolq: {task: boolq, metrics: [acc]}
+    arc_easy: {task: arc_easy, metrics: [acc_norm, acc]}
+
+qualitative:
+  prompts_file: assets/task1/first_plot_questions.yaml
+  max_new_tokens: 512
+  annotate_questions: [what_is_your_wish, enough_of_my_husband]   # first and last plain questions
+
+diagnostics:
+  layers: [0, 13, 27]
+  protect_rank: 128
+  eps: 1.0e-8

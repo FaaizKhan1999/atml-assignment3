@@ -105,6 +105,31 @@ Implementation notes:
 - Responses that start with newlines are left-stripped, exactly as Qwen3's chat template does;
   the count is recorded in `selection_stats.json`.
 
+### Task 1 evaluation
+
+Install the evaluation extras together with the base requirements (keeps `transformers<5`):
+`pip install -q -r requirements.txt -r requirements-eval.txt`
+
+Conditions: `baseline, full_ft_midpoint, full_ft_final, l2sp_final, lora4_final, lora16_final, oplora16_final`.
+
+1. **Smoke test** (~5 min): `python -m task1.evaluate --conditions baseline --limit 20`
+   (writes to scratch, pushes nothing; checks lm-eval, the non-thinking chat template and output parsing).
+2. **Benchmarks + qualitative generations** (GPU): `python -m task1.evaluate` (one GPU) or
+   `python -m task1.evaluate --parallel` (Kaggle T4x2). Resumable; conditions whose weights are
+   not uploaded yet fail with a message and can be rerun later.
+3. **Diagnostics** (CPU is fine; needs the baseline evaluation): `python -m task1.diagnostics --push`
+4. **Tables and annotation sheet** (CPU): `python -m task1.summarize_eval --push` and
+   `python -m task1.build_annotation --push`
+
+Evaluation uses EleutherAI's lm-evaluation-harness (`hf` backend, FP16, fixed batch size 32).
+GSM8K: `gsm8k_cot`, zero-shot, Qwen3 chat template with `enable_thinking=False` (verified on
+every logged prompt), greedy, 1,024 new tokens, stock stop rules and filters (primary:
+flexible-extract). HellaSwag/BoolQ/ARC-Easy: stock likelihood scoring, no chat template.
+Adapters are merged into fresh FP16 backbones (OPLoRA: projected factors); full fine-tuning
+weights are cast from FP32 to FP16. vLLM was tested (`results/env/vllm_colab_tesla_t4.json`) but
+not used: it conflicts with the pinned `transformers`/`datasets` versions and its FP16 greedy
+outputs differ slightly from the HF backend, so all conditions use one backend.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.

@@ -1,0 +1,5 @@
+# Evaluation extras. Install together with the base requirements so pip keeps transformers<5:
+#   pip install -q -r requirements.txt -r requirements-eval.txt
+# The resolved lm_eval version is recorded with every evaluation result.
+lm_eval[hf]>=0.4.8
+pyyaml>=6.0
