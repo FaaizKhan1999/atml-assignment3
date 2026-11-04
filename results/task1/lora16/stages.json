@@ -1,0 +1,30 @@
+{
+  "final": {
+    "run": "lora16",
+    "stage": "final",
+    "update": 1250,
+    "examples_seen": 40000,
+    "method": "lora",
+    "model": "Qwen/Qwen3-0.6B",
+    "model_commit": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "format": "effective FP32 adapter factors (projected for OPLoRA)",
+    "r": 16,
+    "alpha": 32,
+    "scaling": 2.0,
+    "projected": false,
+    "targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "export_seconds": 0.05354052799884812,
+    "bytes": {
+      "adapter.safetensors": 40412808
+    },
+    "upload_seconds": 2.058776312998816
+  }
+}
