@@ -1,0 +1,18 @@
+{
+  "final": {
+    "run": "l2sp",
+    "stage": "final",
+    "update": 1250,
+    "examples_seen": 40000,
+    "method": "full",
+    "model": "Qwen/Qwen3-0.6B",
+    "model_commit": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "format": "full FP32 weights (tied embedding/lm_head stored once)",
+    "displacement_l2": 6.262722951000334,
+    "export_seconds": 11.451812698996946,
+    "bytes": {
+      "weights.safetensors": 2384234960
+    },
+    "upload_seconds": 40.08304851600042
+  }
+}
