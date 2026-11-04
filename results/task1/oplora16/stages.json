@@ -1,0 +1,37 @@
+{
+  "final": {
+    "run": "oplora16",
+    "stage": "final",
+    "update": 1250,
+    "examples_seen": 40000,
+    "method": "lora",
+    "model": "Qwen/Qwen3-0.6B",
+    "model_commit": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "format": "effective FP32 adapter factors (projected for OPLoRA)",
+    "r": 16,
+    "alpha": 32,
+    "scaling": 2.0,
+    "projected": true,
+    "targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "o_proj",
+      "gate_proj",
+      "up_proj",
+      "down_proj"
+    ],
+    "projection_check": {
+      "max_rel_UkT_B": 1.1063588800652724e-07,
+      "mean_rel_UkT_B": 6.273938923033377e-08,
+      "max_rel_A_Vk": 1.0029633301655849e-07,
+      "mean_rel_A_Vk": 8.035827939575516e-08
+    },
+    "export_seconds": 0.6451999740002066,
+    "bytes": {
+      "bases.safetensors": 323003920,
+      "adapter.safetensors": 40412800
+    },
+    "upload_seconds": 6.385257014999297
+  }
+}
