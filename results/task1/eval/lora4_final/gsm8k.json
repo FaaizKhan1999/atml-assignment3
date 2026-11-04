@@ -1,0 +1,35 @@
+{
+  "benchmark": "gsm8k",
+  "task": "gsm8k_cot",
+  "limit": null,
+  "seconds": 1793.7702723189996,
+  "peak_allocated_gb": 5.631,
+  "batch_size": 32,
+  "chat_template": true,
+  "num_fewshot": 0,
+  "lm_eval_version": "0.4.13",
+  "n_configs": {
+    "original": 1319,
+    "effective": 1319
+  },
+  "metrics": {
+    "name": "gsm8k_cot",
+    "sample_len": 1319,
+    "exact_match,strict-match": 0.0,
+    "exact_match_stderr,strict-match": 0.0,
+    "exact_match,flexible-extract": 0.5989385898407885,
+    "exact_match_stderr,flexible-extract": 0.013500158922245533
+  },
+  "max_gen_toks": 1024,
+  "n_examples": 1319,
+  "primary": {
+    "metric": "exact_match,flexible-extract",
+    "value": 0.5989385898407885
+  },
+  "strict_match": 0.0,
+  "unextractable_rate": 0.0,
+  "truncation_rate": 0.009855951478392721,
+  "mean_response_tokens": 141.89992418498863,
+  "truncated_and_wrong": 13,
+  "prompt_example": "<|im_start|>user\nQ: Janet\u2019s ducks lay 16 eggs per day. She eats three for breakfast every morning and bakes muffins for her friends every day with four. She sells the remainder at the farmers' market daily for $2 per fresh duck egg. How much in dollars does she make every day at the farmers' market?\nA:<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+}
