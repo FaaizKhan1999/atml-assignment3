@@ -1,0 +1,32 @@
+{
+  "dataset": "meta-math/MetaMathQA",
+  "n_selected": 40000,
+  "rows_scanned": 40002,
+  "excluded": {
+    "too_long": 2
+  },
+  "n_responses_with_leading_newlines_stripped": 667,
+  "normalization_rule": "NFKC; lowercase; runs of [^0-9a-z] -> single space; strip",
+  "gsm8k_test_questions": 1319,
+  "max_length": 2048,
+  "total_input_tokens": 9907756,
+  "total_supervised_tokens": 7099389,
+  "length_mean": 247.6939,
+  "length_p50": 219,
+  "length_p99": 681,
+  "length_max": 1941,
+  "indices_sha256": "0fd5bfc3f10c50ee2d56fc32ac3e8e8573dee557d03b5d2ee2a473cab0308c19",
+  "tokens_sha256": "103ac2af17393e607488e68a94a9eea0a1c1a267ab318ab53d5e14b8531d4fe7",
+  "template_check": {
+    "n_checked": 40000,
+    "strip_leading_newlines": true,
+    "generation_prompt_example": "<|im_start|>user\nGracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "prompt_ends_with_empty_think": true,
+    "full_render_match_rate": 1.0,
+    "n_render_mismatch": 0,
+    "split_vs_joint_tokenization_match_rate": 1.0,
+    "n_token_mismatch": 0,
+    "render_mismatches": [],
+    "first_render_mismatch": null
+  }
+}
