@@ -1,0 +1,32 @@
+{
+  "platform": "colab",
+  "hostname": "d73d50de1696",
+  "python": "3.13.16",
+  "os": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "packages": {
+    "torch": "2.11.0+cu130",
+    "transformers": "4.57.6",
+    "accelerate": "1.15.0",
+    "datasets": "4.8.5",
+    "huggingface_hub": "0.36.2",
+    "safetensors": "0.8.0",
+    "numpy": "2.4.6",
+    "lm_eval": "0.4.13",
+    "vllm": null,
+    "math-verify": null
+  },
+  "git": {
+    "commit": "a6c7d62cb26e2992432541728dfcb48335451423",
+    "dirty": true
+  },
+  "timestamp": "2026-11-04T17:07:04+0000",
+  "cuda_available": true,
+  "torch_cuda": "13.0",
+  "gpus": [
+    {
+      "name": "Tesla T4",
+      "total_memory_gb": 14.56,
+      "capability": "7.5"
+    }
+  ]
+}
