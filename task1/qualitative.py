@@ -60,12 +60,17 @@ def generate(model, tokenizer, prompts: list[dict], max_new_tokens: int) -> tupl
     enc = tokenizer(texts, return_tensors="pt", padding=True, add_special_tokens=False).to(model.device)
     eos = model.generation_config.eos_token_id
     eos = eos if isinstance(eos, list) else [eos]
-    gc = GenerationConfig(do_sample=False, max_new_tokens=max_new_tokens, eos_token_id=eos,
-                          pad_token_id=tokenizer.pad_token_id)
+    # Replace the model's generation config outright. Qwen3 ships do_sample=True / temperature 0.6, and
+    # recent transformers versions fill values equal to the library defaults (do_sample=False is one)
+    # from the model's config when a GenerationConfig is passed to generate(), which would silently
+    # turn greedy decoding into sampling.
+    model.generation_config = GenerationConfig(do_sample=False, num_beams=1, max_new_tokens=max_new_tokens,
+                                               eos_token_id=eos, pad_token_id=tokenizer.pad_token_id,
+                                               temperature=None, top_p=None, top_k=None)
     torch.cuda.reset_peak_memory_stats()
     t0 = time.perf_counter()
     with torch.no_grad():
-        out = model.generate(**enc, generation_config=gc)
+        out = model.generate(**enc)
     seconds = time.perf_counter() - t0
     gen = out[:, enc["input_ids"].shape[1]:]
     rows = []
@@ -80,8 +85,16 @@ def generate(model, tokenizer, prompts: list[dict], max_new_tokens: int) -> tupl
         response = tokenizer.decode(ids, skip_special_tokens=True)
         rows.append({**p, "prompt_text": text, "response": response, "n_response_tokens": len(ids),
                      "truncated": not hit_eos and len(ids) >= max_new_tokens, **auto_flags(p, response)})
+    with torch.no_grad():  # greedy decoding must reproduce itself exactly
+        again = model.generate(**enc)
     info = {"seconds": seconds, "batch_size": len(prompts), "max_new_tokens": max_new_tokens,
-            "peak_allocated_gb": round(torch.cuda.max_memory_allocated() / 2**30, 3)}
+            "peak_allocated_gb": round(torch.cuda.max_memory_allocated() / 2**30, 3),
+            "generation_config": {k: v for k, v in model.generation_config.to_dict().items()
+                                  if k in ("do_sample", "num_beams", "temperature", "top_p", "top_k",
+                                           "max_new_tokens", "eos_token_id", "pad_token_id")},
+            "repeat_generation_identical": bool(torch.equal(out, again))}
+    if not info["repeat_generation_identical"]:
+        raise RuntimeError("qualitative generation is not deterministic: decoding is not greedy")
     return rows, info
 
 
