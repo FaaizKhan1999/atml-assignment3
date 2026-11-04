@@ -1,0 +1,31 @@
+# Phase 0 smoke test for Task 1. Shapes, precision and optimizer settings match
+# the real recipe; only the number of updates and accumulation steps are small.
+model:
+  name: Qwen/Qwen3-0.6B
+  revision: null
+
+training:
+  weight_decay: 0.01
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  grad_clip: 1.0
+  fused_adam: true
+  lora_dropout: 0.05
+  lora_targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+smoke:
+  length_sample: 2000          # MetaMathQA rows used for length statistics
+  full_budget_examples: 40000  # to extrapolate full-run time
+  microbatch: 2
+  accum: 4                     # real runs use 16; time per example is unaffected
+  timed_updates: 4             # normal windows; the first is excluded from timing
+  skip_first: 1
+  stress_seq_len: 2048         # one extra worst-case window for peak memory
+  test_checkpoint: true
+  methods:
+    full_ft:     {kind: full, lr: 2.0e-5}
+    l2sp:        {kind: full, lr: 2.0e-5, l2sp_lambda: 1.0e-3, ref_device: cuda}
+    l2sp_cpuref: {kind: full, lr: 2.0e-5, l2sp_lambda: 1.0e-3, ref_device: cpu}
+    lora4:       {kind: lora, lr: 2.0e-4, r: 4, alpha: 8}
+    lora16:      {kind: lora, lr: 2.0e-4, r: 16, alpha: 32}
+    oplora16:    {kind: lora, lr: 2.0e-4, r: 16, alpha: 32, protect_rank: 128}

@@ -1,0 +1,7 @@
+# Edit the four YOUR_* values once after cloning, then commit this file.
+project:
+  seed: 6304
+  hf_repo_id: FaaizKhan1999/atml-pa3-weights      # private: weights needed for evaluation/analysis
+  hf_ckpt_repo_id: FaaizKhan1999/atml-pa3-ckpt    # private: latest recovery checkpoint per run (deletable at the end)
+  git_user_name: FaaizKhan1999
+  git_user_email: 25280051@lums.edu.pk          # e.g. 12345678+username@users.noreply.github.com

@@ -1,0 +1,14 @@
+# torch is NOT listed: Colab and Kaggle ship a CUDA build that matches their drivers.
+# After the first successful setup, scripts/setup.sh records the exact versions in
+# results/env/<platform>-pip-freeze.txt; we will pin from those once both platforms are verified.
+transformers>=4.51,<5
+accelerate>=0.34
+datasets>=2.20
+huggingface_hub>=0.25
+safetensors>=0.4
+pyyaml>=6.0
+numpy
+pandas
+pyarrow
+tqdm
+packaging
