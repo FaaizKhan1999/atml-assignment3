@@ -1,0 +1,30 @@
+{
+  "benchmark": "hellaswag",
+  "task": "hellaswag",
+  "limit": null,
+  "seconds": 519.371194497,
+  "peak_allocated_gb": 4.858,
+  "batch_size": 32,
+  "chat_template": false,
+  "num_fewshot": 0,
+  "lm_eval_version": "0.4.13",
+  "n_configs": {
+    "original": 10042,
+    "effective": 10042
+  },
+  "metrics": {
+    "name": "hellaswag",
+    "sample_len": 10042,
+    "acc,none": 0.37582154949213303,
+    "acc_stderr,none": 0.004833444556338864,
+    "acc_norm,none": 0.47450707030472017,
+    "acc_norm_stderr,none": 0.004983291578288667
+  },
+  "n_examples": 10042,
+  "primary": {
+    "metric": "acc_norm,none",
+    "value": 0.47450707030472017
+  },
+  "raw_acc": 0.37582154949213303,
+  "prompt_example": "Roof shingle removal: A man is sitting on a roof. He"
+}
