@@ -14,5 +14,21 @@
       "weights.safetensors": 2384234960
     },
     "upload_seconds": 28.831383693000134
+  },
+  "final": {
+    "run": "full_ft",
+    "stage": "final",
+    "update": 1250,
+    "examples_seen": 40000,
+    "method": "full",
+    "model": "Qwen/Qwen3-0.6B",
+    "model_commit": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "format": "full FP32 weights (tied embedding/lm_head stored once)",
+    "displacement_l2": 10.649474912781791,
+    "export_seconds": 14.630090411999845,
+    "bytes": {
+      "weights.safetensors": 2384234960
+    },
+    "upload_seconds": 30.306054426000628
   }
 }
