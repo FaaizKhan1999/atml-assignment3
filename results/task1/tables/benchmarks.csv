@@ -1,0 +1,8 @@
+condition,gsm8k_em_flexible,gsm8k_em_strict,gsm8k_unextractable,gsm8k_truncated,hellaswag_acc_norm,hellaswag_acc,boolq_acc,arc_easy_acc_norm,arc_easy_acc,gsm8k_em_flexible_delta_pp,hellaswag_acc_norm_delta_pp,boolq_acc_delta_pp,arc_easy_acc_norm_delta_pp,mean_nonmath_delta_pp
+baseline,43.37,0.00,0.00,0.83,47.32,37.54,64.37,56.02,60.86,0.00,0.00,0.00,0.00,0.00
+full_ft_midpoint,56.94,0.00,0.00,1.06,45.70,37.16,62.60,62.08,66.16,13.57,-1.62,-1.77,6.06,0.89
+full_ft_final,64.37,0.00,0.00,0.23,45.89,37.38,61.53,63.72,67.00,21.00,-1.43,-2.84,7.70,1.14
+l2sp_final,64.22,0.00,0.00,0.45,46.57,37.53,61.56,63.72,66.33,20.85,-0.75,-2.81,7.70,1.38
+lora4_final,59.89,0.00,0.00,0.99,47.45,37.58,65.41,63.09,65.32,16.53,0.13,1.04,7.07,2.75
+lora16_final,61.03,0.00,0.00,0.91,47.45,37.85,71.74,64.35,66.84,17.66,0.13,7.37,8.33,5.28
+oplora16_final,61.33,0.00,0.08,0.68,47.33,37.83,71.77,63.89,66.92,17.97,0.01,7.40,7.87,5.09
