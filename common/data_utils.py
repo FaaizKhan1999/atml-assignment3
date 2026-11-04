@@ -17,8 +17,8 @@ def collate_causal(examples: list[dict], pad_id: int) -> dict:
     attention_mask = torch.zeros((bsz, length), dtype=torch.long)
     for i, e in enumerate(examples):
         n = len(e["input_ids"])
-        input_ids[i, :n] = torch.tensor(e["input_ids"], dtype=torch.long)
-        labels[i, :n] = torch.tensor(e["labels"], dtype=torch.long)
+        input_ids[i, :n] = torch.as_tensor(e["input_ids"], dtype=torch.long)
+        labels[i, :n] = torch.as_tensor(e["labels"], dtype=torch.long)
         attention_mask[i, :n] = 1
     return {"input_ids": input_ids, "labels": labels, "attention_mask": attention_mask}
 

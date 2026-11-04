@@ -2,9 +2,9 @@
 
 GitHub: the GH_TOKEN is passed per command as an HTTP header (``git -c``), so
 it is never written to .git/config (important on Kaggle, where
-/kaggle/working is saved as notebook output). Each job commits only its own
-results directory, so parallel jobs don't conflict; pushes rebase onto the
-remote and retry.
+/kaggle/working is saved as notebook output). Commits are made in a private
+shallow clone per process (see ``_publisher``), so parallel jobs never race on
+the shared working copy; each job only touches its own results directory.
 
 Hugging Face: two private model repos from configs/project.yaml:
 * ``hf_repo_id``      - weights needed for evaluation/analysis (kept)
@@ -14,6 +14,8 @@ Hugging Face: two private model repos from configs/project.yaml:
 from __future__ import annotations
 
 import base64
+import os
+import shutil
 import time
 from pathlib import Path
 from typing import Iterable
@@ -59,50 +61,78 @@ def git(args: Iterable[str], *, token: str | None = None, check: bool = True,
     return res
 
 
-def ensure_git_identity() -> None:
+def _set_identity(cwd: Path) -> None:
     proj = _project()
-    if not git(["config", "user.email"], check=False).stdout.strip():
-        git(["config", "user.email", _require(proj.get("git_user_email"), "git_user_email")])
-    if not git(["config", "user.name"], check=False).stdout.strip():
-        git(["config", "user.name", _require(proj.get("git_user_name"), "git_user_name")])
+    git(["config", "user.email", _require(proj.get("git_user_email"), "git_user_email")], cwd=cwd)
+    git(["config", "user.name", _require(proj.get("git_user_name"), "git_user_name")], cwd=cwd)
 
 
 def current_branch() -> str:
     return git(["rev-parse", "--abbrev-ref", "HEAD"]).stdout.strip()
 
 
+def _publisher(token: str) -> tuple[Path, str]:
+    """A private shallow clone used only for committing and pushing.
+
+    Several jobs can run from the same working copy (e.g. one per GPU on Kaggle
+    T4x2) while training processes keep appending to their log files. Doing git
+    operations in that shared working copy would race (index locks, autostash
+    conflicts with files being written). Instead each process copies its result
+    files into its own clone, commits there, and pushes.
+    """
+    from .paths import get_paths
+
+    tag = os.environ.get("ATML_PUBLISH_TAG") or f"pid{os.getpid()}"
+    d = get_paths().scratch / "git_publish" / tag
+    branch = current_branch()
+    if not (d / ".git").exists():
+        shutil.rmtree(d, ignore_errors=True)
+        d.parent.mkdir(parents=True, exist_ok=True)
+        url = git(["remote", "get-url", "origin"]).stdout.strip()
+        git(["clone", "--depth", "1", "--branch", branch, url, str(d)], token=token, cwd=d.parent)
+        _set_identity(d)
+    return d, branch
+
+
 def push_results(paths: Iterable[str | Path], message: str, retries: int = 5) -> bool:
-    """Commit the given repo paths and push. Returns False if there was nothing new."""
+    """Copy the given repo paths into a private clone, commit, push. False if nothing changed.
+
+    Each job only writes its own results directory, so re-copying onto the latest
+    remote state on every attempt never conflicts with other jobs' pushes.
+    """
     token = get_secret("GH_TOKEN")
-    ensure_git_identity()
     rel = []
     for p in paths:
         p = Path(p)
         p = p if p.is_absolute() else REPO_ROOT / p
         if p.exists():
-            rel.append(str(p.resolve().relative_to(REPO_ROOT)))
+            rel.append(p.resolve().relative_to(REPO_ROOT))
     if not rel:
         log.warning("push_results: none of the given paths exist; nothing to push")
         return False
-    git(["add", "--", *rel])
-    if git(["diff", "--cached", "--quiet"], check=False).returncode == 0:
-        log.info("push_results: no changes to commit")
-        return False
-    git(["commit", "-m", message])
-    branch = current_branch()
+    pub, branch = _publisher(token)
     for attempt in range(1, retries + 1):
-        pull = git(["pull", "--rebase", "--autostash", "origin", branch], token=token, check=False)
-        if pull.returncode != 0:
-            git(["rebase", "--abort"], check=False)
-            log.warning("git pull --rebase failed (attempt %d): %s", attempt, pull.stderr.strip()[-300:])
-        else:
-            push = git(["push", "origin", f"HEAD:{branch}"], token=token, check=False)
-            if push.returncode == 0:
-                log.info("pushed to GitHub: %s", message)
-                return True
-            log.warning("git push failed (attempt %d): %s", attempt, push.stderr.strip()[-300:])
+        git(["fetch", "--depth", "1", "origin", branch], token=token, cwd=pub)
+        git(["reset", "--hard", f"origin/{branch}"], cwd=pub)
+        for r in rel:
+            src, dst = REPO_ROOT / r, pub / r
+            if src.is_dir():
+                shutil.copytree(src, dst, dirs_exist_ok=True)
+            else:
+                dst.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(src, dst)
+        git(["add", "--", *map(str, rel)], cwd=pub)
+        if git(["diff", "--cached", "--quiet"], check=False, cwd=pub).returncode == 0:
+            log.info("push_results: no changes to commit")
+            return False
+        git(["commit", "-m", message], cwd=pub)
+        push = git(["push", "origin", f"HEAD:{branch}"], token=token, check=False, cwd=pub)
+        if push.returncode == 0:
+            log.info("pushed to GitHub: %s", message)
+            return True
+        log.warning("git push failed (attempt %d): %s", attempt, push.stderr.strip()[-300:])
         time.sleep(min(60, 5 * 2 ** (attempt - 1)))
-    raise RuntimeError("Could not push results; the commit is kept locally. Rerun push_results or push manually.")
+    raise RuntimeError("Could not push results to GitHub after retries; the files are still on local disk.")
 
 
 # ----------------------------------------------------------------------------- Hugging Face

@@ -1,0 +1,9 @@
+_base_: base.yaml
+run:
+  name: lora4
+  method: lora
+  lr: 2.0e-4
+  stages: {1250: final}
+adapter:
+  r: 4
+  alpha: 8

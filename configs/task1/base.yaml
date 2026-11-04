@@ -1,0 +1,34 @@
+# Shared Task 1 recipe. Method configs inherit this via _base_.
+model:
+  name: Qwen/Qwen3-0.6B
+  revision: null            # the resolved commit hash is recorded in each run's summary
+
+data:
+  dataset: meta-math/MetaMathQA
+  n_examples: 40000
+  max_length: 2048
+  gsm8k_dataset: openai/gsm8k
+  gsm8k_config: main
+  strip_leading_newlines: true   # matches Qwen3's chat template (content.lstrip('\n'))
+
+training:
+  microbatch: 2
+  accum: 16                  # effective batch 32
+  total_updates: 1250
+  warmup_updates: 38
+  min_lr_ratio: 0.0          # cosine decay
+  weight_decay: 0.01         # not applied to biases or <2-D tensors
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  grad_clip: 1.0
+  fused_adam: true
+  gradient_checkpointing: true
+  checkpoint_at: [312, 625, 937, 1250]   # 9,984 / 20,000 / 29,984 / 40,000 examples
+
+adapter:
+  dropout: 0.05
+  targets: [q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj]
+
+sync:
+  push_github: true          # results/task1/<run>/ at every checkpoint
+  push_recovery: true        # latest recovery checkpoint -> HF checkpoint repo

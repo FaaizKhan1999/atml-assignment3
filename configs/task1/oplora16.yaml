@@ -1,0 +1,10 @@
+_base_: base.yaml
+run:
+  name: oplora16
+  method: lora
+  lr: 2.0e-4
+  stages: {1250: final}
+adapter:
+  r: 16
+  alpha: 32
+  protect_rank: 128

@@ -114,3 +114,38 @@ def activation_range_check(model, batch: dict) -> dict:
     return {"max_abs_hidden_per_layer": maxima, "max_abs_hidden": max(maxima),
             "any_nonfinite_hidden": any(nonfinite), "logits_finite": logits_finite,
             "fp16_max": 65504.0}
+
+
+def masked_logits(model, batch: dict):
+    """FP32 logits at non-padding positions, [N, V] (FP16 autocast forward, eval mode)."""
+    import torch
+
+    from .data_utils import to_device
+
+    was = model.training
+    model.eval()
+    b = to_device(batch)
+    with torch.no_grad(), torch.autocast("cuda", dtype=torch.float16):
+        out = model(input_ids=b["input_ids"], attention_mask=b["attention_mask"], use_cache=False).logits
+    model.train(was)
+    return out[b["attention_mask"].bool()].float()
+
+
+def logit_agreement(ref, other, chunk: int = 256) -> dict:
+    """Max/mean |ref-other|, argmax agreement, and mean KL(softmax(ref) || softmax(other)) per position."""
+    import torch
+
+    max_abs = mean_abs_sum = kl_sum = agree = 0.0
+    n = ref.shape[0]
+    with torch.no_grad():
+        for s in range(0, n, chunk):
+            a, b = ref[s:s + chunk], other[s:s + chunk]
+            d = (a - b).abs()
+            max_abs = max(max_abs, float(d.max()))
+            mean_abs_sum += float(d.mean(-1).sum())
+            agree += float((a.argmax(-1) == b.argmax(-1)).sum())
+            la, lb = torch.log_softmax(a, -1), torch.log_softmax(b, -1)
+            kl_sum += float((la.exp() * (la - lb)).sum(-1).sum())
+    return {"positions": n, "max_abs_diff": max_abs, "mean_abs_diff": mean_abs_sum / n,
+            "argmax_agreement": agree / n, "mean_kl": kl_sum / n,
+            "max_abs_logit_ref": float(ref.abs().max())}

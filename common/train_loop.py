@@ -42,20 +42,19 @@ def lr_factor(update: int, warmup: int, total: int, min_ratio: float = 0.0) -> f
     return min_ratio + (1.0 - min_ratio) * 0.5 * (1.0 + math.cos(math.pi * progress))
 
 
-class L2SPRegularizer:
-    """Starting-point L2 penalty Omega = 0.5 * sum_j (theta_j - theta0_j)^2 over all unique parameters.
+class ParamReference:
+    """Frozen FP32 copy theta0 of all unique parameters (tied weights once).
 
-    theta0 is a frozen FP32 copy kept on the GPU (``ref_device='cuda'``) or in
-    pinned CPU memory (``'cpu'``, streamed in chunks each update). Work is done
-    in 2^24-element chunks to keep temporary memory small.
+    Kept on the GPU (``ref_device='cuda'``) or in pinned CPU memory (``'cpu'``,
+    streamed in 2^24-element chunks). Used for L2-SP and for ||theta - theta0||.
     """
 
     CHUNK = 1 << 24
 
-    def __init__(self, model, lam: float, ref_device: str = "cuda"):
+    def __init__(self, model, ref_device: str = "cpu"):
         import torch
 
-        self.lam = float(lam)
+        t0 = time.perf_counter()
         self.ref_device = ref_device
         self.params = [p for _, p in model.named_parameters()]  # unique; tied weights once
         pin = ref_device == "cpu" and torch.cuda.is_available()
@@ -66,6 +65,31 @@ class L2SPRegularizer:
                 self.refs.append(r.pin_memory() if pin else r)
         self.ref_bytes = sum(r.numel() * r.element_size() for r in self.refs)
         self.n_params = sum(p.numel() for p in self.params)
+        self.setup_seconds = time.perf_counter() - t0
+
+    def _chunks(self):
+        for p, r in zip(self.params, self.refs):
+            pf, rf = p.detach().view(-1), r.view(-1)
+            for s in range(0, pf.numel(), self.CHUNK):
+                ref = rf[s:s + self.CHUNK]
+                if ref.device != pf.device:
+                    ref = ref.to(pf.device, non_blocking=True)
+                yield p, s, pf[s:s + self.CHUNK].float() - ref
+
+    def displacement(self) -> float:
+        """||theta - theta0||_2 over all unique parameters."""
+        import torch
+
+        with torch.no_grad():
+            return math.sqrt(torch.stack([torch.dot(d, d) for _, _, d in self._chunks()]).sum().item())
+
+
+class L2SPRegularizer(ParamReference):
+    """Starting-point penalty Omega = 0.5 * sum_j (theta_j - theta0_j)^2; gradient lambda*(theta - theta0)."""
+
+    def __init__(self, model, lam: float, ref_device: str = "cuda"):
+        super().__init__(model, ref_device)
+        self.lam = float(lam)
 
     def apply_(self) -> tuple[float, float]:
         """Add lambda*(theta-theta0) to unscaled grads. Returns (Omega before the update, seconds)."""
@@ -75,38 +99,15 @@ class L2SPRegularizer:
         t0 = time.perf_counter()
         sq = []
         with torch.no_grad():
-            for p, r in zip(self.params, self.refs):
-                pf = p.detach().view(-1)
-                rf = r.view(-1)
-                g = None
+            for p, s, d in self._chunks():
+                sq.append(torch.dot(d, d))
                 if p.grad is not None:
                     if not p.grad.is_contiguous():
                         raise RuntimeError("non-contiguous gradient")
-                    g = p.grad.view(-1)
-                for s in range(0, pf.numel(), self.CHUNK):
-                    ref = rf[s:s + self.CHUNK]
-                    if ref.device != pf.device:
-                        ref = ref.to(pf.device, non_blocking=True)
-                    d = pf[s:s + self.CHUNK].float() - ref
-                    sq.append(torch.dot(d, d))
-                    if g is not None:
-                        g[s:s + self.CHUNK].add_(d.to(g.dtype), alpha=self.lam)
+                    p.grad.view(-1)[s:s + self.CHUNK].add_(d.to(p.grad.dtype), alpha=self.lam)
             omega = 0.5 * torch.stack(sq).sum().item()
         cuda_sync()
         return omega, time.perf_counter() - t0
-
-    def displacement(self) -> float:
-        """||theta - theta0||_2 over all unique parameters."""
-        import torch
-
-        sq = []
-        with torch.no_grad():
-            for p, r in zip(self.params, self.refs):
-                pf, rf = p.detach().view(-1), r.view(-1)
-                for s in range(0, pf.numel(), self.CHUNK):
-                    d = pf[s:s + self.CHUNK].float() - rf[s:s + self.CHUNK].to(pf.device, non_blocking=True)
-                    sq.append(torch.dot(d, d))
-            return math.sqrt(torch.stack(sq).sum().item())
 
 
 def build_adamw(param_groups: list[dict], betas=(0.9, 0.999), eps: float = 1e-8, fused: bool = True):
@@ -222,6 +223,7 @@ class Trainer:
             "loss_scale": scale_before,
             "skipped": bool(skipped),
             "input_tokens": input_tokens,
+            "examples_seen": getattr(self.data, "consumed", None),
             **summary,
         })
         if self.l2sp is not None:
@@ -243,12 +245,14 @@ class Trainer:
         return path, sizes
 
     # ------------------------------------------------------------------ main loop
-    def train(self) -> dict:
+    def train(self, stop_after: int | None = None) -> dict:
+        """Train to total_updates (or to ``stop_after``, used to test resumption)."""
         import torch
 
         reset_peak_memory()
         self.optimizer.zero_grad(set_to_none=True)
-        while self.update < self.total_updates:
+        limit = self.total_updates if stop_after is None else min(stop_after, self.total_updates)
+        while self.update < limit:
             u = self.update + 1
             cuda_sync()
             t0 = time.perf_counter()

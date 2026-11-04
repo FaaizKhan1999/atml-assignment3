@@ -1,0 +1,8 @@
+_base_: base.yaml
+run:
+  name: l2sp
+  method: full
+  lr: 2.0e-5
+  l2sp_lambda: 1.0e-3
+  ref_device: cpu            # GPU copy of theta0 OOMs on a 16 GB T4 (smoke test); streamed from pinned CPU memory
+  stages: {1250: final}

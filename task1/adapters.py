@@ -85,6 +85,44 @@ def _init_A(r: int, d_in: int, gen: torch.Generator) -> torch.Tensor:
     return torch.rand(r, d_in, generator=gen, dtype=torch.float32) * (2 * bound) - bound
 
 
+def _ortho_error(M: torch.Tensor) -> float:
+    """max |M^T M - I| for a matrix with orthonormal columns."""
+    eye = torch.eye(M.shape[1], device=M.device, dtype=M.dtype)
+    return float((M.T @ M - eye).abs().max())
+
+
+def _orthonormalize(M: torch.Tensor) -> torch.Tensor:
+    """QR re-orthonormalization; keeps the column span and the sign/orientation of each column."""
+    Q, R = torch.linalg.qr(M)
+    signs = torch.sign(torch.diagonal(R))
+    signs[signs == 0] = 1
+    return (Q * signs).contiguous()
+
+
+def leading_singular_bases(W0: torch.Tensor, k: int) -> tuple[torch.Tensor, torch.Tensor, dict]:
+    """Leading-k left/right singular vectors of W0 (d_out x d_in) in FP32.
+
+    Uses cuSOLVER's QR-based ``gesvd`` on CUDA (more accurate than the default
+    Jacobi-based routine) on the tall orientation of the matrix, then
+    re-orthonormalizes the k columns with QR so the projections are exact to
+    FP32 precision. Returns (U_k [d_out,k], V_k [d_in,k], stats).
+    """
+    W = W0.detach().float()
+    tall = W.shape[0] >= W.shape[1]
+    M = W if tall else W.T
+    kwargs = {"driver": "gesvd"} if M.is_cuda else {}
+    U, S, Vh = torch.linalg.svd(M, full_matrices=False, **kwargs)
+    if tall:
+        U_k, V_k = U[:, :k], Vh[:k].T
+    else:  # W^T = U S V^T  =>  W = V S U^T
+        U_k, V_k = Vh[:k].T, U[:, :k]
+    before = max(_ortho_error(U_k), _ortho_error(V_k))
+    U_k, V_k = _orthonormalize(U_k), _orthonormalize(V_k)
+    after = max(_ortho_error(U_k), _ortho_error(V_k))
+    return U_k, V_k, {"ortho_error_svd": before, "ortho_error_after_qr": after,
+                      "sigma_k_over_sigma_1": float(S[k - 1] / S[0])}
+
+
 def inject_adapters(model, *, targets=DEFAULT_TARGETS, r: int, alpha: float, dropout: float, seed: int,
                     protect_rank: int | None = None) -> tuple[dict[str, LoRALinear], dict]:
     """Freeze the model and replace target nn.Linear layers with LoRALinear (in place).
@@ -107,6 +145,7 @@ def inject_adapters(model, *, targets=DEFAULT_TARGETS, r: int, alpha: float, dro
     gen = torch.Generator(device="cpu").manual_seed(int(seed))
     modules: dict[str, LoRALinear] = {}
     svd_seconds, basis_bytes = 0.0, 0
+    ortho_svd, ortho_qr = [], []
     for path, parent, child_name, lin in found:
         A0 = _init_A(r, lin.in_features, gen)
         U_k = V_k = None
@@ -114,10 +153,9 @@ def inject_adapters(model, *, targets=DEFAULT_TARGETS, r: int, alpha: float, dro
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
             t0 = time.perf_counter()
-            W0 = lin.weight.detach().float()
-            U, _, Vh = torch.linalg.svd(W0, full_matrices=False)
-            U_k = U[:, :protect_rank].contiguous()
-            V_k = Vh[:protect_rank].T.contiguous()
+            U_k, V_k, st = leading_singular_bases(lin.weight, protect_rank)
+            ortho_svd.append(st["ortho_error_svd"])
+            ortho_qr.append(st["ortho_error_after_qr"])
             if torch.cuda.is_available():
                 torch.cuda.synchronize()
             svd_seconds += time.perf_counter() - t0
@@ -129,6 +167,8 @@ def inject_adapters(model, *, targets=DEFAULT_TARGETS, r: int, alpha: float, dro
     n_adapter = sum(m.lora_A.numel() + m.lora_B.numel() for m in modules.values())
     info = {"n_modules": len(modules), "adapter_params": n_adapter, "r": r, "alpha": alpha,
             "protect_rank": protect_rank, "svd_seconds": svd_seconds, "basis_bytes_fp32": basis_bytes}
+    if ortho_svd:
+        info.update({"max_ortho_error_svd": max(ortho_svd), "max_ortho_error_after_qr": max(ortho_qr)})
     return modules, info
 
 

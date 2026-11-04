@@ -1,0 +1,7 @@
+_base_: base.yaml
+run:
+  name: full_ft
+  method: full
+  lr: 2.0e-5
+  ref_device: cpu            # theta0 copy, used only to measure ||theta - theta0||
+  stages: {625: midpoint, 1250: final}
