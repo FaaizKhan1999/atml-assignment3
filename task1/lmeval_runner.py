@@ -134,13 +134,26 @@ def parse_multiple_choice(samples: list[dict]) -> list[dict]:
 
 # ----------------------------------------------------------------------------- running a benchmark
 
+def set_batch_size(lm, batch_size: int) -> None:
+    """Change the batch size of an existing HFLM (attribute name differs across lm-eval versions)."""
+    found = False
+    for attr in ("batch_size_per_gpu", "_batch_size"):
+        if hasattr(lm, attr):
+            setattr(lm, attr, int(batch_size))
+            found = True
+    if not found:
+        raise AttributeError("cannot find the batch-size attribute on this lm-eval HFLM")
+
+
 def run_benchmark(lm, name: str, task: str, *, generation: bool, chat: bool, cfg, out_dir: Path,
-                  tokenizer, limit: int | None = None) -> dict:
+                  tokenizer, limit: int | None = None, batch_size: int | None = None) -> dict:
     import lm_eval
     import torch
     from lm_eval.tasks import TaskManager
 
     ev = cfg.eval
+    batch_size = int(batch_size or ev.batch_size)
+    set_batch_size(lm, batch_size)
     kwargs = dict(model=lm, tasks=[task], num_fewshot=0, log_samples=True, apply_chat_template=chat,
                   limit=limit, bootstrap_iters=ev.bootstrap_iters, random_seed=ev.seed, numpy_random_seed=ev.seed,
                   torch_random_seed=ev.seed, fewshot_random_seed=ev.seed, task_manager=TaskManager())
@@ -155,7 +168,7 @@ def run_benchmark(lm, name: str, task: str, *, generation: bool, chat: bool, cfg
 
     summary = {"benchmark": name, "task": task, "limit": limit, "seconds": seconds,
                "peak_allocated_gb": round(torch.cuda.max_memory_allocated() / 2**30, 3),
-               "batch_size": ev.batch_size, "chat_template": chat, "num_fewshot": 0,
+               "batch_size": batch_size, "chat_template": chat, "num_fewshot": 0,
                "lm_eval_version": package_versions(["lm_eval"])["lm_eval"],
                "n_configs": res.get("n-samples", {}).get(task), "metrics": agg}
     if generation:

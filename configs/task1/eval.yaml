@@ -11,7 +11,10 @@ eval:
     primary_filter: flexible-extract
   likelihood_tasks:         # stock completion prompts, no chat template
     hellaswag: {task: hellaswag, metrics: [acc_norm, acc]}
-    boolq: {task: boolq, metrics: [acc]}
+    # BoolQ passages are long and lm-eval keeps full-vocabulary logits for the whole batch,
+    # so batch 32 runs out of memory on a 16 GB T4. Log-likelihoods are computed per sequence
+    # (right padding, causal mask), so batch size does not change the scores beyond FP16 noise.
+    boolq: {task: boolq, metrics: [acc], batch_size: 8}
     arc_easy: {task: arc_easy, metrics: [acc_norm, acc]}
 
 qualitative:

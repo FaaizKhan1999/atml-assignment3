@@ -22,6 +22,8 @@ import argparse
 import gc
 import json
 import os
+
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")  # before any CUDA allocation
 import subprocess
 import sys
 import threading
@@ -74,8 +76,9 @@ def evaluate_condition(cond: str, cfg, args) -> None:
                 run_benchmark(lm, b, cfg.eval.gsm8k.task, generation=True, chat=True, cfg=cfg, out_dir=out_dir,
                               tokenizer=tok, limit=args.limit)
             else:
-                run_benchmark(lm, b, cfg.eval.likelihood_tasks[b].task, generation=False, chat=False, cfg=cfg,
-                              out_dir=out_dir, tokenizer=tok, limit=args.limit)
+                spec = cfg.eval.likelihood_tasks[b]
+                run_benchmark(lm, b, spec.task, generation=False, chat=False, cfg=cfg, out_dir=out_dir,
+                              tokenizer=tok, limit=args.limit, batch_size=spec.get("batch_size"))
             write_json(out_dir / "environment.json", run_metadata())
             try_push([out_dir], f"task1/eval: {cond} {b}", enabled=push)
         del lm
