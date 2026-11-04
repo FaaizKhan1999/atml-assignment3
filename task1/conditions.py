@@ -6,8 +6,10 @@
                       merged in (scaling * B @ A computed in FP32, then cast);
                       for OPLoRA these are the projected factors
 
-``materialize`` saves the FP16 model + tokenizer to scratch so lm-eval's HF
-backend can load it like any checkpoint.
+``materialize`` saves the FP16 model (weights + config only) to scratch so
+lm-eval's HF backend can load it like any checkpoint. The tokenizer is always
+loaded from the original Hub repo, never from a re-saved copy, so tokenization
+is identical to training.
 """
 from __future__ import annotations
 
@@ -17,7 +19,7 @@ from pathlib import Path
 
 from common.checkpoint import load_tensors, load_trainable_weights
 from common.logging_utils import get_logger, read_json, write_json
-from common.model_utils import load_causal_lm, load_tokenizer
+from common.model_utils import load_causal_lm
 from common.paths import get_paths
 from common.sync import hf_download_dir, hf_repo
 
@@ -80,7 +82,7 @@ def build_fp16_model(condition: str, model_name: str, revision: str | None = Non
 
 
 def materialize(condition: str, cfg) -> Path:
-    """Save the condition's FP16 model + tokenizer to scratch (reused if already there)."""
+    """Save the condition's FP16 model to scratch (reused if already there)."""
     import torch
 
     out = get_paths().artifacts / "task1_eval_models" / condition
@@ -89,7 +91,6 @@ def materialize(condition: str, cfg) -> Path:
     shutil.rmtree(out, ignore_errors=True)
     model, info = build_fp16_model(condition, cfg.model.name, cfg.model.get("revision"))
     model.save_pretrained(out, safe_serialization=True)
-    load_tokenizer(cfg.model.name, revision=cfg.model.get("revision")).save_pretrained(out)
     write_json(out / "materialize_info.json", info)
     (out / "MATERIALIZED").write_text("ok")
     del model

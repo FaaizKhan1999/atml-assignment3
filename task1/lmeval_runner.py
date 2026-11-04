@@ -31,7 +31,13 @@ EMPTY_THINK = "<think>\n\n</think>\n\n"
 
 # ----------------------------------------------------------------------------- model wrapper
 
-def make_lm(model_dir: str | Path, batch_size: int, max_gen_toks: int):
+def make_lm(model_dir: str | Path, tokenizer_name: str, batch_size: int, max_gen_toks: int):
+    """HF-backend LM with the original Hub tokenizer (never a re-saved copy).
+
+    ``max_gen_toks`` is not an HFLM constructor argument in every lm-eval version
+    (newer ones forward unknown kwargs to the model), so it is set on the
+    instance afterwards; the GSM8K gen_kwargs also set it explicitly.
+    """
     from lm_eval.models.huggingface import HFLM
 
     class NoThinkHFLM(HFLM):
@@ -41,8 +47,11 @@ def make_lm(model_dir: str | Path, batch_size: int, max_gen_toks: int):
                 kw["continue_final_message"] = True
             return self.tokenizer.apply_chat_template(chat_history, **kw)
 
-    return NoThinkHFLM(pretrained=str(model_dir), dtype="float16", batch_size=batch_size,
-                       max_gen_toks=max_gen_toks, device="cuda", trust_remote_code=False)
+    lm = NoThinkHFLM(pretrained=str(model_dir), tokenizer=tokenizer_name, dtype="float16", batch_size=batch_size,
+                     device="cuda", trust_remote_code=False)
+    if hasattr(lm, "_max_gen_toks"):
+        lm._max_gen_toks = max_gen_toks
+    return lm
 
 
 # ----------------------------------------------------------------------------- parsing helpers

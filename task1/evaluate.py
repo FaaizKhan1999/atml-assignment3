@@ -64,9 +64,10 @@ def evaluate_condition(cond: str, cfg, args) -> None:
         return
 
     model_dir = materialize(cond, cfg)
-    tok = load_tokenizer(str(model_dir))
+    tok = load_tokenizer(cfg.model.name, revision=cfg.model.get("revision"))
     if benches:
-        lm = make_lm(model_dir, batch_size=cfg.eval.batch_size, max_gen_toks=cfg.eval.gsm8k.max_gen_toks)
+        lm = make_lm(model_dir, cfg.model.name, batch_size=cfg.eval.batch_size,
+                     max_gen_toks=cfg.eval.gsm8k.max_gen_toks)
         for b in benches:
             log.info("=== %s / %s ===", cond, b)
             if b == "gsm8k":
