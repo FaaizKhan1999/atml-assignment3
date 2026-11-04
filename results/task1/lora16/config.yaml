@@ -1,0 +1,56 @@
+project:
+  seed: 6304
+  hf_repo_id: FaaizKhan1999/atml-pa3-weights
+  hf_ckpt_repo_id: FaaizKhan1999/atml-pa3-ckpt
+  git_user_name: FaaizKhan1999
+  git_user_email: 25280051@lums.edu.pk
+model:
+  name: Qwen/Qwen3-0.6B
+  revision: null
+data:
+  dataset: meta-math/MetaMathQA
+  n_examples: 40000
+  max_length: 2048
+  gsm8k_dataset: openai/gsm8k
+  gsm8k_config: main
+  strip_leading_newlines: true
+training:
+  microbatch: 2
+  accum: 16
+  total_updates: 1250
+  warmup_updates: 38
+  min_lr_ratio: 0.0
+  weight_decay: 0.01
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  grad_clip: 1.0
+  fused_adam: true
+  gradient_checkpointing: true
+  checkpoint_at:
+  - 312
+  - 625
+  - 937
+  - 1250
+adapter:
+  dropout: 0.05
+  targets:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+  r: 16
+  alpha: 32
+sync:
+  push_github: true
+  push_recovery: true
+run:
+  name: lora16
+  method: lora
+  lr: 0.0002
+  stages:
+    1250: final
