@@ -1,0 +1,751 @@
+{
+  "meta": {
+    "platform": "kaggle",
+    "hostname": "6cff4a6f2ce2",
+    "python": "3.13.16",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "datasets": "4.8.5",
+      "huggingface_hub": "0.36.2",
+      "safetensors": "0.8.0",
+      "numpy": "2.1.3",
+      "lm_eval": null,
+      "vllm": null,
+      "math-verify": null
+    },
+    "git": {
+      "commit": "4a5459a566feb94054b6697117152a3ec63c5f9f",
+      "dirty": false
+    },
+    "timestamp": "2026-11-04T08:35:53+0000",
+    "cuda_available": true,
+    "torch_cuda": "13.0",
+    "gpus": [
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      },
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      }
+    ]
+  },
+  "config": {
+    "project": {
+      "seed": 6304,
+      "hf_repo_id": "FaaizKhan1999/atml-pa3-weights",
+      "hf_ckpt_repo_id": "FaaizKhan1999/atml-pa3-ckpt",
+      "git_user_name": "FaaizKhan1999",
+      "git_user_email": "25280051@lums.edu.pk"
+    },
+    "model": {
+      "name": "Qwen/Qwen3-0.6B",
+      "revision": null
+    },
+    "training": {
+      "weight_decay": 0.01,
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "eps": 1e-08,
+      "grad_clip": 1.0,
+      "fused_adam": true,
+      "lora_dropout": 0.05,
+      "lora_targets": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ]
+    },
+    "smoke": {
+      "length_sample": 2000,
+      "full_budget_examples": 40000,
+      "microbatch": 2,
+      "accum": 4,
+      "timed_updates": 4,
+      "skip_first": 1,
+      "stress_seq_len": 2048,
+      "test_checkpoint": true,
+      "methods": {
+        "full_ft": {
+          "kind": "full",
+          "lr": 2e-05
+        },
+        "l2sp": {
+          "kind": "full",
+          "lr": 2e-05,
+          "l2sp_lambda": 0.001,
+          "ref_device": "cuda"
+        },
+        "l2sp_cpuref": {
+          "kind": "full",
+          "lr": 2e-05,
+          "l2sp_lambda": 0.001,
+          "ref_device": "cpu"
+        },
+        "lora4": {
+          "kind": "lora",
+          "lr": 0.0002,
+          "r": 4,
+          "alpha": 8
+        },
+        "lora16": {
+          "kind": "lora",
+          "lr": 0.0002,
+          "r": 16,
+          "alpha": 32
+        },
+        "oplora16": {
+          "kind": "lora",
+          "lr": 0.0002,
+          "r": 16,
+          "alpha": 32,
+          "protect_rank": 128
+        }
+      }
+    }
+  },
+  "template": {
+    "n_checked": 200,
+    "generation_prompt_example": "<|im_start|>user\nGracie and Joe are choosing numbers on the complex plane. Joe chooses the point $1+2i$. Gracie chooses $-1+i$. How far apart are Gracie and Joe's points?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "prompt_ends_with_empty_think": true,
+    "full_render_match_rate": 0.99,
+    "split_vs_joint_tokenization_match_rate": 0.99,
+    "first_render_mismatch": {
+      "template": "(xy) = \\frac{f(x)}{y}\\]for all positive real numbers $x$ and $y.$  If $f(30) = 20,$ find $f(40).$<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nSetting $x = 30$ and $y = \\frac{4}{3},$ we get\n\\[f(40) = \\frac{f(30)}{\\frac{4}{3}} = \\frac{20}{\\frac{4}{3}} = \\boxed{15}.\\]The answer is: 15<|im_end|>\n",
+      "ours": "(xy) = \\frac{f(x)}{y}\\]for all positive real numbers $x$ and $y.$  If $f(30) = 20,$ find $f(40).$<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n\nSetting $x = 30$ and $y = \\frac{4}{3},$ we get\n\\[f(40) = \\frac{f(30)}{\\frac{4}{3}} = \\frac{20}{\\frac{4}{3}} = \\boxed{15}.\\]The answer is: 15<|im_end|>"
+    }
+  },
+  "lengths": {
+    "n_sampled": 2000,
+    "mean": 250.4775,
+    "p50": 222,
+    "p95": 463,
+    "p99": 696,
+    "max": 1941,
+    "n_over_2048": 0,
+    "mean_response_tokens": 179.7885,
+    "padding_overhead_fraction": 0.20396401149191498,
+    "est_total_input_tokens": 10019100.0
+  },
+  "fp16": {
+    "weights": {
+      "n_params": 596049920,
+      "n_overflow_to_inf": 0,
+      "n_underflow_to_zero": 573,
+      "max_abs_weight": 192.0,
+      "max_rel_cast_error_nonzero": 0.9844961166381836
+    },
+    "activations_fp32_weights": {
+      "max_abs_hidden_per_layer": [
+        7.68994140625,
+        12.0406494140625,
+        8142.35498046875,
+        8141.59033203125,
+        8141.18701171875,
+        8141.1142578125,
+        8139.3037109375,
+        8137.4736328125,
+        8133.6494140625,
+        8128.0224609375,
+        8126.53515625,
+        8123.20849609375,
+        8120.8779296875,
+        8118.6513671875,
+        8114.46044921875,
+        8113.2119140625,
+        8111.7001953125,
+        8113.02490234375,
+        8117.57275390625,
+        8126.93212890625,
+        8133.03076171875,
+        8140.7734375,
+        8145.29931640625,
+        8151.8193359375,
+        8156.58984375,
+        8158.1474609375,
+        7903.2802734375,
+        2538.7451171875
+      ],
+      "max_abs_hidden": 8158.1474609375,
+      "any_nonfinite_hidden": false,
+      "logits_finite": true,
+      "fp16_max": 65504.0
+    },
+    "activations_fp16_weights": {
+      "max_abs_hidden_per_layer": [
+        7.6953125,
+        12.0390625,
+        8144.0,
+        8144.0,
+        8144.0,
+        8144.0,
+        8144.0,
+        8144.0,
+        8140.0,
+        8136.0,
+        8136.0,
+        8132.0,
+        8128.0,
+        8124.0,
+        8120.0,
+        8120.0,
+        8120.0,
+        8120.0,
+        8124.0,
+        8136.0,
+        8140.0,
+        8148.0,
+        8152.0,
+        8160.0,
+        8164.0,
+        8168.0,
+        7912.0,
+        2560.0
+      ],
+      "max_abs_hidden": 8168.0,
+      "any_nonfinite_hidden": false,
+      "logits_finite": true,
+      "fp16_max": 65504.0
+    }
+  },
+  "methods": {
+    "full_ft": {
+      "kind": "full",
+      "lr": 2e-05,
+      "load_seconds": 2.152623425999991,
+      "params": {
+        "total": 596049920,
+        "trainable": 596049920,
+        "trainable_fraction": 1.0
+      },
+      "updates": [
+        {
+          "update": 1,
+          "loss": 1.0352401488080285,
+          "grad_norm": Infinity,
+          "loss_scale": 65536.0,
+          "skipped": true,
+          "input_tokens": 1761,
+          "update_seconds": 2.007131216999994,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 2,
+          "loss": 1.024706822582799,
+          "grad_norm": 33.30097961425781,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 1602,
+          "update_seconds": 1.7929539870000326,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 3,
+          "loss": 0.45479007918674935,
+          "grad_norm": 17.104419708251953,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 2199,
+          "update_seconds": 1.9769142690000194,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 4,
+          "loss": 0.48987777564330925,
+          "grad_norm": 8.381458282470703,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 1384,
+          "update_seconds": 1.3912838279999846,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 5,
+          "loss": 0.3095361590385437,
+          "grad_norm": 23.06453514099121,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 16384,
+          "update_seconds": 20.52068959899998,
+          "omega": null,
+          "l2sp_seconds": null
+        }
+      ],
+      "throughput_tokens_per_s": 1004.6206574834122,
+      "est_full_run_hours": 2.77028280535759,
+      "trainer_summary": {
+        "updates": 5,
+        "train_seconds": 27.68897290000001,
+        "skipped_updates": 1,
+        "peak_allocated_gb": 12.148,
+        "peak_reserved_gb": 13.512
+      },
+      "peak_memory_incl_stress": {
+        "peak_allocated_gb": 12.148,
+        "peak_reserved_gb": 13.512
+      },
+      "checkpoint": {
+        "weights_bytes": 2384234960,
+        "state_bytes": 4768687267,
+        "total_bytes": 7152922229,
+        "save_seconds": 17.30961648699997,
+        "load_seconds": 4.536490916000048,
+        "roundtrip_exact": true
+      }
+    },
+    "l2sp": {
+      "oom": true,
+      "error": "CUDA OOM: CUDA out of memory. Tried to allocate 594.00 MiB. GPU 0 has a total capacity of 14.56 GiB of which 66.81 MiB is free. Including non-PyTorch memory, this process has 14.49 GiB memory in use. Of the allocated memory 13.60 GiB is allocated by PyTorch, and 776.33 MiB is reserved by PyTorch but unallocat"
+    },
+    "l2sp_cpuref": {
+      "kind": "full",
+      "lr": 2e-05,
+      "load_seconds": 1.8311011910000161,
+      "params": {
+        "total": 596049920,
+        "trainable": 596049920,
+        "trainable_fraction": 1.0
+      },
+      "l2sp": {
+        "ref_device": "cpu",
+        "ref_bytes": 2384199680,
+        "n_params": 596049920,
+        "setup_seconds": 2.9310455070000216,
+        "seconds_per_update": 0.2662309986666666,
+        "displacement_after_smoke": 0.9301764861176791
+      },
+      "updates": [
+        {
+          "update": 1,
+          "loss": 1.0352401488080285,
+          "grad_norm": Infinity,
+          "loss_scale": 65536.0,
+          "skipped": true,
+          "input_tokens": 1761,
+          "update_seconds": 1.7990229739999677,
+          "omega": 0.0,
+          "l2sp_seconds": 0.2664538089999837
+        },
+        {
+          "update": 2,
+          "loss": 1.024706822582799,
+          "grad_norm": 33.300514221191406,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 1602,
+          "update_seconds": 1.9561519619999785,
+          "omega": 0.0,
+          "l2sp_seconds": 0.2663758790000088
+        },
+        {
+          "update": 3,
+          "loss": 0.454833945793991,
+          "grad_norm": 17.088848114013672,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 2199,
+          "update_seconds": 2.2294267209999816,
+          "omega": 0.08653432130813599,
+          "l2sp_seconds": 0.2662232979999999
+        },
+        {
+          "update": 4,
+          "loss": 0.4898229216720241,
+          "grad_norm": 8.384227752685547,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 1384,
+          "update_seconds": 1.7038505710000322,
+          "omega": 0.19526849687099457,
+          "l2sp_seconds": 0.26609381899999107
+        },
+        {
+          "update": 5,
+          "loss": 0.3098694483439128,
+          "grad_norm": 23.046049118041992,
+          "loss_scale": 32768.0,
+          "skipped": false,
+          "input_tokens": 16384,
+          "update_seconds": 22.987893550000024,
+          "omega": 0.3084779381752014,
+          "l2sp_seconds": 0.2662553270000103
+        }
+      ],
+      "throughput_tokens_per_s": 880.3909133433334,
+      "est_full_run_hours": 3.1611904338771737,
+      "trainer_summary": {
+        "updates": 5,
+        "train_seconds": 30.676345777999984,
+        "skipped_updates": 1,
+        "peak_allocated_gb": 12.147,
+        "peak_reserved_gb": 13.75
+      },
+      "peak_memory_incl_stress": {
+        "peak_allocated_gb": 12.147,
+        "peak_reserved_gb": 13.75
+      },
+      "checkpoint": {
+        "weights_bytes": 2384234960,
+        "state_bytes": 4768687267,
+        "total_bytes": 7152922229,
+        "save_seconds": 21.535852998999985,
+        "load_seconds": 4.953963079999994,
+        "roundtrip_exact": true
+      }
+    },
+    "lora4": {
+      "kind": "lora",
+      "lr": 0.0002,
+      "load_seconds": 1.4351015559999496,
+      "adapter_info": {
+        "n_modules": 196,
+        "adapter_params": 2523136,
+        "r": 4,
+        "alpha": 8,
+        "protect_rank": null,
+        "svd_seconds": 0.0,
+        "basis_bytes_fp32": 0
+      },
+      "zero_init_check": {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "max_abs_logit": 38.78125,
+        "argmax_agreement": 1.0
+      },
+      "params": {
+        "total": 598573056,
+        "trainable": 2523136,
+        "trainable_fraction": 0.004215251546504626
+      },
+      "updates": [
+        {
+          "update": 1,
+          "loss": 1.0357726854526728,
+          "grad_norm": 2.193870782852173,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1761,
+          "update_seconds": 1.7874897189999501,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 2,
+          "loss": 0.890770023704594,
+          "grad_norm": 1.5894180536270142,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1602,
+          "update_seconds": 1.819918621999932,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 3,
+          "loss": 0.6414751325334821,
+          "grad_norm": 1.2990127801895142,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 2199,
+          "update_seconds": 2.1177635100000316,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 4,
+          "loss": 0.7892031462296195,
+          "grad_norm": 1.4242165088653564,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1384,
+          "update_seconds": 1.753849712000033,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 5,
+          "loss": 0.2872634331385295,
+          "grad_norm": 1.8074849843978882,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 16384,
+          "update_seconds": 23.81963675999998,
+          "omega": null,
+          "l2sp_seconds": null
+        }
+      ],
+      "throughput_tokens_per_s": 911.0025459079208,
+      "est_full_run_hours": 3.054967679107488,
+      "trainer_summary": {
+        "updates": 5,
+        "train_seconds": 31.298658322999927,
+        "skipped_updates": 0,
+        "peak_allocated_gb": 3.584,
+        "peak_reserved_gb": 6.984
+      },
+      "peak_memory_incl_stress": {
+        "peak_allocated_gb": 3.584,
+        "peak_reserved_gb": 6.984
+      },
+      "checkpoint": {
+        "weights_bytes": 10134072,
+        "state_bytes": 20538946,
+        "total_bytes": 30673020,
+        "save_seconds": 0.16209975599997506,
+        "load_seconds": 0.14743455699999686,
+        "roundtrip_exact": true
+      },
+      "projection_check": {},
+      "export_bytes": 10092544,
+      "merge_check": {
+        "max_abs_diff": 0.1796875,
+        "mean_abs_diff": 0.006866082549095154,
+        "max_abs_logit": 38.03125,
+        "argmax_agreement": 0.9947916865348816
+      }
+    },
+    "lora16": {
+      "kind": "lora",
+      "lr": 0.0002,
+      "load_seconds": 1.427489173999902,
+      "adapter_info": {
+        "n_modules": 196,
+        "adapter_params": 10092544,
+        "r": 16,
+        "alpha": 32,
+        "protect_rank": null,
+        "svd_seconds": 0.0,
+        "basis_bytes_fp32": 0
+      },
+      "zero_init_check": {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "max_abs_logit": 38.78125,
+        "argmax_agreement": 1.0
+      },
+      "params": {
+        "total": 606142464,
+        "trainable": 10092544,
+        "trainable_fraction": 0.01665044869715645
+      },
+      "updates": [
+        {
+          "update": 1,
+          "loss": 1.0357726854526728,
+          "grad_norm": 4.810639381408691,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1761,
+          "update_seconds": 1.9277942269999357,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 2,
+          "loss": 0.6291742830194978,
+          "grad_norm": 1.7992982864379883,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1602,
+          "update_seconds": 1.9077371689999154,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 3,
+          "loss": 0.4000741835641198,
+          "grad_norm": 0.9954984188079834,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 2199,
+          "update_seconds": 2.301323428999922,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 4,
+          "loss": 0.5106373986156217,
+          "grad_norm": 1.7179008722305298,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1384,
+          "update_seconds": 1.9251524769999833,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 5,
+          "loss": 0.29295259714126587,
+          "grad_norm": 3.4347739219665527,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 16384,
+          "update_seconds": 25.46902455599991,
+          "omega": null,
+          "l2sp_seconds": null
+        }
+      ],
+      "throughput_tokens_per_s": 845.2591940654347,
+      "est_full_run_hours": 3.2925797824778047,
+      "trainer_summary": {
+        "updates": 5,
+        "train_seconds": 33.531031857999665,
+        "skipped_updates": 0,
+        "peak_allocated_gb": 3.697,
+        "peak_reserved_gb": 7.104
+      },
+      "peak_memory_incl_stress": {
+        "peak_allocated_gb": 3.697,
+        "peak_reserved_gb": 7.104
+      },
+      "checkpoint": {
+        "weights_bytes": 40412744,
+        "state_bytes": 81094210,
+        "total_bytes": 121506956,
+        "save_seconds": 0.24567474100001618,
+        "load_seconds": 0.18907786099998702,
+        "roundtrip_exact": true
+      },
+      "projection_check": {},
+      "export_bytes": 40370176,
+      "merge_check": {
+        "max_abs_diff": 0.462890625,
+        "mean_abs_diff": 0.006783774588257074,
+        "max_abs_logit": 34.75,
+        "argmax_agreement": 1.0
+      }
+    },
+    "oplora16": {
+      "kind": "lora",
+      "lr": 0.0002,
+      "load_seconds": 1.4063052239999934,
+      "adapter_info": {
+        "n_modules": 196,
+        "adapter_params": 10092544,
+        "r": 16,
+        "alpha": 32,
+        "protect_rank": 128,
+        "svd_seconds": 34.14166440000122,
+        "basis_bytes_fp32": 322961408
+      },
+      "zero_init_check": {
+        "max_abs_diff": 0.0,
+        "mean_abs_diff": 0.0,
+        "max_abs_logit": 38.78125,
+        "argmax_agreement": 1.0
+      },
+      "params": {
+        "total": 606142464,
+        "trainable": 10092544,
+        "trainable_fraction": 0.01665044869715645
+      },
+      "updates": [
+        {
+          "update": 1,
+          "loss": 1.0357726854526728,
+          "grad_norm": 4.2231268882751465,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1761,
+          "update_seconds": 2.6609076739999864,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 2,
+          "loss": 0.6429112621861646,
+          "grad_norm": 1.7058488130569458,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1602,
+          "update_seconds": 2.5845821410000553,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 3,
+          "loss": 0.406158563008652,
+          "grad_norm": 0.9422757625579834,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 2199,
+          "update_seconds": 2.7421767339999406,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 4,
+          "loss": 0.5170967692661387,
+          "grad_norm": 1.6203709840774536,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 1384,
+          "update_seconds": 2.5215790210000932,
+          "omega": null,
+          "l2sp_seconds": null
+        },
+        {
+          "update": 5,
+          "loss": 0.2905295689900716,
+          "grad_norm": 3.2614779472351074,
+          "loss_scale": 65536.0,
+          "skipped": false,
+          "input_tokens": 16384,
+          "update_seconds": 24.44045806200006,
+          "omega": null,
+          "l2sp_seconds": null
+        }
+      ],
+      "throughput_tokens_per_s": 660.6494354228223,
+      "est_full_run_hours": 4.212647713158389,
+      "trainer_summary": {
+        "updates": 5,
+        "train_seconds": 34.94970363200014,
+        "skipped_updates": 0,
+        "peak_allocated_gb": 4.019,
+        "peak_reserved_gb": 7.51
+      },
+      "peak_memory_incl_stress": {
+        "peak_allocated_gb": 4.019,
+        "peak_reserved_gb": 7.51
+      },
+      "checkpoint": {
+        "weights_bytes": 40412744,
+        "state_bytes": 81094210,
+        "total_bytes": 121506956,
+        "save_seconds": 0.2332863610000686,
+        "load_seconds": 0.1866637449999189,
+        "roundtrip_exact": true
+      },
+      "projection_check": {
+        "max_rel_UkT_B": 0.00022319202253129333,
+        "mean_rel_UkT_B": 6.936408335976161e-05,
+        "max_rel_A_Vk": 0.0001952859020093456,
+        "mean_rel_A_Vk": 0.00014638239491079953
+      },
+      "export_bytes": 40370176,
+      "merge_check": {
+        "max_abs_diff": 0.125,
+        "mean_abs_diff": 0.00654136436060071,
+        "max_abs_logit": 34.375,
+        "argmax_agreement": 0.9973958730697632
+      }
+    }
+  }
+}
