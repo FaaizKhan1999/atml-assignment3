@@ -1,0 +1,30 @@
+{
+  "benchmark": "arc_easy",
+  "task": "arc_easy",
+  "limit": null,
+  "seconds": 58.95556289900014,
+  "peak_allocated_gb": 4.451,
+  "batch_size": 32,
+  "chat_template": false,
+  "num_fewshot": 0,
+  "lm_eval_version": "0.4.13",
+  "n_configs": {
+    "original": 2376,
+    "effective": 2376
+  },
+  "metrics": {
+    "name": "arc_easy",
+    "sample_len": 2376,
+    "acc,none": 0.6691919191919192,
+    "acc_stderr,none": 0.009654540125986107,
+    "acc_norm,none": 0.6388888888888888,
+    "acc_norm_stderr,none": 0.009856013425811298
+  },
+  "n_examples": 2376,
+  "primary": {
+    "metric": "acc_norm,none",
+    "value": 0.6388888888888888
+  },
+  "raw_acc": 0.6691919191919192,
+  "prompt_example": "Question: Which statement best explains why photosynthesis is the foundation of most food webs?\nAnswer:"
+}
