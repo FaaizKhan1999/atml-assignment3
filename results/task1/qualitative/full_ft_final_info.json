@@ -1,0 +1,20 @@
+{
+  "seconds": 33.815422319999925,
+  "batch_size": 24,
+  "max_new_tokens": 512,
+  "peak_allocated_gb": 2.844,
+  "generation_config": {
+    "max_new_tokens": 512,
+    "do_sample": false,
+    "num_beams": 1,
+    "temperature": null,
+    "top_k": null,
+    "top_p": null,
+    "pad_token_id": 151643,
+    "eos_token_id": [
+      151645,
+      151643
+    ]
+  },
+  "repeat_generation_identical": true
+}
