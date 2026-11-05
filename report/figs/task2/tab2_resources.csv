@@ -1,0 +1,8 @@
+Step,Trainable params,Updates / items,Time,Peak GPU mem.
+COCO image download,–,"9,258 images",0.5 min,–
+"SigLIP feature caching (2.60 GB, FP16)",– (frozen),"9,258 images",3.3 min,0.83 GB
+Stage 1: captions,1.84M,"2,250 updates",43.9 min,1.54 GB
+Stage 2: visual instr.,6.42M (LoRA 4.59M),"1,500 updates",32.9 min,1.56 GB
+Stage 3: natural vqa,6.42M (LoRA 4.59M),750 updates,16.1 min,1.54 GB
+Development evaluations (12×),–,–,1.4 min,–
+Final evaluation (generation + NLL),–,"1,280 answers",1.6 min (30–123 ms/answer),1.40 GB

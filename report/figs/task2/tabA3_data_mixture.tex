@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Data, realized curriculum mixture (training examples per component) and connector calibration (out\_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images).}
+\label{tab:t2-data}
+\begin{tabular}{lp{7.5cm}}
+\toprule
+Item & Value \\
+\midrule
+Caption training examples (images) & 18,000 (6,000) \\
+VQAv2 training pairs & 1,536 \\
+Grounding training pools (presence / counting) & 3,000 / 3,000 \\
+VQAv2 train pairs eligible / total & 71,969 / 200,394 \\
+Evaluation images (all suites image-disjoint) & 528 \\
+Stage 1 training examples by component & caption 36,000 (100\%) \\
+Stage 2 training examples by component & caption 6,086 (25\%), counting 5,912 (25\%), presence 12,002 (50\%) \\
+Stage 3 training examples by component & caption 1,152 (10\%), counting 1,154 (10\%), presence 1,220 (10\%), vqa 8,474 (71\%) \\
+Connector output scale (calibration) & 0.0555 \\
+Text-embedding RMS / initial visual-token RMS & 0.0276 / 0.4962 \\
+\bottomrule
+\end{tabular}
+\end{table}

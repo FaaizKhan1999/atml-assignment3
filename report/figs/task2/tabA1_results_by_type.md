@@ -1,0 +1,9 @@
+**Final-test accuracy and reference-answer NLL by question type and image condition (n = questions).**
+
+| Suite | Type | n | Correct acc. % | Complementary acc. % | Mismatched acc. % | No image acc. % | Correct NLL | Complementary NLL | Mismatched NLL | No image NLL |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Annotation-derived | presence | 64 | 89.1 | 10.9 | 57.8 | 0.0 | 0.27 | 4.41 | 1.93 | 8.07 |
+| Annotation-derived | counting | 64 | 43.8 | 10.9 | 17.2 | 0.0 | 1.58 | 3.62 | 2.83 | 5.03 |
+| Natural VQAv2 | yes/no | 72 | 61.4 | 48.2 | 58.6 | 0.0 | 0.91 | 1.40 | 1.17 | 9.00 |
+| Natural VQAv2 | number | 48 | 47.7 | 19.0 | 29.6 | 4.2 | 1.80 | 3.25 | 2.28 | 5.25 |
+| Natural VQAv2 | other | 72 | 57.6 | 11.4 | 16.1 | 0.0 | 1.62 | 4.02 | 3.54 | 12.89 |
