@@ -142,6 +142,14 @@ outputs differ slightly from the HF backend, so all conditions use one backend.
    `python -m task2.cache_features --push` stores 196 x 768 FP16 features per image and uploads them to
    the HF weights repo (`task2/features/siglip196/`); timing goes to `results/task2/feature_cache.json`.
 
+### Training (configs/task2/train.yaml)
+1. **Smoke test** (GPU, ~10 min): `python -m task2.train --smoke` checks split isolation, feature shapes,
+   visual-token placement, the frozen parameter sets and that gradients reach the connector (and LoRA),
+   runs a few updates of each stage and projects the full run time. Writes `results/task2/smoke.json`.
+2. **Main run** (GPU, one Kaggle session): `python -m task2.train`. Resumable; logs per stage in
+   `results/task2/main/` (`train_log_stage{1,2,3}.jsonl`, `dev_log.jsonl`, `stage{k}_summary.json`,
+   `calibration.json`); stage weights in the HF weights repo under `task2/main/stage{k}/`.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.

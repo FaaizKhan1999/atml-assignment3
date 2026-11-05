@@ -1,0 +1,57 @@
+# Task 2 main run: three-stage curriculum (one continuous model).
+_base_: base.yaml
+
+run:
+  name: main                    # results/task2/<name>/, HF task2/<name>/stage<k>/
+
+prompt:
+  caption_instruction: "Briefly describe this image."   # caption examples: <image>\n<instruction> -> caption
+  # VQA / grounding examples: <image>\n<question> -> short answer. Visual tokens go inside the user turn,
+  # before the text, using Qwen's chat template with thinking disabled.
+
+connector:
+  hidden: 1024
+  init_seed: 6304
+  calibration:                  # training data only
+    n_texts: 2000               # training captions/questions whose token embeddings set the target RMS
+    n_images: 256               # training images whose initial connector outputs set the current RMS
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  targets: [q_proj, k_proj, v_proj, o_proj]
+
+training:
+  microbatch: 8
+  accum: 2                      # effective batch 16
+  weight_decay: 0.01            # not applied to biases or <2-D tensors
+  betas: [0.9, 0.999]
+  eps: 1.0e-8
+  grad_clip: 1.0
+  fused_adam: true
+  gradient_checkpointing: true
+  warmup_frac: 0.05             # per stage
+  min_lr_ratio: 0.1             # cosine decay to 10% of peak, per stage
+  checkpoint_every: 250         # main-run updates
+  dev_eval_every: 500           # plus before training and at every stage end
+  stages:
+    - name: caption_alignment
+      updates: 2250             # two passes over the 18,000 caption examples
+      connector_lr: 1.0e-3
+      lora_lr: null             # LoRA not yet enabled
+      mixture: {caption: 1.0}
+    - name: visual_instruction
+      updates: 1500
+      connector_lr: 1.0e-4
+      lora_lr: 2.0e-5
+      mixture: {presence: 0.5, counting: 0.25, caption: 0.25}
+    - name: natural_vqa
+      updates: 750
+      connector_lr: 5.0e-5
+      lora_lr: 1.0e-5
+      mixture: {vqa: 0.7, presence: 0.1, counting: 0.1, caption: 0.1}
+
+sync:
+  push_github: true
+  push_recovery: true
