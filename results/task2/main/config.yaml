@@ -1,0 +1,129 @@
+project:
+  seed: 6304
+  hf_repo_id: FaaizKhan1999/atml-pa3-weights
+  hf_ckpt_repo_id: FaaizKhan1999/atml-pa3-ckpt
+  git_user_name: FaaizKhan1999
+  git_user_email: 25280051@lums.edu.pk
+model:
+  name: Qwen/Qwen3-0.6B
+  revision: null
+vision:
+  name: google/siglip-base-patch16-224
+  revision: null
+  n_tokens: 196
+  dim: 768
+  cache_batch_size: 64
+data:
+  seed: 6304
+  coco_annotations_url: http://images.cocodataset.org/annotations/annotations_trainval2014.zip
+  coco_image_url: http://images.cocodataset.org/{split}/COCO_{split}_{image_id:012d}.jpg
+  vqa_urls:
+    questions_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Questions_Train_mscoco.zip
+    questions_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Questions_Val_mscoco.zip
+    annotations_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Annotations_Train_mscoco.zip
+    annotations_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Annotations_Val_mscoco.zip
+    pairs_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Complementary_Pairs_Train_mscoco.zip
+    pairs_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Complementary_Pairs_Val_mscoco.zip
+  caps:
+    question: 80
+    caption: 64
+    answer: 16
+  captions:
+    train_images: 6000
+    captions_per_train_image: 3
+    dev_images: 96
+  vqa:
+    min_agreement: 8
+    train:
+      yes/no: 640
+      number: 256
+      other: 640
+    dev:
+      yes/no: 12
+      number: 8
+      other: 12
+    test:
+      yes/no: 36
+      number: 24
+      other: 36
+  grounding:
+    presence_min_area_frac: 0.01
+    negative_caption_check: true
+    count_min_area_frac: 0.005
+    count_range:
+    - 1
+    - 4
+    exclude_counting:
+    - broccoli
+    - carrot
+    train_pool:
+      presence: 3000
+      counting: 3000
+    dev:
+      presence: 12
+      counting: 12
+    test:
+      presence: 32
+      counting: 32
+run:
+  name: main
+prompt:
+  caption_instruction: Briefly describe this image.
+connector:
+  hidden: 1024
+  init_seed: 6304
+  calibration:
+    n_texts: 2000
+    n_images: 256
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  targets:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+training:
+  microbatch: 8
+  accum: 2
+  weight_decay: 0.01
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  grad_clip: 1.0
+  fused_adam: true
+  gradient_checkpointing: true
+  init_loss_scale: 1024
+  warmup_frac: 0.05
+  min_lr_ratio: 0.1
+  checkpoint_every: 250
+  dev_eval_every: 500
+  stages:
+  - name: caption_alignment
+    updates: 2250
+    connector_lr: 0.001
+    lora_lr: null
+    mixture:
+      caption: 1.0
+  - name: visual_instruction
+    updates: 1500
+    connector_lr: 0.0001
+    lora_lr: 2.0e-05
+    mixture:
+      presence: 0.5
+      counting: 0.25
+      caption: 0.25
+  - name: natural_vqa
+    updates: 750
+    connector_lr: 5.0e-05
+    lora_lr: 1.0e-05
+    mixture:
+      vqa: 0.7
+      presence: 0.1
+      counting: 0.1
+      caption: 0.1
+sync:
+  push_github: true
+  push_recovery: true

@@ -1,0 +1,9 @@
+{
+  "rule": "out_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images",
+  "text_token_rms": 0.027560796588659286,
+  "visual_token_rms_before": 0.4962270259857178,
+  "scale": 0.05554070041612875,
+  "visual_token_rms_after": 0.027560794726014137,
+  "n_text_tokens": 26570,
+  "n_images": 256
+}
