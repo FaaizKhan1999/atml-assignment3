@@ -1,0 +1,52 @@
+# Task 2: SigLIP -> MLP connector -> Qwen3-0.6B VLM. Data and feature-cache settings (drop 1).
+model:
+  name: Qwen/Qwen3-0.6B
+  revision: null
+
+vision:
+  name: google/siglip-base-patch16-224
+  revision: null
+  n_tokens: 196          # 14 x 14 patches, spatial (row-major) order
+  dim: 768
+  cache_batch_size: 64
+
+data:
+  seed: 6304
+  coco_annotations_url: http://images.cocodataset.org/annotations/annotations_trainval2014.zip
+  coco_image_url: "http://images.cocodataset.org/{split}/COCO_{split}_{image_id:012d}.jpg"
+  # VQAv2 links as listed on https://visualqa.org/download.html (the site notes they moved storage location)
+  vqa_urls:
+    questions_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Questions_Train_mscoco.zip
+    questions_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Questions_Val_mscoco.zip
+    annotations_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Annotations_Train_mscoco.zip
+    annotations_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Annotations_Val_mscoco.zip
+    pairs_train: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Complementary_Pairs_Train_mscoco.zip
+    pairs_val: https://cvmlp.s3.amazonaws.com/vqa/mscoco/vqa/v2_Complementary_Pairs_Val_mscoco.zip
+
+  caps:                  # content-token caps (Qwen tokenizer); items above a cap are not selected
+    question: 80
+    caption: 64
+    answer: 16
+
+  captions:
+    train_images: 6000
+    captions_per_train_image: 3
+    dev_images: 96
+
+  vqa:
+    min_agreement: 8     # of 10 annotators, for the consensus answer of EACH image in a pair
+    train: {"yes/no": 640, number: 256, other: 640}
+    dev: {"yes/no": 12, number: 8, other: 12}
+    test: {"yes/no": 36, number: 24, other: 36}
+
+  grounding:
+    # Label-quality rules (COCO can omit objects or have ambiguous counts):
+    presence_min_area_frac: 0.01   # a positive image has >= 1 non-crowd instance covering >= 1% of the image
+    negative_caption_check: true   # a negative image's 5 captions must not mention the category (or synonyms)
+    count_min_area_frac: 0.005     # counting: every instance >= 0.5% of the image, and no crowd annotation
+    count_range: [1, 4]
+    exclude_counting: [broccoli, carrot]   # mass-like categories with ambiguous instance counts
+    # Training pools are drawn from the caption and VQA training images (no extra downloads).
+    train_pool: {presence: 3000, counting: 3000}
+    dev: {presence: 12, counting: 12}     # 24 pairs / 48 questions
+    test: {presence: 32, counting: 32}    # 64 pairs / 128 questions

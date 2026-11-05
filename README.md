@@ -130,6 +130,18 @@ weights are cast from FP32 to FP16. vLLM was tested (`results/env/vllm_colab_tes
 not used: it conflicts with the pinned `transformers`/`datasets` versions and its FP16 greedy
 outputs differ slightly from the HF backend, so all conditions use one backend.
 
+## Task 2: Vision-language model
+
+### Data and features
+1. **Select all data** (CPU, ~10-20 min, ~2 GB of annotation downloads):
+   `python -m task2.prepare_data --push` writes `splits/task2/` (captions, VQAv2 pairs with all ten
+   answers, grounding pools and evaluation pairs, image list) and `results/task2/data/prepare_stats.json`.
+   val2014 evaluation suites are image-disjoint by construction and checked. If the VQA download site is
+   unreachable, put the official JSONs/zips in a folder and add `--local-dir <folder>`.
+2. **Cache SigLIP features** (GPU, ~20-40 min including ~1.6 GB of image downloads):
+   `python -m task2.cache_features --push` stores 196 x 768 FP16 features per image and uploads them to
+   the HF weights repo (`task2/features/siglip196/`); timing goes to `results/task2/feature_cache.json`.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
