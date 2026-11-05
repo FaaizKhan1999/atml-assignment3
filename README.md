@@ -150,6 +150,12 @@ outputs differ slightly from the HF backend, so all conditions use one backend.
    `results/task2/main/` (`train_log_stage{1,2,3}.jsonl`, `dev_log.jsonl`, `stage{k}_summary.json`,
    `calibration.json`); stage weights in the HF weights repo under `task2/main/stage{k}/`.
 
+### Final evaluation
+`python -m task2.final_eval --push` (GPU, ~10 min): greedy answers (16 tokens, batch 8) on both final-test
+suites under correct / complementary / mismatched / no-image inputs; accuracy by question type, pair
+accuracy, identical- and empty-answer rates, reference NLL, time per answer, swap behaviour, and
+4,000-resample pair-bootstrap CIs (paired across conditions). Outputs `results/task2/eval/main_stage3/`.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
