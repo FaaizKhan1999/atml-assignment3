@@ -1,0 +1,13 @@
+**MetaMathQA selection. Normalization for decontamination: NFKC; lowercase; runs of [^0-9a-z] -> single space; strip.**
+
+| Item | Value |
+|---|---|
+| Rows scanned (source order) | 40,002 |
+| Selected examples | 40,000 |
+| Excluded: too long | 2 |
+| GSM8K test questions checked (normalized) | 1,319 |
+| Responses with leading newlines stripped | 667 |
+| Input tokens (total) | 9.91M |
+| Supervised tokens (total) | 7.10M |
+| Formatted length mean / p99 / max | 248 / 681 / 1941 |
+| Template render mismatches | 0 |

@@ -1,0 +1,4 @@
+Method,Merged vs. unmerged: argmax agree (%),Mean |Δlogit| merge / adapter effect,Max rel. ‖Uk^T B~‖,Max rel. ‖A~ Vk‖,Basis ortho. error (SVD → QR)
+LoRA-4,100.00,0.0050,–,–,–
+LoRA-16,99.87,0.0049,–,–,–
+OPLoRA-16,100.00,0.0047,1.1e-07,1.0e-07,4.3e-05 → 6.0e-07

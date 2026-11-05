@@ -1,0 +1,7 @@
+**Numerical checks (separate from benchmark evidence). Merge check on 4 training sequences: merged FP16 model vs. unmerged adapter model, with the merge error relative to the adapter's own effect (unmerged vs. base). OPLoRA constraint residuals of the exported projected factors.**
+
+| Method | Merged vs. unmerged: argmax agree (%) | Mean |Δlogit| merge / adapter effect | Max rel. ‖Uk^T B~‖ | Max rel. ‖A~ Vk‖ | Basis ortho. error (SVD → QR) |
+|---|---|---|---|---|---|
+| LoRA-4 | 100.00 | 0.0050 | – | – | – |
+| LoRA-16 | 99.87 | 0.0049 | – | – | – |
+| OPLoRA-16 | 100.00 | 0.0047 | 1.1e-07 | 1.0e-07 | 4.3e-05 → 6.0e-07 |
