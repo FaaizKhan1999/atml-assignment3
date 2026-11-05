@@ -78,6 +78,7 @@ class Run:
         self.data = load_split_examples(self.pb)
         self.vlm = None
         self.lora_injected = False
+        self.scaler_state = None
 
     # ------------------------------------------------------------------ model
     def build(self) -> None:
@@ -216,6 +217,13 @@ class Run:
                           log_path=self.res / f"train_log_stage{k}.jsonl",
                           checkpoint_at=[] if self.smoke else list(range(every, n + 1, every)),
                           checkpoint_final=not self.smoke, keep_last=1, on_checkpoint=on_ckpt)
+        # dynamic loss scaling: lower initial scale, continued across stages (a checkpoint resume overrides it)
+        trainer.scaler = torch.amp.GradScaler("cuda", init_scale=float(tr.get("init_loss_scale", 65536.0)))
+        prev = self.scaler_state
+        if prev is None and k > 1 and self.stage_done(k - 1):
+            prev = read_json(self.res / f"stage{k - 1}_summary.json").get("scaler_state")
+        if prev:
+            trainer.scaler.load_state_dict(prev)
         fetch = (lambda: fetch_latest_recovery_checkpoint(f"{self.key}/stage{k}", self.paths.downloads)) \
             if self.push else None
         resumed = trainer.resume(fallback_fetch=fetch)
@@ -226,6 +234,7 @@ class Run:
         t0 = time.perf_counter()
         summary = trainer.train(stop_after=stop_after)
         wall = time.perf_counter() - t0
+        self.scaler_state = {k_: (float(v) if isinstance(v, float) else v) for k_, v in trainer.scaler.state_dict().items()}
         if self.smoke or trainer.update < n:
             return {"trainer": trainer, "summary": summary, "wall": wall}
         meta = self.export_stage(k)
@@ -243,7 +252,7 @@ class Run:
             "examples_by_component": mix, "lr": {"connector": s.connector_lr, "lora": s.lora_lr},
             "warmup_updates": max(1, round(float(tr.warmup_frac) * n)),
             "dev_eval_seconds": sum(r.get("seconds", 0) for r in self.dev_log.read() if r["stage"] == k),
-            "export": meta, "environment": run_metadata()}
+            "export": meta, "scaler_state": self.scaler_state, "environment": run_metadata()}
         write_json(self.res / f"stage{k}_summary.json", stage_summary)
         if self.push:
             try_push([self.res], f"{self.key}: stage {k} finished")
@@ -342,7 +351,9 @@ def main() -> None:
                 report["lora_check"] = lora_check(run)
             recs = [r for r in out["trainer"].logger.read() if r.get("event") == "update"][1:]
             per = statistics.median(r["update_seconds"] for r in recs)
-            report["stages"][k] = {"seconds_per_update": per,
+            all_recs = [r for r in out["trainer"].logger.read() if r.get("event") == "update"]
+            report["stages"][k] = {"seconds_per_update": per, "skipped": sum(r["skipped"] for r in all_recs),
+                                   "loss_scale_end": out["trainer"].scaler.get_scale(),
                                    "projected_hours": per * int(run.stages[k - 1].updates) / 3600,
                                    "peak_allocated_gb": out["summary"]["peak_allocated_gb"],
                                    "trainable_params": count_parameters(run.vlm)["trainable"],
@@ -366,7 +377,8 @@ def main() -> None:
         print(f"calibration: scale {run.calibration['scale']:.4f} (text RMS {run.calibration['text_token_rms']:.4f}, "
               f"visual RMS {run.calibration['visual_token_rms_before']:.4f} -> {run.calibration['visual_token_rms_after']:.4f})")
         for k, v in report["stages"].items():
-            print(f"stage {k}: {v['seconds_per_update']:.2f} s/update -> {v['projected_hours']:.2f} h, "
+            print(f"stage {k}: {v['skipped']} skipped of {args.smoke_updates}, loss scale {v['loss_scale_end']:.0f}; "
+                  f"{v['seconds_per_update']:.2f} s/update -> {v['projected_hours']:.2f} h, "
                   f"peak {v['peak_allocated_gb']:.2f} GB, trainable {v['trainable_params']:,}, losses {v['losses']}")
         print(f"dev eval {report['dev_eval']['seconds']:.0f} s x {n_evals}; projected total "
               f"{report['projected_total_hours']:.2f} h")

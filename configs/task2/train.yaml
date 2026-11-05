@@ -31,6 +31,9 @@ training:
   grad_clip: 1.0
   fused_adam: true
   gradient_checkpointing: true
+  # Dynamic FP16 loss scaling. The default initial scale (65536) overflows here for the first 4-6 updates of
+  # every stage (smoke test), so start at 1024; the scaler state is carried from stage to stage.
+  init_loss_scale: 1024
   warmup_frac: 0.05             # per stage
   min_lr_ratio: 0.1             # cosine decay to 10% of peak, per stage
   checkpoint_every: 250         # main-run updates
