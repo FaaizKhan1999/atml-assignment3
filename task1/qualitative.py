@@ -128,7 +128,8 @@ def auto_flags(p: dict, response: str) -> dict:
                       "json_valid_after_unfencing": parsed})
     if p["format"] == "template":
         keys, optional = _template_keys(p["user"])
-        filled = [k for k in keys if re.search(rf"^\s*{re.escape(k)}\s*=\s*\S", response, re.M)]
+        # a key counts as filled only if its value is not the template's own "# ..." placeholder
+        filled = [k for k in keys if re.search(rf"^\s*{re.escape(k)}\s*=\s*(?!#)\S", response, re.M)]
         required = [k for k in keys if k not in optional]
         flags.update({"template_keys": len(keys), "template_keys_filled": len(filled),
                       "template_required_filled": all(k in filled for k in required)})
