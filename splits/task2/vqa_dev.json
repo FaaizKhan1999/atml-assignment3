@@ -1,0 +1,1570 @@
+[
+  {
+    "pair_id": "vqa_323295000_325184003",
+    "answer_type": "yes/no",
+    "question": "Are the elephants playing with each other?",
+    "members": [
+      {
+        "question_id": 323295000,
+        "image_id": 323295,
+        "question": "Are the elephants playing with each other?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 325184003,
+        "image_id": 325184,
+        "question": "Are the elephants playing with each other?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_314607005_165422002",
+    "answer_type": "yes/no",
+    "question": "Is it a clear day?",
+    "members": [
+      {
+        "question_id": 314607005,
+        "image_id": 314607,
+        "question": "Is it a clear day?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 9,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "maybe",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 165422002,
+        "image_id": 165422,
+        "question": "Is it a clear day?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 8,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "yes",
+          "no",
+          "yes",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_115927014_130386001",
+    "answer_type": "yes/no",
+    "question": "Is the sign sponsored?",
+    "members": [
+      {
+        "question_id": 115927014,
+        "image_id": 115927,
+        "question": "Is the sign sponsored?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 130386001,
+        "image_id": 130386,
+        "question": "Is the sign sponsored?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 8,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no",
+          "no",
+          "no",
+          "yes",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_274216003_79837016",
+    "answer_type": "yes/no",
+    "question": "Is this a sailing boat?",
+    "members": [
+      {
+        "question_id": 274216003,
+        "image_id": 274216,
+        "question": "Is this a sailing boat?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "question_id": 79837016,
+        "image_id": 79837,
+        "question": "Is this a sailing boat?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 9,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_216482005_302531007",
+    "answer_type": "yes/no",
+    "question": "Is the animal in a zoo?",
+    "members": [
+      {
+        "question_id": 216482005,
+        "image_id": 216482,
+        "question": "Is the animal in a zoo?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 8,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "yes",
+          "no",
+          "my best guess is no",
+          "no",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "question_id": 302531007,
+        "image_id": 302531,
+        "question": "Is the animal in a zoo?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 8,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_126877000_107020011",
+    "answer_type": "yes/no",
+    "question": "Is the person on the cake fishing?",
+    "members": [
+      {
+        "question_id": 126877000,
+        "image_id": 126877,
+        "question": "Is the person on the cake fishing?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 9,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 107020011,
+        "image_id": 107020,
+        "question": "Is the person on the cake fishing?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_18957002_526580034",
+    "answer_type": "yes/no",
+    "question": "Is the boy cooking pizza?",
+    "members": [
+      {
+        "question_id": 18957002,
+        "image_id": 18957,
+        "question": "Is the boy cooking pizza?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 9,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 526580034,
+        "image_id": 526580,
+        "question": "Is the boy cooking pizza?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_73832004_189845000",
+    "answer_type": "yes/no",
+    "question": "Is the person wearing a backpack?",
+    "members": [
+      {
+        "question_id": 73832004,
+        "image_id": 73832,
+        "question": "Is the person wearing a backpack?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 189845000,
+        "image_id": 189845,
+        "question": "Is the person wearing a backpack?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_22215001_208524017",
+    "answer_type": "yes/no",
+    "question": "Do you see a traffic light?",
+    "members": [
+      {
+        "question_id": 22215001,
+        "image_id": 22215,
+        "question": "Do you see a traffic light?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 9,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "no",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 208524017,
+        "image_id": 208524,
+        "question": "Do you see a traffic light?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_33576001_105052041",
+    "answer_type": "yes/no",
+    "question": "Are all the gentlemen facing the same way?",
+    "members": [
+      {
+        "question_id": 33576001,
+        "image_id": 33576,
+        "question": "Are all the gentlemen facing the same way?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      },
+      {
+        "question_id": 105052041,
+        "image_id": 105052,
+        "question": "Are all the gentlemen facing the same way?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_357291004_477069001",
+    "answer_type": "yes/no",
+    "question": "Is there a double Decker bus on the right?",
+    "members": [
+      {
+        "question_id": 357291004,
+        "image_id": 357291,
+        "question": "Is there a double Decker bus on the right?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 477069001,
+        "image_id": 477069,
+        "question": "Is there a double Decker bus on the right?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_568882005_334809000",
+    "answer_type": "yes/no",
+    "question": "Is someone having a vegetarian meal?",
+    "members": [
+      {
+        "question_id": 568882005,
+        "image_id": 568882,
+        "question": "Is someone having a vegetarian meal?",
+        "answer_type": "yes/no",
+        "consensus": "yes",
+        "agreement": 10,
+        "target": "yes",
+        "answers": [
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes",
+          "yes"
+        ]
+      },
+      {
+        "question_id": 334809000,
+        "image_id": 334809,
+        "question": "Is someone having a vegetarian meal?",
+        "answer_type": "yes/no",
+        "consensus": "no",
+        "agreement": 10,
+        "target": "no",
+        "answers": [
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no",
+          "no"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_413839000_423039006",
+    "answer_type": "number",
+    "question": "How many people are on the bench?",
+    "members": [
+      {
+        "question_id": 413839000,
+        "image_id": 413839,
+        "question": "How many people are on the bench?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 10,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "question_id": 423039006,
+        "image_id": 423039,
+        "question": "How many people are on the bench?",
+        "answer_type": "number",
+        "consensus": "0",
+        "agreement": 9,
+        "target": "0",
+        "answers": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "no",
+          "0",
+          "0"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_454314002_311913005",
+    "answer_type": "number",
+    "question": "How many bears are there?",
+    "members": [
+      {
+        "question_id": 454314002,
+        "image_id": 454314,
+        "question": "How many bears are there?",
+        "answer_type": "number",
+        "consensus": "3",
+        "agreement": 10,
+        "target": "3",
+        "answers": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "question_id": 311913005,
+        "image_id": 311913,
+        "question": "How many bears are there?",
+        "answer_type": "number",
+        "consensus": "0",
+        "agreement": 9,
+        "target": "0",
+        "answers": [
+          "0",
+          "0",
+          "2",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_165742002_406182005",
+    "answer_type": "number",
+    "question": "How many drinking glasses are on the table?",
+    "members": [
+      {
+        "question_id": 165742002,
+        "image_id": 165742,
+        "question": "How many drinking glasses are on the table?",
+        "answer_type": "number",
+        "consensus": "2",
+        "agreement": 9,
+        "target": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "3",
+          "2"
+        ]
+      },
+      {
+        "question_id": 406182005,
+        "image_id": 406182,
+        "question": "How many drinking glasses are on the table?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 8,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "0",
+          "1",
+          "1",
+          "0",
+          "1",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_412690000_383527003",
+    "answer_type": "number",
+    "question": "How many boats are in the photo?",
+    "members": [
+      {
+        "question_id": 412690000,
+        "image_id": 412690,
+        "question": "How many boats are in the photo?",
+        "answer_type": "number",
+        "consensus": "2",
+        "agreement": 9,
+        "target": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "1",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "question_id": 383527003,
+        "image_id": 383527,
+        "question": "How many boats are in the photo?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 9,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_271429002_534876000",
+    "answer_type": "number",
+    "question": "How many baseball players are there?",
+    "members": [
+      {
+        "question_id": 271429002,
+        "image_id": 271429,
+        "question": "How many baseball players are there?",
+        "answer_type": "number",
+        "consensus": "3",
+        "agreement": 10,
+        "target": "3",
+        "answers": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ]
+      },
+      {
+        "question_id": 534876000,
+        "image_id": 534876,
+        "question": "How many baseball players are there?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 9,
+        "target": "1",
+        "answers": [
+          "2",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_492051001_473821002",
+    "answer_type": "number",
+    "question": "How many pillows are on the sofa?",
+    "members": [
+      {
+        "question_id": 492051001,
+        "image_id": 492051,
+        "question": "How many pillows are on the sofa?",
+        "answer_type": "number",
+        "consensus": "2",
+        "agreement": 10,
+        "target": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "question_id": 473821002,
+        "image_id": 473821,
+        "question": "How many pillows are on the sofa?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 8,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "2",
+          "1",
+          "2",
+          "1",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_6589001_42576009",
+    "answer_type": "number",
+    "question": "How many pets are shown?",
+    "members": [
+      {
+        "question_id": 6589001,
+        "image_id": 6589,
+        "question": "How many pets are shown?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 10,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "question_id": 42576009,
+        "image_id": 42576,
+        "question": "How many pets are shown?",
+        "answer_type": "number",
+        "consensus": "2",
+        "agreement": 8,
+        "target": "2",
+        "answers": [
+          "2",
+          "3",
+          "yes",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_393423007_276195003",
+    "answer_type": "number",
+    "question": "How many giraffes in the horizon?",
+    "members": [
+      {
+        "question_id": 393423007,
+        "image_id": 393423,
+        "question": "How many giraffes in the horizon?",
+        "answer_type": "number",
+        "consensus": "2",
+        "agreement": 10,
+        "target": "2",
+        "answers": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "question_id": 276195003,
+        "image_id": 276195,
+        "question": "How many giraffes in the horizon?",
+        "answer_type": "number",
+        "consensus": "1",
+        "agreement": 10,
+        "target": "1",
+        "answers": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_370899000_221753009",
+    "answer_type": "other",
+    "question": "What type of room in the house is this?",
+    "members": [
+      {
+        "question_id": 370899000,
+        "image_id": 370899,
+        "question": "What type of room in the house is this?",
+        "answer_type": "other",
+        "consensus": "living room",
+        "agreement": 8,
+        "target": "living room",
+        "answers": [
+          "living room",
+          "living",
+          "living",
+          "living room",
+          "living room",
+          "living room",
+          "living room",
+          "living room",
+          "living room",
+          "living room"
+        ]
+      },
+      {
+        "question_id": 221753009,
+        "image_id": 221753,
+        "question": "What type of room in the house is this?",
+        "answer_type": "other",
+        "consensus": "kitchen",
+        "agreement": 10,
+        "target": "kitchen",
+        "answers": [
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen",
+          "kitchen"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_540133009_484938012",
+    "answer_type": "other",
+    "question": "What color is the kid's shirt?",
+    "members": [
+      {
+        "question_id": 540133009,
+        "image_id": 540133,
+        "question": "What color is the kid's shirt?",
+        "answer_type": "other",
+        "consensus": "yellow",
+        "agreement": 10,
+        "target": "yellow",
+        "answers": [
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow",
+          "yellow"
+        ]
+      },
+      {
+        "question_id": 484938012,
+        "image_id": 484938,
+        "question": "What color is the kid's shirt?",
+        "answer_type": "other",
+        "consensus": "white",
+        "agreement": 10,
+        "target": "white",
+        "answers": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_573823000_364444003",
+    "answer_type": "other",
+    "question": "What sport is the website for?",
+    "members": [
+      {
+        "question_id": 573823000,
+        "image_id": 573823,
+        "question": "What sport is the website for?",
+        "answer_type": "other",
+        "consensus": "football",
+        "agreement": 9,
+        "target": "football",
+        "answers": [
+          "football",
+          "football",
+          "football",
+          "football",
+          "football",
+          "football",
+          "stocks",
+          "football",
+          "football",
+          "football"
+        ]
+      },
+      {
+        "question_id": 364444003,
+        "image_id": 364444,
+        "question": "What sport is the website for?",
+        "answer_type": "other",
+        "consensus": "soccer",
+        "agreement": 10,
+        "target": "soccer",
+        "answers": [
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer",
+          "soccer"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_373132001_56373003",
+    "answer_type": "other",
+    "question": "What animal is this?",
+    "members": [
+      {
+        "question_id": 373132001,
+        "image_id": 373132,
+        "question": "What animal is this?",
+        "answer_type": "other",
+        "consensus": "dog",
+        "agreement": 9,
+        "target": "dog",
+        "answers": [
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "pulling on sheet"
+        ]
+      },
+      {
+        "question_id": 56373003,
+        "image_id": 56373,
+        "question": "What animal is this?",
+        "answer_type": "other",
+        "consensus": "cat",
+        "agreement": 10,
+        "target": "cat",
+        "answers": [
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_1270002_248112018",
+    "answer_type": "other",
+    "question": "What game are they playing?",
+    "members": [
+      {
+        "question_id": 1270002,
+        "image_id": 1270,
+        "question": "What game are they playing?",
+        "answer_type": "other",
+        "consensus": "baseball",
+        "agreement": 10,
+        "target": "baseball",
+        "answers": [
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball",
+          "baseball"
+        ]
+      },
+      {
+        "question_id": 248112018,
+        "image_id": 248112,
+        "question": "What game are they playing?",
+        "answer_type": "other",
+        "consensus": "tennis",
+        "agreement": 10,
+        "target": "tennis",
+        "answers": [
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis",
+          "tennis"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_250022007_428786004",
+    "answer_type": "other",
+    "question": "What is in the window?",
+    "members": [
+      {
+        "question_id": 250022007,
+        "image_id": 250022,
+        "question": "What is in the window?",
+        "answer_type": "other",
+        "consensus": "dog",
+        "agreement": 10,
+        "target": "dog",
+        "answers": [
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog",
+          "dog"
+        ]
+      },
+      {
+        "question_id": 428786004,
+        "image_id": 428786,
+        "question": "What is in the window?",
+        "answer_type": "other",
+        "consensus": "horse",
+        "agreement": 10,
+        "target": "horse",
+        "answers": [
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse",
+          "horse"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_428403002_480470018",
+    "answer_type": "other",
+    "question": "What color is the man's shirt?",
+    "members": [
+      {
+        "question_id": 428403002,
+        "image_id": 428403,
+        "question": "What color is the man's shirt?",
+        "answer_type": "other",
+        "consensus": "blue",
+        "agreement": 10,
+        "target": "blue",
+        "answers": [
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue",
+          "blue"
+        ]
+      },
+      {
+        "question_id": 480470018,
+        "image_id": 480470,
+        "question": "What color is the man's shirt?",
+        "answer_type": "other",
+        "consensus": "white",
+        "agreement": 9,
+        "target": "white",
+        "answers": [
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "white",
+          "no man",
+          "white",
+          "white"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_269511002_135572002",
+    "answer_type": "other",
+    "question": "What kind of animal is in the picture?",
+    "members": [
+      {
+        "question_id": 269511002,
+        "image_id": 269511,
+        "question": "What kind of animal is in the picture?",
+        "answer_type": "other",
+        "consensus": "cat",
+        "agreement": 9,
+        "target": "cat",
+        "answers": [
+          "animal in picture is cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat",
+          "cat"
+        ]
+      },
+      {
+        "question_id": 135572002,
+        "image_id": 135572,
+        "question": "What kind of animal is in the picture?",
+        "answer_type": "other",
+        "consensus": "bear",
+        "agreement": 8,
+        "target": "bear",
+        "answers": [
+          "bear",
+          "bear",
+          "bear",
+          "teddy bear",
+          "bear",
+          "teddy bear",
+          "bear",
+          "bear",
+          "bear",
+          "bear"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_458221002_471118003",
+    "answer_type": "other",
+    "question": "What should approaching cars do?",
+    "members": [
+      {
+        "question_id": 458221002,
+        "image_id": 458221,
+        "question": "What should approaching cars do?",
+        "answer_type": "other",
+        "consensus": "go",
+        "agreement": 8,
+        "target": "go",
+        "answers": [
+          "keep going",
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "go",
+          "proceed"
+        ]
+      },
+      {
+        "question_id": 471118003,
+        "image_id": 471118,
+        "question": "What should approaching cars do?",
+        "answer_type": "other",
+        "consensus": "stop",
+        "agreement": 8,
+        "target": "stop",
+        "answers": [
+          "stop",
+          "stop",
+          "stop",
+          "stop",
+          "yield",
+          "stop",
+          "stop",
+          "not turn left",
+          "stop",
+          "stop"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_392928001_82363004",
+    "answer_type": "other",
+    "question": "Is the toilet seat up or down?",
+    "members": [
+      {
+        "question_id": 392928001,
+        "image_id": 392928,
+        "question": "Is the toilet seat up or down?",
+        "answer_type": "other",
+        "consensus": "down",
+        "agreement": 8,
+        "target": "down",
+        "answers": [
+          "down",
+          "down",
+          "down",
+          "up",
+          "down",
+          "down",
+          "down",
+          "down",
+          "up",
+          "down"
+        ]
+      },
+      {
+        "question_id": 82363004,
+        "image_id": 82363,
+        "question": "Is the toilet seat up or down?",
+        "answer_type": "other",
+        "consensus": "up",
+        "agreement": 10,
+        "target": "up",
+        "answers": [
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up",
+          "up"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_114327002_451373016",
+    "answer_type": "other",
+    "question": "What is the building made of?",
+    "members": [
+      {
+        "question_id": 114327002,
+        "image_id": 114327,
+        "question": "What is the building made of?",
+        "answer_type": "other",
+        "consensus": "brick",
+        "agreement": 9,
+        "target": "brick",
+        "answers": [
+          "brick",
+          "brick",
+          "brick",
+          "bricks",
+          "brick",
+          "brick",
+          "brick",
+          "brick",
+          "brick",
+          "brick"
+        ]
+      },
+      {
+        "question_id": 451373016,
+        "image_id": 451373,
+        "question": "What is the building made of?",
+        "answer_type": "other",
+        "consensus": "wood",
+        "agreement": 9,
+        "target": "wood",
+        "answers": [
+          "wood",
+          "wood",
+          "wood",
+          "wood",
+          "paneling",
+          "wood",
+          "wood",
+          "wood",
+          "wood",
+          "wood"
+        ]
+      }
+    ]
+  },
+  {
+    "pair_id": "vqa_364783002_292005005",
+    "answer_type": "other",
+    "question": "What is the main color of this bathroom?",
+    "members": [
+      {
+        "question_id": 364783002,
+        "image_id": 364783,
+        "question": "What is the main color of this bathroom?",
+        "answer_type": "other",
+        "consensus": "red",
+        "agreement": 10,
+        "target": "red",
+        "answers": [
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red",
+          "red"
+        ]
+      },
+      {
+        "question_id": 292005005,
+        "image_id": 292005,
+        "question": "What is the main color of this bathroom?",
+        "answer_type": "other",
+        "consensus": "orange",
+        "agreement": 10,
+        "target": "orange",
+        "answers": [
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange",
+          "orange"
+        ]
+      }
+    ]
+  }
+]

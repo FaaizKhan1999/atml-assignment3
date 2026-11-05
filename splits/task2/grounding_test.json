@@ -1,0 +1,1026 @@
+[
+  {
+    "pair_id": "presence_0",
+    "kind": "presence",
+    "category": "broccoli",
+    "question": "Does this image contain broccoli?",
+    "members": [
+      {
+        "image_id": 391320,
+        "answer": "yes"
+      },
+      {
+        "image_id": 143769,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_1",
+    "kind": "presence",
+    "category": "toaster",
+    "question": "Does this image contain a toaster?",
+    "members": [
+      {
+        "image_id": 467705,
+        "answer": "yes"
+      },
+      {
+        "image_id": 174423,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_2",
+    "kind": "presence",
+    "category": "fork",
+    "question": "Does this image contain a fork?",
+    "members": [
+      {
+        "image_id": 400347,
+        "answer": "yes"
+      },
+      {
+        "image_id": 79860,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_3",
+    "kind": "presence",
+    "category": "laptop",
+    "question": "Does this image contain a laptop?",
+    "members": [
+      {
+        "image_id": 243456,
+        "answer": "yes"
+      },
+      {
+        "image_id": 195851,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_4",
+    "kind": "presence",
+    "category": "toilet",
+    "question": "Does this image contain a toilet?",
+    "members": [
+      {
+        "image_id": 437910,
+        "answer": "yes"
+      },
+      {
+        "image_id": 130566,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_5",
+    "kind": "presence",
+    "category": "wine glass",
+    "question": "Does this image contain a wine glass?",
+    "members": [
+      {
+        "image_id": 251920,
+        "answer": "yes"
+      },
+      {
+        "image_id": 485148,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_6",
+    "kind": "presence",
+    "category": "traffic light",
+    "question": "Does this image contain a traffic light?",
+    "members": [
+      {
+        "image_id": 168455,
+        "answer": "yes"
+      },
+      {
+        "image_id": 71807,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_7",
+    "kind": "presence",
+    "category": "baseball bat",
+    "question": "Does this image contain a baseball bat?",
+    "members": [
+      {
+        "image_id": 491464,
+        "answer": "yes"
+      },
+      {
+        "image_id": 556837,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_8",
+    "kind": "presence",
+    "category": "wine glass",
+    "question": "Does this image contain a wine glass?",
+    "members": [
+      {
+        "image_id": 177941,
+        "answer": "yes"
+      },
+      {
+        "image_id": 146150,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_9",
+    "kind": "presence",
+    "category": "suitcase",
+    "question": "Does this image contain a suitcase?",
+    "members": [
+      {
+        "image_id": 343198,
+        "answer": "yes"
+      },
+      {
+        "image_id": 579226,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_10",
+    "kind": "presence",
+    "category": "backpack",
+    "question": "Does this image contain a backpack?",
+    "members": [
+      {
+        "image_id": 170630,
+        "answer": "yes"
+      },
+      {
+        "image_id": 76161,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_11",
+    "kind": "presence",
+    "category": "horse",
+    "question": "Does this image contain a horse?",
+    "members": [
+      {
+        "image_id": 208031,
+        "answer": "yes"
+      },
+      {
+        "image_id": 364642,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_12",
+    "kind": "presence",
+    "category": "hair drier",
+    "question": "Does this image contain a hair drier?",
+    "members": [
+      {
+        "image_id": 315219,
+        "answer": "yes"
+      },
+      {
+        "image_id": 198921,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_13",
+    "kind": "presence",
+    "category": "surfboard",
+    "question": "Does this image contain a surfboard?",
+    "members": [
+      {
+        "image_id": 249953,
+        "answer": "yes"
+      },
+      {
+        "image_id": 217312,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_14",
+    "kind": "presence",
+    "category": "cat",
+    "question": "Does this image contain a cat?",
+    "members": [
+      {
+        "image_id": 120099,
+        "answer": "yes"
+      },
+      {
+        "image_id": 58539,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_15",
+    "kind": "presence",
+    "category": "couch",
+    "question": "Does this image contain a couch?",
+    "members": [
+      {
+        "image_id": 545564,
+        "answer": "yes"
+      },
+      {
+        "image_id": 35504,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_16",
+    "kind": "presence",
+    "category": "surfboard",
+    "question": "Does this image contain a surfboard?",
+    "members": [
+      {
+        "image_id": 572229,
+        "answer": "yes"
+      },
+      {
+        "image_id": 109229,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_17",
+    "kind": "presence",
+    "category": "tennis racket",
+    "question": "Does this image contain a tennis racket?",
+    "members": [
+      {
+        "image_id": 382009,
+        "answer": "yes"
+      },
+      {
+        "image_id": 423058,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_18",
+    "kind": "presence",
+    "category": "cow",
+    "question": "Does this image contain a cow?",
+    "members": [
+      {
+        "image_id": 445298,
+        "answer": "yes"
+      },
+      {
+        "image_id": 167818,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_19",
+    "kind": "presence",
+    "category": "dog",
+    "question": "Does this image contain a dog?",
+    "members": [
+      {
+        "image_id": 238377,
+        "answer": "yes"
+      },
+      {
+        "image_id": 64146,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_20",
+    "kind": "presence",
+    "category": "refrigerator",
+    "question": "Does this image contain a refrigerator?",
+    "members": [
+      {
+        "image_id": 55544,
+        "answer": "yes"
+      },
+      {
+        "image_id": 182366,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_21",
+    "kind": "presence",
+    "category": "surfboard",
+    "question": "Does this image contain a surfboard?",
+    "members": [
+      {
+        "image_id": 524173,
+        "answer": "yes"
+      },
+      {
+        "image_id": 456483,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_22",
+    "kind": "presence",
+    "category": "tennis racket",
+    "question": "Does this image contain a tennis racket?",
+    "members": [
+      {
+        "image_id": 444142,
+        "answer": "yes"
+      },
+      {
+        "image_id": 17769,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_23",
+    "kind": "presence",
+    "category": "fork",
+    "question": "Does this image contain a fork?",
+    "members": [
+      {
+        "image_id": 25202,
+        "answer": "yes"
+      },
+      {
+        "image_id": 466652,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_24",
+    "kind": "presence",
+    "category": "laptop",
+    "question": "Does this image contain a laptop?",
+    "members": [
+      {
+        "image_id": 171603,
+        "answer": "yes"
+      },
+      {
+        "image_id": 168775,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_25",
+    "kind": "presence",
+    "category": "refrigerator",
+    "question": "Does this image contain a refrigerator?",
+    "members": [
+      {
+        "image_id": 296524,
+        "answer": "yes"
+      },
+      {
+        "image_id": 68771,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_26",
+    "kind": "presence",
+    "category": "sports ball",
+    "question": "Does this image contain a sports ball?",
+    "members": [
+      {
+        "image_id": 388422,
+        "answer": "yes"
+      },
+      {
+        "image_id": 67342,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_27",
+    "kind": "presence",
+    "category": "sink",
+    "question": "Does this image contain a sink?",
+    "members": [
+      {
+        "image_id": 444531,
+        "answer": "yes"
+      },
+      {
+        "image_id": 322816,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_28",
+    "kind": "presence",
+    "category": "stop sign",
+    "question": "Does this image contain a stop sign?",
+    "members": [
+      {
+        "image_id": 50355,
+        "answer": "yes"
+      },
+      {
+        "image_id": 5879,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_29",
+    "kind": "presence",
+    "category": "teddy bear",
+    "question": "Does this image contain a teddy bear?",
+    "members": [
+      {
+        "image_id": 360440,
+        "answer": "yes"
+      },
+      {
+        "image_id": 410168,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_30",
+    "kind": "presence",
+    "category": "fire hydrant",
+    "question": "Does this image contain a fire hydrant?",
+    "members": [
+      {
+        "image_id": 78023,
+        "answer": "yes"
+      },
+      {
+        "image_id": 208589,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_31",
+    "kind": "presence",
+    "category": "pizza",
+    "question": "Does this image contain a pizza?",
+    "members": [
+      {
+        "image_id": 380639,
+        "answer": "yes"
+      },
+      {
+        "image_id": 557709,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_32",
+    "kind": "counting",
+    "category": "cell phone",
+    "question": "How many cell phones can you see?",
+    "members": [
+      {
+        "image_id": 311964,
+        "answer": "3"
+      },
+      {
+        "image_id": 456968,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_33",
+    "kind": "counting",
+    "category": "chair",
+    "question": "How many chairs can you see?",
+    "members": [
+      {
+        "image_id": 119134,
+        "answer": "1"
+      },
+      {
+        "image_id": 103496,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_34",
+    "kind": "counting",
+    "category": "traffic light",
+    "question": "How many traffic lights can you see?",
+    "members": [
+      {
+        "image_id": 228122,
+        "answer": "3"
+      },
+      {
+        "image_id": 436694,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_35",
+    "kind": "counting",
+    "category": "dining table",
+    "question": "How many dining tables can you see?",
+    "members": [
+      {
+        "image_id": 515850,
+        "answer": "1"
+      },
+      {
+        "image_id": 441247,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_36",
+    "kind": "counting",
+    "category": "hot dog",
+    "question": "How many hot dogs can you see?",
+    "members": [
+      {
+        "image_id": 141102,
+        "answer": "3"
+      },
+      {
+        "image_id": 340218,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_37",
+    "kind": "counting",
+    "category": "tennis racket",
+    "question": "How many tennis rackets can you see?",
+    "members": [
+      {
+        "image_id": 121744,
+        "answer": "4"
+      },
+      {
+        "image_id": 378940,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_38",
+    "kind": "counting",
+    "category": "skis",
+    "question": "How many skis can you see?",
+    "members": [
+      {
+        "image_id": 192932,
+        "answer": "2"
+      },
+      {
+        "image_id": 425790,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_39",
+    "kind": "counting",
+    "category": "stop sign",
+    "question": "How many stop signs can you see?",
+    "members": [
+      {
+        "image_id": 15440,
+        "answer": "1"
+      },
+      {
+        "image_id": 501023,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_40",
+    "kind": "counting",
+    "category": "sandwich",
+    "question": "How many sandwiches can you see?",
+    "members": [
+      {
+        "image_id": 456143,
+        "answer": "1"
+      },
+      {
+        "image_id": 396387,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_41",
+    "kind": "counting",
+    "category": "spoon",
+    "question": "How many spoons can you see?",
+    "members": [
+      {
+        "image_id": 321008,
+        "answer": "2"
+      },
+      {
+        "image_id": 443949,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_42",
+    "kind": "counting",
+    "category": "bowl",
+    "question": "How many bowls can you see?",
+    "members": [
+      {
+        "image_id": 351183,
+        "answer": "3"
+      },
+      {
+        "image_id": 286146,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_43",
+    "kind": "counting",
+    "category": "dining table",
+    "question": "How many dining tables can you see?",
+    "members": [
+      {
+        "image_id": 181488,
+        "answer": "4"
+      },
+      {
+        "image_id": 357633,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_44",
+    "kind": "counting",
+    "category": "cup",
+    "question": "How many cups can you see?",
+    "members": [
+      {
+        "image_id": 52413,
+        "answer": "1"
+      },
+      {
+        "image_id": 130875,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_45",
+    "kind": "counting",
+    "category": "wine glass",
+    "question": "How many wine glasses can you see?",
+    "members": [
+      {
+        "image_id": 84463,
+        "answer": "3"
+      },
+      {
+        "image_id": 513041,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_46",
+    "kind": "counting",
+    "category": "bicycle",
+    "question": "How many bicycles can you see?",
+    "members": [
+      {
+        "image_id": 62109,
+        "answer": "3"
+      },
+      {
+        "image_id": 554727,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_47",
+    "kind": "counting",
+    "category": "motorcycle",
+    "question": "How many motorcycles can you see?",
+    "members": [
+      {
+        "image_id": 537620,
+        "answer": "2"
+      },
+      {
+        "image_id": 64240,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_48",
+    "kind": "counting",
+    "category": "surfboard",
+    "question": "How many surfboards can you see?",
+    "members": [
+      {
+        "image_id": 303543,
+        "answer": "2"
+      },
+      {
+        "image_id": 111788,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_49",
+    "kind": "counting",
+    "category": "tie",
+    "question": "How many ties can you see?",
+    "members": [
+      {
+        "image_id": 189504,
+        "answer": "3"
+      },
+      {
+        "image_id": 328921,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_50",
+    "kind": "counting",
+    "category": "tv",
+    "question": "How many tvs can you see?",
+    "members": [
+      {
+        "image_id": 478159,
+        "answer": "1"
+      },
+      {
+        "image_id": 294839,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_51",
+    "kind": "counting",
+    "category": "elephant",
+    "question": "How many elephants can you see?",
+    "members": [
+      {
+        "image_id": 173545,
+        "answer": "2"
+      },
+      {
+        "image_id": 410194,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_52",
+    "kind": "counting",
+    "category": "dog",
+    "question": "How many dogs can you see?",
+    "members": [
+      {
+        "image_id": 57703,
+        "answer": "3"
+      },
+      {
+        "image_id": 233660,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_53",
+    "kind": "counting",
+    "category": "cake",
+    "question": "How many cakes can you see?",
+    "members": [
+      {
+        "image_id": 569319,
+        "answer": "2"
+      },
+      {
+        "image_id": 54628,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_54",
+    "kind": "counting",
+    "category": "bird",
+    "question": "How many birds can you see?",
+    "members": [
+      {
+        "image_id": 277051,
+        "answer": "4"
+      },
+      {
+        "image_id": 36004,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_55",
+    "kind": "counting",
+    "category": "stop sign",
+    "question": "How many stop signs can you see?",
+    "members": [
+      {
+        "image_id": 348379,
+        "answer": "3"
+      },
+      {
+        "image_id": 117368,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_56",
+    "kind": "counting",
+    "category": "airplane",
+    "question": "How many airplanes can you see?",
+    "members": [
+      {
+        "image_id": 149052,
+        "answer": "2"
+      },
+      {
+        "image_id": 392144,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_57",
+    "kind": "counting",
+    "category": "zebra",
+    "question": "How many zebras can you see?",
+    "members": [
+      {
+        "image_id": 530266,
+        "answer": "2"
+      },
+      {
+        "image_id": 279165,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_58",
+    "kind": "counting",
+    "category": "dog",
+    "question": "How many dogs can you see?",
+    "members": [
+      {
+        "image_id": 396556,
+        "answer": "1"
+      },
+      {
+        "image_id": 500507,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_59",
+    "kind": "counting",
+    "category": "handbag",
+    "question": "How many handbags can you see?",
+    "members": [
+      {
+        "image_id": 402206,
+        "answer": "3"
+      },
+      {
+        "image_id": 278899,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_60",
+    "kind": "counting",
+    "category": "potted plant",
+    "question": "How many potted plants can you see?",
+    "members": [
+      {
+        "image_id": 440434,
+        "answer": "3"
+      },
+      {
+        "image_id": 499281,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_61",
+    "kind": "counting",
+    "category": "bottle",
+    "question": "How many bottles can you see?",
+    "members": [
+      {
+        "image_id": 58937,
+        "answer": "4"
+      },
+      {
+        "image_id": 208649,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_62",
+    "kind": "counting",
+    "category": "frisbee",
+    "question": "How many frisbees can you see?",
+    "members": [
+      {
+        "image_id": 6954,
+        "answer": "2"
+      },
+      {
+        "image_id": 289640,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_63",
+    "kind": "counting",
+    "category": "pizza",
+    "question": "How many pizzas can you see?",
+    "members": [
+      {
+        "image_id": 303647,
+        "answer": "1"
+      },
+      {
+        "image_id": 264155,
+        "answer": "4"
+      }
+    ]
+  }
+]

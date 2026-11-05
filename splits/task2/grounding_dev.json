@@ -1,0 +1,386 @@
+[
+  {
+    "pair_id": "presence_0",
+    "kind": "presence",
+    "category": "baseball glove",
+    "question": "Does this image contain a baseball glove?",
+    "members": [
+      {
+        "image_id": 282037,
+        "answer": "yes"
+      },
+      {
+        "image_id": 198641,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_1",
+    "kind": "presence",
+    "category": "parking meter",
+    "question": "Does this image contain a parking meter?",
+    "members": [
+      {
+        "image_id": 503183,
+        "answer": "yes"
+      },
+      {
+        "image_id": 284253,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_2",
+    "kind": "presence",
+    "category": "stop sign",
+    "question": "Does this image contain a stop sign?",
+    "members": [
+      {
+        "image_id": 538533,
+        "answer": "yes"
+      },
+      {
+        "image_id": 477435,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_3",
+    "kind": "presence",
+    "category": "refrigerator",
+    "question": "Does this image contain a refrigerator?",
+    "members": [
+      {
+        "image_id": 345389,
+        "answer": "yes"
+      },
+      {
+        "image_id": 183049,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_4",
+    "kind": "presence",
+    "category": "wine glass",
+    "question": "Does this image contain a wine glass?",
+    "members": [
+      {
+        "image_id": 571786,
+        "answer": "yes"
+      },
+      {
+        "image_id": 169313,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_5",
+    "kind": "presence",
+    "category": "tennis racket",
+    "question": "Does this image contain a tennis racket?",
+    "members": [
+      {
+        "image_id": 483227,
+        "answer": "yes"
+      },
+      {
+        "image_id": 211707,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_6",
+    "kind": "presence",
+    "category": "bed",
+    "question": "Does this image contain a bed?",
+    "members": [
+      {
+        "image_id": 85637,
+        "answer": "yes"
+      },
+      {
+        "image_id": 237597,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_7",
+    "kind": "presence",
+    "category": "baseball glove",
+    "question": "Does this image contain a baseball glove?",
+    "members": [
+      {
+        "image_id": 310008,
+        "answer": "yes"
+      },
+      {
+        "image_id": 473573,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_8",
+    "kind": "presence",
+    "category": "truck",
+    "question": "Does this image contain a truck?",
+    "members": [
+      {
+        "image_id": 451648,
+        "answer": "yes"
+      },
+      {
+        "image_id": 156308,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_9",
+    "kind": "presence",
+    "category": "bottle",
+    "question": "Does this image contain a bottle?",
+    "members": [
+      {
+        "image_id": 53491,
+        "answer": "yes"
+      },
+      {
+        "image_id": 209539,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_10",
+    "kind": "presence",
+    "category": "broccoli",
+    "question": "Does this image contain broccoli?",
+    "members": [
+      {
+        "image_id": 484573,
+        "answer": "yes"
+      },
+      {
+        "image_id": 516766,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "presence_11",
+    "kind": "presence",
+    "category": "vase",
+    "question": "Does this image contain a vase?",
+    "members": [
+      {
+        "image_id": 140439,
+        "answer": "yes"
+      },
+      {
+        "image_id": 539224,
+        "answer": "no"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_12",
+    "kind": "counting",
+    "category": "tv",
+    "question": "How many tvs can you see?",
+    "members": [
+      {
+        "image_id": 296231,
+        "answer": "1"
+      },
+      {
+        "image_id": 52936,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_13",
+    "kind": "counting",
+    "category": "orange",
+    "question": "How many oranges can you see?",
+    "members": [
+      {
+        "image_id": 136271,
+        "answer": "4"
+      },
+      {
+        "image_id": 491765,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_14",
+    "kind": "counting",
+    "category": "book",
+    "question": "How many books can you see?",
+    "members": [
+      {
+        "image_id": 375278,
+        "answer": "2"
+      },
+      {
+        "image_id": 277971,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_15",
+    "kind": "counting",
+    "category": "bowl",
+    "question": "How many bowls can you see?",
+    "members": [
+      {
+        "image_id": 193031,
+        "answer": "4"
+      },
+      {
+        "image_id": 438497,
+        "answer": "2"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_16",
+    "kind": "counting",
+    "category": "bowl",
+    "question": "How many bowls can you see?",
+    "members": [
+      {
+        "image_id": 433373,
+        "answer": "2"
+      },
+      {
+        "image_id": 143859,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_17",
+    "kind": "counting",
+    "category": "toaster",
+    "question": "How many toasters can you see?",
+    "members": [
+      {
+        "image_id": 514294,
+        "answer": "2"
+      },
+      {
+        "image_id": 360101,
+        "answer": "1"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_18",
+    "kind": "counting",
+    "category": "pizza",
+    "question": "How many pizzas can you see?",
+    "members": [
+      {
+        "image_id": 249884,
+        "answer": "2"
+      },
+      {
+        "image_id": 507887,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_19",
+    "kind": "counting",
+    "category": "apple",
+    "question": "How many apples can you see?",
+    "members": [
+      {
+        "image_id": 168686,
+        "answer": "1"
+      },
+      {
+        "image_id": 543192,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_20",
+    "kind": "counting",
+    "category": "knife",
+    "question": "How many knives can you see?",
+    "members": [
+      {
+        "image_id": 96755,
+        "answer": "2"
+      },
+      {
+        "image_id": 411368,
+        "answer": "4"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_21",
+    "kind": "counting",
+    "category": "bed",
+    "question": "How many beds can you see?",
+    "members": [
+      {
+        "image_id": 97800,
+        "answer": "1"
+      },
+      {
+        "image_id": 211112,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_22",
+    "kind": "counting",
+    "category": "bed",
+    "question": "How many beds can you see?",
+    "members": [
+      {
+        "image_id": 173081,
+        "answer": "4"
+      },
+      {
+        "image_id": 56002,
+        "answer": "3"
+      }
+    ]
+  },
+  {
+    "pair_id": "counting_23",
+    "kind": "counting",
+    "category": "motorcycle",
+    "question": "How many motorcycles can you see?",
+    "members": [
+      {
+        "image_id": 580108,
+        "answer": "4"
+      },
+      {
+        "image_id": 154222,
+        "answer": "3"
+      }
+    ]
+  }
+]

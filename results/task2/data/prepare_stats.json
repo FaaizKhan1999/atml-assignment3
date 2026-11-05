@@ -1,0 +1,100 @@
+{
+  "seed": 6304,
+  "caps": {
+    "question": 80,
+    "caption": 64,
+    "answer": 16
+  },
+  "download_seconds": 33.34847151600002,
+  "packages": {
+    "transformers": "4.57.6",
+    "tokenizers": "0.22.2",
+    "numpy": "2.1.3"
+  },
+  "vqa_train_filter": {
+    "low_agreement": 121255,
+    "same_answer": 7086,
+    "type_mismatch": 84,
+    "eligible": 71969,
+    "total_pairs": 200394,
+    "eligible_by_type": {
+      "other": 17375,
+      "yes/no": 44033,
+      "number": 10561
+    }
+  },
+  "train": {
+    "caption_images": 6000,
+    "caption_examples": 18000,
+    "vqa_pairs": 1536,
+    "grounding_universe_images": 8730,
+    "grounding_pool": {
+      "presence": 3000,
+      "counting": 3000
+    },
+    "grounding_categories": 80
+  },
+  "vqa_val_filter": {
+    "low_agreement": 57777,
+    "same_answer": 3378,
+    "type_mismatch": 64,
+    "eligible": 33925,
+    "total_pairs": 95144,
+    "eligible_by_type": {
+      "yes/no": 20963,
+      "other": 8039,
+      "number": 4923
+    }
+  },
+  "disjointness": {
+    "vqa_test": 192,
+    "vqa_dev": 64,
+    "grounding_test": 128,
+    "grounding_dev": 48,
+    "captions_dev": 96
+  },
+  "eval": {
+    "vqa_test_by_type": {
+      "yes/no": 36,
+      "number": 24,
+      "other": 36
+    },
+    "vqa_dev_by_type": {
+      "yes/no": 12,
+      "number": 8,
+      "other": 12
+    },
+    "grounding_test": {
+      "presence": 32,
+      "counting": 32
+    },
+    "grounding_dev": {
+      "presence": 12,
+      "counting": 12
+    },
+    "grounding_test_answers": {
+      "yes": 32,
+      "no": 32,
+      "3": 18,
+      "1": 15,
+      "4": 16,
+      "2": 15
+    }
+  },
+  "files_sha256": {
+    "captions_train.json": "b2b586ededd193069e482194a0da643a2f99b7f05bcb591a8bc9186327cfee05",
+    "captions_dev.json": "12d6d0ed4f1e3259db5206b6957841b9380136da6ed9d4e4dfd0e61bbaa934ec",
+    "vqa_train.json": "7b526ad55fef3120d73ead3c5f413791fb026576073ae854f45772374471d33f",
+    "vqa_dev.json": "594cc3f61495c58b5ecbd48af321fb57e7802f94c9a3a010fdd37c4b7d673096",
+    "vqa_test.json": "25de1ccd956883b2b3fe1de9700eb48ae5ec4fee9b8f451826f2c1cefe1f8285",
+    "grounding_train_pools.json": "aed471052622b9387deda801f0dd1a6309385d724439738072f6557296cf9909",
+    "grounding_dev.json": "96b070ffb9d38c32f517cc5ab79f3b519f358ae976865d398f0e077fdd3e0910",
+    "grounding_test.json": "3fd7a0975b206cdeaba5d7f49543cc6fdde22ebd10fbb84741039eb87e77e6dd",
+    "images.json": "d925ec9972fe15ca5dcd925b0ce118c309fcb5bc492999c8cf6a6fcffa758332"
+  },
+  "n_images": {
+    "train2014": 8730,
+    "val2014": 528
+  },
+  "seconds_total": 305.870781021
+}
