@@ -1,0 +1,107 @@
+{
+  "stage": 2,
+  "name": "visual_instruction",
+  "updates": 1500,
+  "global_end": 3750,
+  "trainable_params": 6424576,
+  "trainable_by_part": {
+    "connector": 1837056,
+    "lora": 4587520
+  },
+  "training": {
+    "updates": 1500,
+    "train_seconds": 1973.0056834500047,
+    "skipped_updates": 0,
+    "peak_allocated_gb": 1.565,
+    "peak_reserved_gb": 1.666
+  },
+  "skipped_updates": [],
+  "examples_by_component": {
+    "caption": 6086,
+    "presence": 12002,
+    "counting": 5912
+  },
+  "lr": {
+    "connector": 0.0001,
+    "lora": 2e-05
+  },
+  "warmup_updates": 75,
+  "dev_eval_seconds": 29.64472021300071,
+  "export": {
+    "stage": 2,
+    "name": "visual_instruction",
+    "global_update": 3750,
+    "lora": {
+      "r": 16,
+      "alpha": 32,
+      "dropout": 0.05,
+      "targets": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj"
+      ]
+    },
+    "calibration": {
+      "rule": "out_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images",
+      "text_token_rms": 0.027560796588659286,
+      "visual_token_rms_before": 0.4962270259857178,
+      "scale": 0.05554070041612875,
+      "visual_token_rms_after": 0.027560794726014137,
+      "n_text_tokens": 26570,
+      "n_images": 256
+    },
+    "model_commit": "c1899de289a04d12100db370d81485cdf75e47ca",
+    "vision": {
+      "name": "google/siglip-base-patch16-224",
+      "revision": null,
+      "n_tokens": 196,
+      "dim": 768,
+      "cache_batch_size": 64
+    }
+  },
+  "scaler_state": {
+    "scale": 2048.0,
+    "growth_factor": 2.0,
+    "backoff_factor": 0.5,
+    "growth_interval": 2000,
+    "_growth_tracker": 1750
+  },
+  "environment": {
+    "platform": "kaggle",
+    "hostname": "8a05d6364322",
+    "python": "3.13.16",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "datasets": "4.8.5",
+      "huggingface_hub": "0.36.2",
+      "safetensors": "0.8.0",
+      "numpy": "2.1.3",
+      "lm_eval": null,
+      "vllm": null,
+      "math-verify": null
+    },
+    "git": {
+      "commit": "84f75aa3c40e2f381eb761316b9dc91aab0fb415",
+      "dirty": false
+    },
+    "timestamp": "2026-11-05T08:41:45+0000",
+    "cuda_available": true,
+    "torch_cuda": "13.0",
+    "gpus": [
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      },
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      }
+    ]
+  }
+}
