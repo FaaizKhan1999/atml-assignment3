@@ -156,6 +156,12 @@ suites under correct / complementary / mismatched / no-image inputs; accuracy by
 accuracy, identical- and empty-answer rates, reference NLL, time per answer, swap behaviour, and
 4,000-resample pair-bootstrap CIs (paired across conditions). Outputs `results/task2/eval/main_stage3/`.
 
+### Report assets (CPU)
+`python -m task2.make_report_assets --push` writes figures and tables to `report/figs/task2/` (main body:
+fig1_learning_curves, tab1_final_results, fig2_image_use, tab2_resources, fig3_qualitative; appendix: tabA*,
+figA1_qualitative_all). The qualitative pairs follow a fixed rule (per question type, the first pair in pair-ID
+order whose two answers differ / are identical); `--qual-main TYPE:RULE,...` chooses which appear in the main figure.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
