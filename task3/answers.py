@@ -101,7 +101,21 @@ def _levenshtein(a: str, b: str) -> int:
     return prev[-1]
 
 
-def mathvista_normalize(value, meta: dict) -> str | None:
+LENIENT_RULE = ("sensitivity scorer only: before float() for integer/float questions, remove LaTeX unit blocks "
+                "(\\text, \\mathrm, \\mbox, \\textrm), spacing commands, $, degree and percent signs, \\left/\\right "
+                "and thousands separators, and accept a number followed by a plain unit word")
+
+
+def lenient_numeric(s: str) -> str:
+    s = re.sub(r"\\(text|mathrm|mbox|textrm)\{[^}]*\}", "", s)
+    for t in ["\\,", "\\!", "\\;", "$", "^\\circ", "^{\\circ}", "°", "\\%", "%", "\\left", "\\right"]:
+        s = s.replace(t, "")
+    s = re.sub(r"(?<=\d),(?=\d{3}(\D|$))", "", s)
+    m = re.fullmatch(r"\s*(-?\d+(?:\.\d+)?)\s*[a-zA-Z]*\.?\s*", s)
+    return m.group(1) if m else s.strip()
+
+
+def mathvista_normalize(value, meta: dict, lenient: bool = False) -> str | None:
     if value is None:
         return None
     s = str(value).strip()
@@ -123,6 +137,8 @@ def mathvista_normalize(value, meta: dict) -> str | None:
         dists = [_levenshtein(s.lower(), c.strip().lower()) for c in choices]
         return letters[dists.index(min(dists))]
     at = meta.get("answer_type")
+    if lenient and at in ("integer", "float"):
+        s = lenient_numeric(s)
     try:
         if at == "integer":
             return str(int(float(s)))
@@ -136,7 +152,7 @@ def mathvista_normalize(value, meta: dict) -> str | None:
 # ============================================================================ grouping
 
 def group_question(extracted: list, gold, dataset: str, meq: MathEquivalence | None = None,
-                   meta: dict | None = None) -> dict:
+                   meta: dict | None = None, lenient: bool = False) -> dict:
     """Groups for one question's rollouts (in rollout-ID order).
 
     Returns {"groups": [group id per rollout], "reps": {id: representative string},
@@ -163,7 +179,7 @@ def group_question(extracted: list, gold, dataset: str, meq: MathEquivalence | N
     # MathVista: exact match of normalized answers
     norm_ids: dict = {}
     for e in extracted:
-        n = mathvista_normalize(e, meta)
+        n = mathvista_normalize(e, meta, lenient)
         if n is None:
             groups.append(NO_ANSWER)
             continue
@@ -171,7 +187,7 @@ def group_question(extracted: list, gold, dataset: str, meq: MathEquivalence | N
             norm_ids[n] = len(norm_ids) + 1
             reps[norm_ids[n]] = n
         groups.append(norm_ids[n])
-    gold_n = mathvista_normalize(gold, meta)
+    gold_n = mathvista_normalize(gold, meta, lenient)
     correct = {g: (g != NO_ANSWER and gold_n is not None and r == gold_n) for g, r in reps.items()}
     correct[NO_ANSWER] = False
     return {"groups": groups, "reps": reps, "correct": correct, "gold_normalized": gold_n}

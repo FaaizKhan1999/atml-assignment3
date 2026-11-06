@@ -14,6 +14,10 @@ Writes splits/task3/<ds>_split.json, <ds>_orders.json and results/task3/<ds>/:
   selections.csv.gz        every (question, order, budget, method): selected candidate, answer, correct, cost
   per_question.csv         held-out per-question coverage, fraction correct, groups, SC@32 and stopping
   early_stop_errors.csv    held-out incorrect early stops (with whether fixed-32 would have been right)
+
+Sensitivity check: --datasets mathvista --mathvista-scorer lenient reruns MathVista with numeric pre-cleaning
+(units, spacing, $, degree/percent signs, thousands separators) before MathVista's float()/int() rules, for
+grouping AND grading; results go to results/task3/mathvista_lenient/ and never replace the official ones.
 """
 from __future__ import annotations
 
@@ -53,10 +57,11 @@ def _stable(path, obj, what: str) -> None:
 
 def run_dataset(ds: str, cfg, args) -> None:
     a, ad = cfg.analysis, cfg.adaptive
-    out = RES / ds
+    lenient = ds == "mathvista" and args.mathvista_scorer == "lenient"
+    out = RES / (f"{ds}_lenient" if lenient else ds)
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.perf_counter()
-    prepared = prepare(ds, cfg, rebuild=args.rebuild)
+    prepared = prepare(ds, cfg, rebuild=args.rebuild, lenient=lenient)
     qids = sorted(prepared["questions"])
     split = make_splits(ds, qids, cfg)
     _stable(SPLITS / f"{ds}_split.json", split, "split")
@@ -168,7 +173,7 @@ def run_dataset(ds: str, cfg, args) -> None:
                                     int(r["correct"][o, b, mi]), int(r["cost"][o, b, mi])])
 
     c = curves["eval"]
-    print(f"\n=== {ds}: held-out {len(split['eval'])} questions ===")
+    print(f"\n=== {ds}{' (LENIENT sensitivity scorer)' if lenient else ''}: held-out {len(split['eval'])} questions ===")
     print(f"rollout accuracy {stats['rollout_accuracy']:.3f}, NO_ANSWER {stats['no_answer_rate']:.3f}, "
           f"capped {stats['capped_rate']:.3f}; checks {prepared['checks']}")
     print("N:          " + "".join(f"{n:>8}" for n in budgets))
@@ -188,6 +193,8 @@ def main() -> None:
     add_config_args(parser, default="configs/task3/base.yaml")
     parser.add_argument("--datasets", nargs="+", default=["math", "mathvista"], choices=["math", "mathvista"])
     parser.add_argument("--rebuild", action="store_true", help="recompute answer groups (cached otherwise)")
+    parser.add_argument("--mathvista-scorer", choices=["official", "lenient"], default="official",
+                        help="lenient = sensitivity check with numeric pre-cleaning; writes results/task3/mathvista_lenient/")
     parser.add_argument("--push", action="store_true")
     args = parser.parse_args()
     cfg = load_config(args.config, args.set)

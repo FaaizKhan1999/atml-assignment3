@@ -26,7 +26,7 @@ import numpy as np
 from common.config import REPO_ROOT
 from common.logging_utils import get_logger, package_versions, write_json
 from common.paths import get_paths
-from task3.answers import MathEquivalence, group_question
+from task3.answers import LENIENT_RULE, MathEquivalence, group_question
 
 log = get_logger()
 SPLITS = REPO_ROOT / "splits" / "task3"
@@ -188,8 +188,8 @@ def mathvista_metadata(url: str) -> tuple[dict, dict]:
 
 # ============================================================================ prepare
 
-def prepare(dataset: str, cfg, rebuild: bool = False) -> dict:
-    cache = get_paths().data / "task3" / f"{dataset}_prepared.pkl"
+def prepare(dataset: str, cfg, rebuild: bool = False, lenient: bool = False) -> dict:
+    cache = get_paths().data / "task3" / f"{dataset}{'_lenient' if lenient else ''}_prepared.pkl"
     if cache.exists() and not rebuild:
         with open(cache, "rb") as fh:
             return pickle.load(fh)
@@ -213,7 +213,7 @@ def prepare(dataset: str, cfg, rebuild: bool = False) -> dict:
         meta = meta_all.get(q) if dataset == "mathvista" else None
         if dataset == "mathvista" and meta is None:
             raise KeyError(f"MathVista metadata missing for {q}")
-        gq = group_question([rows["extracted"][i] for i in idx], rows["gold"][idx[0]], dataset, meq, meta)
+        gq = group_question([rows["extracted"][i] for i in idx], rows["gold"][idx[0]], dataset, meq, meta, lenient)
         d = {"groups": np.array(gq["groups"], dtype=np.int64), "reps": gq["reps"],
              "correct": gq["correct"], "gold_normalized": gq["gold_normalized"],
              "gold": rows["gold"][idx[0]], "question_text": rows["question_text"][idx[0]],
@@ -230,7 +230,8 @@ def prepare(dataset: str, cfg, rebuild: bool = False) -> dict:
     prepared = {"dataset": dataset, "questions": questions, "checks": loaded["checks"],
                 "scorer": {"math_verify": package_versions(["math-verify"])["math-verify"],
                            "math_verify_timeouts": meq.timeout_report() if meq is not None else None,
-                           "mathvista_metadata": meta_info, "grouping_seconds": time.perf_counter() - t0}}
+                           "mathvista_metadata": meta_info, "grouping_seconds": time.perf_counter() - t0,
+                           "mathvista_scorer": ("lenient: " + LENIENT_RULE) if lenient else "official MathVista rules"}}
     cache.parent.mkdir(parents=True, exist_ok=True)
     with open(cache, "wb") as fh:
         pickle.dump(prepared, fh, protocol=pickle.HIGHEST_PROTOCOL)
