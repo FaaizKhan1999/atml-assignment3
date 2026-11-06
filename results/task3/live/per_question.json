@@ -1,0 +1,872 @@
+{
+  "test:943": {
+    "single": {
+      "answer": "14",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 4071470382,
+          "input_tokens": 106,
+          "output_tokens": 398,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 21.052057053
+        }
+      ],
+      "input_tokens": 106,
+      "output_tokens": 398,
+      "seconds": 21.052057053
+    },
+    "parallel": {
+      "answer": "14",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3748181615,
+          "input_tokens": 106,
+          "output_tokens": 432,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 21.018870496999966
+        },
+        {
+          "call": 1,
+          "seed": 59531753,
+          "input_tokens": 106,
+          "output_tokens": 489,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 23.728950343000008
+        },
+        {
+          "call": 2,
+          "seed": 895857593,
+          "input_tokens": 106,
+          "output_tokens": 356,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 17.55742634500001
+        }
+      ],
+      "input_tokens": 318,
+      "output_tokens": 1277,
+      "seconds": 62.305247184999985
+    },
+    "refinement": {
+      "answer": "14",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3748181615,
+          "input_tokens": 106,
+          "output_tokens": 432,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 21.018870496999966
+        },
+        {
+          "call": 1,
+          "seed": 4002341093,
+          "input_tokens": 575,
+          "output_tokens": 334,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 16.611989559999984
+        }
+      ],
+      "input_tokens": 681,
+      "output_tokens": 766,
+      "seconds": 37.63086005699995,
+      "answer_changed": false
+    },
+    "initial_answer": "14",
+    "initial_correct": true,
+    "gold": "14"
+  },
+  "test:2688": {
+    "single": {
+      "answer": "-1",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 124642572,
+          "input_tokens": 71,
+          "output_tokens": 825,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 40.12087402100002
+        }
+      ],
+      "input_tokens": 71,
+      "output_tokens": 825,
+      "seconds": 40.12087402100002
+    },
+    "parallel": {
+      "answer": "-1",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1133833442,
+          "input_tokens": 71,
+          "output_tokens": 647,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 31.31442957200005
+        },
+        {
+          "call": 1,
+          "seed": 2025631680,
+          "input_tokens": 71,
+          "output_tokens": 640,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 30.99491071
+        },
+        {
+          "call": 2,
+          "seed": 619394948,
+          "input_tokens": 71,
+          "output_tokens": 828,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 40.088144183000054
+        }
+      ],
+      "input_tokens": 213,
+      "output_tokens": 2115,
+      "seconds": 102.3974844650001
+    },
+    "refinement": {
+      "answer": "-1",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1133833442,
+          "input_tokens": 71,
+          "output_tokens": 647,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 31.31442957200005
+        },
+        {
+          "call": 1,
+          "seed": 2662633388,
+          "input_tokens": 755,
+          "output_tokens": 576,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 28.176969562000068
+        }
+      ],
+      "input_tokens": 826,
+      "output_tokens": 1223,
+      "seconds": 59.49139913400012,
+      "answer_changed": false
+    },
+    "initial_answer": "-1",
+    "initial_correct": true,
+    "gold": "-1"
+  },
+  "test:3504": {
+    "single": {
+      "answer": "216",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2337882139,
+          "input_tokens": 60,
+          "output_tokens": 1018,
+          "truncated": false,
+          "extracted": "216",
+          "seconds": 49.39456020099999
+        }
+      ],
+      "input_tokens": 60,
+      "output_tokens": 1018,
+      "seconds": 49.39456020099999
+    },
+    "parallel": {
+      "answer": null,
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2472278723,
+          "input_tokens": 60,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.36897995700008
+        },
+        {
+          "call": 1,
+          "seed": 497936711,
+          "input_tokens": 60,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.34127380099994
+        },
+        {
+          "call": 2,
+          "seed": 2357841099,
+          "input_tokens": 60,
+          "output_tokens": 845,
+          "truncated": false,
+          "extracted": "360",
+          "seconds": 40.98042522200001
+        }
+      ],
+      "input_tokens": 180,
+      "output_tokens": 2893,
+      "seconds": 139.69067898000003
+    },
+    "refinement": {
+      "answer": "720",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2472278723,
+          "input_tokens": 60,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.36897995700008
+        },
+        {
+          "call": 1,
+          "seed": 3782144185,
+          "input_tokens": 1122,
+          "output_tokens": 1385,
+          "truncated": false,
+          "extracted": "720",
+          "seconds": 71.60063508299993
+        }
+      ],
+      "input_tokens": 1182,
+      "output_tokens": 2409,
+      "seconds": 120.96961504000001,
+      "answer_changed": true
+    },
+    "initial_answer": null,
+    "initial_correct": false,
+    "gold": "216"
+  },
+  "test:4335": {
+    "single": {
+      "answer": "5040",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2985647357,
+          "input_tokens": 83,
+          "output_tokens": 309,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 14.987330363999945
+        }
+      ],
+      "input_tokens": 83,
+      "output_tokens": 309,
+      "seconds": 14.987330363999945
+    },
+    "parallel": {
+      "answer": "5040",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3084594633,
+          "input_tokens": 83,
+          "output_tokens": 308,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 15.08360866800001
+        },
+        {
+          "call": 1,
+          "seed": 2098275724,
+          "input_tokens": 83,
+          "output_tokens": 275,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 13.41417164500001
+        },
+        {
+          "call": 2,
+          "seed": 3643472728,
+          "input_tokens": 83,
+          "output_tokens": 318,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 15.501200964999953
+        }
+      ],
+      "input_tokens": 249,
+      "output_tokens": 901,
+      "seconds": 43.998981277999974
+    },
+    "refinement": {
+      "answer": "5040",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3084594633,
+          "input_tokens": 83,
+          "output_tokens": 308,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 15.08360866800001
+        },
+        {
+          "call": 1,
+          "seed": 2444304259,
+          "input_tokens": 428,
+          "output_tokens": 200,
+          "truncated": false,
+          "extracted": "5040",
+          "seconds": 9.885983033999992
+        }
+      ],
+      "input_tokens": 511,
+      "output_tokens": 508,
+      "seconds": 24.969591702000002,
+      "answer_changed": false
+    },
+    "initial_answer": "5040",
+    "initial_correct": true,
+    "gold": "5040"
+  },
+  "test:2460": {
+    "single": {
+      "answer": "58",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 893366119,
+          "input_tokens": 110,
+          "output_tokens": 921,
+          "truncated": false,
+          "extracted": "58",
+          "seconds": 44.98538776500004
+        }
+      ],
+      "input_tokens": 110,
+      "output_tokens": 921,
+      "seconds": 44.98538776500004
+    },
+    "parallel": {
+      "answer": "154",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1414364728,
+          "input_tokens": 110,
+          "output_tokens": 909,
+          "truncated": false,
+          "extracted": "154",
+          "seconds": 44.185077720000095
+        },
+        {
+          "call": 1,
+          "seed": 3116463672,
+          "input_tokens": 110,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.466739256000096
+        },
+        {
+          "call": 2,
+          "seed": 3789164572,
+          "input_tokens": 110,
+          "output_tokens": 713,
+          "truncated": false,
+          "extracted": "6106",
+          "seconds": 34.47883495299993
+        }
+      ],
+      "input_tokens": 330,
+      "output_tokens": 2646,
+      "seconds": 128.13065192900012
+    },
+    "refinement": {
+      "answer": "154",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1414364728,
+          "input_tokens": 110,
+          "output_tokens": 909,
+          "truncated": false,
+          "extracted": "154",
+          "seconds": 44.185077720000095
+        },
+        {
+          "call": 1,
+          "seed": 1431018581,
+          "input_tokens": 1056,
+          "output_tokens": 617,
+          "truncated": false,
+          "extracted": "154",
+          "seconds": 30.528812215000016
+        }
+      ],
+      "input_tokens": 1166,
+      "output_tokens": 1526,
+      "seconds": 74.71388993500011,
+      "answer_changed": false
+    },
+    "initial_answer": "154",
+    "initial_correct": true,
+    "gold": "154"
+  },
+  "test:1324": {
+    "single": {
+      "answer": "\\frac{1}{2}",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1724795956,
+          "input_tokens": 148,
+          "output_tokens": 683,
+          "truncated": false,
+          "extracted": "\\frac{1}{2}",
+          "seconds": 33.00835015299981
+        }
+      ],
+      "input_tokens": 148,
+      "output_tokens": 683,
+      "seconds": 33.00835015299981
+    },
+    "parallel": {
+      "answer": "\\frac{1}{32}",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 124317270,
+          "input_tokens": 148,
+          "output_tokens": 405,
+          "truncated": false,
+          "extracted": "\\frac{1}{32}",
+          "seconds": 19.7071258630001
+        },
+        {
+          "call": 1,
+          "seed": 591580896,
+          "input_tokens": 148,
+          "output_tokens": 829,
+          "truncated": false,
+          "extracted": "\\frac{31}{32}",
+          "seconds": 39.97583020999991
+        },
+        {
+          "call": 2,
+          "seed": 454886428,
+          "input_tokens": 148,
+          "output_tokens": 592,
+          "truncated": false,
+          "extracted": "\\frac{3}{16}",
+          "seconds": 28.866672393000044
+        }
+      ],
+      "input_tokens": 444,
+      "output_tokens": 1826,
+      "seconds": 88.54962846600006
+    },
+    "refinement": {
+      "answer": "\\frac{1}{32}",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 124317270,
+          "input_tokens": 148,
+          "output_tokens": 405,
+          "truncated": false,
+          "extracted": "\\frac{1}{32}",
+          "seconds": 19.7071258630001
+        },
+        {
+          "call": 1,
+          "seed": 2440507186,
+          "input_tokens": 590,
+          "output_tokens": 311,
+          "truncated": false,
+          "extracted": "\\frac{1}{32}",
+          "seconds": 15.408812564999835
+        }
+      ],
+      "input_tokens": 738,
+      "output_tokens": 716,
+      "seconds": 35.115938427999936,
+      "answer_changed": false
+    },
+    "initial_answer": "\\frac{1}{32}",
+    "initial_correct": false,
+    "gold": "\\frac{3}{16}"
+  },
+  "test:2340": {
+    "single": {
+      "answer": "6",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3478451597,
+          "input_tokens": 87,
+          "output_tokens": 879,
+          "truncated": false,
+          "extracted": "6",
+          "seconds": 42.72650321800006
+        }
+      ],
+      "input_tokens": 87,
+      "output_tokens": 879,
+      "seconds": 42.72650321800006
+    },
+    "parallel": {
+      "answer": null,
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2937355123,
+          "input_tokens": 87,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.946123326999896
+        },
+        {
+          "call": 1,
+          "seed": 583110793,
+          "input_tokens": 87,
+          "output_tokens": 867,
+          "truncated": false,
+          "extracted": "6\\sqrt[3]{2}",
+          "seconds": 42.32228127500002
+        },
+        {
+          "call": 2,
+          "seed": 1121493992,
+          "input_tokens": 87,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 50.47332097100002
+        }
+      ],
+      "input_tokens": 261,
+      "output_tokens": 2915,
+      "seconds": 142.74172557299994
+    },
+    "refinement": {
+      "answer": "6",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2937355123,
+          "input_tokens": 87,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 49.946123326999896
+        },
+        {
+          "call": 1,
+          "seed": 1083320943,
+          "input_tokens": 1149,
+          "output_tokens": 716,
+          "truncated": false,
+          "extracted": "6",
+          "seconds": 36.05136629699996
+        }
+      ],
+      "input_tokens": 1236,
+      "output_tokens": 1740,
+      "seconds": 85.99748962399985,
+      "answer_changed": true
+    },
+    "initial_answer": null,
+    "initial_correct": false,
+    "gold": "6"
+  },
+  "test:1577": {
+    "single": {
+      "answer": "14",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 1952685391,
+          "input_tokens": 366,
+          "output_tokens": 335,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 16.562704076000045
+        }
+      ],
+      "input_tokens": 366,
+      "output_tokens": 335,
+      "seconds": 16.562704076000045
+    },
+    "parallel": {
+      "answer": "5",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2917794433,
+          "input_tokens": 366,
+          "output_tokens": 186,
+          "truncated": false,
+          "extracted": "5",
+          "seconds": 9.192657100000133
+        },
+        {
+          "call": 1,
+          "seed": 2622501828,
+          "input_tokens": 366,
+          "output_tokens": 323,
+          "truncated": false,
+          "extracted": "14",
+          "seconds": 15.876059613999814
+        },
+        {
+          "call": 2,
+          "seed": 180307157,
+          "input_tokens": 366,
+          "output_tokens": 608,
+          "truncated": false,
+          "extracted": "77",
+          "seconds": 30.115265676000035
+        }
+      ],
+      "input_tokens": 1098,
+      "output_tokens": 1117,
+      "seconds": 55.18398238999998
+    },
+    "refinement": {
+      "answer": "5",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2917794433,
+          "input_tokens": 366,
+          "output_tokens": 186,
+          "truncated": false,
+          "extracted": "5",
+          "seconds": 9.192657100000133
+        },
+        {
+          "call": 1,
+          "seed": 432082823,
+          "input_tokens": 589,
+          "output_tokens": 419,
+          "truncated": false,
+          "extracted": "5",
+          "seconds": 20.994929119000062
+        }
+      ],
+      "input_tokens": 955,
+      "output_tokens": 605,
+      "seconds": 30.187586219000195,
+      "answer_changed": false
+    },
+    "initial_answer": "5",
+    "initial_correct": false,
+    "gold": "14"
+  },
+  "test:639": {
+    "single": {
+      "answer": "-9",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2376503726,
+          "input_tokens": 74,
+          "output_tokens": 333,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 16.70955974200001
+        }
+      ],
+      "input_tokens": 74,
+      "output_tokens": 333,
+      "seconds": 16.70955974200001
+    },
+    "parallel": {
+      "answer": "-9",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2314978118,
+          "input_tokens": 74,
+          "output_tokens": 378,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 18.497904066000046
+        },
+        {
+          "call": 1,
+          "seed": 1004142161,
+          "input_tokens": 74,
+          "output_tokens": 438,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 21.4869975470001
+        },
+        {
+          "call": 2,
+          "seed": 874305623,
+          "input_tokens": 74,
+          "output_tokens": 313,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 15.281801589999986
+        }
+      ],
+      "input_tokens": 222,
+      "output_tokens": 1129,
+      "seconds": 55.266703203000134
+    },
+    "refinement": {
+      "answer": "-9",
+      "correct": true,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 2314978118,
+          "input_tokens": 74,
+          "output_tokens": 378,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 18.497904066000046
+        },
+        {
+          "call": 1,
+          "seed": 110614044,
+          "input_tokens": 489,
+          "output_tokens": 350,
+          "truncated": false,
+          "extracted": "-9",
+          "seconds": 17.38561603800008
+        }
+      ],
+      "input_tokens": 563,
+      "output_tokens": 728,
+      "seconds": 35.88352010400013,
+      "answer_changed": false
+    },
+    "initial_answer": "-9",
+    "initial_correct": true,
+    "gold": "-9"
+  },
+  "test:2892": {
+    "single": {
+      "answer": "-1",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 3219942948,
+          "input_tokens": 98,
+          "output_tokens": 1112,
+          "truncated": false,
+          "extracted": "-1",
+          "seconds": 54.614359444
+        }
+      ],
+      "input_tokens": 98,
+      "output_tokens": 1112,
+      "seconds": 54.614359444
+    },
+    "parallel": {
+      "answer": null,
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 103003248,
+          "input_tokens": 98,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 50.091356012000006
+        },
+        {
+          "call": 1,
+          "seed": 3996170415,
+          "input_tokens": 98,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 50.04842878600016
+        },
+        {
+          "call": 2,
+          "seed": 3321920505,
+          "input_tokens": 98,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 50.194282178999856
+        }
+      ],
+      "input_tokens": 294,
+      "output_tokens": 3072,
+      "seconds": 150.33406697700002
+    },
+    "refinement": {
+      "answer": "0",
+      "correct": false,
+      "calls": [
+        {
+          "call": 0,
+          "seed": 103003248,
+          "input_tokens": 98,
+          "output_tokens": 1024,
+          "truncated": true,
+          "extracted": null,
+          "seconds": 50.091356012000006
+        },
+        {
+          "call": 1,
+          "seed": 1102501568,
+          "input_tokens": 1160,
+          "output_tokens": 1261,
+          "truncated": false,
+          "extracted": "0",
+          "seconds": 65.33543324400011
+        }
+      ],
+      "input_tokens": 1258,
+      "output_tokens": 2285,
+      "seconds": 115.42678925600012,
+      "answer_changed": true
+    },
+    "initial_answer": null,
+    "initial_correct": false,
+    "gold": "-71"
+  }
+}
