@@ -1,0 +1,22 @@
+# Task 3: test-time compute on the supplied rollouts.
+data:
+  # Folders are found by name under ATML_PA3_DATA, /kaggle/input, Google Drive or scratch.
+  folders: {math: qwen25-math, mathvista: qwen25vl-mathvista}
+  mathvista_metadata_url: https://raw.githubusercontent.com/lupantech/MathVista/main/data/testmini.json
+
+analysis:
+  seed: 6304
+  n_dev: 200                     # first 200 of the seeded permutation; the remaining 800 are held out
+  n_live: 50                     # first 50 MATH held-out questions (permutation order) for live generation
+  budgets: [1, 2, 4, 8, 16, 32]
+  n_orders: 10
+  bootstrap: 1000
+  visconf_quantiles: [0.05, 0.95]
+  visconf_eps: 1.0e-8
+
+adaptive:
+  checkpoints: [4, 8, 16]        # otherwise stop at 32
+  taus: [0.5, 0.625, 0.75, 0.875, 1.0]
+  gammas: [0.0, 0.1, 0.25, 0.5]
+  tolerance_pp: 1.0              # dev accuracy may be at most 1 pp below fixed-32 self-consistency
+  quality_score: {math: self_certainty, mathvista: visconf}

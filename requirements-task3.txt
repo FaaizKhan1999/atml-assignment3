@@ -1,0 +1,5 @@
+# Task 3 extras (offline analysis is CPU-only). Install with the base requirements:
+#   pip install -q -r requirements.txt -r requirements-task3.txt
+math-verify[antlr4_13_2]>=0.7
+pyarrow>=14
+scipy>=1.10

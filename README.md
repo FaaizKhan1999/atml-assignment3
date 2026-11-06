@@ -162,6 +162,21 @@ fig1_learning_curves, tab1_final_results, fig2_image_use, tab2_resources, fig3_q
 figA1_qualitative_all). The qualitative pairs follow a fixed rule (per question type, the first pair in pair-ID
 order whose two answers differ / are identical); `--qual-main TYPE:RULE,...` chooses which appear in the main figure.
 
+## Task 3: Test-time compute
+
+Supplied rollouts (`ATML-PA3-Data`: `qwen25-math/`, `qwen25vl-mathvista/`) are read from a private Kaggle dataset
+(found by folder name under `/kaggle/input`, Google Drive, or `$ATML_PA3_DATA`); they are not committed.
+Install extras: `pip install -q -r requirements.txt -r requirements-task3.txt`.
+
+### Offline experiments (CPU; Steps 1, 2, 3, 5)
+`python -m task3.offline --push` joins and checks the three files per dataset, splits questions (sorted IDs,
+`default_rng(6304)` permutation; 200 dev / 800 held-out; first 50 held-out MATH questions for live generation),
+forms answer groups without gold answers (Math-Verify for MATH; MathVista answer-type/choice/precision rules with
+`testmini.json` metadata; multiple choice as option letters; failed extractions -> NO_ANSWER), and evaluates every
+selection rule at N = 1..32 over ten seeded rollout orders, the N = 32 signal analysis and adaptive stopping
+(thresholds chosen on dev, frozen for held-out). Outputs in `results/task3/<dataset>/`, split IDs and orders in
+`splits/task3/`.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
