@@ -1,0 +1,146 @@
+{
+  "n_questions": 50,
+  "strategies": {
+    "single": {
+      "accuracy": 0.66,
+      "mean_input_tokens": 108.38,
+      "mean_output_tokens": 734.22,
+      "mean_total_tokens": 842.6,
+      "mean_seconds": 36.48773788738001,
+      "total_seconds": 1824.3868943690002,
+      "call_truncation_rate": 0.04,
+      "call_extraction_failure_rate": 0.04,
+      "final_no_answer_rate": 0.04,
+      "n_calls": 50
+    },
+    "parallel": {
+      "accuracy": 0.62,
+      "mean_input_tokens": 325.14,
+      "mean_output_tokens": 1821.12,
+      "mean_total_tokens": 2146.26,
+      "mean_seconds": 89.23665159878016,
+      "total_seconds": 4461.832579939008,
+      "call_truncation_rate": 0.16,
+      "call_extraction_failure_rate": 0.16,
+      "final_no_answer_rate": 0.18,
+      "n_calls": 150
+    },
+    "refinement": {
+      "accuracy": 0.64,
+      "mean_input_tokens": 837.34,
+      "mean_output_tokens": 1117.22,
+      "mean_total_tokens": 1954.56,
+      "mean_seconds": 55.35134987452011,
+      "total_seconds": 2767.5674937260055,
+      "call_truncation_rate": 0.05,
+      "call_extraction_failure_rate": 0.05,
+      "final_no_answer_rate": 0.0,
+      "n_calls": 100
+    }
+  },
+  "refinement_transitions": {
+    "wrong_to_correct": 1,
+    "correct_to_wrong": 1,
+    "correct_to_correct": 31,
+    "wrong_to_wrong": 17,
+    "answer_changed": 6,
+    "initial_accuracy": 0.64
+  },
+  "paired_bootstrap": {
+    "parallel_minus_single": {
+      "diff": -0.04,
+      "ci95": [
+        -0.16,
+        0.06
+      ]
+    },
+    "refinement_minus_single": {
+      "diff": -0.02,
+      "ci95": [
+        -0.12,
+        0.1
+      ]
+    },
+    "refinement_minus_parallel": {
+      "diff": 0.02,
+      "ci95": [
+        -0.06,
+        0.12
+      ]
+    },
+    "refinement_minus_initial": {
+      "diff": 0.0,
+      "ci95": [
+        -0.040499999999999974,
+        0.06
+      ]
+    }
+  },
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "revision": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "model_commit": "aa8e72537993ba99e69dfaafa59ed015b17504d1",
+  "dtype": "float16",
+  "batch_size": 1,
+  "sampling": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repetition_penalty": 1.0
+  },
+  "caps": {
+    "single": 3072,
+    "parallel": 1024,
+    "revision": 2048
+  },
+  "system": "You are a helpful assistant.",
+  "instruction": "Think step by step inside <think> </think> tags, then give your final answer inside \\boxed{}.",
+  "review_instruction": "Review the solution above. Identify and correct any errors; if it is correct, retain its answer. Give your final answer inside \\boxed{}.",
+  "model_load_seconds": 58.16930530700003,
+  "peak_allocated_gb": 6.168,
+  "gpu": "Tesla T4",
+  "scorer_math_verify_timeouts": {
+    "n_timed_out_comparisons": 0,
+    "n_questions": 0,
+    "questions": [],
+    "examples": [],
+    "rule": "a comparison that hits Math-Verify's time limit counts as not equivalent"
+  },
+  "environment": {
+    "platform": "kaggle",
+    "hostname": "bcd61146cad3",
+    "python": "3.13.16",
+    "os": "Linux-6.18.55+-x86_64-with-glibc2.39",
+    "packages": {
+      "torch": "2.11.0+cu130",
+      "transformers": "4.57.6",
+      "accelerate": "1.15.0",
+      "datasets": "4.8.5",
+      "huggingface_hub": "0.36.2",
+      "safetensors": "0.8.0",
+      "numpy": "2.1.3",
+      "lm_eval": null,
+      "vllm": null,
+      "math-verify": "0.9.0"
+    },
+    "git": {
+      "commit": "551acd64c0dfa934306b19e137551c4d49684460",
+      "dirty": false
+    },
+    "timestamp": "2026-11-06T06:25:50+0000",
+    "cuda_available": true,
+    "torch_cuda": "13.0",
+    "gpus": [
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      },
+      {
+        "name": "Tesla T4",
+        "total_memory_gb": 14.56,
+        "capability": "7.5"
+      }
+    ]
+  }
+}
