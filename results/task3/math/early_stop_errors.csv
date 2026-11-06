@@ -1,0 +1,1813 @@
+family,sample_id,order,stopped_at,answer,fixed32_correct
+agreement,test:2460,2,4,58,0
+agreement,test:2460,3,8,58,0
+agreement,test:2460,7,4,58,1
+agreement,test:1324,0,4,\frac{1}{2},0
+agreement,test:1324,2,8,\frac{1}{2},0
+agreement,test:1324,3,8,\frac{1}{2},0
+agreement,test:1324,5,4,\frac{1}{2},0
+agreement,test:1324,7,4,\frac{1}{2},0
+agreement,test:1709,2,4,50,0
+agreement,test:1709,7,8,50,0
+agreement,test:2119,0,4,21,0
+agreement,test:2119,1,4,21,0
+agreement,test:2119,2,4,21,0
+agreement,test:2119,3,4,21,0
+agreement,test:2119,4,4,21,0
+agreement,test:2119,5,16,21,0
+agreement,test:2119,6,4,21,0
+agreement,test:2119,7,4,21,0
+agreement,test:2119,8,8,21,0
+agreement,test:2119,9,4,21,0
+agreement,test:4549,1,4,4,0
+agreement,test:4549,3,4,4,0
+agreement,test:4549,4,4,4,0
+agreement,test:4549,5,4,4,0
+agreement,test:4549,6,4,5,0
+agreement,test:4549,7,4,5,0
+agreement,test:4549,8,16,4,0
+agreement,test:414,0,4,"-2, 1",0
+agreement,test:414,1,4,"-2, 1",0
+agreement,test:414,2,4,"-2, 1",0
+agreement,test:414,3,4,"-2, 1",0
+agreement,test:414,4,4,"-2, 1",0
+agreement,test:414,5,4,"-2, 1",0
+agreement,test:414,6,4,"-2, 1",0
+agreement,test:414,7,4,"-2, 1",0
+agreement,test:414,8,4,"-2, 1",0
+agreement,test:414,9,4,"-2, 1",0
+agreement,test:534,6,4,48,1
+agreement,test:2177,1,4,6,0
+agreement,test:1379,0,8,\frac{16}{19},0
+agreement,test:4516,1,4,\frac{17\sqrt{10}}{2},0
+agreement,test:4516,4,8,\frac{17\sqrt{10}}{2},0
+agreement,test:4516,8,4,\frac{17\sqrt{10}}{2},0
+agreement,test:3409,4,8,0,1
+agreement,test:1728,0,8,\frac{1}{2},0
+agreement,test:1728,2,4,\frac{1}{2},0
+agreement,test:1728,4,16,\frac{1}{2},0
+agreement,test:1728,9,8,\frac{1}{2},0
+agreement,test:2796,0,8,1,0
+agreement,test:2796,1,4,1,0
+agreement,test:2796,2,8,1,0
+agreement,test:2796,3,4,1,0
+agreement,test:2796,4,4,1,0
+agreement,test:2796,5,4,1,0
+agreement,test:2796,6,16,1,0
+agreement,test:2796,7,8,1,0
+agreement,test:2796,8,4,1,0
+agreement,test:2796,9,4,1,0
+agreement,test:2744,0,4,0,0
+agreement,test:2744,1,4,0,0
+agreement,test:2744,4,4,0,0
+agreement,test:2744,7,8,0,0
+agreement,test:2744,8,8,0,0
+agreement,test:2382,0,4,1,0
+agreement,test:2382,2,8,1,0
+agreement,test:2382,3,4,1,0
+agreement,test:2382,4,8,1,0
+agreement,test:2382,5,4,1,0
+agreement,test:2382,6,8,1,0
+agreement,test:2382,7,4,1,0
+agreement,test:2382,8,8,1,0
+agreement,test:2382,9,8,1,0
+agreement,test:1907,1,8,\frac{\sqrt{3}}{4},0
+agreement,test:1907,2,8,\frac{\sqrt{3}}{4},0
+agreement,test:1907,6,4,\frac{\sqrt{3}}{4},0
+agreement,test:1907,7,8,\frac{\sqrt{3}}{4},0
+agreement,test:1907,9,8,\frac{\sqrt{3}}{4},0
+agreement,test:4456,0,8,"B,E,G",0
+agreement,test:4456,1,4,"B,E,G",0
+agreement,test:4456,2,4,"B,E,G",0
+agreement,test:4456,3,4,"B,E,G",0
+agreement,test:4456,5,4,"B,E,G",0
+agreement,test:4456,6,4,"B,E,G",0
+agreement,test:4456,7,8,"B,E,G",0
+agreement,test:4456,8,4,"B,E,G",0
+agreement,test:4456,9,8,"B,E,G",0
+agreement,test:2674,1,4,5,0
+agreement,test:2674,2,4,5,0
+agreement,test:2674,3,8,5,0
+agreement,test:2674,4,4,5,0
+agreement,test:2674,5,16,5,0
+agreement,test:2674,6,4,5,0
+agreement,test:2674,7,8,5,0
+agreement,test:2674,8,8,5,0
+agreement,test:2674,9,16,5,0
+agreement,test:4341,2,4,12.5,0
+agreement,test:4341,3,4,12.5,0
+agreement,test:4341,4,8,\frac{4}{5},0
+agreement,test:4341,7,8,\frac{4}{5},0
+agreement,test:4341,9,4,\frac{4}{5},0
+agreement,test:2721,2,8,-2,0
+agreement,test:2721,5,8,-2,0
+agreement,test:4202,0,4,4,0
+agreement,test:4202,3,4,2\sqrt{5},0
+agreement,test:4202,6,4,2\sqrt{5},0
+agreement,test:4202,7,8,2\sqrt{5},0
+agreement,test:4202,9,4,2\sqrt{5},0
+agreement,test:2111,2,8,6,0
+agreement,test:2111,3,4,6,0
+agreement,test:2111,5,4,6,0
+agreement,test:2111,6,4,6,0
+agreement,test:2111,7,4,6,0
+agreement,test:2111,8,8,6,0
+agreement,test:2111,9,4,6,0
+agreement,test:2452,2,4,2,0
+agreement,test:2452,3,8,2,0
+agreement,test:2452,5,4,2,0
+agreement,test:2452,6,4,2,0
+agreement,test:2452,7,8,2,0
+agreement,test:2452,8,4,2,0
+agreement,test:2452,9,8,2,0
+agreement,test:3770,0,8,1:03,0
+agreement,test:3770,1,8,1:03,0
+agreement,test:3770,2,4,1:03,0
+agreement,test:3770,3,8,1:03,0
+agreement,test:3770,4,8,1:03,0
+agreement,test:3770,5,4,1:03,0
+agreement,test:3770,6,4,1:03,0
+agreement,test:3770,7,4,1:03,0
+agreement,test:3770,8,4,1:03,0
+agreement,test:3770,9,8,1:03,0
+agreement,test:2312,0,4,0,0
+agreement,test:2312,1,4,0,0
+agreement,test:2312,2,4,0,0
+agreement,test:2312,3,4,0,0
+agreement,test:2312,4,4,0,0
+agreement,test:2312,5,4,0,0
+agreement,test:2312,6,4,0,0
+agreement,test:2312,7,4,0,0
+agreement,test:2312,8,4,0,0
+agreement,test:2312,9,4,0,0
+agreement,test:1803,0,8,\frac{4}{5},1
+agreement,test:1803,5,4,\frac{4}{5},1
+agreement,test:1803,7,4,\frac{4}{5},1
+agreement,test:1802,0,4,64 - 16\pi,0
+agreement,test:1802,2,4,64 - 64\pi,0
+agreement,test:1802,4,8,64 - 16\pi,0
+agreement,test:1802,5,4,64 - 64\pi,0
+agreement,test:1802,6,4,64 - 16\pi,0
+agreement,test:1802,7,4,64 - 64\pi,0
+agreement,test:1802,8,4,64 - 16\pi,0
+agreement,test:3613,1,4,28,1
+agreement,test:3613,8,4,28,1
+agreement,test:1290,1,4,12,0
+agreement,test:1290,5,8,12,0
+agreement,test:1290,6,8,12,0
+agreement,test:4977,6,4,1,0
+agreement,test:2448,0,4,0,0
+agreement,test:2448,1,8,0,0
+agreement,test:2448,4,4,0,0
+agreement,test:2448,5,8,0,0
+agreement,test:2448,6,8,0,0
+agreement,test:1474,0,4,360,0
+agreement,test:1474,1,4,360,0
+agreement,test:1474,2,4,360,0
+agreement,test:1474,3,4,360,0
+agreement,test:1474,4,4,360,0
+agreement,test:1474,5,4,360,0
+agreement,test:1474,6,4,360,0
+agreement,test:1474,7,4,360,0
+agreement,test:1474,8,4,360,0
+agreement,test:1474,9,4,360,0
+agreement,test:2494,8,4,3,1
+agreement,test:3988,0,4,4,1
+agreement,test:4397,9,4,225,0
+agreement,test:375,5,4,0,1
+agreement,test:944,3,4,"\left( \frac{8}{5}, \frac{29}{5} \right)",1
+agreement,test:21,0,8,20,0
+agreement,test:21,2,4,20,0
+agreement,test:21,3,8,20,0
+agreement,test:21,4,4,20,0
+agreement,test:21,5,16,20,0
+agreement,test:21,6,4,20,0
+agreement,test:21,7,4,20,0
+agreement,test:21,8,4,20,0
+agreement,test:21,9,8,20,0
+agreement,test:3111,3,4,11,0
+agreement,test:3111,5,4,11,0
+agreement,test:2526,5,4,4004,0
+agreement,test:2526,8,4,4004,0
+agreement,test:2795,0,8,1,0
+agreement,test:2795,1,4,2,0
+agreement,test:2795,2,8,1,0
+agreement,test:2795,3,8,1,0
+agreement,test:2795,4,16,1,0
+agreement,test:2795,5,8,1,0
+agreement,test:2795,6,4,1,0
+agreement,test:2795,7,4,1,0
+agreement,test:2795,8,4,1,0
+agreement,test:4438,3,4,\frac{23}{24},0
+agreement,test:4438,4,4,\frac{23}{24},0
+agreement,test:4438,5,8,\frac{23}{24},0
+agreement,test:4438,6,4,\frac{23}{24},0
+agreement,test:4438,8,4,\frac{23}{24},0
+agreement,test:4279,2,4,2,0
+agreement,test:4279,8,4,2,0
+agreement,test:3686,9,8,0,1
+agreement,test:4684,6,4,-\frac{1}{8},1
+agreement,test:4684,7,4,-\frac{1}{8},1
+agreement,test:3354,0,4,9,0
+agreement,test:3354,1,4,9,0
+agreement,test:3354,2,16,9,0
+agreement,test:3354,3,8,9,0
+agreement,test:3354,4,4,9,0
+agreement,test:3354,6,4,9,0
+agreement,test:3354,7,4,9,0
+agreement,test:3354,8,8,9,0
+agreement,test:3354,9,4,9,0
+agreement,test:4533,0,8,90,0
+agreement,test:4533,1,8,90,0
+agreement,test:4533,2,4,90,0
+agreement,test:4533,3,4,90,0
+agreement,test:4533,4,16,90,0
+agreement,test:4533,5,4,90,0
+agreement,test:4533,6,4,90,0
+agreement,test:4533,7,4,90,0
+agreement,test:4533,8,4,90,0
+agreement,test:4533,9,4,90,0
+agreement,test:3017,2,4,\text{C},1
+agreement,test:4928,0,4,2^{100},0
+agreement,test:4928,4,4,2^{100},0
+agreement,test:970,0,4,15,0
+agreement,test:970,1,4,15,0
+agreement,test:970,2,4,15,0
+agreement,test:970,3,4,15,0
+agreement,test:970,4,4,15,0
+agreement,test:970,5,8,15,0
+agreement,test:970,8,4,15,0
+agreement,test:4963,0,8,0,0
+agreement,test:4963,1,4,0,0
+agreement,test:4963,2,4,0,0
+agreement,test:4963,3,4,0,0
+agreement,test:4963,4,4,0,0
+agreement,test:4963,5,4,0,0
+agreement,test:4963,6,4,0,0
+agreement,test:4963,7,4,0,0
+agreement,test:4963,8,4,0,0
+agreement,test:4963,9,4,0,0
+agreement,test:1831,1,4,6,0
+agreement,test:1831,3,8,6,0
+agreement,test:1831,4,4,6,0
+agreement,test:1831,6,4,6,0
+agreement,test:1831,8,8,6,0
+agreement,test:2373,0,8,100,0
+agreement,test:2373,3,4,100,0
+agreement,test:2373,4,8,100,0
+agreement,test:2373,5,8,100,0
+agreement,test:2373,6,4,100,0
+agreement,test:2373,7,4,100,0
+agreement,test:2373,8,4,100,0
+agreement,test:2373,9,4,100,0
+agreement,test:1489,5,4,\frac{4}{9},0
+agreement,test:1489,8,4,\frac{2}{9},0
+agreement,test:4916,2,4,4 + \sqrt{149},0
+agreement,test:4916,4,8,4 + \sqrt{149},0
+agreement,test:4916,5,8,4 + \sqrt{149},0
+agreement,test:2633,4,4,0,0
+agreement,test:2633,6,4,0,0
+agreement,test:2633,7,4,0,0
+agreement,test:2633,9,8,0,0
+agreement,test:1449,3,4,576,0
+agreement,test:1449,8,4,576,0
+agreement,test:2503,2,8,\text{No real solutions},0
+agreement,test:2503,5,8,\text{No real solutions},0
+agreement,test:2503,9,8,\text{No real solutions},0
+agreement,test:2080,8,4,8\sqrt{37},1
+agreement,test:4591,0,4,-9 + 2i,0
+agreement,test:4591,1,4,-9 + 2i,0
+agreement,test:4591,2,8,-9 + 2i,0
+agreement,test:4591,3,4,-9 + 2i,0
+agreement,test:4591,4,4,-9 + 2i,0
+agreement,test:4591,5,4,-9 + 2i,0
+agreement,test:4591,6,4,-9 + 2i,0
+agreement,test:4591,7,16,-9 + 2i,0
+agreement,test:4591,8,4,-9 + 2i,0
+agreement,test:4591,9,4,-9 + 2i,0
+agreement,test:758,0,4,8000,0
+agreement,test:758,1,4,8000,0
+agreement,test:758,2,4,8000,0
+agreement,test:758,3,4,8000,0
+agreement,test:758,4,4,8000,0
+agreement,test:758,5,4,8000,0
+agreement,test:758,6,4,8000,0
+agreement,test:758,7,4,8000,0
+agreement,test:758,8,4,8000,0
+agreement,test:758,9,4,8000,0
+agreement,test:36,3,4,"(-\sqrt{3}, 0) \cup (0, \sqrt{3})",1
+agreement,test:2686,6,8,20,0
+agreement,test:2686,7,8,20,0
+agreement,test:4827,1,4,0,0
+agreement,test:4827,2,8,0,0
+agreement,test:4827,6,4,0,0
+agreement,test:4827,7,8,0,0
+agreement,test:4827,8,4,0,0
+agreement,test:2523,0,4,\frac{1}{16},0
+agreement,test:2523,1,8,\frac{1}{16},0
+agreement,test:2523,2,4,\frac{1}{16},0
+agreement,test:2523,3,4,\frac{1}{16},0
+agreement,test:2523,4,16,\frac{1}{16},0
+agreement,test:2523,5,4,\frac{1}{16},0
+agreement,test:2523,6,4,\frac{1}{16},0
+agreement,test:2523,7,4,\frac{1}{16},0
+agreement,test:2523,8,4,\frac{1}{16},0
+agreement,test:2523,9,4,\frac{1}{16},0
+agreement,test:2794,8,4,1,1
+agreement,test:2287,0,4,5,0
+agreement,test:2287,4,8,5,0
+agreement,test:2287,7,4,5,0
+agreement,test:2639,1,4,26,1
+agreement,test:2639,3,4,26,1
+agreement,test:2639,6,4,26,1
+agreement,test:3286,0,8,1,1
+agreement,test:2755,5,4,4,0
+agreement,test:3554,2,4,17,1
+agreement,test:3554,7,4,17,1
+agreement,test:2298,6,4,0,0
+agreement,test:1894,4,4,524\pi,0
+agreement,test:3481,1,8,1951,0
+agreement,test:1376,6,4,12,0
+agreement,test:2972,3,4,2,0
+agreement,test:2972,4,8,2,0
+agreement,test:2972,5,4,2,0
+agreement,test:2972,6,4,2,0
+agreement,test:1787,0,4,12,0
+agreement,test:1787,5,8,12,0
+agreement,test:1787,6,4,12,0
+agreement,test:1787,9,4,12,0
+agreement,test:2076,4,4,4,0
+agreement,test:4899,6,4,\frac{13}{25},0
+agreement,test:2563,9,4,"[-4, 0]",1
+agreement,test:4281,0,16,21,0
+agreement,test:4281,1,4,21,0
+agreement,test:4281,3,4,21,1
+agreement,test:4281,5,4,21,0
+agreement,test:4281,7,4,21,1
+agreement,test:4281,9,8,21,0
+agreement,test:4254,0,8,80,0
+agreement,test:4254,1,4,80,0
+agreement,test:4254,2,4,80,0
+agreement,test:4254,3,16,80,0
+agreement,test:4254,4,16,80,0
+agreement,test:4254,5,8,80,0
+agreement,test:4254,7,4,80,0
+agreement,test:4254,9,4,80,0
+agreement,test:2442,2,4,0,0
+agreement,test:2442,6,4,0,0
+agreement,test:2716,0,4,"(10, 0)",0
+agreement,test:2716,1,4,"(10, 0)",0
+agreement,test:2716,2,4,"(10, 0)",0
+agreement,test:2716,3,4,"(10, 0)",0
+agreement,test:2716,4,4,"(10, 0)",0
+agreement,test:2716,5,4,"(10, 0)",0
+agreement,test:2716,6,4,"(10, 0)",0
+agreement,test:2716,7,4,"(10, 0)",0
+agreement,test:2716,8,4,"(10, 0)",0
+agreement,test:2716,9,4,"(10, 0)",0
+agreement,test:3756,0,4,53,0
+agreement,test:3756,1,4,53,0
+agreement,test:3756,2,4,53,0
+agreement,test:3756,3,4,53,0
+agreement,test:3756,4,4,53,0
+agreement,test:3756,5,4,53,0
+agreement,test:3756,6,4,53,0
+agreement,test:3756,7,4,53,0
+agreement,test:3756,8,4,53,0
+agreement,test:3756,9,4,53,0
+agreement,test:2700,8,4,\frac{1}{7},0
+agreement,test:2700,9,4,\frac{1}{7},0
+agreement,test:4913,0,4,1,0
+agreement,test:4913,7,4,0,0
+agreement,test:4913,8,4,0,0
+agreement,test:2973,6,4,\infty,0
+agreement,test:2045,7,4,43^\circ,0
+agreement,test:4674,6,4,\frac{17}{2},0
+agreement,test:3152,0,4,7630_8,0
+agreement,test:4450,2,4,3,0
+agreement,test:4450,3,4,3,0
+agreement,test:4450,5,4,3,0
+agreement,test:4450,9,8,3,0
+agreement,test:2650,5,8,1,1
+agreement,test:2815,0,4,2\sqrt{7} + 1,0
+agreement,test:2815,1,4,2\sqrt{7} + 1,0
+agreement,test:2815,2,4,2\sqrt{7} + 1,0
+agreement,test:2815,3,4,2\sqrt{7} + 1,0
+agreement,test:2815,4,4,2\sqrt{7} + 1,0
+agreement,test:2815,5,4,2\sqrt{7} + 1,0
+agreement,test:2815,6,4,2\sqrt{7} + 1,0
+agreement,test:2815,7,4,2\sqrt{7} + 1,0
+agreement,test:2815,8,4,2\sqrt{7} + 1,0
+agreement,test:2815,9,4,2\sqrt{7} + 1,0
+agreement,test:4601,0,8,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4601,4,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4601,6,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4601,7,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4601,8,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4601,9,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+agreement,test:4642,1,4,2,0
+agreement,test:4642,3,4,2,0
+agreement,test:2835,0,4,6,0
+agreement,test:2835,1,4,6,0
+agreement,test:2835,2,4,6,0
+agreement,test:2835,4,16,6,0
+agreement,test:2835,5,4,6,0
+agreement,test:2835,6,4,6,0
+agreement,test:2835,7,4,6,0
+agreement,test:2835,8,8,6,0
+agreement,test:2835,9,4,6,0
+agreement,test:1263,0,4,512,0
+agreement,test:1263,1,8,512,0
+agreement,test:1263,2,4,512,0
+agreement,test:1263,3,16,512,0
+agreement,test:1263,4,4,512,0
+agreement,test:1263,6,4,512,0
+agreement,test:1263,7,4,512,0
+agreement,test:1263,8,8,512,0
+agreement,test:1263,9,4,512,0
+agreement,test:2094,0,4,8,0
+agreement,test:2094,3,4,8,0
+agreement,test:427,2,8,7 + \sqrt{11},0
+agreement,test:427,7,8,7 + \sqrt{11},0
+agreement,test:427,8,4,7 + \sqrt{11},0
+agreement,test:23,5,4,7.97,1
+agreement,test:3749,0,4,\frac{5}{17},0
+agreement,test:3749,1,4,\frac{5}{17},0
+agreement,test:3749,2,4,\frac{5}{17},0
+agreement,test:3749,3,4,\frac{5}{17},0
+agreement,test:3749,4,4,\frac{5}{17},0
+agreement,test:3749,5,4,\frac{5}{17},0
+agreement,test:3749,6,4,\frac{5}{17},0
+agreement,test:3749,7,4,\frac{5}{17},0
+agreement,test:3749,8,4,\frac{5}{17},0
+agreement,test:3749,9,4,\frac{5}{17},0
+agreement,test:1448,0,4,\frac{1}{2},0
+agreement,test:1448,1,4,\frac{1}{2},0
+agreement,test:1448,2,8,\frac{1}{2},0
+agreement,test:1448,3,8,\frac{1}{2},0
+agreement,test:1448,4,8,\frac{1}{2},0
+agreement,test:1448,5,16,\frac{1}{2},0
+agreement,test:1448,7,4,\frac{1}{2},0
+agreement,test:1448,8,4,\frac{1}{2},0
+agreement,test:1448,9,16,\frac{1}{2},0
+agreement,test:4741,0,8,12,0
+agreement,test:4741,1,4,12,0
+agreement,test:4741,2,16,12,0
+agreement,test:4741,4,16,12,0
+agreement,test:4741,5,4,12,0
+agreement,test:4741,7,4,12,0
+agreement,test:4741,8,4,12,0
+agreement,test:4741,9,4,12,0
+agreement,test:3538,2,8,403,1
+agreement,test:4690,9,4,2003,0
+agreement,test:1466,3,4,\frac{10}{13},0
+agreement,test:1466,6,16,\frac{10}{13},0
+agreement,test:1270,2,4,540,0
+agreement,test:1270,4,4,540,0
+agreement,test:1270,7,4,540,0
+agreement,test:3976,2,4,35^\circ,1
+agreement,test:2335,9,4,15,0
+agreement,test:4754,8,4,12^\circ,0
+agreement,test:1719,2,4,30,0
+agreement,test:1719,4,4,30,0
+agreement,test:1719,5,8,30,0
+agreement,test:1719,7,8,30,0
+agreement,test:1719,8,4,30,0
+agreement,test:1719,9,4,30,0
+agreement,test:1996,0,4,36,0
+agreement,test:1996,8,8,36,0
+agreement,test:884,2,4,-3600,0
+agreement,test:884,8,4,-3600,0
+agreement,test:4486,8,8,-1,0
+agreement,test:3110,1,4,2,1
+agreement,test:3568,3,4,4,0
+agreement,test:3568,4,4,4,0
+agreement,test:3568,9,8,4,0
+agreement,test:1595,9,4,5922,1
+agreement,test:4218,0,8,100,0
+agreement,test:4218,2,4,100,1
+agreement,test:4218,5,4,100,0
+agreement,test:4218,8,8,100,0
+agreement,test:2199,0,4,12,0
+agreement,test:2199,1,4,12,0
+agreement,test:2199,2,4,12,0
+agreement,test:2199,3,4,12,0
+agreement,test:2199,4,4,12,0
+agreement,test:2199,5,4,12,0
+agreement,test:2199,6,4,12,0
+agreement,test:2199,7,4,12,0
+agreement,test:2199,8,4,12,0
+agreement,test:2199,9,4,12,0
+agreement,test:3157,2,4,1,1
+agreement,test:3157,3,4,0,1
+agreement,test:3157,8,4,0,1
+agreement,test:3177,7,4,7,1
+agreement,test:4800,3,4,1,0
+agreement,test:2447,0,4,1,0
+agreement,test:2447,1,4,1,0
+agreement,test:2447,2,4,1,0
+agreement,test:2447,3,8,1,0
+agreement,test:2447,4,4,1,0
+agreement,test:2447,5,8,1,0
+agreement,test:2447,6,4,1,0
+agreement,test:2447,7,4,1,0
+agreement,test:2447,8,4,1,0
+agreement,test:2447,9,4,1,0
+agreement,test:2710,0,4,197,0
+agreement,test:2710,1,4,197,0
+agreement,test:2710,2,4,197,0
+agreement,test:2710,3,4,197,0
+agreement,test:2710,4,4,197,0
+agreement,test:2710,5,4,197,0
+agreement,test:2710,6,4,197,0
+agreement,test:2710,7,4,197,0
+agreement,test:2710,8,4,197,0
+agreement,test:2710,9,4,197,0
+agreement,test:4675,1,4,1,0
+agreement,test:4675,3,4,1,0
+agreement,test:4675,4,4,1,0
+agreement,test:4675,7,4,1,0
+agreement,test:4675,9,8,1,0
+agreement,test:807,0,4,"(3,5)",0
+agreement,test:807,1,4,"(3,5)",0
+agreement,test:807,2,4,"(3,5)",0
+agreement,test:807,3,4,"(3,5)",0
+agreement,test:807,4,4,"(3,5)",0
+agreement,test:807,5,8,"(3,5)",0
+agreement,test:807,6,4,"(3,5)",0
+agreement,test:807,7,4,"(3,5)",0
+agreement,test:807,8,4,"(3,5)",0
+agreement,test:807,9,4,"(3,5)",0
+agreement,test:3113,6,4,15,1
+agreement,test:2344,4,8,1,0
+agreement,test:2344,8,4,1,0
+agreement,test:2325,6,4,\frac{1 + \sqrt{5}}{2},1
+agreement,test:1230,1,8,\frac{1}{2},0
+agreement,test:1230,3,8,\frac{1}{2},0
+agreement,test:1230,7,4,\frac{1}{2},0
+agreement,test:1230,9,4,\frac{1}{2},0
+agreement,test:2476,7,4,\text{No solution},0
+agreement,test:2874,0,4,\frac{49}{100},0
+agreement,test:2874,1,4,\frac{49}{100},0
+agreement,test:2874,2,4,\frac{49}{100},0
+agreement,test:2874,3,4,\frac{49}{100},0
+agreement,test:2874,4,8,\frac{49}{100},0
+agreement,test:2874,5,4,\frac{49}{100},0
+agreement,test:2874,7,4,\frac{49}{100},0
+agreement,test:2874,8,8,\frac{49}{100},0
+agreement,test:3007,9,4,-6,1
+agreement,test:958,1,4,-3,0
+agreement,test:958,5,4,-3,0
+agreement,test:958,7,4,-2,0
+agreement,test:958,9,4,-3,0
+agreement,test:2171,2,8,3,0
+agreement,test:2871,9,4,0,0
+agreement,test:3106,2,8,86,1
+agreement,test:3106,4,4,86,1
+agreement,test:3106,5,4,86,1
+agreement,test:3106,6,8,86,1
+agreement,test:3106,7,4,86,1
+agreement,test:3106,9,4,86,1
+agreement,test:1670,1,4,42,0
+agreement,test:3136,4,4,1320,0
+agreement,test:4807,0,8,\frac{1}{3},0
+agreement,test:4807,2,16,\frac{1}{3},0
+agreement,test:4807,3,4,\frac{1}{3},0
+agreement,test:4807,6,4,\frac{1}{3},0
+agreement,test:4807,7,16,\frac{1}{3},0
+agreement,test:4807,8,4,\frac{1}{3},0
+agreement,test:4807,9,4,\frac{1}{3},0
+agreement,test:2938,2,4,A,0
+agreement,test:2938,3,8,A,0
+agreement,test:2938,4,4,C,0
+agreement,test:2938,8,8,A,0
+agreement,test:2938,9,4,E,0
+agreement,test:553,0,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,1,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,2,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,3,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,4,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,5,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,6,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,7,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,8,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:553,9,4,"(-\infty, -7) \cup (-6, \infty)",0
+agreement,test:2368,3,4,3,0
+agreement,test:2920,2,4,3,0
+agreement,test:2955,9,8,842,0
+agreement,test:1516,0,8,6402373705728000,0
+agreement,test:1516,1,4,6402373705728000,0
+agreement,test:1516,2,16,6402373705728000,0
+agreement,test:1516,3,8,6402373705728000,0
+agreement,test:1516,4,8,6402373705728000,0
+agreement,test:1516,5,8,6402373705728000,0
+agreement,test:1516,6,4,6402373705728000,0
+agreement,test:1516,7,4,6402373705728000,0
+agreement,test:1516,9,4,6402373705728000,0
+agreement,test:863,9,4,51529,1
+agreement,test:4177,0,8,\frac{2}{27},0
+agreement,test:4177,3,4,\frac{2}{27},0
+agreement,test:4177,4,4,\frac{2}{27},0
+agreement,test:4177,5,16,\frac{2}{27},0
+agreement,test:4177,7,4,\frac{2}{27},0
+agreement,test:4177,9,4,\frac{2}{27},0
+agreement,test:594,1,8,8,0
+agreement,test:594,3,4,8,0
+agreement,test:1310,0,4,\frac{27}{100},0
+agreement,test:1310,3,4,\frac{27}{100},0
+agreement,test:1310,4,16,\frac{27}{100},0
+agreement,test:1310,5,4,\frac{27}{100},0
+agreement,test:1310,6,4,\frac{27}{100},0
+agreement,test:1310,7,16,\frac{27}{100},0
+agreement,test:1310,9,4,\frac{27}{100},0
+agreement,test:1508,5,4,55,0
+agreement,test:1508,9,4,55,0
+agreement,test:1517,1,4,\frac{1}{2},0
+agreement,test:1517,2,8,\frac{1}{2},0
+agreement,test:1517,3,4,\frac{1}{2},0
+agreement,test:1517,4,4,\frac{1}{2},0
+agreement,test:1517,6,4,\frac{1}{2},0
+agreement,test:1517,7,4,\frac{1}{2},0
+agreement,test:1517,8,4,\frac{1}{2},0
+agreement,test:1517,9,4,\frac{1}{2},0
+agreement,test:2197,0,4,50,0
+agreement,test:2197,1,4,50,0
+agreement,test:2197,4,8,50,0
+agreement,test:2197,5,8,50,0
+agreement,test:2197,7,8,50,0
+agreement,test:2197,8,4,50,0
+agreement,test:2197,9,4,50,0
+agreement,test:4465,9,4,0,1
+agreement,test:3931,1,4,1,0
+agreement,test:3931,9,8,91,0
+agreement,test:4720,0,4,8,0
+agreement,test:4720,1,4,8,0
+agreement,test:4720,2,4,8,0
+agreement,test:4720,3,4,8,0
+agreement,test:4720,4,4,8,0
+agreement,test:4720,5,4,8,0
+agreement,test:4720,6,4,8,0
+agreement,test:4720,7,4,8,0
+agreement,test:4720,8,4,8,0
+agreement,test:4720,9,4,8,0
+agreement,test:3497,2,8,20,0
+agreement,test:3497,6,8,20,0
+agreement,test:3497,8,4,20,0
+agreement,test:3497,9,4,20,0
+agreement,test:1423,4,4,\frac{5}{6},1
+agreement,test:2397,2,4,2,0
+agreement,test:2397,4,4,1,0
+agreement,test:2397,7,4,1,0
+agreement,test:2397,8,8,2,0
+quality,test:3504,7,4,120,1
+quality,test:2460,2,4,58,0
+quality,test:2460,3,8,58,0
+quality,test:2460,5,4,58,0
+quality,test:2460,7,4,58,1
+quality,test:1324,0,4,\frac{1}{2},0
+quality,test:1324,1,4,\frac{1}{2},0
+quality,test:1324,2,4,\frac{1}{2},0
+quality,test:1324,3,4,\frac{1}{2},0
+quality,test:1324,5,4,\frac{1}{2},0
+quality,test:1324,6,4,\frac{1}{2},0
+quality,test:1324,7,4,\frac{1}{2},0
+quality,test:1324,8,4,\frac{1}{2},0
+quality,test:1324,9,4,\frac{1}{2},0
+quality,test:2892,2,4,23,0
+quality,test:2892,9,4,0,0
+quality,test:4702,1,8,-59,0
+quality,test:4702,3,4,-59,0
+quality,test:4702,4,4,-59,0
+quality,test:4702,5,4,-59,0
+quality,test:4702,7,4,-59,0
+quality,test:1709,2,4,50,0
+quality,test:1709,5,4,50,0
+quality,test:1709,6,4,50,0
+quality,test:1709,7,4,50,0
+quality,test:2119,0,4,21,0
+quality,test:2119,1,4,21,0
+quality,test:2119,2,4,21,0
+quality,test:2119,3,4,21,0
+quality,test:2119,4,4,21,0
+quality,test:2119,5,8,21,0
+quality,test:2119,6,4,21,0
+quality,test:2119,7,4,21,0
+quality,test:2119,8,8,21,0
+quality,test:2119,9,4,21,0
+quality,test:4549,0,8,4,0
+quality,test:4549,1,4,4,0
+quality,test:4549,2,16,4,0
+quality,test:4549,3,4,4,0
+quality,test:4549,4,4,4,0
+quality,test:4549,5,8,4,0
+quality,test:4549,6,4,5,0
+quality,test:4549,7,4,5,0
+quality,test:4549,8,8,4,0
+quality,test:4549,9,8,4,0
+quality,test:2948,9,4,"2 + \sqrt{3}, 2 - \sqrt{3}",0
+quality,test:414,0,4,"-2, 1",0
+quality,test:414,1,4,"-2, 1",0
+quality,test:414,2,4,"-2, 1",0
+quality,test:414,3,4,"-2, 1",0
+quality,test:414,4,4,"-2, 1",0
+quality,test:414,5,4,"-2, 1",0
+quality,test:414,6,4,"-2, 1",0
+quality,test:414,7,4,"-2, 1",0
+quality,test:414,8,4,"-2, 1",0
+quality,test:414,9,4,"-2, 1",0
+quality,test:534,2,4,48,1
+quality,test:534,6,4,48,1
+quality,test:2177,1,4,6,0
+quality,test:2177,5,4,6,0
+quality,test:1379,0,8,\frac{16}{19},0
+quality,test:1379,5,4,\frac{16}{19},0
+quality,test:1379,6,16,\frac{16}{19},0
+quality,test:3572,8,4,9,1
+quality,test:2358,0,4,\frac{3\sqrt{2}}{2},0
+quality,test:2358,2,4,3\sqrt{2},0
+quality,test:2358,8,4,\frac{3\sqrt{2}}{2},0
+quality,test:4516,1,8,\frac{17\sqrt{10}}{2},0
+quality,test:4516,3,4,4\sqrt{10},0
+quality,test:4516,4,16,\frac{17\sqrt{10}}{2},0
+quality,test:4516,8,8,\frac{17\sqrt{10}}{2},0
+quality,test:4516,9,4,\frac{17\sqrt{10}}{2},0
+quality,test:1903,4,4,75,1
+quality,test:1916,3,4,120,0
+quality,test:1916,4,4,120,0
+quality,test:1916,5,8,120,0
+quality,test:1916,7,4,120,0
+quality,test:1728,0,8,\frac{1}{2},0
+quality,test:1728,1,8,\frac{1}{2},0
+quality,test:1728,2,4,\frac{1}{2},0
+quality,test:1728,3,4,\frac{1}{2},0
+quality,test:1728,4,8,\frac{1}{2},0
+quality,test:1728,5,8,\frac{1}{2},0
+quality,test:1728,6,8,\frac{1}{2},0
+quality,test:1728,7,16,\frac{1}{2},0
+quality,test:1728,9,4,\frac{1}{2},0
+quality,test:2796,0,4,1,0
+quality,test:2796,1,4,1,0
+quality,test:2796,2,4,1,0
+quality,test:2796,3,4,1,0
+quality,test:2796,4,4,1,0
+quality,test:2796,5,4,1,0
+quality,test:2796,6,4,1,0
+quality,test:2796,7,4,1,0
+quality,test:2796,8,4,1,0
+quality,test:2796,9,4,1,0
+quality,test:2744,0,4,0,0
+quality,test:2744,4,4,0,0
+quality,test:2382,0,4,1,0
+quality,test:2382,1,4,1,0
+quality,test:2382,2,4,1,0
+quality,test:2382,3,4,1,0
+quality,test:2382,4,8,1,0
+quality,test:2382,5,8,1,0
+quality,test:2382,6,4,1,0
+quality,test:2382,7,4,1,0
+quality,test:2382,8,4,1,0
+quality,test:2382,9,8,1,0
+quality,test:1907,1,8,\frac{\sqrt{3}}{4},0
+quality,test:1907,2,8,\frac{\sqrt{3}}{4},0
+quality,test:1907,3,4,\frac{\sqrt{3}}{4},0
+quality,test:1907,5,16,\frac{\sqrt{3}}{4},0
+quality,test:1907,6,4,\frac{\sqrt{3}}{4},0
+quality,test:1907,7,8,\frac{\sqrt{3}}{4},0
+quality,test:1907,8,4,\frac{\sqrt{3}}{4},0
+quality,test:1907,9,16,\frac{\sqrt{3}}{4},0
+quality,test:4456,0,4,"B,E,G",0
+quality,test:4456,1,4,"B,E,G",0
+quality,test:4456,2,4,"B,E,G",0
+quality,test:4456,3,4,"B,E,G",0
+quality,test:4456,4,4,"B,E,G",0
+quality,test:4456,5,4,"B,E,G",0
+quality,test:4456,6,4,"B,E,G",0
+quality,test:4456,7,4,"B,E,G",0
+quality,test:4456,8,4,"B,E,G",0
+quality,test:4456,9,4,"B,E,G",0
+quality,test:2674,0,16,5,0
+quality,test:2674,1,4,5,0
+quality,test:2674,2,4,5,0
+quality,test:2674,3,4,5,0
+quality,test:2674,4,4,5,0
+quality,test:2674,5,4,5,0
+quality,test:2674,6,4,5,0
+quality,test:2674,7,4,5,0
+quality,test:2674,8,4,5,0
+quality,test:2674,9,4,5,0
+quality,test:1565,5,4,5,0
+quality,test:1613,1,4,\frac{1}{8},0
+quality,test:1613,3,4,\frac{1}{8},0
+quality,test:1613,4,4,\frac{1}{8},0
+quality,test:1613,9,4,\frac{1}{8},0
+quality,test:3844,2,4,1050\sqrt{2},0
+quality,test:3844,4,4,2100 \sqrt{5},0
+quality,test:3844,5,4,1050,0
+quality,test:3844,7,4,1050\sqrt{2},0
+quality,test:2469,6,4,24,1
+quality,test:2488,1,4,1,0
+quality,test:2488,5,4,2,0
+quality,test:2488,9,4,2,0
+quality,test:4341,1,8,12.5,0
+quality,test:4341,2,4,12.5,0
+quality,test:4341,3,4,12.5,0
+quality,test:4341,4,8,\frac{4}{5},0
+quality,test:4341,5,4,\frac{4}{5},0
+quality,test:4341,6,4,\frac{4}{5},0
+quality,test:4341,7,4,\frac{4}{5},0
+quality,test:4341,8,4,\frac{4}{5},0
+quality,test:4341,9,4,\frac{4}{5},0
+quality,test:2721,0,4,-2,0
+quality,test:2721,1,16,-2,0
+quality,test:2721,2,8,-2,0
+quality,test:2721,3,8,-2,0
+quality,test:2721,4,16,-2,0
+quality,test:2721,5,4,-2,0
+quality,test:2721,8,8,-2,0
+quality,test:2721,9,4,-2,0
+quality,test:4202,2,4,2\sqrt{5},0
+quality,test:4202,3,4,2\sqrt{5},0
+quality,test:4202,5,4,2\sqrt{5},0
+quality,test:4202,6,4,2\sqrt{5},0
+quality,test:4202,7,8,2\sqrt{5},0
+quality,test:4202,9,4,2\sqrt{5},0
+quality,test:2111,0,8,6,0
+quality,test:2111,1,8,6,0
+quality,test:2111,2,8,6,0
+quality,test:2111,3,4,6,0
+quality,test:2111,4,16,6,0
+quality,test:2111,5,4,6,0
+quality,test:2111,6,4,6,0
+quality,test:2111,7,4,6,0
+quality,test:2111,8,8,6,0
+quality,test:2111,9,4,6,0
+quality,test:2249,1,8,1,0
+quality,test:2249,4,4,1,0
+quality,test:2249,5,4,1,0
+quality,test:1923,5,4,3.50,0
+quality,test:3713,4,4,197,0
+quality,test:2452,0,8,2,0
+quality,test:2452,1,8,2,0
+quality,test:2452,2,4,2,0
+quality,test:2452,3,4,2,0
+quality,test:2452,4,8,2,0
+quality,test:2452,5,4,2,0
+quality,test:2452,6,4,2,0
+quality,test:2452,7,8,2,0
+quality,test:2452,8,4,2,0
+quality,test:2452,9,4,2,0
+quality,test:3770,0,4,1:03,0
+quality,test:3770,1,8,1:03,0
+quality,test:3770,2,8,1:03,0
+quality,test:3770,3,4,1:03,0
+quality,test:3770,4,8,1:03,0
+quality,test:3770,5,4,1:03,0
+quality,test:3770,6,4,1:03,0
+quality,test:3770,7,4,1:03,0
+quality,test:3770,8,4,1:03,0
+quality,test:3770,9,4,1:03,0
+quality,test:61,5,4,x^{7/6},1
+quality,test:61,9,4,x^{1/6},1
+quality,test:3231,0,8,6,0
+quality,test:3231,2,4,6,0
+quality,test:3231,3,4,6,0
+quality,test:3231,5,4,6,0
+quality,test:3231,9,8,6,0
+quality,test:2003,5,8,2,0
+quality,test:2003,6,8,4,0
+quality,test:2003,8,4,4,0
+quality,test:2312,0,4,0,0
+quality,test:2312,1,4,0,0
+quality,test:2312,2,4,0,0
+quality,test:2312,3,4,0,0
+quality,test:2312,4,4,0,0
+quality,test:2312,5,4,0,0
+quality,test:2312,6,4,0,0
+quality,test:2312,7,4,0,0
+quality,test:2312,8,4,0,0
+quality,test:2312,9,4,0,0
+quality,test:2184,5,4,x = -\frac{1}{2},1
+quality,test:2619,5,4,0,1
+quality,test:1803,0,8,\frac{4}{5},1
+quality,test:1803,5,4,\frac{4}{5},1
+quality,test:1803,7,4,\frac{4}{5},1
+quality,test:1803,8,8,\frac{4}{5},1
+quality,test:1802,0,4,64 - 16\pi,0
+quality,test:1802,1,16,64 - 16\pi,0
+quality,test:1802,2,4,64 - 64\pi,0
+quality,test:1802,4,8,64 - 16\pi,0
+quality,test:1802,5,4,64 - 64\pi,0
+quality,test:1802,6,4,64 - 16\pi,0
+quality,test:1802,7,4,64 - 64\pi,0
+quality,test:1802,8,4,64 - 16\pi,0
+quality,test:1802,9,4,64 - 64\pi,0
+quality,test:3613,1,4,28,1
+quality,test:3613,2,8,28,1
+quality,test:3613,4,4,28,1
+quality,test:3613,8,4,28,1
+quality,test:1290,0,4,12,0
+quality,test:1290,1,4,12,0
+quality,test:1290,5,4,17,0
+quality,test:1290,6,8,12,0
+quality,test:1290,7,4,17,0
+quality,test:1290,8,4,17,0
+quality,test:762,8,4,6300,1
+quality,test:4977,2,4,\frac{5}{2},0
+quality,test:4977,6,4,1,0
+quality,test:4977,9,4,1,0
+quality,test:2830,6,4,\frac{3}{4},0
+quality,test:2448,0,4,0,0
+quality,test:2448,1,8,0,0
+quality,test:2448,2,16,0,0
+quality,test:2448,3,4,-3,0
+quality,test:2448,4,4,0,0
+quality,test:2448,5,8,0,0
+quality,test:2448,6,8,0,0
+quality,test:2448,7,16,0,0
+quality,test:2448,8,8,0,0
+quality,test:2448,9,16,0,0
+quality,test:1474,0,4,360,0
+quality,test:1474,1,4,360,0
+quality,test:1474,2,4,360,0
+quality,test:1474,3,4,360,0
+quality,test:1474,4,4,360,0
+quality,test:1474,5,8,360,0
+quality,test:1474,6,4,360,0
+quality,test:1474,7,4,360,0
+quality,test:1474,8,4,360,0
+quality,test:1474,9,4,360,0
+quality,test:4992,6,4,9,0
+quality,test:4992,8,4,9,0
+quality,test:2494,2,4,3019,1
+quality,test:2494,5,4,4,1
+quality,test:2494,8,4,3,1
+quality,test:2494,9,4,4,1
+quality,test:2592,2,4,3x^2 - 8x + 6,0
+quality,test:2592,3,4,3x^2 - 8x + 6,0
+quality,test:2592,6,4,3x^2 - 12x + 12,0
+quality,test:3988,0,4,4,1
+quality,test:4397,1,4,225,1
+quality,test:4397,3,4,450,0
+quality,test:4397,4,4,225,0
+quality,test:4397,6,4,450,0
+quality,test:4397,9,4,225,0
+quality,test:2102,0,4,0,0
+quality,test:2102,8,4,10,0
+quality,test:375,0,16,0,1
+quality,test:375,5,4,0,1
+quality,test:1696,0,4,64,1
+quality,test:944,3,4,"\left( \frac{8}{5}, \frac{29}{5} \right)",1
+quality,test:944,6,4,"\left( \frac{8}{5}, \frac{29}{5} \right)",1
+quality,test:4773,4,8,2,0
+quality,test:4773,7,4,2,0
+quality,test:2082,1,4,11,0
+quality,test:2082,2,4,4,0
+quality,test:2082,5,4,11,0
+quality,test:2082,6,8,4,0
+quality,test:21,0,8,20,0
+quality,test:21,1,8,20,0
+quality,test:21,2,4,20,0
+quality,test:21,3,8,20,0
+quality,test:21,4,4,20,0
+quality,test:21,5,4,20,0
+quality,test:21,6,4,20,0
+quality,test:21,7,4,20,0
+quality,test:21,8,4,20,0
+quality,test:21,9,4,20,0
+quality,test:3241,6,4,8,1
+quality,test:3111,0,4,11,0
+quality,test:3111,1,16,11,0
+quality,test:3111,2,4,11,0
+quality,test:3111,3,4,11,0
+quality,test:3111,5,4,11,0
+quality,test:3111,7,16,11,0
+quality,test:1118,6,4,3,0
+quality,test:1118,7,4,4,0
+quality,test:1118,8,4,3,0
+quality,test:2526,0,4,2002,0
+quality,test:2526,3,4,4004,0
+quality,test:2526,4,16,4004,0
+quality,test:2526,5,4,4004,0
+quality,test:2526,7,4,4004,0
+quality,test:2526,8,4,4004,0
+quality,test:2526,9,4,4004,0
+quality,test:2795,0,8,1,0
+quality,test:2795,1,4,2,0
+quality,test:2795,2,4,1,0
+quality,test:2795,3,8,1,0
+quality,test:2795,4,8,1,0
+quality,test:2795,5,8,1,0
+quality,test:2795,6,4,1,0
+quality,test:2795,7,4,1,0
+quality,test:2795,8,4,1,0
+quality,test:2795,9,4,1,0
+quality,test:4438,0,16,\frac{23}{24},0
+quality,test:4438,2,4,\frac{23}{24},0
+quality,test:4438,3,4,\frac{23}{24},0
+quality,test:4438,4,4,\frac{23}{24},0
+quality,test:4438,5,8,\frac{23}{24},0
+quality,test:4438,6,4,\frac{23}{24},0
+quality,test:4438,7,4,\frac{23}{24},0
+quality,test:4438,8,4,\frac{23}{24},0
+quality,test:4461,1,4,45,0
+quality,test:4461,3,4,45,0
+quality,test:4461,4,4,45,0
+quality,test:4461,5,8,60,0
+quality,test:4461,7,8,90,0
+quality,test:4279,0,8,2,0
+quality,test:4279,2,4,2,0
+quality,test:4279,4,8,2,0
+quality,test:4279,7,16,2,0
+quality,test:4279,8,4,2,0
+quality,test:3686,0,8,0,1
+quality,test:3686,9,8,0,1
+quality,test:4684,0,8,-\frac{1}{8},1
+quality,test:4684,6,4,-\frac{1}{8},1
+quality,test:4684,7,4,-\frac{1}{8},1
+quality,test:3354,0,4,9,0
+quality,test:3354,1,4,9,0
+quality,test:3354,2,16,9,0
+quality,test:3354,3,8,9,0
+quality,test:3354,4,4,9,0
+quality,test:3354,5,16,9,0
+quality,test:3354,6,4,9,0
+quality,test:3354,7,4,9,0
+quality,test:3354,8,8,9,0
+quality,test:3354,9,4,9,0
+quality,test:572,5,4,2.25,1
+quality,test:3413,1,4,4,0
+quality,test:3413,2,4,40,0
+quality,test:3413,5,4,40,0
+quality,test:3413,9,4,4,0
+quality,test:4533,0,8,90,0
+quality,test:4533,1,8,90,0
+quality,test:4533,2,4,90,0
+quality,test:4533,3,4,90,0
+quality,test:4533,4,16,90,0
+quality,test:4533,5,4,90,0
+quality,test:4533,6,4,90,0
+quality,test:4533,7,4,90,0
+quality,test:4533,8,4,90,0
+quality,test:4533,9,4,90,0
+quality,test:3017,2,4,\text{C},1
+quality,test:2265,0,4,"(10, 14, 51)",1
+quality,test:2265,8,4,"(10, 14, 51)",1
+quality,test:4928,0,4,2^{100},0
+quality,test:4928,2,4,2^{100},0
+quality,test:4928,4,4,2^{100},0
+quality,test:4928,5,16,2^{100},0
+quality,test:4928,6,8,2^{100},0
+quality,test:4928,7,8,2^{100},0
+quality,test:970,0,4,15,0
+quality,test:970,1,4,15,0
+quality,test:970,2,4,15,0
+quality,test:970,3,4,15,0
+quality,test:970,4,4,15,0
+quality,test:970,5,8,15,0
+quality,test:970,6,4,15,0
+quality,test:970,7,16,15,0
+quality,test:970,8,4,15,0
+quality,test:4963,0,8,0,0
+quality,test:4963,1,4,0,0
+quality,test:4963,2,4,0,0
+quality,test:4963,3,4,0,0
+quality,test:4963,4,4,0,0
+quality,test:4963,5,4,0,0
+quality,test:4963,6,4,0,0
+quality,test:4963,7,4,0,0
+quality,test:4963,8,4,0,0
+quality,test:4963,9,4,0,0
+quality,test:1831,0,16,6,0
+quality,test:1831,1,4,6,0
+quality,test:1831,2,8,6,0
+quality,test:1831,3,4,6,0
+quality,test:1831,4,4,6,0
+quality,test:1831,6,4,6,0
+quality,test:1831,7,4,8,0
+quality,test:1831,8,8,6,0
+quality,test:2373,0,8,100,0
+quality,test:2373,2,8,100,0
+quality,test:2373,3,4,100,0
+quality,test:2373,4,4,100,0
+quality,test:2373,5,4,100,0
+quality,test:2373,6,4,100,0
+quality,test:2373,7,4,100,0
+quality,test:2373,8,4,100,0
+quality,test:2373,9,4,100,0
+quality,test:1489,0,16,\frac{4}{9},0
+quality,test:1489,1,4,\frac{2}{9},0
+quality,test:1489,3,4,\frac{4}{9},0
+quality,test:1489,5,4,\frac{4}{9},0
+quality,test:1489,8,4,\frac{2}{9},0
+quality,test:1489,9,4,\frac{2}{9},0
+quality,test:4916,0,16,\sqrt{58} + 3,0
+quality,test:4916,1,8,\sqrt{58} + 3,0
+quality,test:4916,2,16,\sqrt{58} + 3,0
+quality,test:4916,3,4,\sqrt{58} + 3,0
+quality,test:4916,4,8,4 + \sqrt{149},0
+quality,test:4916,5,4,4 + \sqrt{149},0
+quality,test:4916,6,16,\sqrt{58} + 3,0
+quality,test:4916,8,4,4 + \sqrt{149},0
+quality,test:4916,9,4,4 + \sqrt{149},0
+quality,test:32,4,4,147,1
+quality,test:2633,0,4,0,0
+quality,test:2633,2,4,2,0
+quality,test:2633,4,4,0,0
+quality,test:2633,5,4,0,0
+quality,test:2633,6,4,0,0
+quality,test:2633,7,4,0,0
+quality,test:2633,8,16,0,0
+quality,test:2633,9,8,0,0
+quality,test:2731,5,4,8,1
+quality,test:1449,1,4,576,0
+quality,test:1449,2,16,576,0
+quality,test:1449,3,4,576,0
+quality,test:1449,8,4,576,0
+quality,test:4870,4,4,2,0
+quality,test:4870,5,4,\frac{\sqrt{6} + \sqrt{2}}{2},0
+quality,test:4870,8,4,\sqrt{6},0
+quality,test:2503,1,4,\text{No real solutions},0
+quality,test:2503,2,4,\text{No real solutions},0
+quality,test:2503,6,16,\text{No real solutions},0
+quality,test:2503,9,8,\text{No real solutions},0
+quality,test:2080,8,4,8\sqrt{37},1
+quality,test:4591,0,4,-9 + 2i,0
+quality,test:4591,1,8,-9 + 2i,0
+quality,test:4591,2,8,-9 + 2i,0
+quality,test:4591,3,4,-9 + 2i,0
+quality,test:4591,4,4,-9 + 2i,0
+quality,test:4591,5,4,-9 + 2i,0
+quality,test:4591,6,4,-9 + 2i,0
+quality,test:4591,7,8,-9 + 2i,0
+quality,test:4591,8,4,-9 + 2i,0
+quality,test:4591,9,4,-9 + 2i,0
+quality,test:2849,0,4,\frac{325}{9},1
+quality,test:758,0,4,8000,0
+quality,test:758,1,4,8000,0
+quality,test:758,2,4,8000,0
+quality,test:758,3,4,8000,0
+quality,test:758,4,4,8000,0
+quality,test:758,5,4,8000,0
+quality,test:758,6,4,8000,0
+quality,test:758,7,4,8000,0
+quality,test:758,8,4,8000,0
+quality,test:758,9,4,8000,0
+quality,test:4542,2,4,\sqrt{5},1
+quality,test:36,3,4,"(-\sqrt{3}, 0) \cup (0, \sqrt{3})",1
+quality,test:1153,8,4,2,1
+quality,test:4610,9,4,\begin{pmatrix} -6 \\ 18 \\ 0 \end{pmatrix},1
+quality,test:2686,0,4,20,0
+quality,test:2686,3,4,999999,0
+quality,test:2686,5,4,20,0
+quality,test:2686,6,8,20,0
+quality,test:2686,7,4,999999,0
+quality,test:3388,7,4,220,1
+quality,test:2233,8,4,50,0
+quality,test:4827,0,8,0,0
+quality,test:4827,1,4,0,0
+quality,test:4827,2,4,0,0
+quality,test:4827,3,4,-\frac{1}{2},0
+quality,test:4827,5,4,0,0
+quality,test:4827,6,4,0,0
+quality,test:4827,7,8,0,0
+quality,test:4827,8,4,0,0
+quality,test:2523,0,4,\frac{1}{16},0
+quality,test:2523,1,4,\frac{1}{16},0
+quality,test:2523,2,4,\frac{1}{16},0
+quality,test:2523,3,4,\frac{1}{16},0
+quality,test:2523,4,8,\frac{1}{16},0
+quality,test:2523,5,4,\frac{1}{16},0
+quality,test:2523,6,4,\frac{1}{16},0
+quality,test:2523,7,4,\frac{1}{16},0
+quality,test:2523,8,4,\frac{1}{16},0
+quality,test:2523,9,4,\frac{1}{16},0
+quality,test:2794,6,4,1,1
+quality,test:2794,8,4,1,1
+quality,test:2287,0,4,5,0
+quality,test:2287,1,4,5,0
+quality,test:2287,3,4,5,0
+quality,test:2287,4,8,5,0
+quality,test:2287,6,4,5,0
+quality,test:2287,7,4,5,0
+quality,test:2287,9,4,35,0
+quality,test:2639,1,8,26,1
+quality,test:2639,3,8,26,1
+quality,test:2639,6,4,26,1
+quality,test:2755,1,4,4,0
+quality,test:2755,5,4,4,0
+quality,test:2755,9,8,4,0
+quality,test:3554,2,4,17,1
+quality,test:3554,7,4,17,1
+quality,test:208,3,4,18,1
+quality,test:616,3,4,\text{No real solution},1
+quality,test:2725,0,4,"-1, 0",1
+quality,test:2725,2,4,3,1
+quality,test:2725,5,4,1,1
+quality,test:2725,6,4,3,1
+quality,test:2725,9,4,"-1, 0",1
+quality,test:2632,4,4,54,0
+quality,test:4772,0,4,0,0
+quality,test:4772,1,4,1,0
+quality,test:4772,7,4,0,0
+quality,test:4772,9,4,0,0
+quality,test:2298,6,4,0,0
+quality,test:2298,8,8,0,0
+quality,test:2217,2,4,25,0
+quality,test:2493,3,4,3,0
+quality,test:2493,5,8,4,0
+quality,test:2493,6,4,3,0
+quality,test:2493,8,4,4,0
+quality,test:1894,0,4,320\pi,0
+quality,test:1894,1,4,320\pi,0
+quality,test:1894,2,8,320\pi,0
+quality,test:1894,4,4,524\pi,0
+quality,test:1894,5,4,320\pi,0
+quality,test:1894,7,4,524\pi,0
+quality,test:1894,9,8,524\pi,0
+quality,test:3481,1,8,1951,0
+quality,test:3481,2,4,1948,0
+quality,test:3481,4,8,1948,0
+quality,test:3481,8,4,1948,0
+quality,test:3481,9,8,1948,0
+quality,test:1376,2,4,4,0
+quality,test:1376,3,4,8,0
+quality,test:1376,6,4,12,0
+quality,test:1376,7,4,12,0
+quality,test:1376,9,4,8,0
+quality,test:2972,0,4,2,0
+quality,test:2972,1,4,2,0
+quality,test:2972,3,4,2,0
+quality,test:2972,4,8,2,0
+quality,test:2972,5,4,2,0
+quality,test:2972,6,4,2,0
+quality,test:2972,9,4,2,0
+quality,test:2198,5,4,30,1
+quality,test:4726,8,4,-1,1
+quality,test:1787,0,4,12,0
+quality,test:1787,5,8,12,0
+quality,test:1787,6,4,12,0
+quality,test:1787,8,4,12,0
+quality,test:1787,9,4,12,0
+quality,test:2076,0,4,6,0
+quality,test:2076,3,4,6,0
+quality,test:2076,4,4,4,0
+quality,test:2772,0,4,0.44,0
+quality,test:2772,2,4,0.79,0
+quality,test:2772,7,8,0.44,0
+quality,test:2772,9,8,0.44,0
+quality,test:4899,0,8,\frac{13}{25},0
+quality,test:4899,6,4,\frac{13}{25},0
+quality,test:2563,0,4,"[-4, 0]",1
+quality,test:2563,1,4,"[-4, 0]",1
+quality,test:2563,9,4,"[-4, 0]",1
+quality,test:2222,4,4,0,0
+quality,test:2222,7,4,0,0
+quality,test:4281,0,8,21,0
+quality,test:4281,1,4,21,0
+quality,test:4281,2,4,21,0
+quality,test:4281,3,4,21,1
+quality,test:4281,5,4,21,0
+quality,test:4281,6,8,21,0
+quality,test:4281,8,16,21,0
+quality,test:4281,9,4,21,0
+quality,test:4254,0,4,80,0
+quality,test:4254,1,4,80,0
+quality,test:4254,2,4,80,0
+quality,test:4254,3,16,80,0
+quality,test:4254,5,4,80,0
+quality,test:4254,6,16,80,0
+quality,test:4254,7,4,80,0
+quality,test:4254,9,4,80,0
+quality,test:3754,2,4,432,1
+quality,test:3754,6,4,432,1
+quality,test:2442,2,4,0,0
+quality,test:2442,3,8,0,0
+quality,test:2442,4,16,0,0
+quality,test:2442,6,4,0,0
+quality,test:2442,7,4,0,0
+quality,test:2442,8,4,0,0
+quality,test:2442,9,4,0,0
+quality,test:2716,0,4,"(10, 0)",0
+quality,test:2716,1,4,"(10, 0)",0
+quality,test:2716,2,4,"(10, 0)",0
+quality,test:2716,3,4,"(10, 0)",0
+quality,test:2716,4,4,"(10, 0)",0
+quality,test:2716,5,4,"(10, 0)",0
+quality,test:2716,6,4,"(10, 0)",0
+quality,test:2716,7,4,"(10, 0)",0
+quality,test:2716,8,4,"(10, 0)",0
+quality,test:2716,9,4,"(10, 0)",0
+quality,test:3756,0,4,53,0
+quality,test:3756,1,4,53,0
+quality,test:3756,2,4,53,0
+quality,test:3756,3,4,53,0
+quality,test:3756,4,4,53,0
+quality,test:3756,5,4,53,0
+quality,test:3756,6,4,53,0
+quality,test:3756,7,4,53,0
+quality,test:3756,8,4,53,0
+quality,test:3756,9,4,53,0
+quality,test:2700,1,16,\frac{1}{7},0
+quality,test:2700,5,4,\frac{1}{7},0
+quality,test:2700,6,8,\frac{1}{7},0
+quality,test:2700,7,16,\frac{1}{7},0
+quality,test:2700,8,4,\frac{1}{7},0
+quality,test:2700,9,4,\frac{1}{7},0
+quality,test:2251,7,4,-3,0
+quality,test:4913,0,4,1,0
+quality,test:4913,1,4,1,0
+quality,test:4913,3,4,1,0
+quality,test:4913,4,8,1,0
+quality,test:4913,5,4,0,0
+quality,test:4913,7,4,0,0
+quality,test:4913,8,4,0,0
+quality,test:4913,9,4,1,0
+quality,test:2973,2,4,1,0
+quality,test:2973,5,4,\infty,0
+quality,test:2973,6,4,\infty,0
+quality,test:2973,7,4,1,0
+quality,test:2973,8,4,2,0
+quality,test:2973,9,8,2,0
+quality,test:2045,0,4,20^\circ,0
+quality,test:2045,2,4,70^\circ,0
+quality,test:2045,3,4,20^\circ,0
+quality,test:2045,7,4,43^\circ,0
+quality,test:4674,0,4,9,0
+quality,test:4674,1,4,9,0
+quality,test:4674,3,4,\frac{17}{2},0
+quality,test:4674,4,4,\frac{17}{2},0
+quality,test:4674,5,4,\frac{17}{2},0
+quality,test:4674,6,4,\frac{17}{2},0
+quality,test:4674,8,8,9,0
+quality,test:4674,9,4,\frac{17}{2},0
+quality,test:4873,1,4,\frac{7\pi}{12},1
+quality,test:4873,7,4,\frac{7\pi}{12},1
+quality,test:3152,0,4,7630_8,0
+quality,test:3152,1,4,7630_8,0
+quality,test:3152,2,4,7604_8,0
+quality,test:3152,4,4,7600,0
+quality,test:3152,8,4,7600,0
+quality,test:4450,0,4,3,0
+quality,test:4450,2,4,3,0
+quality,test:4450,3,4,3,0
+quality,test:4450,5,4,3,0
+quality,test:4450,8,4,3,0
+quality,test:4450,9,8,3,0
+quality,test:2650,5,8,1,1
+quality,test:4495,9,4,12,1
+quality,test:2815,0,4,2\sqrt{7} + 1,0
+quality,test:2815,1,4,2\sqrt{7} + 1,0
+quality,test:2815,2,4,2\sqrt{7} + 1,0
+quality,test:2815,3,4,2\sqrt{7} + 1,0
+quality,test:2815,4,4,2\sqrt{7} + 1,0
+quality,test:2815,5,4,2\sqrt{7} + 1,0
+quality,test:2815,6,4,2\sqrt{7} + 1,0
+quality,test:2815,7,4,2\sqrt{7} + 1,0
+quality,test:2815,8,4,2\sqrt{7} + 1,0
+quality,test:2815,9,4,2\sqrt{7} + 1,0
+quality,test:4890,4,4,\begin{pmatrix} 3 \\ 1 \\ 2 \end{pmatrix},1
+quality,test:4601,0,8,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,1,16,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,4,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,6,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,7,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,8,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:4601,9,4,\begin{pmatrix} -16 \\ 4 \\ 32 \end{pmatrix},0
+quality,test:3269,1,4,1342,1
+quality,test:3269,5,4,1342,1
+quality,test:3269,7,4,1342,1
+quality,test:3269,8,4,2684,1
+quality,test:2237,5,4,-11x + 1,0
+quality,test:2237,6,4,-\frac{21}{2}x + \frac{3}{2},0
+quality,test:2237,7,4,-\frac{19}{2}x + \frac{5}{2},0
+quality,test:2237,9,4,-\frac{19}{2}x + \frac{5}{2},0
+quality,test:4642,1,4,2,0
+quality,test:4642,3,4,2,0
+quality,test:4642,4,4,2,0
+quality,test:4642,5,4,2,0
+quality,test:4642,6,4,1,0
+quality,test:4642,7,4,2,0
+quality,test:2783,6,4,x^2 + 1,0
+quality,test:4767,7,8,2,0
+quality,test:4958,1,4,45,1
+quality,test:3127,7,4,128,0
+quality,test:2835,0,4,6,0
+quality,test:2835,1,4,6,0
+quality,test:2835,2,4,6,0
+quality,test:2835,3,8,6,0
+quality,test:2835,4,16,6,0
+quality,test:2835,5,4,6,0
+quality,test:2835,6,4,6,0
+quality,test:2835,7,4,6,0
+quality,test:2835,8,8,6,0
+quality,test:2835,9,4,6,0
+quality,test:1263,0,4,512,0
+quality,test:1263,1,8,512,0
+quality,test:1263,2,4,512,0
+quality,test:1263,3,16,512,0
+quality,test:1263,4,4,512,0
+quality,test:1263,6,4,512,0
+quality,test:1263,7,4,512,0
+quality,test:1263,8,8,512,0
+quality,test:1263,9,4,512,0
+quality,test:2909,2,4,1024,0
+quality,test:2909,3,4,512,0
+quality,test:2094,0,4,8,0
+quality,test:2094,1,8,8,0
+quality,test:2094,3,4,8,0
+quality,test:427,1,8,7 + \sqrt{11},0
+quality,test:427,2,4,7 + \sqrt{11},0
+quality,test:427,4,4,7 + \sqrt{11},0
+quality,test:427,5,4,7 + \sqrt{11},0
+quality,test:427,6,4,7 + \sqrt{11},0
+quality,test:427,7,4,7 + \sqrt{11},0
+quality,test:427,8,4,7 + \sqrt{11},0
+quality,test:23,5,4,7.97,1
+quality,test:23,6,8,7.97,1
+quality,test:3749,0,4,\frac{5}{17},0
+quality,test:3749,1,4,\frac{5}{17},0
+quality,test:3749,2,4,\frac{5}{17},0
+quality,test:3749,3,4,\frac{5}{17},0
+quality,test:3749,4,4,\frac{5}{17},0
+quality,test:3749,5,4,\frac{5}{17},0
+quality,test:3749,6,4,\frac{5}{17},0
+quality,test:3749,7,4,\frac{5}{17},0
+quality,test:3749,8,4,\frac{5}{17},0
+quality,test:3749,9,4,\frac{5}{17},0
+quality,test:4845,2,4,\frac{1}{4},0
+quality,test:1448,0,4,\frac{1}{2},0
+quality,test:1448,1,4,\frac{1}{2},0
+quality,test:1448,2,8,\frac{1}{2},0
+quality,test:1448,3,8,\frac{1}{2},0
+quality,test:1448,4,8,\frac{1}{2},0
+quality,test:1448,5,8,\frac{1}{2},0
+quality,test:1448,6,8,\frac{1}{2},0
+quality,test:1448,7,4,\frac{1}{2},0
+quality,test:1448,8,4,\frac{1}{2},0
+quality,test:1448,9,4,\frac{1}{2},0
+quality,test:1442,8,4,\frac{11}{36},1
+quality,test:2200,0,8,1,0
+quality,test:2200,1,4,1,0
+quality,test:2200,3,4,256,0
+quality,test:2200,4,4,1,0
+quality,test:2200,6,4,1,0
+quality,test:2200,7,4,1,0
+quality,test:2200,9,4,1,0
+quality,test:1791,0,4,30,0
+quality,test:3803,0,4,64,0
+quality,test:4404,1,4,105,0
+quality,test:4404,3,4,105,0
+quality,test:4404,8,4,35,0
+quality,test:4741,0,4,12,0
+quality,test:4741,1,4,12,0
+quality,test:4741,2,4,12,0
+quality,test:4741,3,8,12,0
+quality,test:4741,4,8,12,0
+quality,test:4741,5,4,12,0
+quality,test:4741,6,4,12,0
+quality,test:4741,7,4,12,0
+quality,test:4741,8,8,12,0
+quality,test:4741,9,4,12,0
+quality,test:3538,2,8,403,1
+quality,test:3009,0,4,15,0
+quality,test:3009,2,4,0,0
+quality,test:3009,8,4,0,0
+quality,test:4690,3,4,2001,0
+quality,test:4690,7,8,2003,0
+quality,test:4690,9,4,2003,0
+quality,test:2010,0,4,84,0
+quality,test:2010,1,4,84,0
+quality,test:2010,8,4,84,0
+quality,test:2010,9,4,84,0
+quality,test:1466,2,4,\frac{10}{13},0
+quality,test:1466,3,4,\frac{10}{13},0
+quality,test:1466,4,8,\frac{10}{13},0
+quality,test:1466,5,8,\frac{10}{13},0
+quality,test:1466,6,8,\frac{10}{13},0
+quality,test:1466,8,8,\frac{10}{13},0
+quality,test:1466,9,8,\frac{10}{13},0
+quality,test:1270,0,16,540,0
+quality,test:1270,1,4,540,0
+quality,test:1270,2,4,540,0
+quality,test:1270,3,4,540,0
+quality,test:1270,4,4,540,0
+quality,test:1270,7,4,540,0
+quality,test:1270,8,4,540,0
+quality,test:3976,2,4,35^\circ,1
+quality,test:2280,7,4,0,0
+quality,test:2335,3,4,13,0
+quality,test:2335,9,4,15,0
+quality,test:4754,0,4,15^\circ,0
+quality,test:4754,1,8,15^\circ,0
+quality,test:4754,6,4,15^\circ,0
+quality,test:4754,8,4,12^\circ,0
+quality,test:4754,9,4,15^\circ,0
+quality,test:1719,0,16,30,0
+quality,test:1719,1,4,120,0
+quality,test:1719,2,4,30,0
+quality,test:1719,3,4,30,0
+quality,test:1719,4,4,30,0
+quality,test:1719,5,8,30,0
+quality,test:1719,6,4,120,0
+quality,test:1719,7,4,30,0
+quality,test:1719,8,4,30,0
+quality,test:1719,9,4,30,0
+quality,test:2148,2,4,9,1
+quality,test:2148,3,4,18,1
+quality,test:1996,0,4,36,0
+quality,test:1996,1,4,18,0
+quality,test:1996,2,4,36,0
+quality,test:1996,8,8,36,0
+quality,test:1996,9,16,36,0
+quality,test:884,1,4,-3600,0
+quality,test:884,2,4,-3600,0
+quality,test:884,3,4,-3600,0
+quality,test:884,6,4,205860,0
+quality,test:884,8,4,-3600,0
+quality,test:4486,8,4,-1,0
+quality,test:4521,8,4,\sin 32,1
+quality,test:4954,4,4,"(11,10,7)",1
+quality,test:4672,4,4,\begin{pmatrix} 21 \\ -28 \end{pmatrix},1
+quality,test:2311,3,4,1,1
+quality,test:2952,6,4,204,0
+quality,test:3110,1,4,2,1
+quality,test:3568,1,4,0,0
+quality,test:3568,3,4,4,0
+quality,test:3568,4,4,4,0
+quality,test:3568,9,4,4,0
+quality,test:1595,9,4,5922,1
+quality,test:4218,0,8,100,0
+quality,test:4218,2,4,100,1
+quality,test:4218,5,4,100,0
+quality,test:4218,6,4,100,0
+quality,test:4218,8,8,100,0
+quality,test:2199,0,4,12,0
+quality,test:2199,1,4,12,0
+quality,test:2199,2,4,12,0
+quality,test:2199,3,4,12,0
+quality,test:2199,4,4,12,0
+quality,test:2199,5,4,12,0
+quality,test:2199,6,4,12,0
+quality,test:2199,7,4,12,0
+quality,test:2199,8,4,12,0
+quality,test:2199,9,4,12,0
+quality,test:3157,0,8,0,1
+quality,test:3157,1,4,1,1
+quality,test:3157,2,4,1,1
+quality,test:3157,3,4,0,1
+quality,test:3157,8,4,0,1
+quality,test:2123,1,4,162\pi,0
+quality,test:2123,2,4,1352\pi,0
+quality,test:2123,6,4,578\pi,0
+quality,test:2123,7,4,\frac{625\pi}{2},0
+quality,test:3687,2,4,40,1
+quality,test:3177,0,4,9,1
+quality,test:3177,4,4,9,1
+quality,test:3177,7,4,7,1
+quality,test:3177,8,4,1,1
+quality,test:3177,9,8,7,1
+quality,test:4800,0,4,0,0
+quality,test:4800,3,4,1,0
+quality,test:4800,4,8,0,0
+quality,test:4800,6,4,13,0
+quality,test:1663,9,4,8,1
+quality,test:2447,0,4,1,0
+quality,test:2447,1,4,1,0
+quality,test:2447,2,4,1,0
+quality,test:2447,3,4,1,0
+quality,test:2447,4,4,1,0
+quality,test:2447,5,4,1,0
+quality,test:2447,6,4,1,0
+quality,test:2447,7,4,1,0
+quality,test:2447,8,4,1,0
+quality,test:2447,9,4,1,0
+quality,test:2018,0,4,5,0
+quality,test:2478,3,4,"i, -i, -2i",0
+quality,test:2067,0,4,192,0
+quality,test:2710,0,4,197,0
+quality,test:2710,1,4,197,0
+quality,test:2710,2,4,197,0
+quality,test:2710,3,4,197,0
+quality,test:2710,4,4,197,0
+quality,test:2710,5,4,197,0
+quality,test:2710,6,4,197,0
+quality,test:2710,7,4,197,0
+quality,test:2710,8,4,197,0
+quality,test:2710,9,4,197,0
+quality,test:2050,2,4,120,0
+quality,test:4675,0,4,1,0
+quality,test:4675,1,8,1,0
+quality,test:4675,3,4,1,0
+quality,test:4675,4,4,1,0
+quality,test:4675,5,4,1,0
+quality,test:4675,6,4,2,0
+quality,test:4675,7,4,1,0
+quality,test:4675,8,4,2,0
+quality,test:4675,9,4,1,0
+quality,test:807,0,4,"(3,5)",0
+quality,test:807,1,4,"(3,5)",0
+quality,test:807,2,4,"(3,5)",0
+quality,test:807,3,4,"(3,5)",0
+quality,test:807,4,4,"(3,5)",0
+quality,test:807,5,8,"(3,5)",0
+quality,test:807,6,4,"(3,5)",0
+quality,test:807,7,4,"(3,5)",0
+quality,test:807,8,4,"(3,5)",0
+quality,test:807,9,4,"(3,5)",0
+quality,test:3113,2,4,15,1
+quality,test:3113,5,8,15,1
+quality,test:3113,6,4,15,1
+quality,test:3113,9,4,15,1
+quality,test:2898,0,4,\frac{65}{16},0
+quality,test:2898,1,4,\frac{65}{16},0
+quality,test:2898,4,4,\frac{65}{16},0
+quality,test:2344,4,8,1,0
+quality,test:2344,7,4,1,0
+quality,test:2344,8,4,1,0
+quality,test:2325,6,4,\frac{1 + \sqrt{5}}{2},1
+quality,test:1230,0,4,\frac{1}{2},0
+quality,test:1230,1,8,\frac{1}{2},0
+quality,test:1230,3,8,\frac{1}{2},0
+quality,test:1230,7,4,\frac{1}{2},0
+quality,test:1230,9,4,\frac{1}{2},0
+quality,test:3944,1,8,0,0
+quality,test:2476,1,4,\text{No solution},0
+quality,test:2476,6,4,\text{No solution},0
+quality,test:2476,7,4,\text{No solution},0
+quality,test:1766,2,4,100,0
+quality,test:2874,0,4,\frac{49}{100},0
+quality,test:2874,1,8,\frac{49}{100},0
+quality,test:2874,2,4,\frac{49}{100},0
+quality,test:2874,3,8,\frac{49}{100},0
+quality,test:2874,4,8,\frac{49}{100},0
+quality,test:2874,5,4,\frac{49}{100},0
+quality,test:2874,7,4,\frac{49}{100},0
+quality,test:2874,8,8,\frac{49}{100},0
+quality,test:3007,9,4,-6,1
+quality,test:4782,7,4,24,1
+quality,test:958,0,4,-3,0
+quality,test:958,1,4,-3,0
+quality,test:958,2,8,-3,0
+quality,test:958,5,4,-3,0
+quality,test:958,7,4,-2,0
+quality,test:958,9,4,-3,0
+quality,test:2171,2,4,3,0
+quality,test:2171,6,4,3,0
+quality,test:2871,2,4,0,0
+quality,test:2871,4,4,4,0
+quality,test:2871,8,4,3,0
+quality,test:2871,9,4,0,0
+quality,test:3106,1,4,86,1
+quality,test:3106,2,8,86,1
+quality,test:3106,4,4,86,1
+quality,test:3106,5,4,86,1
+quality,test:3106,6,16,86,1
+quality,test:3106,7,4,86,1
+quality,test:3106,8,8,86,1
+quality,test:3106,9,4,86,1
+quality,test:1670,1,4,42,0
+quality,test:3136,0,4,1320,0
+quality,test:3136,4,4,1320,0
+quality,test:3136,6,4,1320,0
+quality,test:4807,0,4,\frac{1}{3},0
+quality,test:4807,1,16,\frac{1}{3},0
+quality,test:4807,2,4,1,0
+quality,test:4807,3,4,\frac{1}{3},0
+quality,test:4807,4,16,\frac{1}{3},0
+quality,test:4807,5,8,\frac{1}{3},0
+quality,test:4807,6,4,\frac{1}{3},0
+quality,test:4807,7,4,1,0
+quality,test:4807,8,4,\frac{1}{3},0
+quality,test:4807,9,4,\frac{1}{3},0
+quality,test:2938,0,4,C,0
+quality,test:2938,1,4,E,0
+quality,test:2938,2,4,A,0
+quality,test:2938,3,4,A,0
+quality,test:2938,6,16,A,0
+quality,test:2938,7,4,A,0
+quality,test:2938,8,4,A,0
+quality,test:2938,9,4,E,0
+quality,test:553,0,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,1,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,2,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,3,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,4,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,5,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,6,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,7,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,8,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:553,9,4,"(-\infty, -7) \cup (-6, \infty)",0
+quality,test:2368,0,8,3,0
+quality,test:2368,3,4,3,0
+quality,test:2368,6,4,1,0
+quality,test:2920,0,8,1,0
+quality,test:2920,2,4,3,0
+quality,test:2920,4,4,3,0
+quality,test:2920,6,4,1,0
+quality,test:2955,0,4,63,0
+quality,test:2955,1,4,842,0
+quality,test:2955,6,4,842,0
+quality,test:2955,7,4,842,0
+quality,test:2955,9,4,842,0
+quality,test:1516,0,4,6402373705728000,0
+quality,test:1516,1,4,6402373705728000,0
+quality,test:1516,3,4,6402373705728000,0
+quality,test:1516,4,8,6402373705728000,0
+quality,test:1516,5,8,6402373705728000,0
+quality,test:1516,6,4,6402373705728000,0
+quality,test:1516,7,4,6402373705728000,0
+quality,test:1516,9,4,6402373705728000,0
+quality,test:863,3,4,51529,1
+quality,test:863,8,4,51529,1
+quality,test:696,9,4,ABCDEFGHIJKLMNOPQRSTUVWXYZ,0
+quality,test:4177,0,4,\frac{2}{27},0
+quality,test:4177,3,4,\frac{2}{27},0
+quality,test:4177,4,4,\frac{2}{27},0
+quality,test:4177,5,4,\frac{2}{27},0
+quality,test:4177,6,8,\frac{2}{27},0
+quality,test:4177,7,4,\frac{2}{27},0
+quality,test:4177,8,4,\frac{2}{27},0
+quality,test:4177,9,16,\frac{2}{27},0
+quality,test:594,1,4,8,0
+quality,test:594,2,4,8,0
+quality,test:594,3,4,8,0
+quality,test:594,4,4,8,0
+quality,test:594,5,4,8,0
+quality,test:594,9,4,8,0
+quality,test:1310,0,4,\frac{27}{100},0
+quality,test:1310,1,8,\frac{27}{100},0
+quality,test:1310,2,4,\frac{27}{100},0
+quality,test:1310,3,4,\frac{27}{100},0
+quality,test:1310,4,16,\frac{27}{100},0
+quality,test:1310,5,4,\frac{27}{100},0
+quality,test:1310,6,4,\frac{27}{100},0
+quality,test:1310,8,4,\frac{27}{100},0
+quality,test:1310,9,4,\frac{27}{100},0
+quality,test:1508,0,8,25,0
+quality,test:1508,3,4,55,0
+quality,test:1508,4,4,25,0
+quality,test:1508,5,4,55,0
+quality,test:1508,7,8,55,0
+quality,test:1508,9,4,55,0
+quality,test:4814,9,4,22,0
+quality,test:2083,2,4,\frac{7}{11},1
+quality,test:1517,0,4,\frac{1}{2},0
+quality,test:1517,1,4,\frac{1}{2},0
+quality,test:1517,2,4,\frac{1}{2},0
+quality,test:1517,3,4,\frac{1}{2},0
+quality,test:1517,4,4,\frac{1}{2},0
+quality,test:1517,5,8,\frac{1}{2},0
+quality,test:1517,6,4,\frac{1}{2},0
+quality,test:1517,7,4,\frac{1}{2},0
+quality,test:1517,8,4,\frac{1}{2},0
+quality,test:1517,9,4,\frac{1}{2},0
+quality,test:4691,0,4,0 \text{ and } 2a,0
+quality,test:4691,3,4,0 \text{ and } -a,0
+quality,test:2197,0,4,50,0
+quality,test:2197,1,4,50,0
+quality,test:2197,2,8,50,0
+quality,test:2197,3,16,50,0
+quality,test:2197,4,4,50,0
+quality,test:2197,5,4,50,0
+quality,test:2197,6,16,50,0
+quality,test:2197,7,4,50,0
+quality,test:2197,8,4,50,0
+quality,test:2197,9,4,50,0
+quality,test:3070,2,4,2,1
+quality,test:3070,8,4,1,1
+quality,test:4465,9,4,0,1
+quality,test:423,1,4,7,1
+quality,test:3931,0,4,1,0
+quality,test:3931,1,4,1,0
+quality,test:3931,3,4,1,0
+quality,test:3931,4,8,1,0
+quality,test:3931,5,4,91,0
+quality,test:3931,6,8,91,0
+quality,test:3931,7,4,46,0
+quality,test:3931,8,16,1,0
+quality,test:3931,9,8,91,0
+quality,test:4720,0,8,8,0
+quality,test:4720,1,4,8,0
+quality,test:4720,2,4,8,0
+quality,test:4720,3,4,8,0
+quality,test:4720,4,4,8,0
+quality,test:4720,5,4,8,0
+quality,test:4720,6,4,8,0
+quality,test:4720,7,4,8,0
+quality,test:4720,8,4,8,0
+quality,test:4720,9,4,8,0
+quality,test:3497,0,4,20,0
+quality,test:3497,1,4,20,0
+quality,test:3497,2,8,20,0
+quality,test:3497,6,8,20,0
+quality,test:3497,8,4,20,0
+quality,test:3497,9,4,20,0
+quality,test:1423,4,4,\frac{5}{6},1
+quality,test:2397,0,4,1,0
+quality,test:2397,1,8,1,0
+quality,test:2397,2,4,2,0
+quality,test:2397,4,4,1,0
+quality,test:2397,6,4,2,0
+quality,test:2397,7,4,1,0
+quality,test:2397,8,4,2,0
+quality,test:2397,9,4,2,0
