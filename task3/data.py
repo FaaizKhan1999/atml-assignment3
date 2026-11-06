@@ -146,7 +146,8 @@ def load_dataset(dataset: str, folder: Path) -> dict:
         rows["v_tok"] = v_tok
         del att
     checks["n_rows"] = n
-    bad = {k: v for k, v in checks.items() if isinstance(v, int) and k != "n_rows" and v != n}
+    bad = {k: v for k, v in checks.items()
+           if isinstance(v, int) and not isinstance(v, bool) and k != "n_rows" and v != n}
     if bad or checks.get("attention_counter_is_arange") is False:
         raise ValueError(f"alignment check failed: {checks}")
     log.info("%s: %d rollouts loaded and aligned (%.0fs)", dataset, n, time.perf_counter() - t0)
@@ -207,6 +208,8 @@ def prepare(dataset: str, cfg, rebuild: bool = False) -> dict:
         idx = sorted(idx, key=lambda i: rows["rollout_id"][i])
         if [rows["rollout_id"][i] for i in idx] != list(range(32)):
             raise ValueError(f"question {q} does not have rollouts 0..31")
+        if meq is not None:
+            meq.current_question = q
         meta = meta_all.get(q) if dataset == "mathvista" else None
         if dataset == "mathvista" and meta is None:
             raise KeyError(f"MathVista metadata missing for {q}")
@@ -226,6 +229,7 @@ def prepare(dataset: str, cfg, rebuild: bool = False) -> dict:
             log.info("  grouped %d / %d questions (%.0fs)", qi + 1, len(by_q), time.perf_counter() - t0)
     prepared = {"dataset": dataset, "questions": questions, "checks": loaded["checks"],
                 "scorer": {"math_verify": package_versions(["math-verify"])["math-verify"],
+                           "math_verify_timeouts": meq.timeout_report() if meq is not None else None,
                            "mathvista_metadata": meta_info, "grouping_seconds": time.perf_counter() - t0}}
     cache.parent.mkdir(parents=True, exist_ok=True)
     with open(cache, "wb") as fh:

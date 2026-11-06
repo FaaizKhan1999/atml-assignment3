@@ -33,10 +33,36 @@ def _strip(s: str) -> str:
 
 
 class MathEquivalence:
+    """Math-Verify equivalence with caching. A verify() call that runs into Math-Verify's own time limit
+    returns False ("not equivalent"); such calls are recorded (question and the two answers) so the
+    number of timeouts can be reported."""
+
+    TIMEOUT_S = 5.0  # Math-Verify's default timeout_seconds
+
     def __init__(self):
         from math_verify import parse, verify  # noqa: F401
         self._parse_cache: dict = {}
         self._eq_cache: dict = {}
+        self.current_question = None
+        self.timeouts: list = []
+
+    def _verify(self, x, y, a: str, b: str) -> bool:
+        import time
+        from math_verify import verify
+        t0 = time.perf_counter()
+        try:
+            ok = bool(verify(x, y))
+        except Exception:
+            ok = False
+        if not ok and time.perf_counter() - t0 >= self.TIMEOUT_S - 0.25:
+            self.timeouts.append((self.current_question, a, b))
+        return ok
+
+    def timeout_report(self) -> dict:
+        qs = sorted({str(q) for q, _, _ in self.timeouts})
+        return {"n_timed_out_comparisons": len(self.timeouts), "n_questions": len(qs), "questions": qs,
+                "examples": [{"question": str(q), "a": a[:120], "b": b[:120]} for q, a, b in self.timeouts[:20]],
+                "rule": "a comparison that hits Math-Verify's time limit counts as not equivalent"}
 
     def parsed(self, s: str):
         if s not in self._parse_cache:
@@ -53,14 +79,10 @@ class MathEquivalence:
             return True
         key = (a, b) if a <= b else (b, a)
         if key not in self._eq_cache:
-            from math_verify import verify
             pa, pb = self.parsed(a), self.parsed(b)
             ok = False
             if pa and pb:
-                try:
-                    ok = bool(verify(pa, pb)) or bool(verify(pb, pa))
-                except Exception:
-                    ok = False
+                ok = self._verify(pa, pb, a, b) or self._verify(pb, pa, b, a)
             self._eq_cache[key] = ok
         return self._eq_cache[key]
 
