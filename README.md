@@ -177,6 +177,16 @@ selection rule at N = 1..32 over ten seeded rollout orders, the N = 32 signal an
 (thresholds chosen on dev, frozen for held-out). Outputs in `results/task3/<dataset>/`, split IDs and orders in
 `splits/task3/`.
 
+Sensitivity check (MathVista): `python -m task3.offline --datasets mathvista --mathvista-scorer lenient --push`
+reruns MathVista with numeric pre-cleaning before MathVista's rules (results in `results/task3/mathvista_lenient/`).
+
+### Live generation (GPU; Step 4)
+`python -m task3.live --push` (~2 h on a T4; `--limit 2` for a smoke test): Qwen2.5-3B-Instruct (pinned revision,
+FP16, batch 1) on the 50 live questions; single 3,072-token response vs three 1,024-token responses with
+self-consistency vs initial response + one 2,048-token critique-and-revision. Resumable; outputs
+`results/task3/live/` (every call with prompt, seed, tokens, truncation, extracted answer, time; per-question
+results; summary with transitions and paired bootstrap CIs).
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
