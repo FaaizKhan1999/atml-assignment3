@@ -1,0 +1,380 @@
+\documentclass{article}
+
+\usepackage[main, final]{neurips_2026}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{xcolor}         % colors
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{natbib}
+\usepackage{amsmath, amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{makecell}       % two-line table headers / cells
+\usepackage{xurl}           % URLs may break anywhere
+\usepackage{pdflscape}      % landscape pages for the widest appendix tables
+\usepackage{etoolbox}
+\usepackage{adjustbox}
+% ---- Compact float layout (space for the analysis) -------------------------------------------------------
+\usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}   % float above/below text
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}       % between two floats
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\renewcommand{\topfraction}{0.95}\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}\renewcommand{\floatpagefraction}{0.9}
+\setcounter{topnumber}{4}\setcounter{bottomnumber}{4}\setcounter{totalnumber}{8}
+% ---- Table style for every \input table: 8 pt text, tight columns and rows ----------------------------------
+\AtBeginEnvironment{table}{%
+  \setlength{\tabcolsep}{3.5pt}%
+  \renewcommand{\arraystretch}{0.92}%
+  \setlength{\aboverulesep}{1.5pt}\setlength{\belowrulesep}{1.5pt}%
+  \renewcommand{\small}{\footnotesize}}
+% Safety net: a table still wider than the line (or taller than the page) is scaled down to fit; never enlarged.
+\let\oldtabular\tabular
+\let\endoldtabular\endtabular
+\renewenvironment{tabular}%
+  {\begin{adjustbox}{max width=\linewidth, max totalheight=0.9\textheight}\oldtabular}%
+  {\endoldtabular\end{adjustbox}}
+\raggedbottom               % no stretched (underfull) pages around large floats
+% Unicode symbols used in the generated tables
+\DeclareUnicodeCharacter{2212}{\ensuremath{-}}
+\DeclareUnicodeCharacter{2264}{\ensuremath{\leq}}
+\DeclareUnicodeCharacter{03B3}{\ensuremath{\gamma}}
+\DeclareUnicodeCharacter{03C4}{\ensuremath{\tau}}
+\DeclareUnicodeCharacter{00B7}{\ensuremath{\cdot}}
+
+% Placeholder marker: every TODO is text you still have to write.
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{\todo{Title}}
+
+\author{
+  Faaiz Khan \\
+  Syed Babar Ali School of Science and Engineering\\
+  Lahore University of Management Sciences\\
+  Lahore, Pakistan\\
+  \texttt{25280051@lums.edu.pk} \\
+}
+
+\begin{document}
+
+\maketitle
+\suppressfloats[t]   % no floats above the title block
+
+\begin{abstract}
+  \todo{Abstract.}
+  Code: \url{https://github.com/FaaizKhan1999/atml-assignment3}.
+\end{abstract}
+
+% =====================================================================================================
+\section{Introduction}
+\label{sec:intro}
+
+\todo{Introduction.}
+
+% =====================================================================================================
+\section{Experimental Setup and Methods}
+\label{sec:setup}
+
+\subsection{Mathematical Fine-Tuning and Parameter-Restricted Adaptation}
+\label{sec:setup-finetuning}
+
+\todo{Setup and methods.}
+
+\subsection{Vision-Language Interface and Grounding Evaluation}
+\label{sec:setup-vlm}
+
+\todo{Setup and methods.}
+
+\subsection{Test-Time Compute: Sampling, Selection and Adaptive Inference}
+\label{sec:setup-ttc}
+
+\todo{Setup and methods.}
+
+% =====================================================================================================
+\section{Results and Analysis}
+\label{sec:results}
+
+% -----------------------------------------------------------------------------------------------------
+\subsection{Specialization, Retention and Restrictions on Adaptation}
+\label{sec:results-finetuning}
+
+\todo{Analysis.}
+
+% Benchmark results: all seven conditions x four benchmarks, change from baseline in pp.
+\input{figs/task1/tab1_benchmarks.tex}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{figs/task1/fig1_training_tradeoff.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ft-training-tradeoff}
+\end{figure}
+
+\todo{Analysis.}
+
+% Resources and regularization: trainable parameters, time, memory, checkpoint sizes, displacement, penalty.
+\input{figs/task1/tab2_resources.tex}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.68\textwidth]{figs/task1/fig2_diagnostics.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ft-diagnostics}
+\end{figure}
+
+\todo{Analysis.}
+
+% Qualitative findings: summary of the 42 annotated responses (aligned excerpts: Appendix, Table in app:ft-excerpts).
+\input{figs/task1/tab3_annotation_summary.tex}
+
+\todo{Analysis.}
+
+% -----------------------------------------------------------------------------------------------------
+\subsection{Learning a Visual Interface and Measuring Visual Grounding}
+\label{sec:results-vlm}
+
+\todo{Analysis.}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.74\textwidth]{figs/task2/fig1_learning_curves.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:vlm-learning-curves}
+\end{figure}
+
+\todo{Analysis.}
+
+% Final results: both suites x four image conditions, question types, pair diagnostics, NLL, bootstrap CIs.
+\input{figs/task2/tab1_final_results.tex}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\textwidth]{figs/task2/fig2_image_use.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:vlm-image-use}
+\end{figure}
+
+\todo{Analysis.}
+
+\begin{figure}[t]
+  \centering
+  % the PDF's blank band between its two rows of examples (y = 110--154 pt of 266 pt) is trimmed out
+  \includegraphics[width=0.62\textwidth,trim={0 153 0 4},clip]{figs/task2/fig3_qualitative.pdf}\\[2pt]
+  \includegraphics[width=0.62\textwidth,trim={0 6 0 150},clip]{figs/task2/fig3_qualitative.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including the example-selection rule.} \todo{Conclusion to draw.}}
+  \label{fig:vlm-qualitative}
+\end{figure}
+
+
+\todo{Analysis.}
+
+% -----------------------------------------------------------------------------------------------------
+\subsection{Allocating Test-Time Compute: Sampling, Selection and Stopping}
+\label{sec:results-ttc}
+
+\todo{Analysis.}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.56\textwidth]{figs/task3/fig1_compute_curves.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ttc-compute-curves}
+\end{figure}
+
+% Compact method comparison at N = 8 and N = 32.
+\input{figs/task3/tab1_methods.tex}
+
+\todo{Analysis.}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.74\textwidth]{figs/task3/fig2_failures_signals.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ttc-failures-signals}
+\end{figure}
+
+
+\todo{Analysis.}
+
+% Live inference: single response vs parallel sampling vs sequential refinement.
+\input{figs/task3/tab3_live.tex}
+
+\todo{Analysis.}
+
+% Adaptive inference: development-selected thresholds and held-out accuracy-cost results.
+\input{figs/task3/tab4_adaptive.tex}
+
+\todo{Analysis.}
+
+% Qualitative findings: selection disagreement, revision, premature stopping.
+\input{figs/task3/tab5_examples.tex}
+
+\todo{Analysis.}
+
+% =====================================================================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+\todo{Conclusion.}
+
+\clearpage
+
+{
+\small
+\bibliographystyle{unsrtnat}
+\nocite{*}
+\bibliography{refs}
+}
+
+\clearpage
+
+\appendix
+
+% =====================================================================================================
+\section{Mathematical Fine-Tuning: Supplementary Results}
+\label{app:finetuning}
+
+\subsection{Training Data Selection}
+\label{app:ft-data}
+\todo{Text.}
+\input{figs/task1/tabA6_data.tex}
+
+\subsection{Complete Benchmark Metrics}
+\label{app:ft-bench}
+\todo{Text.}
+\input{figs/task1/tabA1_benchmarks_full.tex}
+
+\subsection{Yes/No Answer Balance on Reading Comprehension}
+\label{app:ft-boolq}
+\todo{Text.}
+\input{figs/task1/tabA2_boolq.tex}
+
+\subsection{Weight-Space and Activation Diagnostics}
+\label{app:ft-diagnostics}
+\todo{Text.}
+\input{figs/task1/tabA3_diagnostics.tex}
+
+\subsection{Numerical Verification of Merging and Orthogonal Projection}
+\label{app:ft-verification}
+\todo{Text.}
+\input{figs/task1/tabA4_verification.tex}
+
+\subsection{Automatic Checks on All Qualitative Prompts}
+\label{app:ft-autoflags}
+\todo{Text.}
+\input{figs/task1/tabA5_auto_flags.tex}
+
+\subsection{Annotated Excerpts}
+\label{app:ft-excerpts}
+\todo{Text.}
+\input{figs/task1/tab4_excerpts.tex}
+% Long table: may need to be split or converted to longtable if it overflows the page.
+\input{figs/task1/tabA7_excerpts_all.tex}
+
+% =====================================================================================================
+\section{Vision-Language Model: Supplementary Results}
+\label{app:vlm}
+
+\subsection{Data Construction, Curriculum Mixture and Connector Calibration}
+\label{app:vlm-data}
+\todo{Text.}
+\input{figs/task2/tabA3_data_mixture.tex}
+
+\subsection{Development Metrics Across Training}
+\label{app:vlm-dev}
+\todo{Text.}
+\input{figs/task2/tabA2_dev_curve.tex}  % wide table: own landscape page
+
+\subsection{Results by Question Type and Advantages over All Image Controls}
+\label{app:vlm-bytype}
+\todo{Text.}
+\input{figs/task2/tabA1_results_by_type.tex}
+\input{figs/task2/tabA1b_advantages.tex}
+
+\subsection{Computational Cost}
+\label{app:vlm-cost}
+\todo{Text.}
+% moved from the main body to save space
+\input{figs/task2/tab2_resources.tex}
+
+\subsection{Additional Complementary-Pair Examples}
+\label{app:vlm-qualitative}
+\todo{Text.}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task2/figA1_qualitative_all.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including the example-selection rule.} \todo{Conclusion to draw.}}
+  \label{fig:vlm-qualitative-all}
+\end{figure}
+
+% =====================================================================================================
+\section{Test-Time Compute: Supplementary Results}
+\label{app:ttc}
+
+\subsection{Data, Answer Equivalence and Scorer Details}
+\label{app:ttc-data}
+\todo{Text.}
+\input{figs/task3/tabA5_data_scorer.tex}
+
+\subsection{Scorer Sensitivity}
+\label{app:ttc-sensitivity}
+\todo{Text.}
+\input{figs/task3/tabA2_scorer_sensitivity.tex}
+
+\subsection{All Selection Rules at All Budgets}
+\label{app:ttc-curves}
+\todo{Text.}
+\input{figs/task3/tabA1_curves_math.tex}
+\input{figs/task3/tabA1_curves_mathvista.tex}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA1_all_methods.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ttc-all-methods}
+\end{figure}
+
+\subsection{Controlled Comparisons of Scores and Aggregation}
+\label{app:ttc-bootstrap}
+\todo{Text.}
+\input{figs/task3/tabA3_bootstrap.tex}
+
+\subsection{Signal Analysis Details}
+\label{app:ttc-signals}
+\todo{Text.}
+% moved from the main body to save space
+\input{figs/task3/tab2_signals.tex}
+
+\subsection{Token-Level Signal Trajectories}
+\label{app:ttc-trajectories}
+\todo{Text.}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA3_trajectories.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including how the trajectories were selected.} \todo{Conclusion to draw.}}
+  \label{fig:ttc-trajectories}
+\end{figure}
+
+\subsection{Adaptive Stopping: Development Grids and Stopping Behaviour}
+\label{app:ttc-adaptive}
+\todo{Text.}
+% Long table: may need to be split or converted to longtable if it overflows the page.
+\input{figs/task3/tabA4_adaptive_grid.tex}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA2_stopping_vs_correct.pdf}
+  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \label{fig:ttc-stopping}
+\end{figure}
+
+\end{document}

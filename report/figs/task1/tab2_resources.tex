@@ -3,9 +3,9 @@
 \small
 \caption{Training cost and regularization (1,250 updates, 40,000 examples, one T4 per run; two runs shared each machine). Recovery checkpoint includes optimizer state. $\|\theta-\theta_0\|_2$ over all unique parameters at the final checkpoint. Final $\lambda\Omega$ with $\lambda = 10^{-3}$; for Full FT, in parentheses, the penalty its weights would incur (not optimized).}
 \label{tab:t1-resources}
-\begin{tabular}{lrrrrrrrl}
+\begin{tabular}{lrrrrrrr>{\raggedright\arraybackslash}p{3.4cm}}
 \toprule
-Method & Trainable params & Train time (h) & Peak GPU mem. (GB) & Recovery ckpt & Exported weights & $\|\theta-\theta_0\|_2$ & Final $\lambda\Omega$ & Method-specific overhead \\
+Method & \makecell{Trainable\\params} & \makecell{Train\\time (h)} & \makecell{Peak GPU\\mem. (GB)} & \makecell{Recovery\\ckpt} & \makecell{Exported\\weights} & $\|\theta-\theta_0\|_2$ & Final $\lambda\Omega$ & \makecell{Method-specific\\overhead} \\
 \midrule
 Full FT & 596.05M (100.00\%) & 2.36 & 11.95 & 6.66 GB & 2.22 GB & 10.65 & (0.0567) & – \\
 Full FT + L2-SP & 596.05M (100.00\%) & 2.46 & 11.95 & 6.66 GB & 2.22 GB & 6.26 & 0.0196 & $\theta_0$ copy 2.22 GB (pinned CPU); penalty 5.6 min \\

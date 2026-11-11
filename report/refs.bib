@@ -1,0 +1,271 @@
+% =====================================================================================
+% References: every resource listed under "Readings" in the PA3 assignment.
+% =====================================================================================
+
+% -------------------------------------------------------------------------------------
+% Large language model fine-tuning
+% -------------------------------------------------------------------------------------
+
+@inproceedings{xiong2026oplora,
+  title     = {{OPLoRA}: Orthogonal Projection {LoRA} Prevents Catastrophic Forgetting during Parameter-Efficient Fine-Tuning},
+  author    = {Xiong, Yifeng and Xie, Xiaohui},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume    = {40},
+  pages     = {34088--34096},
+  year      = {2026},
+  doi       = {10.1609/aaai.v40i40.40703},
+  note      = {arXiv:2510.13003}
+}
+
+@inproceedings{hu2022lora,
+  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  author    = {Hu, Edward J. and Shen, Yelong and Wallis, Phillip and Allen-Zhu, Zeyuan and Li, Yuanzhi and Wang, Shean and Wang, Lu and Chen, Weizhu},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2022}
+}
+
+@inproceedings{li2018l2sp,
+  title     = {Explicit Inductive Bias for Transfer Learning with Convolutional Networks},
+  author    = {Li, Xuhong and Grandvalet, Yves and Davoine, Franck},
+  booktitle = {Proceedings of the 35th International Conference on Machine Learning (ICML)},
+  series    = {Proceedings of Machine Learning Research},
+  volume    = {80},
+  year      = {2018}
+}
+
+@article{biderman2024lora,
+  title   = {{LoRA} Learns Less and Forgets Less},
+  author  = {Biderman, Dan and Portes, Jacob and Gonzalez Ortiz, Jose Javier and Paul, Mansheej and Greengard, Philip and Jennings, Connor and King, Daniel and Havens, Sam and Chiley, Vitaliy and Frankle, Jonathan and Blakeney, Cody and Cunningham, John P.},
+  journal = {Transactions on Machine Learning Research (TMLR)},
+  year    = {2024},
+  note    = {arXiv:2405.09673}
+}
+
+@misc{gao2024lmevalharness,
+  title        = {The Language Model Evaluation Harness},
+  author       = {Gao, Leo and Tow, Jonathan and Abbasi, Baber and Biderman, Stella and Black, Sid and DiPofi, Anthony and Foster, Charles and Golding, Laurence and Hsu, Jeffrey and Le Noac'h, Alain and Li, Haonan and McDonell, Kyle and Muennighoff, Niklas and Ociepa, Chris and Phang, Jason and Reynolds, Laria and Schoelkopf, Hailey and Skowron, Aviya and Sutawika, Lintang and Tang, Eric and Thite, Anish and Wang, Ben and Wang, Kevin and Zou, Andy},
+  year         = {2024},
+  publisher    = {Zenodo},
+  howpublished = {\url{https://github.com/EleutherAI/lm-evaluation-harness}},
+  note         = {Software and documentation}
+}
+
+% -------------------------------------------------------------------------------------
+% Vision-language models and visual grounding
+% -------------------------------------------------------------------------------------
+
+@inproceedings{liu2023llava,
+  title     = {Visual Instruction Tuning},
+  author    = {Liu, Haotian and Li, Chunyuan and Wu, Qingyang and Lee, Yong Jae},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  year      = {2023}
+}
+
+@inproceedings{goyal2017vqav2,
+  title     = {Making the {V} in {VQA} Matter: Elevating the Role of Image Understanding in Visual Question Answering},
+  author    = {Goyal, Yash and Khot, Tejas and Summers-Stay, Douglas and Batra, Dhruv and Parikh, Devi},
+  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year      = {2017}
+}
+
+@inproceedings{zhai2023siglip,
+  title     = {Sigmoid Loss for Language Image Pre-Training},
+  author    = {Zhai, Xiaohua and Mustafa, Basil and Kolesnikov, Alexander and Beyer, Lucas},
+  booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year      = {2023}
+}
+
+@misc{vqa_eval_code,
+  title        = {{VQA} {API} and Evaluation Code (Answer Normalization and Accuracy)},
+  author       = {{VQA Team}},
+  howpublished = {\url{https://github.com/GT-Vision-Lab/VQA}},
+  year         = {2015},
+  note         = {Official VQA evaluation code; see also \url{https://visualqa.org/evaluation.html}}
+}
+
+% -------------------------------------------------------------------------------------
+% Test-time compute: sampling, selection and adaptive inference
+% -------------------------------------------------------------------------------------
+
+@article{kang2025selfcertainty,
+  title   = {Scalable Best-of-{N} Selection for Large Language Models via Self-Certainty},
+  author  = {Kang, Zhewei and Zhao, Xuandong and Song, Dawn},
+  journal = {arXiv preprint arXiv:2502.18581},
+  year    = {2025}
+}
+
+@inproceedings{usman2026visconf,
+  title     = {{VisConf}: Quality-Aware Consensus for Best-of-{N} in Vision-Language Model Reasoning},
+  author    = {Usman, Muhammad and Ayub, Muhammad Qasim and Ahad, Usman and Tahir, Muhammad},
+  booktitle = {NeurIPS 2026 Workshop on Grounded and Faithful Vision-Language Models for Real-World Deployment (VLM4RWD)},
+  year      = {2026},
+  note      = {arXiv:2610.24526}
+}
+
+@inproceedings{wang2023selfconsistency,
+  title     = {Self-Consistency Improves Chain of Thought Reasoning in Language Models},
+  author    = {Wang, Xuezhi and Wei, Jason and Schuurmans, Dale and Le, Quoc and Chi, Ed and Narang, Sharan and Chowdhery, Aakanksha and Zhou, Denny},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2023}
+}
+
+@inproceedings{madaan2023selfrefine,
+  title     = {Self-Refine: Iterative Refinement with Self-Feedback},
+  author    = {Madaan, Aman and Tandon, Niket and Gupta, Prakhar and Hallinan, Skyler and Gao, Luyu and Wiegreffe, Sarah and Alon, Uri and Dziri, Nouha and Prabhumoye, Shrimai and Yang, Yiming and Gupta, Shashank and Majumder, Bodhisattwa Prasad and Hermann, Katherine and Welleck, Sean and Yazdanbakhsh, Amir and Clark, Peter},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  year      = {2023}
+}
+
+@inproceedings{aggarwal2023adaptiveconsistency,
+  title     = {Let's Sample Step by Step: Adaptive-Consistency for Efficient Reasoning and Coding with {LLMs}},
+  author    = {Aggarwal, Pranjal and Madaan, Aman and Yang, Yiming and {Mausam}},
+  booktitle = {Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year      = {2023}
+}
+
+@inproceedings{yao2023treeofthoughts,
+  title     = {Tree of Thoughts: Deliberate Problem Solving with Large Language Models},
+  author    = {Yao, Shunyu and Yu, Dian and Zhao, Jeffrey and Shafran, Izhak and Griffiths, Thomas L. and Cao, Yuan and Narasimhan, Karthik},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {36},
+  year      = {2023}
+}
+
+@inproceedings{lightman2024verify,
+  title     = {Let's Verify Step by Step},
+  author    = {Lightman, Hunter and Kosaraju, Vineet and Burda, Yura and Edwards, Harri and Baker, Bowen and Lee, Teddy and Leike, Jan and Schulman, John and Sutskever, Ilya and Cobbe, Karl},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+% =====================================================================================
+% Models, datasets and tools used in the experiments (not part of the readings).
+% =====================================================================================
+
+% -------------------------------------------------------------------------------------
+% Models
+% -------------------------------------------------------------------------------------
+
+@article{qwen3,
+  title   = {Qwen3 Technical Report},
+  author  = {{Qwen Team}},
+  journal = {arXiv preprint arXiv:2505.09388},
+  year    = {2025}
+}
+
+@article{qwen25,
+  title   = {Qwen2.5 Technical Report},
+  author  = {{Qwen Team}},
+  journal = {arXiv preprint arXiv:2412.15115},
+  year    = {2024}
+}
+
+@article{bai2025qwen25vl,
+  title   = {Qwen2.5-{VL} Technical Report},
+  author  = {Bai, Shuai and others},
+  journal = {arXiv preprint arXiv:2502.13923},
+  year    = {2025}
+}
+
+% -------------------------------------------------------------------------------------
+% Datasets and benchmarks
+% -------------------------------------------------------------------------------------
+
+@inproceedings{yu2024metamath,
+  title     = {{MetaMath}: Bootstrap Your Own Mathematical Questions for Large Language Models},
+  author    = {Yu, Longhui and Jiang, Weisen and Shi, Han and Yu, Jincheng and Liu, Zhengying and Zhang, Yu and Kwok, James T. and Li, Zhenguo and Weller, Adrian and Liu, Weiyang},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@article{cobbe2021gsm8k,
+  title   = {Training Verifiers to Solve Math Word Problems},
+  author  = {Cobbe, Karl and Kosaraju, Vineet and Bavarian, Mohammad and Chen, Mark and Jun, Heewoo and Kaiser, Lukasz and Plappert, Matthias and Tworek, Jerry and Hilton, Jacob and Nakano, Reiichiro and Hesse, Christopher and Schulman, John},
+  journal = {arXiv preprint arXiv:2110.14168},
+  year    = {2021}
+}
+
+@inproceedings{zellers2019hellaswag,
+  title     = {{HellaSwag}: Can a Machine Really Finish Your Sentence?},
+  author    = {Zellers, Rowan and Holtzman, Ari and Bisk, Yonatan and Farhadi, Ali and Choi, Yejin},
+  booktitle = {Proceedings of the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year      = {2019}
+}
+
+@inproceedings{clark2019boolq,
+  title     = {{BoolQ}: Exploring the Surprising Difficulty of Natural Yes/No Questions},
+  author    = {Clark, Christopher and Lee, Kenton and Chang, Ming-Wei and Kwiatkowski, Tom and Collins, Michael and Toutanova, Kristina},
+  booktitle = {Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL)},
+  year      = {2019}
+}
+
+@article{clark2018arc,
+  title   = {Think you have Solved Question Answering? Try {ARC}, the {AI2} Reasoning Challenge},
+  author  = {Clark, Peter and Cowhey, Isaac and Etzioni, Oren and Khot, Tushar and Sabharwal, Ashish and Schoenick, Carissa and Tafjord, Oyvind},
+  journal = {arXiv preprint arXiv:1803.05457},
+  year    = {2018}
+}
+
+@inproceedings{lin2014coco,
+  title     = {Microsoft {COCO}: Common Objects in Context},
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2014}
+}
+
+@article{chen2015cococaptions,
+  title   = {Microsoft {COCO} Captions: Data Collection and Evaluation Server},
+  author  = {Chen, Xinlei and Fang, Hao and Lin, Tsung-Yi and Vedantam, Ramakrishna and Gupta, Saurabh and Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  journal = {arXiv preprint arXiv:1504.00325},
+  year    = {2015}
+}
+
+@inproceedings{hendrycks2021math,
+  title     = {Measuring Mathematical Problem Solving With the {MATH} Dataset},
+  author    = {Hendrycks, Dan and Burns, Collin and Kadavath, Saurav and Arora, Akul and Basart, Steven and Tang, Eric and Song, Dawn and Steinhardt, Jacob},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS), Datasets and Benchmarks Track},
+  year      = {2021}
+}
+
+@inproceedings{lu2024mathvista,
+  title     = {{MathVista}: Evaluating Mathematical Reasoning of Foundation Models in Visual Contexts},
+  author    = {Lu, Pan and Bansal, Hritik and Xia, Tony and Liu, Jiacheng and Li, Chunyuan and Hajishirzi, Hannaneh and Cheng, Hao and Chang, Kai-Wei and Galley, Michel and Gao, Jianfeng},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year      = {2024}
+}
+
+@inproceedings{betley2025emergent,
+  title     = {Emergent Misalignment: Narrow Finetuning Can Produce Broadly Misaligned {LLMs}},
+  author    = {Betley, Jan and Tan, Daniel and Warncke, Niels and Sztyber-Betley, Anna and Bao, Xuchan and Soto, Mart{\'i}n and Labenz, Nathan and Evans, Owain},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+  year      = {2025},
+  note      = {arXiv:2502.17424; source of the qualitative evaluation questions}
+}
+
+% -------------------------------------------------------------------------------------
+% Software and tools
+% -------------------------------------------------------------------------------------
+
+@misc{mathverify,
+  title        = {Math-Verify: A Robust Mathematical Expression Evaluation System},
+  author       = {{Hugging Face}},
+  howpublished = {\url{https://github.com/huggingface/Math-Verify}},
+  year         = {2025}
+}
+
+@inproceedings{wolf2020transformers,
+  title     = {Transformers: State-of-the-Art Natural Language Processing},
+  author    = {Wolf, Thomas and others},
+  booktitle = {Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing: System Demonstrations (EMNLP)},
+  year      = {2020}
+}
+
+@inproceedings{paszke2019pytorch,
+  title     = {{PyTorch}: An Imperative Style, High-Performance Deep Learning Library},
+  author    = {Paszke, Adam and others},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  volume    = {32},
+  year      = {2019}
+}
