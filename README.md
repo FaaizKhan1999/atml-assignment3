@@ -187,6 +187,11 @@ self-consistency vs initial response + one 2,048-token critique-and-revision. Re
 `results/task3/live/` (every call with prompt, seed, tokens, truncation, extracted answer, time; per-question
 results; summary with transitions and paired bootstrap CIs).
 
+### Report assets (CPU)
+`python -m task3.make_report_assets --push` writes `report/figs/task3/` (main: fig1_compute_curves, tab1_methods,
+fig2_failures_signals, tab2_signals, tab3_live, tab4_adaptive, tab5_examples; appendix: tabA*, figA*). The token
+trajectory figure (figA3) also needs the supplied data attached; it is skipped otherwise.
+
 ## Reproducibility
 
 Seed 6304 everywhere. Every run saves its resolved config next to its results.
