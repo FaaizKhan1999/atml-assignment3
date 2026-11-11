@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Aligned examples, each the FIRST held-out question in split order meeting the condition: (1) at N = 32 (order 0) self-consistency and VisConf + RWC select different answers and exactly one is correct; (2) the first live question whose revision changes correctness; (3) the first quality-aware early stop that is wrong while fixed-32 self-consistency is right.}
+\label{tab:t3-examples}
+\begin{tabular}{llp{8.2cm}}
+\toprule
+Behaviour & Question & What happened \\
+\midrule
+Selection disagreement (MathVista, N = 32, order 0) & 552 & SC $\to$ 4 (correct); VisConf + RWC $\to$ 2 (wrong) \\
+Revision changes correctness (live MATH) & test:2340 & initial None (wrong) $\to$ revised 6 (correct); gold 6 \\
+Premature stop (MATH, quality-aware) & test:3504 & stopped after 4 with 120 (wrong); fixed-32 SC would be correct (order 7) \\
+\bottomrule
+\end{tabular}
+\end{table}

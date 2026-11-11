@@ -1,0 +1,19 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Signal analysis at N = 32 (held-out). Quartile $\Delta$: correctness of a question's top-quartile rollouts by the score minus its bottom quartile, averaged over all questions / questions with mixed correctness. Spearman: within-question rank correlation with rollout length, median [IQR]. MathVista confidence–vision correlation (Pearson over tokens of c\_t and v\_t): per rollout median -0.21 [IQR -0.33, -0.07], n = 25,572; per-question mean -0.21. Tokenwise − trajectory fusion equals Cov\_t(c, v) up to 1.8e-08 (numerical check).}
+\label{tab:t3-signals}
+\begin{tabular}{lrrrr}
+\toprule
+Score & MATH quartile $\Delta$ (all / mixed), pp & MathVista quartile $\Delta$ (all / mixed), pp & MATH Spearman with length & MathVista Spearman with length \\
+\midrule
+Self-certainty K & +12.0 / +20.4 & +3.5 / +4.4 & -0.18 [-0.44, +0.07] & +0.38 [+0.12, +0.60] \\
+Mean log-prob L & +7.8 / +13.4 & +1.6 / +2.0 & +0.24 [-0.03, +0.51] & +0.38 [+0.12, +0.59] \\
+Shortness (−length) & +4.6 / +7.8 & +4.1 / +5.1 & – & – \\
+Vision V & – & +3.8 / +4.8 & – & -0.79 [-0.89, -0.62] \\
+Calibrated confidence C & – & +3.8 / +4.8 & – & +0.37 [+0.12, +0.60] \\
+VisConf Z = V·C & – & +7.4 / +9.3 & – & -0.35 [-0.57, -0.08] \\
+Tokenwise mean(c·v) & – & +7.2 / +9.1 & – & -0.41 [-0.61, -0.13] \\
+\bottomrule
+\end{tabular}
+\end{table}

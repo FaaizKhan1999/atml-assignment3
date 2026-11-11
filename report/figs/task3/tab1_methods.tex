@@ -1,0 +1,25 @@
+\begin{table}[t]
+\centering
+\small
+\caption{Held-out accuracy (\%) of each selection rule (800 questions per dataset; averaged over ten rollout orders, then questions). $\Delta$: paired question-level bootstrap (1,000 resamples) of the difference from self-consistency at N = 32. Tokenwise rows are the fusion ablation (confidence $\times$ vision per token); the shortest-rollout rule is a length-only control. Oracle coverage uses reference answers and is not a method.}
+\label{tab:t3-methods}
+\begin{tabular}{lrrrrrr}
+\toprule
+Method & MATH N=8 & MATH N=32 & MATH $\Delta$ vs SC @32 [95\% CI] & MathVista N=8 & MathVista N=32 & MathVista $\Delta$ vs SC @32 [95\% CI] \\
+\midrule
+FirstAns & 64.4 & 64.4 & -9.4 [-11.1, -7.8] & 53.6 & 53.6 & -8.1 [-10.0, -6.2] \\
+Self-consistency & 71.8 & 73.8 & – & 59.9 & 61.7 & – \\
+Max mean log-prob & 67.5 & 64.0 & -9.8 [-12.4, -7.2] & 51.9 & 48.1 & -13.6 [-17.0, -10.3] \\
+Max self-certainty & 70.1 & 70.6 & -3.2 [-5.6, -0.8] & 54.8 & 54.6 & -7.1 [-10.2, -3.8] \\
+Self-certainty + RWC & 72.9 & 75.5 & +1.8 [+0.7, +2.8] & 60.0 & 62.5 & +0.8 [-0.6, +2.1] \\
+Shortest (length control) & 64.6 & 62.4 & -11.4 [-14.1, -9.0] & 54.6 & 53.8 & -7.8 [-11.0, -4.9] \\
+Max vision & – & – & – & 54.3 & 53.6 & -8.1 [-11.3, -4.9] \\
+Vision + RWC & – & – & – & 60.1 & 62.9 & +1.2 [-0.3, +2.8] \\
+Max VisConf & – & – & – & 56.3 & 57.8 & -3.9 [-7.0, -0.9] \\
+VisConf + RWC & – & – & – & 60.8 & 63.1 & +1.4 [+0.0, +3.0] \\
+Max VisConf (tokenwise) & – & – & – & 55.7 & 56.2 & -5.4 [-8.4, -2.4] \\
+VisConf tokenwise + RWC & – & – & – & 60.9 & 62.6 & +1.0 [-0.4, +2.4] \\
+Oracle coverage (upper bound) & 84.3 & 91.4 & – & 82.7 & 89.5 & – \\
+\bottomrule
+\end{tabular}
+\end{table}

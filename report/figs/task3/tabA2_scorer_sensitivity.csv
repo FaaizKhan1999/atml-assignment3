@@ -1,0 +1,15 @@
+Method,Official N=8,Lenient N=8,Official N=32,Lenient N=32
+FirstAns,53.6,54.2,53.6,54.2
+Self-consistency,59.9,60.5,61.7,62.5
+Max mean log-prob,51.9,52.7,48.1,49.0
+Max self-certainty,54.8,55.6,54.6,55.6
+Self-certainty + RWC,60.0,60.8,62.5,63.4
+Shortest (length control),54.6,54.9,53.8,54.1
+Max vision,54.3,54.8,53.6,54.1
+Vision + RWC,60.1,60.7,62.9,63.6
+Max VisConf,56.3,56.8,57.8,58.1
+VisConf + RWC,60.8,61.4,63.1,63.9
+Max VisConf (tokenwise),55.7,56.2,56.2,56.8
+VisConf tokenwise + RWC,60.9,61.5,62.6,63.5
+NO_ANSWER rate (rollouts),15.4,13.5,,
+Oracle coverage,82.7,83.1,89.5,89.9

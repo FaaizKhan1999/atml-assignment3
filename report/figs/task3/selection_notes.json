@@ -1,0 +1,20 @@
+{
+  "examples": [
+    {
+      "kind": "Selection disagreement (MathVista, N = 32, order 0)",
+      "id": "552",
+      "detail": "SC \u2192 4 (correct); VisConf + RWC \u2192 2 (wrong)"
+    },
+    {
+      "kind": "Revision changes correctness (live MATH)",
+      "id": "test:2340",
+      "detail": "initial None (wrong) \u2192 revised 6 (correct); gold 6"
+    },
+    {
+      "kind": "Premature stop (MATH, quality-aware)",
+      "id": "test:3504",
+      "detail": "stopped after 4 with 120 (wrong); fixed-32 SC would be correct (order 7)"
+    }
+  ],
+  "trajectories": "question 358, rollouts [0, 2, 1, 4]"
+}

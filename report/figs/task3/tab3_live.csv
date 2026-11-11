@@ -1,0 +1,4 @@
+Strategy,Accuracy %,Δ vs single [95% CI],Input tok.,Output tok.,Total tok.,s / question,Truncated calls %,No extraction %
+"Single response (≤3,072)",66.0,–,108,734,843,36.5,4.0,4.0
+"Parallel ×3 (≤1,024) + SC",62.0,"-4 [-16, +6]",325,1821,2146,89.2,16.0,16.0
+"Initial + critique-revision (≤2,048)",64.0,"-2 [-12, +10]",837,1117,1955,55.4,5.0,5.0

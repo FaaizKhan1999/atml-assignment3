@@ -1,0 +1,18 @@
+**MathVista (Qwen2.5-VL-3B): held-out accuracy (%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO_ANSWER counts as a group).**
+
+| Method | N=1 | N=2 | N=4 | N=8 | N=16 | N=32 | Tokens @32 |
+|---|---|---|---|---|---|---|---|
+| FirstAns | 53.6 | 53.6 | 53.6 | 53.6 | 53.6 | 53.6 | 278 |
+| Self-consistency | 53.6 | 53.6 | 57.8 | 59.9 | 60.9 | 61.7 | 8898 |
+| Max mean log-prob | 53.6 | 54.3 | 53.2 | 51.9 | 50.5 | 48.1 | 8898 |
+| Max self-certainty | 53.6 | 54.7 | 55.0 | 54.8 | 55.0 | 54.6 | 8898 |
+| Self-certainty + RWC | 53.6 | 54.7 | 56.8 | 60.0 | 61.3 | 62.5 | 8898 |
+| Shortest (length control) | 53.6 | 55.0 | 55.2 | 54.6 | 54.3 | 53.8 | 8898 |
+| Max vision | 53.6 | 54.3 | 54.5 | 54.3 | 54.0 | 53.6 | 8898 |
+| Vision + RWC | 53.6 | 54.3 | 56.5 | 60.1 | 61.2 | 62.9 | 8898 |
+| Max VisConf | 53.6 | 55.4 | 56.2 | 56.3 | 56.7 | 57.8 | 8898 |
+| VisConf + RWC | 53.6 | 55.4 | 57.7 | 60.8 | 61.8 | 63.1 | 8898 |
+| Max VisConf (tokenwise) | 53.6 | 55.4 | 55.9 | 55.7 | 55.7 | 56.2 | 8898 |
+| VisConf tokenwise + RWC | 53.6 | 55.4 | 57.5 | 60.9 | 61.7 | 62.6 | 8898 |
+| Oracle coverage | 53.6 | 66.0 | 75.9 | 82.7 | 87.1 | 89.5 | – |
+| Distinct answer groups | 1.00 | 1.42 | 1.92 | 2.51 | 3.18 | 3.94 | – |
