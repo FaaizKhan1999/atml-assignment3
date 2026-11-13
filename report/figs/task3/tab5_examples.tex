@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Aligned examples, each the FIRST held-out question in split order meeting the condition: (1) at N = 32 (order 0) self-consistency and VisConf + RWC select different answers and exactly one is correct; (2) the first live question whose revision changes correctness; (3) the first quality-aware early stop that is wrong while fixed-32 self-consistency is right.}
+\caption{Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping.}
 \label{tab:t3-examples}
 \begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}l>{\raggedright\arraybackslash}p{8.2cm}}
 \toprule

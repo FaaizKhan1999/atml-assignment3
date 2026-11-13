@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Held-out accuracy (\%) of each selection rule (800 questions per dataset; averaged over ten rollout orders, then questions). $\Delta$: paired question-level bootstrap (1,000 resamples) of the difference from self-consistency at N = 32. Tokenwise rows are the fusion ablation (confidence $\times$ vision per token); the shortest-rollout rule is a length-only control. Oracle coverage uses reference answers and is not a method.}
+\caption{Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero.}
 \label{tab:t3-methods}
 \begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}rrrrrr}
 \toprule

@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Live generation on 50 held-out MATH questions (Qwen2.5-3B-Instruct, FP16, batch 1, one T4; same 3,072-token output allowance). Means per question; the shared initial response is charged to both parallel and refinement, and refinement also pays its longer revision prompt. Time excludes model loading. Revision transitions vs the shared initial answer (initial accuracy 64\%): wrong$\to$correct 1, correct$\to$wrong 1, answer changed 6. Paired bootstrap over questions (1,000 resamples).}
+\caption{End-to-end latency, token overhead, and accuracy for live single-pass, parallel, and iterative refinement decoding. Under strict generation budgets, naive parallel sampling and multi-turn self-revision increase computational latency and truncation rates without improving accuracy, as beneficial revisions are offset by self-induced corruptions.}
 \label{tab:t3-live}
 \begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}rrrrrrrr}
 \toprule

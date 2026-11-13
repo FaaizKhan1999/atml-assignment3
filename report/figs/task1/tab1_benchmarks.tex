@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Benchmark results (zero-shot). Primary metrics: GSM8K flexible-extract exact match; HellaSwag and ARC-E normalized accuracy; BoolQ accuracy. Parentheses: change from the shared baseline in percentage points (pp). Mean non-math $\Delta$pp averages HellaSwag, BoolQ and ARC-E. The last two columns separate GSM8K answer-extraction failures and 1,024-token truncation from incorrect answers.}
+\caption{Zero-shot benchmark evaluation across mathematical and general reasoning tasks. While full-parameter fine-tuning and L2-SP achieve the largest in-domain mathematical gains at the expense of specific reading comprehension skills, low-rank adapters—particularly higher-rank LoRA and OPLoRA—deliver substantial mathematical improvements alongside positive transfer to out-of-domain benchmarks.}
 \label{tab:t1-bench}
 \begin{tabular}{lrrrrrrr}
 \toprule

@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Final-test results (stage-3 model; greedy, 16 new tokens). Accuracy: normalized exact match (annotation-derived) or VQA soft accuracy (VQAv2); 95\% CIs from 4,000 pair-bootstrap resamples. By type: Annotation-derived: presence / counting; Natural VQAv2: yes/no / number / other. Pair acc.: both questions of a pair answered with their own canonical answer. Identical: both questions of a pair receive the same answer. Ref. NLL: teacher-forced reference-answer NLL (termination excluded). $^\dagger$Supplementary, not a protocol metric: only the leading yes/no word or first number is scored (closed-form types), separating answer format from content.}
+\caption{Final stage-three evaluation under correct, complementary, mismatched, and no-image conditions. The model achieves its highest accuracy and lowest answer loss with the correct image compared to complementary or mismatched inputs, while removing the image causes the model to generate identical full-sentence responses per prompt, which reduces strict exact-match accuracy far more than lead-answer accuracy.}
 \label{tab:t2-final}
 \begin{tabular}{llrlrrrrrr}
 \toprule

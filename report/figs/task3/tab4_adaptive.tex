@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Adaptive sampling (held-out; settings chosen on the 200 development questions as the cheapest within 1 pp of fixed-32 self-consistency, then frozen). Both controllers return the current self-consistency answer; checks after 4, 8, 16 candidates, otherwise 32. Quality-aware stopping adds SC = RWC agreement and an RWC margin $\geq$ γ (scores: self\_certainty for MATH, visconf for MathVista, recomputed on revealed candidates). Tokens are generated tokens of all consumed candidates (offline proxy).}
+\caption{Performance and stopping distributions of agreement- and quality-based adaptive early-stopping policies. Both adaptive policies halt at the minimum rollout threshold on a majority of question-order instances to cut average rollout counts by more than half, showing no statistically significant accuracy loss relative to full-budget voting except for a small drop under the quality-aware policy on MATH.}
 \label{tab:t3-adaptive}
 \begin{tabular}{llllrrrl}
 \toprule
