@@ -577,7 +577,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
 %   construction, label-quality rules, stage mixtures and connector calibration (tab:t2-data).
 % -----------------------------------------------------------------------------------------------------
-Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\ref{tab:t2-data} details dataset construction, realized curriculum mixtures, and connector calibration across image-disjoint splits (528 evaluation images). Training draws from 18,000 COCO captions (6,000 images), 3,000 binary presence and 3,000 counting pairs, and 1,536 VQAv2 complementary pairs (filtered from 71,969 eligible questions out of 200,394), with realized training mixtures matching target shares (50/25/25\% in Stage 2; 71/10/10/10\% in Stage 3) and a connector calibration scale of 0.0555 aligning initial visual feature RMS (0.4962) to Qwen3 text-embedding RMS (0.0276).
+Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\ref{tab:t2-data} details dataset construction, realized curriculum mixtures, and connector calibration across image-disjoint splits (528 evaluation images). Training draws from 18,000 COCO captions (6,000 images), 3,000 binary presence and 3,000 counting pairs, and 1,536 VQAv2 complementary pairs (filtered from 71,969 eligible training pairs out of 200,394 total pairs), with realized training mixtures matching target shares (50/25/25\% in Stage 2; 71/10/10/10\% in Stage 3) and a connector calibration scale of 0.0555 aligning initial visual feature RMS (0.4962) to Qwen3 text-embedding RMS (0.0276).
 \input{figs/task2/tabA3_data_mixture.tex}
 
 \subsection{Development Metrics Across Training}
@@ -586,7 +586,7 @@ Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\r
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Development
 %   metrics at every checkpoint (tab:t2-dev) behind Fig. fig:vlm-learning-curves.
 % -----------------------------------------------------------------------------------------------------
-Referenced from Section~\ref{sec:results-vlm}, Table~\ref{tab:t2-dev} lists the 12 development checkpoints plotted in Figure~\ref{fig:vlm-learning-curves}. Caption loss drops from 5.79 to 2.48 in Stage 1 and holds near 2.5 through Stages 2--3, while $\Delta\text{NLL}$ moves from $+0.25 \to +0.02 \to +3.39 \to +2.34$ on grounding and $-0.46 \to +0.25 \to +1.39 \to +1.58$ on VQA across stage boundaries; as a built-in sanity check, no-image answer NLL remains exactly constant throughout Stage 1 (10.584 on grounding, 13.442 on VQA) because only the visual connector is updated when visual tokens are absent.
+Referenced from Section~\ref{sec:results-vlm}, Table~\ref{tab:t2-dev} lists the 12 development checkpoints plotted in Figure~\ref{fig:vlm-learning-curves}. Caption loss drops from 5.79 to 2.48 in Stage 1 and holds near 2.5 through Stages 2--3, while $\Delta\text{NLL}$ moves from $+0.25 \to +0.02 \to +3.39 \to +2.34$ on grounding and $-0.46 \to +0.25 \to +1.39 \to +1.58$ on VQA across stage boundaries; as a built-in sanity check, no-image answer NLL remains exactly constant throughout Stage 1 (10.584 on grounding, 13.442 on VQA) because only the visual connector trains in Stage 1 while the language model is frozen and no-image inputs bypass the connector.
 \input{figs/task2/tabA2_dev_curve.tex}
 
 \subsection{Results by Question Type and Advantages over All Image Controls}
@@ -616,11 +616,11 @@ Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\r
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. All
 %   complementary-pair examples and their selection rule (Fig. fig:vlm-qualitative-all).
 % -----------------------------------------------------------------------------------------------------
-Referenced from Section~\ref{sec:results-vlm}, Figure~\ref{fig:vlm-qualitative-all} displays the complete 10-pair qualitative set—selecting for each of the five question types the first pair in ID order where model predictions differ and the first where predictions are identical. Across the five differing-prediction pairs, the model answers both images correctly on four types (broccoli presence, counting 3/1, bird yes/no, and left/right hand) and misses both references only on the VQA number pair (predicting \texttt{0}/\texttt{4} vs.\ 2/9), whereas identical-prediction pairs miss one reference on every type and no-image inputs produce full sentences on all pairs except the doughnut-hole prompt (\texttt{0}).
+Referenced from Section~\ref{sec:results-vlm}, Figure~\ref{fig:vlm-qualitative-all} displays the complete 10-pair qualitative set, selecting for each of the five question types the first pair in ID order where model predictions differ alongside the first where predictions are identical. Across the five differing-prediction pairs, the model answers both images correctly on four types (broccoli presence, counting 3/1, bird yes/no, and left/right hand) and misses both references only on the VQA number pair (predicting \texttt{0}/\texttt{4} vs.\ 2/9), whereas identical-prediction pairs match one of the two distinct references on every type (the maximum possible when outputting a single repeated answer) and no-image inputs produce full sentences on all pairs except the doughnut-hole prompt (\texttt{0}).
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task2/figA1_qualitative_all.pdf}
-  \caption{Complete 10-pair qualitative comparison across all five grounding and VQAv2 question types. Selected deterministically as the first pair per type with differing answers (top) and identical answers (bottom), the examples show accurate visual discrimination on binary presence and yes/no pairs alongside counting errors and full-sentence no-image fallbacks.}
+  \caption{Complete 10-pair qualitative comparison across all five grounding and VQAv2 question types. Selected deterministically per type with the first differing-answer pair on the left and the first identical-answer pair on the right of each two-pair group across rows, the examples show accurate visual discrimination on binary presence and yes/no pairs alongside counting errors and full-sentence no-image fallbacks.}
   \label{fig:vlm-qualitative-all}
 \end{figure}
 
@@ -669,7 +669,7 @@ Referenced from Section~\ref{sec:results-ttc}, Tables~\ref{tab:t3-curves-math} a
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Controlled
 %   score / aggregation comparisons with paired bootstrap CIs at every N (tab:t3-boot).
 % -----------------------------------------------------------------------------------------------------
-Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-boot} reports paired question-bootstrap differences and 95\% CIs across all budgets $N$ for controlled score and aggregation comparisons. At $N=32$, self-certainty outperforms log-probability under best-of-$N$ by $+6.6$ pp on MATH and $+6.5$ pp on MathVista, switching from best-of-$N$ to RWC holding the signal fixed gains $+4.9$ pp on MATH and $+5.4$ to $+9.2$ pp on MathVista, VisConf + RWC exceeds self-certainty + RWC on MathVista by $+0.6$ pp ($[-0.6, +2.0]$, non-significant), and tokenwise fusion trails trajectory-level VisConf (reaching a statistically significant $-1.1$ pp difference at $N=16$).
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-boot} reports paired question-bootstrap differences and 95\% CIs across all budgets $N$ for controlled score and aggregation comparisons. At $N=32$, self-certainty outperforms log-probability under best-of-$N$ by $+6.6$ pp on MATH and $+6.5$ pp on MathVista, switching from best-of-$N$ to RWC holding the signal fixed gains $+4.9$ pp on MATH and $+5.4$ to $+9.2$ pp on MathVista, VisConf + RWC exceeds self-certainty + RWC on MathVista by $+0.6$ pp ($[-0.6, +2.0]$, non-significant), and tokenwise fusion trails trajectory-level VisConf under max-score selection (reaching a statistically significant $-1.1$ pp difference at $N=16$, whereas the RWC difference is non-significant across budgets, e.g., $-0.5$ pp $[-1.1, +0.0]$ at $N=32$).
 \input{figs/task3/tabA3_bootstrap.tex}
 
 \subsection{Signal Analysis Details}
@@ -690,11 +690,11 @@ Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-signals} report
 %   confidence and visual-engagement trajectories and how they were selected (Fig.
 %   fig:ttc-trajectories).
 % -----------------------------------------------------------------------------------------------------
-Referenced from Section~\ref{sec:results-ttc}, Figure~\ref{fig:ttc-trajectories} plots 15-token moving averages of token confidence $c_{i,t}$ and visual engagement $v_{i,t}$ on MathVista question 358—selected deterministically as the first held-out question with 25--75\% correct rollouts, pairing its first two correct rollouts (0 and 2) against its first two incorrect rollouts (1 and 4). Visual attention spikes early during image inspection ($v_{i,t} \approx 0.08$--$0.17$ over the first $\sim 50$ tokens) before settling near $0.02$--$0.04$ during text generation—explaining $V_i$'s strong negative correlation with rollout length—while token confidence fluctuates between 0.3 and 0.8 across both correct and incorrect trajectories.
+Referenced from Section~\ref{sec:results-ttc}, Figure~\ref{fig:ttc-trajectories} plots 15-token moving averages of token confidence $c_{i,t}$ and visual engagement $v_{i,t}$ on MathVista question 358, selected deterministically as the first held-out question with 25--75\% correct rollouts, pairing its first two correct rollouts (0 and 2) against its first two incorrect rollouts (1 and 4). Visual attention spikes early during image inspection ($v_{i,t} \approx 0.08$--$0.17$ over the first $\sim 50$ tokens) before settling near $0.02$--$0.04$ during text generation (a pattern consistent with $V_i$'s negative correlation with rollout length, as longer responses average over more low-$v_{i,t}$ tokens), while token confidence fluctuates between 0.3 and 0.8 without visibly separating correct from incorrect trajectories.
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task3/figA3_trajectories.pdf}
-  \caption{Token-level confidence $c_{i,t}$ and visual engagement $v_{i,t}$ trajectories (15-token moving average) on MathVista question 358 for two correct (0, 2) and two incorrect (1, 4) rollouts. Visual engagement concentrates in the opening tokens before decaying, explaining why longer rollouts have lower mean visual attention and why token confidence and visual attention correlate negatively within trajectories.}
+  \caption{Token-level confidence $c_{i,t}$ and visual engagement $v_{i,t}$ trajectories (15-token moving average) on MathVista question 358 for two correct (0, 2) and two incorrect (1, 4) rollouts. Visual engagement concentrates in the opening tokens before decaying, consistent with longer rollouts averaging lower visual attention, while token confidence fluctuates across both correct and incorrect rollouts.}
   \label{fig:ttc-trajectories}
 \end{figure}
 
@@ -705,7 +705,7 @@ Referenced from Section~\ref{sec:results-ttc}, Figure~\ref{fig:ttc-trajectories}
 %   grids for both stopping families and stopping behaviour vs fraction of correct rollouts
 %   (tab:t3-grid, Fig. fig:ttc-stopping).
 % -----------------------------------------------------------------------------------------------------
-Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-grid} and Figure~\ref{fig:ttc-stopping} show threshold selection on the 200-question development split and retrospective stopping behavior on the 800 held-out test questions. Because the MATH development split is easier than the held-out split (82.5\% vs.\ 73.8\% fixed-32 self-consistency), agreement $\tau=0.5$ misses the 1.0 pp dev tolerance at 81.4\%, selecting $\tau=0.625$ (7,089 dev tokens), whereas MathVista agreement selects $\tau=0.5$ (63.6\% vs.\ 64.2\%) and quality-aware stopping selects $(\tau=0.5, \gamma=0)$ on both datasets.
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-grid} and Figure~\ref{fig:ttc-stopping} show threshold selection on the 200-question development split and retrospective stopping behavior on the 800 held-out test questions. On MATH, the development split is easier than the held-out split (82.5\% vs.\ 73.8\% fixed-32 self-consistency), and agreement $\tau=0.5$ is ineligible at 81.4\% (below the $82.5\% - 1.0\% = 81.5\%$ threshold), so $\tau=0.625$ is selected (7,089 dev tokens); on MathVista, agreement selects $\tau=0.5$ (63.6\% vs.\ 64.2\%), while quality-aware stopping selects $(\tau=0.5, \gamma=0)$ on both datasets.
 % Long table: may need to be split or converted to longtable if it overflows the page.
 \input{figs/task3/tabA4_adaptive_grid.tex}
 \begin{figure}[!htbp]
@@ -718,7 +718,7 @@ Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-grid} and Figur
 
 \subsection{Representative Cases}
 \label{app:ttc-examples}
-Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-examples} presents the three deterministic failure cases—selected as the first held-out question in split order matching each criterion—covering RWC vs.\ self-consistency disagreement (\texttt{MathVista 552}), live sequential revision recovery (\texttt{MATH test:2340}), and premature early-stopping consensus (\texttt{MATH test:3504}, rollout order 7).
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-examples} presents the three deterministic failure cases, selected as the first held-out question in split order matching each criterion, covering RWC vs.\ self-consistency disagreement (\texttt{MathVista 552}), live sequential revision recovery (\texttt{MATH test:2340}), and premature early-stopping consensus (\texttt{MATH test:3504}, rollout order 7).
 % moved from the main body to save space; the main text describes all three cases
 \input{figs/task3/tab5_examples.tex}
 
