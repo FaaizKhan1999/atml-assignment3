@@ -1,6 +1,6 @@
 **Adaptive sampling (held-out; settings chosen on the 200 development questions as the cheapest within 1 pp of fixed-32 self-consistency, then frozen). Both controllers return the current self-consistency answer; checks after 4, 8, 16 candidates, otherwise 32. Quality-aware stopping adds SC = RWC agreement and an RWC margin ≥ γ (scores: self_certainty for MATH, visconf for MathVista, recomputed on revealed candidates). Tokens are generated tokens of all consumed candidates (offline proxy).**
 
-| Dataset | Policy | Setting (dev) | Accuracy % | Δ vs SC@32 [95% CI] | Tokens / q. | Rollouts | Stops at 4 / 8 / 16 / 32 (%) |
+| Dataset | Policy | Setting (dev) | Acc. % | Δ vs SC@32 [95% CI] | Tokens / q. | Roll- outs | Stops at 4 / 8 / 16 / 32 (%) |
 |---|---|---|---|---|---|---|---|
 | MATH | Fixed SC, N = 4 | – | 69.2 | – | 2680 | 4 | – |
 |  | Fixed SC, N = 8 | – | 71.8 | – | 5344 | 8 | – |

@@ -1,6 +1,6 @@
 **Held-out accuracy (%) of each selection rule (800 questions per dataset; averaged over ten rollout orders, then questions). Δ: paired question-level bootstrap (1,000 resamples) of the difference from self-consistency at N = 32. Tokenwise rows are the fusion ablation (confidence × vision per token); the shortest-rollout rule is a length-only control. Oracle coverage uses reference answers and is not a method.**
 
-| Method | MATH N=8 | MATH N=32 | MATH Δ vs SC @32 [95% CI] | MathVista N=8 | MathVista N=32 | MathVista Δ vs SC @32 [95% CI] |
+| Method | MATH N = 8 | MATH N = 32 | MATH Δ vs SC @32 [95% CI] | MathVista N = 8 | MathVista N = 32 | MathVista Δ vs SC @32 [95% CI] |
 |---|---|---|---|---|---|---|
 | FirstAns | 64.4 | 64.4 | -9.4 [-11.1, -7.8] | 53.6 | 53.6 | -8.1 [-10.0, -6.2] |
 | Self-consistency | 71.8 | 73.8 | – | 59.9 | 61.7 | – |

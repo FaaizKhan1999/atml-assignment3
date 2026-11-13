@@ -3,13 +3,13 @@
 \small
 \caption{End-to-end latency, token overhead, and accuracy for live single-pass, parallel, and iterative refinement decoding. Under strict generation budgets, naive parallel sampling and multi-turn self-revision increase computational latency and truncation rates without improving accuracy, as beneficial revisions are offset by self-induced corruptions.}
 \label{tab:t3-live}
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}rrrrrrrr}
+\begin{tabular}{lrrrrrrr}
 \toprule
-Strategy & Accuracy \% & \makecell{$\Delta$ vs\\single [95\% CI]} & Input tok. & Output tok. & Total tok. & s / question & \makecell{Truncated\\calls \%} & \makecell{No extraction\\\%} \\
+Strategy & Acc. \% & \makecell{$\Delta$ vs single\\[95\% CI]} & \makecell{Input\\tokens} & \makecell{Output\\tokens} & \makecell{Total\\tokens} & \makecell{s /\\question} & \makecell{Truncated\\calls \%} \\
 \midrule
-Single response (≤3,072) & 66.0 & – & 108 & 734 & 843 & 36.5 & 4.0 & 4.0 \\
-Parallel $\times$3 (≤1,024) + SC & 62.0 & -4 [-16, +6] & 325 & 1821 & 2146 & 89.2 & 16.0 & 16.0 \\
-Initial + critique-revision (≤2,048) & 64.0 & -2 [-12, +10] & 837 & 1117 & 1955 & 55.4 & 5.0 & 5.0 \\
+Single ($\leq$3,072) & 66.0 & – & 108 & 734 & 843 & 36.5 & 4.0 \\
+Parallel $\times$3 + SC & 62.0 & -4 [-16, +6] & 325 & 1821 & 2146 & 89.2 & 16.0 \\
+Refinement & 64.0 & -2 [-12, +10] & 837 & 1117 & 1955 & 55.4 & 5.0 \\
 \bottomrule
 \end{tabular}
 \end{table}

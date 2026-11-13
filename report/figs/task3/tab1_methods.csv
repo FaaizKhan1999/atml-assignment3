@@ -1,4 +1,4 @@
-Method,MATH N=8,MATH N=32,MATH Δ vs SC @32 [95% CI],MathVista N=8,MathVista N=32,MathVista Δ vs SC @32 [95% CI]
+Method,MATH N = 8,MATH N = 32,MATH Δ vs SC @32 [95% CI],MathVista N = 8,MathVista N = 32,MathVista Δ vs SC @32 [95% CI]
 FirstAns,64.4,64.4,"-9.4 [-11.1, -7.8]",53.6,53.6,"-8.1 [-10.0, -6.2]"
 Self-consistency,71.8,73.8,–,59.9,61.7,–
 Max mean log-prob,67.5,64.0,"-9.8 [-12.4, -7.2]",51.9,48.1,"-13.6 [-17.0, -10.3]"

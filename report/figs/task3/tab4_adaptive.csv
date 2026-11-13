@@ -1,4 +1,4 @@
-Dataset,Policy,Setting (dev),Accuracy %,Δ vs SC@32 [95% CI],Tokens / q.,Rollouts,Stops at 4 / 8 / 16 / 32 (%)
+Dataset,Policy,Setting (dev),Acc. %,Δ vs SC@32 [95% CI],Tokens / q.,Roll- outs,Stops at 4 / 8 / 16 / 32 (%)
 MATH,"Fixed SC, N = 4",–,69.2,–,2680,4,–
 ,"Fixed SC, N = 8",–,71.8,–,5344,8,–
 ,"Fixed SC, N = 16",–,73.1,–,10678,16,–

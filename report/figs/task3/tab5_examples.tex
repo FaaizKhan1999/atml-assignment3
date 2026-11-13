@@ -3,9 +3,9 @@
 \small
 \caption{Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping.}
 \label{tab:t3-examples}
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}l>{\raggedright\arraybackslash}p{8.2cm}}
+\begin{tabular}{llp{8.2cm}}
 \toprule
-Behaviour & Question & \makecell{What\\happened} \\
+Behaviour & Question & What happened \\
 \midrule
 Selection disagreement (MathVista, N = 32, order 0) & 552 & SC $\to$ 4 (correct); VisConf + RWC $\to$ 2 (wrong) \\
 Revision changes correctness (live MATH) & test:2340 & initial None (wrong) $\to$ revised 6 (correct); gold 6 \\

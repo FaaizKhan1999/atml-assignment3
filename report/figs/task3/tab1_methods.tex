@@ -3,9 +3,9 @@
 \small
 \caption{Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero.}
 \label{tab:t3-methods}
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}rrrrrr}
+\begin{tabular}{lrrrrrr}
 \toprule
-Method & MATH N=8 & MATH N=32 & \makecell{MATH $\Delta$ vs\\SC @32 [95\% CI]} & \makecell{MathVista\\N=8} & \makecell{MathVista\\N=32} & \makecell{MathVista $\Delta$\\vs SC @32 [95\% CI]} \\
+Method & \makecell{MATH\\N = 8} & \makecell{MATH\\N = 32} & \makecell{MATH $\Delta$ vs SC\\@32 [95\% CI]} & \makecell{MathVista\\N = 8} & \makecell{MathVista\\N = 32} & \makecell{MathVista $\Delta$ vs SC\\@32 [95\% CI]} \\
 \midrule
 FirstAns & 64.4 & 64.4 & -9.4 [-11.1, -7.8] & 53.6 & 53.6 & -8.1 [-10.0, -6.2] \\
 Self-consistency & 71.8 & 73.8 & – & 59.9 & 61.7 & – \\
