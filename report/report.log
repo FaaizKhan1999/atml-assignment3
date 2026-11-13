@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.19)  13 NOV 2026 08:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.19)  13 NOV 2026 11:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -685,38 +685,38 @@ Package pdftex.def Info: figs/task3/fig2_failures_signals.pdf  used on input lin
 (pdftex.def)             Requested size: 385.3177pt x 165.09714pt.
  [6 <./figs/task2/fig2_image_use.pdf> <./figs/task2/fig3_qualitative.pdf>] (./figs/task3/tab3_live.tex) [7 <./figs/task3/fig1_compute_curves.pdf> <./figs/task3/fig2_failures_signals.pdf>] (./figs/task3/tab4_adaptive.tex) [8] (./report.bbl [9
 
-]) [10] (./figs/task1/tabA6_data.tex) (./figs/task1/tabA1_benchmarks_full.tex) (./figs/task1/tabA2_boolq.tex) (./figs/task1/tabA3_diagnostics.tex) (./figs/task1/tabA4_verification.tex) (./figs/task1/tabA5_auto_flags.tex
+]) [10] (./figs/task1/tabA6_data.tex) (./figs/task1/tabA1_benchmarks_full.tex) (./figs/task1/tabA2_boolq.tex) (./figs/task1/tabA3_diagnostics.tex) [11
+
+] (./figs/task1/tabA4_verification.tex) (./figs/task1/tabA5_auto_flags.tex
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-)) (./figs/task1/tab4_excerpts.tex) (./figs/task1/tabA7_excerpts_all.tex) [11
-
-] (./figs/task2/tabA3_data_mixture.tex) (./figs/task2/tabA2_dev_curve.tex) [12] (./figs/task2/tabA1_results_by_type.tex) (./figs/task2/tabA1b_advantages.tex) [13] (./figs/task2/tab2_resources.tex)
-<figs/task2/figA1_qualitative_all.pdf, id=559, 396.7623pt x 313.73317pt>
+)) (./figs/task1/tab4_excerpts.tex) (./figs/task1/tabA7_excerpts_all.tex) [12] (./figs/task2/tabA3_data_mixture.tex) (./figs/task2/tabA2_dev_curve.tex) (./figs/task2/tabA1_results_by_type.tex) (./figs/task2/tabA1b_advantages.tex) [13] (./figs/task2/tab2_resources.tex) [14]
+<figs/task2/figA1_qualitative_all.pdf, id=592, 396.7623pt x 313.73317pt>
 File: figs/task2/figA1_qualitative_all.pdf Graphic file (type pdf)
 <use figs/task2/figA1_qualitative_all.pdf>
 Package pdftex.def Info: figs/task2/figA1_qualitative_all.pdf  used on input line 622.
 (pdftex.def)             Requested size: 396.76132pt x 313.73239pt.
- (./figs/task3/tabA5_data_scorer.tex) (./figs/task3/tabA2_scorer_sensitivity.tex) (./figs/task3/tabA1_curves_math.tex)
-(./figs/task3/tabA1_curves_mathvista.tex)
-<figs/task3/figA1_all_methods.pdf, id=560, 383.36499pt x 215.39746pt>
+ (./figs/task3/tabA5_data_scorer.tex) [15] (./figs/task3/tabA2_scorer_sensitivity.tex) [16 <./figs/task2/figA1_qualitative_all.pdf>]
+(./figs/task3/tabA1_curves_math.tex) (./figs/task3/tabA1_curves_mathvista.tex)
+<figs/task3/figA1_all_methods.pdf, id=658, 383.36499pt x 215.39746pt>
 File: figs/task3/figA1_all_methods.pdf Graphic file (type pdf)
 <use figs/task3/figA1_all_methods.pdf>
 Package pdftex.def Info: figs/task3/figA1_all_methods.pdf  used on input line 661.
 (pdftex.def)             Requested size: 383.36404pt x 215.39693pt.
- [14] (./figs/task3/tabA3_bootstrap.tex) (./figs/task3/tab2_signals.tex) [15 <./figs/task2/figA1_qualitative_all.pdf>]
-<figs/task3/figA3_trajectories.pdf, id=618, 379.78487pt x 208.78pt>
+ (./figs/task3/tabA3_bootstrap.tex) [17] (./figs/task3/tab2_signals.tex)
+<figs/task3/figA3_trajectories.pdf, id=671, 379.78487pt x 208.78pt>
 File: figs/task3/figA3_trajectories.pdf Graphic file (type pdf)
 <use figs/task3/figA3_trajectories.pdf>
 Package pdftex.def Info: figs/task3/figA3_trajectories.pdf  used on input line 696.
 (pdftex.def)             Requested size: 379.78392pt x 208.77946pt.
- [16] (./figs/task3/tabA4_adaptive_grid.tex)
-<figs/task3/figA2_stopping_vs_correct.pdf, id=624, 377.65405pt x 171.89093pt>
+ [18 <./figs/task3/figA1_all_methods.pdf>] (./figs/task3/tabA4_adaptive_grid.tex)
+<figs/task3/figA2_stopping_vs_correct.pdf, id=705, 377.65405pt x 171.89093pt>
 File: figs/task3/figA2_stopping_vs_correct.pdf Graphic file (type pdf)
 <use figs/task3/figA2_stopping_vs_correct.pdf>
 Package pdftex.def Info: figs/task3/figA2_stopping_vs_correct.pdf  used on input line 713.
 (pdftex.def)             Requested size: 377.65312pt x 171.89049pt.
- [17 <./figs/task3/figA1_all_methods.pdf> <./figs/task3/figA3_trajectories.pdf>] (./figs/task3/tab5_examples.tex) [18] [19 <./figs/task3/figA2_stopping_vs_correct.pdf>] (./report.aux)
+ (./figs/task3/tab5_examples.tex) [19 <./figs/task3/figA3_trajectories.pdf>] [20] [21 <./figs/task3/figA2_stopping_vs_correct.pdf>] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -725,18 +725,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: 233526E8E4C9ECA3A726DDCB6073FF27;8669.
  ) 
 Here is how much of TeX's memory you used:
- 18035 strings out of 474222
- 290853 string characters out of 5748733
- 2011975 words of memory out of 5000000
+ 18061 strings out of 474222
+ 291071 string characters out of 5748733
+ 2005975 words of memory out of 5000000
  39389 multiletter control sequences out of 15000+600000
- 612654 words of font info for 344 fonts, out of 8000000 for 9000
+ 613688 words of font info for 360 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,18n,79p,1656b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (19 pages, 2251068 bytes).
+Output written on report.pdf (21 pages, 2274673 bytes).
 PDF statistics:
- 794 PDF objects out of 1000 (max. 8388607)
- 572 compressed objects within 6 object streams
- 126 named destinations out of 1000 (max. 500000)
+ 852 PDF objects out of 1000 (max. 8388607)
+ 627 compressed objects within 7 object streams
+ 128 named destinations out of 1000 (max. 500000)
  49472 words of extra memory for PDF output out of 51595 (max. 10000000)
 

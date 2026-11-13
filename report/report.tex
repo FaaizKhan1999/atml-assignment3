@@ -507,7 +507,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   selection: how the 40,000 examples were chosen, exclusions by reason, GSM8K-test decontamination
 %   (tab:t1-data).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:setup-finetuning}, Table~\ref{tab:t1-data} summarizes how the 40,000 MetaMathQA training examples were selected and audited. Scanning the first 40,002 source rows retained 40,000 examples after excluding 2 sequences exceeding the 2,048-token cap, with 0 exact normalized matches against the 1,319 GSM8K test questions and 0 chat-template mismatches. Stripping leading newlines modified 667 responses, yielding 9.91M total tokens (7.10M supervised response tokens) with mean, 99th-percentile, and maximum lengths of 248, 681, and 1,941 tokens.
 \input{figs/task1/tabA6_data.tex}
 
 \subsection{Complete Benchmark Metrics}
@@ -516,7 +516,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Complete
 %   metrics behind tab:t1-bench, including raw and normalised accuracies (tab:t1-bench-full).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Sections~\ref{sec:setup-finetuning} and \ref{sec:results-finetuning}, Table~\ref{tab:t1-bench-full} reports the complete benchmark suite with standard errors behind Table~\ref{tab:t1-bench}. On GSM8K, flexible-extract standard errors are $\pm 1.3$--$1.4$ pp, while strict-match accuracy is 0.0\% across every condition because the \texttt{gsm8k\_cot} strict filter requires the literal pattern ``\texttt{The answer is <number>.}'' (regex \texttt{The answer is (\textbackslash -?[0-9\textbackslash .\textbackslash ,]+).}). Fine-tuned models output MetaMathQA's ``\texttt{The answer is: <number>}'' where the colon blocks a match (despite also emitting \texttt{\#\#\#\# <number>}), while baseline responses never use that phrase and instead end with varied Markdown ``Final Answer'' lines, bold answers, or occasional \texttt{\textbackslash boxed\{\}} expressions; fine-tuning also compresses mean GSM8K response length from 226 tokens at baseline to 136--143 tokens.
 \input{figs/task1/tabA1_benchmarks_full.tex}
 
 \subsection{Yes/No Answer Balance on Reading Comprehension}
@@ -526,7 +526,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   prediction balance on BoolQ against the gold balance (tab:t1-boolq); referenced from the retention
 %   discussion.
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-finetuning}, Table~\ref{tab:t1-boolq} decomposes BoolQ performance by predicted label against the 62.2\% gold ``yes'' share. Full FT and L2-SP shift sharply toward predicting ``no'' (``yes'' rates dropping from 57.7\% at baseline to 31.5\% and 32.9\%, with Full FT scoring 44.4\% on gold-yes vs.\ 89.7\% on gold-no), which lowers raw accuracy even as class-balanced accuracy rises from 63.3\% to 67.1\%. Conversely, LoRA-16 (57.7\% ``yes'') and OPLoRA-16 (54.8\% ``yes'') preserve the baseline prediction balance while raising balanced accuracy to 71.1\% and 71.9\%.
 \input{figs/task1/tabA2_boolq.tex}
 
 \subsection{Weight-Space and Activation Diagnostics}
@@ -535,7 +535,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. All
 %   diagnostic values per method and layer (tab:t1-diag-full); definitions of rho_k, eta and R(z).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-finetuning}, Table~\ref{tab:t1-diag-full} reports per-layer weight and activation diagnostics on \texttt{down\_proj} ($d_{\text{out}}=1024, d_{\text{in}}=3072$) across layers 0, 13, and 27: protected-subspace energy $\rho_k = \|U_k^\top \Delta W\|_F^2 / \|\Delta W\|_F^2$ (output side) and $\|\Delta W V_k\|_F^2 / \|\Delta W\|_F^2$ (input side), relative update norm $\eta = \|\Delta W\|_F / \|W_0\|_F$, and median relative activation shift $R(z) = \|\Delta W z\|_2 / \|W_0 z\|_2$ on cached baseline inputs. Unconstrained runs match isotropic random-direction baselines on both the output side ($\rho_k \in [0.107, 0.150]$ vs.\ $128/1024 = 0.125$) and the input side ($\rho_k \in [0.039, 0.053]$ vs.\ $128/3072 \approx 0.042$), whereas OPLoRA-16 drives both to 0.0000 ($\sim 10^{-14}$ under its own bases). Across methods, $\eta$ spans 0.007--0.019 (lowest for LoRA-4), and the math-to-non-math median $R(z)$ ratio exceeds unity in layers 0 (1.49--3.45) and 13 (1.67--7.27, peaking for LoRA-4) before reversing in layer 27 (0.66--0.73).
 \input{figs/task1/tabA3_diagnostics.tex}
 
 \subsection{Numerical Verification of Merging and Orthogonal Projection}
@@ -544,7 +544,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   Appendix: briefly say what this supplement shows and where the main text refers to it.
 %   Merged-vs-unmerged agreement and OPLoRA projection residuals (tab:t1-verify) as correctness checks.
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Sections~\ref{sec:setup-finetuning} and \ref{sec:results-finetuning}, Table~\ref{tab:t1-verify} verifies adapter merging and OPLoRA subspace projection. Merged and unmerged adapters achieve 99.87--100.00\% next-token argmax agreement with mean $|\Delta\text{logit}|$ equal to just 0.005 of the adapter's own logit shift, while QR re-orthogonalization reduces OPLoRA basis orthogonality error from $4.3\times 10^{-5}$ to $6.0\times 10^{-7}$ and keeps left/right projection residuals at $1.1\times 10^{-7}$ and $1.0\times 10^{-7}$.
 \input{figs/task1/tabA4_verification.tex}
 
 \subsection{Automatic Checks on All Qualitative Prompts}
@@ -553,7 +553,7 @@ Pretrained language and vision models are strong starting points for downstream 
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Automatic
 %   flags over all 24 prompts (tab:t1-autoflags) and how each flag is computed.
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-finetuning}, Table~\ref{tab:t1-autoflags} summarizes automated structural flags across all 24 non-math qualitative prompts (168 total responses), checking 512-token truncation, JSON parsing (before and after stripping Markdown code fences), template-slot completion, regex math markers, and repeated-line fractions. Full FT increases truncation (6/24 at midpoint, 7/24 at final vs.\ 1/24 at baseline) and repeated-line fractions (0.176 and 0.199 vs.\ $\le 0.069$ for all other runs), while math-marker counts rise to 12--15/24 on full-weight runs versus 2--4/24 on standard LoRA and 9/24 on OPLoRA-16; on the 8 JSON prompts, baseline responses are 0/8 valid raw but 8/8 valid after fence stripping, compared to 2--3/8 raw across fine-tuned models.
 \input{figs/task1/tabA5_auto_flags.tex}
 
 \subsection{Annotated Excerpts}
@@ -577,7 +577,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
 %   construction, label-quality rules, stage mixtures and connector calibration (tab:t2-data).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\ref{tab:t2-data} details dataset construction, realized curriculum mixtures, and connector calibration across image-disjoint splits (528 evaluation images). Training draws from 18,000 COCO captions (6,000 images), 3,000 binary presence and 3,000 counting pairs, and 1,536 VQAv2 complementary pairs (filtered from 71,969 eligible questions out of 200,394), with realized training mixtures matching target shares (50/25/25\% in Stage 2; 71/10/10/10\% in Stage 3) and a connector calibration scale of 0.0555 aligning initial visual feature RMS (0.4962) to Qwen3 text-embedding RMS (0.0276).
 \input{figs/task2/tabA3_data_mixture.tex}
 
 \subsection{Development Metrics Across Training}
@@ -586,7 +586,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Development
 %   metrics at every checkpoint (tab:t2-dev) behind Fig. fig:vlm-learning-curves.
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-vlm}, Table~\ref{tab:t2-dev} lists the 12 development checkpoints plotted in Figure~\ref{fig:vlm-learning-curves}. Caption loss drops from 5.79 to 2.48 in Stage 1 and holds near 2.5 through Stages 2--3, while $\Delta\text{NLL}$ moves from $+0.25 \to +0.02 \to +3.39 \to +2.34$ on grounding and $-0.46 \to +0.25 \to +1.39 \to +1.58$ on VQA across stage boundaries; as a built-in sanity check, no-image answer NLL remains exactly constant throughout Stage 1 (10.584 on grounding, 13.442 on VQA) because only the visual connector is updated when visual tokens are absent.
 \input{figs/task2/tabA2_dev_curve.tex}
 
 \subsection{Results by Question Type and Advantages over All Image Controls}
@@ -595,7 +595,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Results by
 %   question type and correct-image advantages over every control (tab:t2-bytype, tab:t2-advantages).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-vlm}, Tables~\ref{tab:t2-bytype} and \ref{tab:t2-advantages} break down final Stage 3 evaluation by question type and report 4,000-resample pair-bootstrap advantages over all three image controls. Under complementary swaps, grounding accuracy drops from 89.1\% to 10.9\% on presence and from 43.8\% to 10.9\% on counting, while VQAv2 drops from 61.4\% to 48.2\% on yes/no (the smallest gap), 47.7\% to 19.0\% on number, and 57.6\% to 11.4\% on other (with strict no-image accuracy 0.0\% everywhere except 4.2\% on VQA number); every correct-image accuracy and NLL advantage over complementary, mismatched, and no-image controls has a 95\% CI excluding zero.
 \input{figs/task2/tabA1_results_by_type.tex}
 \input{figs/task2/tabA1b_advantages.tex}
 
@@ -606,7 +606,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Computational cost of caching, training stages and evaluation (tab:t2-resources); referenced from
 %   the capabilities-and-cost discussion.
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Sections~\ref{sec:setup-vlm} and \ref{sec:results-vlm}, Table~\ref{tab:t2-resources} records wall-clock time, peak GPU memory, and parameter counts across data preparation, training, and evaluation. Pre-computing 2.60 GB of SigLIP features takes 3.3 min (0.83 GB peak VRAM), Stages 1--3 require 43.9, 32.9, and 16.1 min at 1.54--1.56 GB peak memory (training 1.84M connector parameters in Stage 1 plus 4.59M LoRA parameters for 6.42M total in Stages 2--3), and development and final evaluations take 1.4 min and 1.6 min.
 % moved from the main body to save space
 \input{figs/task2/tab2_resources.tex}
 
@@ -616,11 +616,11 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. All
 %   complementary-pair examples and their selection rule (Fig. fig:vlm-qualitative-all).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-vlm}, Figure~\ref{fig:vlm-qualitative-all} displays the complete 10-pair qualitative set—selecting for each of the five question types the first pair in ID order where model predictions differ and the first where predictions are identical. Across the five differing-prediction pairs, the model answers both images correctly on four types (broccoli presence, counting 3/1, bird yes/no, and left/right hand) and misses both references only on the VQA number pair (predicting \texttt{0}/\texttt{4} vs.\ 2/9), whereas identical-prediction pairs miss one reference on every type and no-image inputs produce full sentences on all pairs except the doughnut-hole prompt (\texttt{0}).
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task2/figA1_qualitative_all.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including the example-selection rule.} \todo{Conclusion to draw.}}
+  \caption{Complete 10-pair qualitative comparison across all five grounding and VQAv2 question types. Selected deterministically as the first pair per type with differing answers (top) and identical answers (bottom), the examples show accurate visual discrimination on binary presence and yes/no pairs alongside counting errors and full-sentence no-image fallbacks.}
   \label{fig:vlm-qualitative-all}
 \end{figure}
 
@@ -634,7 +634,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
 %   statistics, scorer version, Math-Verify timeouts and metadata checksum (tab:t3-data).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:setup-ttc}, Table~\ref{tab:t3-data} summarizes rollout statistics and grading audit checks for MATH and MathVista. Individual rollouts average 66.3\% accuracy, 1.6\% \texttt{NO\_ANSWER}, 1.6\% length-capped calls, and 648 tokens on MATH versus 53.6\% accuracy, 15.4\% \texttt{NO\_ANSWER}, 1.5\% capped calls, and 280 tokens on MathVista, with all 80 \texttt{math-verify} (v0.9.0) comparison timeouts concentrated within a single pathological MATH question.
 \input{figs/task3/tabA5_data_scorer.tex}
 
 \subsection{Scorer Sensitivity}
@@ -643,7 +643,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. MathVista
 %   scorer sensitivity: official vs lenient normalisation (tab:t3-sensitivity).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:setup-ttc}, Table~\ref{tab:t3-sensitivity} compares official metadata-driven MathVista normalization against a lenient fallback scorer at $N=8$ and $N=32$. Lenient parsing reduces the \texttt{NO\_ANSWER} rate from 15.4\% to 13.5\% and raises accuracy uniformly by $+0.3$ to $+0.9$ pp across all selection rules without altering their relative ranking.
 \input{figs/task3/tabA2_scorer_sensitivity.tex}
 
 \subsection{All Selection Rules at All Budgets}
@@ -653,13 +653,13 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   at every budget for both datasets (tab:t3-curves-math, tab:t3-curves-mathvista, Fig.
 %   fig:ttc-all-methods).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-ttc}, Tables~\ref{tab:t3-curves-math} and \ref{tab:t3-curves-mathvista} and Figure~\ref{fig:ttc-all-methods} report accuracy, oracle coverage, distinct answer clusters, and token costs across all candidate budgets $N \in \{1, 2, 4, 8, 16, 32\}$. At $N=32$, questions average 5.90 distinct answer groups (21,347 tokens) on MATH and 3.94 groups (8,898 tokens) on MathVista; consensus-based selectors improve monotonically with $N$ (peaking at 75.5\% for self-certainty + RWC on MATH and 63.1\% for VisConf + RWC on MathVista), whereas max log-probability peaks at $N=8$ on MATH (67.5\% $\to$ 64.0\%) and declines steadily with budget on MathVista (53.6\% $\to$ 48.1\%).
 \input{figs/task3/tabA1_curves_math.tex}
 \input{figs/task3/tabA1_curves_mathvista.tex}
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task3/figA1_all_methods.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \caption{Accuracy scaling across candidate budgets $N \in \{1, \dots, 32\}$ for all selection rules on MATH and MathVista. Consensus-based rules improve steadily with additional candidates, whereas single-rollout max log-probability and shortest-response controls degrade as the candidate pool grows.}
   \label{fig:ttc-all-methods}
 \end{figure}
 
@@ -669,7 +669,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   Appendix: briefly say what this supplement shows and where the main text refers to it. Controlled
 %   score / aggregation comparisons with paired bootstrap CIs at every N (tab:t3-boot).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-boot} reports paired question-bootstrap differences and 95\% CIs across all budgets $N$ for controlled score and aggregation comparisons. At $N=32$, self-certainty outperforms log-probability under best-of-$N$ by $+6.6$ pp on MATH and $+6.5$ pp on MathVista, switching from best-of-$N$ to RWC holding the signal fixed gains $+4.9$ pp on MATH and $+5.4$ to $+9.2$ pp on MathVista, VisConf + RWC exceeds self-certainty + RWC on MathVista by $+0.6$ pp ($[-0.6, +2.0]$, non-significant), and tokenwise fusion trails trajectory-level VisConf (reaching a statistically significant $-1.1$ pp difference at $N=16$).
 \input{figs/task3/tabA3_bootstrap.tex}
 
 \subsection{Signal Analysis Details}
@@ -679,7 +679,7 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   associations, confidence-vision correlation and the tokenwise vs trajectory identity check
 %   (tab:t3-signals).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-signals} reports within-question quartile correctness gaps, rank correlations with rollout length, and the covariance identity check at $N=32$. Visual engagement $V_i$ correlates strongly negatively with response length on MathVista (median $\rho = -0.79$) while self-certainty and log-probability correlate positively with length on MathVista ($+0.38$) but negatively on MATH ($-0.18$ for self-certainty); calibrated confidence $C_i$ matches $V_i$ on quartile discrimination ($+3.8$ to $+4.8$ pp), and the algebraic identity $Z_i^{\text{token}} - Z_i = \text{Cov}_t(c_{i,t}, v_{i,t})$ holds to $1.8\times 10^{-8}$.
 % moved from the main body to save space
 \input{figs/task3/tab2_signals.tex}
 
@@ -690,11 +690,11 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   confidence and visual-engagement trajectories and how they were selected (Fig.
 %   fig:ttc-trajectories).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-ttc}, Figure~\ref{fig:ttc-trajectories} plots 15-token moving averages of token confidence $c_{i,t}$ and visual engagement $v_{i,t}$ on MathVista question 358—selected deterministically as the first held-out question with 25--75\% correct rollouts, pairing its first two correct rollouts (0 and 2) against its first two incorrect rollouts (1 and 4). Visual attention spikes early during image inspection ($v_{i,t} \approx 0.08$--$0.17$ over the first $\sim 50$ tokens) before settling near $0.02$--$0.04$ during text generation—explaining $V_i$'s strong negative correlation with rollout length—while token confidence fluctuates between 0.3 and 0.8 across both correct and incorrect trajectories.
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task3/figA3_trajectories.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including how the trajectories were selected.} \todo{Conclusion to draw.}}
+  \caption{Token-level confidence $c_{i,t}$ and visual engagement $v_{i,t}$ trajectories (15-token moving average) on MathVista question 358 for two correct (0, 2) and two incorrect (1, 4) rollouts. Visual engagement concentrates in the opening tokens before decaying, explaining why longer rollouts have lower mean visual attention and why token confidence and visual attention correlate negatively within trajectories.}
   \label{fig:ttc-trajectories}
 \end{figure}
 
@@ -705,19 +705,20 @@ Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{en
 %   grids for both stopping families and stopping behaviour vs fraction of correct rollouts
 %   (tab:t3-grid, Fig. fig:ttc-stopping).
 % -----------------------------------------------------------------------------------------------------
-\todo{Text.}
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-grid} and Figure~\ref{fig:ttc-stopping} show threshold selection on the 200-question development split and retrospective stopping behavior on the 800 held-out test questions. Because the MATH development split is easier than the held-out split (82.5\% vs.\ 73.8\% fixed-32 self-consistency), agreement $\tau=0.5$ misses the 1.0 pp dev tolerance at 81.4\%, selecting $\tau=0.625$ (7,089 dev tokens), whereas MathVista agreement selects $\tau=0.5$ (63.6\% vs.\ 64.2\%) and quality-aware stopping selects $(\tau=0.5, \gamma=0)$ on both datasets.
 % Long table: may need to be split or converted to longtable if it overflows the page.
 \input{figs/task3/tabA4_adaptive_grid.tex}
 \begin{figure}[!htbp]
   \centering
   \includegraphics{figs/task3/figA2_stopping_vs_correct.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \caption{Mean rollouts consumed per held-out question versus the fraction of correct candidates in its 32-rollout pool for agreement-based and quality-aware stopping. Questions with 100\% correct candidates halt immediately at $n=4$, whereas low- and zero-correctness questions spread up to 32 rollouts because scattered errors prevent early consensus.}
   \label{fig:ttc-stopping}
 \end{figure}
 
 
 \subsection{Representative Cases}
 \label{app:ttc-examples}
+Referenced from Section~\ref{sec:results-ttc}, Table~\ref{tab:t3-examples} presents the three deterministic failure cases—selected as the first held-out question in split order matching each criterion—covering RWC vs.\ self-consistency disagreement (\texttt{MathVista 552}), live sequential revision recovery (\texttt{MATH test:2340}), and premature early-stopping consensus (\texttt{MATH test:3504}, rollout order 7).
 % moved from the main body to save space; the main text describes all three cases
 \input{figs/task3/tab5_examples.tex}
 
