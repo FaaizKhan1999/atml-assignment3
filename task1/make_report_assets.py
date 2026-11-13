@@ -55,9 +55,9 @@ BENCH = [("gsm8k", "exact_match,flexible-extract", "GSM8K"), ("hellaswag", "acc_
 NONMATH = ["hellaswag", "boolq", "arc_easy"]
 WIDTH = 5.5  # NeurIPS text width (inches)
 
-plt.rcParams.update({"font.size": 7, "axes.titlesize": 7.5, "axes.labelsize": 7, "xtick.labelsize": 6.5,
-                     "ytick.labelsize": 6.5, "legend.fontsize": 6.5, "axes.spines.top": False,
-                     "axes.spines.right": False, "pdf.fonttype": 42, "savefig.dpi": 300})
+from common.report_utils import FONT_PT, rcparams, write_table  # noqa: E402
+
+rcparams()  # Times-style serif, >= 7 pt text at printed size
 
 
 # ============================================================================ loading
@@ -135,20 +135,15 @@ def tex_escape(s) -> str:
 def save_table(name: str, header: list[str], rows: list[list], caption: str, label: str, align: str | None = None,
                small: bool = True) -> None:
     TAB.mkdir(parents=True, exist_ok=True)
+    flat = [str(h).replace("\n", " ") for h in header]
     with open(TAB / f"{name}.csv", "w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
-        w.writerow(header)
+        w.writerow(flat)
         w.writerows(rows)
-    md = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
+    md = ["| " + " | ".join(flat) + " |", "|" + "---|" * len(flat)]
     md += ["| " + " | ".join(str(c) for c in r) + " |" for r in rows]
     (TAB / f"{name}.md").write_text(f"**{caption}**\n\n" + "\n".join(md) + "\n", encoding="utf-8")
-    align = align or "l" + "r" * (len(header) - 1)
-    tex = [r"\begin{table}[t]", r"\centering", r"\small" if small else "",
-           rf"\caption{{{tex_escape(caption)}}}", rf"\label{{{label}}}", rf"\begin{{tabular}}{{{align}}}",
-           r"\toprule", " & ".join(tex_escape(h) for h in header) + r" \\", r"\midrule"]
-    tex += [" & ".join(tex_escape(c) for c in r) + r" \\" for r in rows]
-    tex += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
-    (TAB / f"{name}.tex").write_text("\n".join(t for t in tex if t) + "\n", encoding="utf-8")
+    write_table(TAB / f"{name}.tex", header, rows, caption, label, align or "l" + "r" * (len(header) - 1))
 
 
 def pct(v, nd=1) -> str:
@@ -198,40 +193,29 @@ def _bytes(n) -> str:
 
 
 def tab2_resources() -> None:
-    header = ["Method", "Trainable params", "Train time (h)", "Peak GPU mem. (GB)", "Recovery ckpt",
-              "Exported weights", "‖θ−θ0‖₂", "Final λΩ", "Method-specific overhead"]
+    header = ["Method", "Trainable\nparams", "Train\ntime (h)", "Peak GPU\nmem. (GB)", "Exported\nweights",
+              "‖θ−θ0‖₂", "Method-specific overhead"]
     rows = []
     for run in RUNS:
         sm = run_summary(run)
         p = sm["params"]
         stage = sm["stages"].get("final", {})
-        ck = sm["checkpoints"].get("1250") or sm["checkpoints"].get(1250) or {}
         exported = sum((stage.get("bytes") or {}).values()) if stage.get("bytes") else None
         disp = stage.get("displacement_l2")
-        lam_omega = "–"
         overhead = "–"
         if run == "l2sp":
             l2 = sm["l2sp"]
-            lam_omega = f"{l2['lambda'] * l2['final_omega']:.3g}"
-            overhead = (f"θ0 copy {_bytes(l2['ref_bytes'])} (pinned CPU); penalty "
-                        f"{l2['total_penalty_seconds'] / 60:.1f} min")
-        elif run == "full_ft" and disp is not None:
-            lam_omega = f"({1e-3 * 0.5 * disp ** 2:.3g})"
+            overhead = f"θ0 copy {_bytes(l2['ref_bytes'])} (CPU); penalty {l2['total_penalty_seconds'] / 60:.1f} min"
         ad = sm["model"].get("adapter")
-        if ad:
-            overhead = f"export {stage.get('export_seconds', 0):.1f} s"
-            if ad.get("protect_rank"):
-                overhead = (f"SVD+QR {ad['svd_seconds']:.1f} s; bases {_bytes(ad['basis_bytes_fp32'])}; "
-                            f"export {stage.get('export_seconds', 0):.1f} s")
+        if ad and ad.get("protect_rank"):
+            overhead = f"SVD+QR {ad['svd_seconds']:.0f} s; bases {_bytes(ad['basis_bytes_fp32'])}"
         rows.append([RUN_LABEL[run], f"{p['trainable'] / 1e6:.2f}M ({100 * p['trainable_fraction']:.2f}%)",
                      f"{sm['training']['train_seconds'] / 3600:.2f}", f"{sm['training']['peak_allocated_gb']:.2f}",
-                     _bytes(ck.get("total_bytes")), _bytes(exported), "–" if disp is None else f"{disp:.2f}",
-                     lam_omega, overhead])
+                     _bytes(exported), "–" if disp is None else f"{disp:.2f}", overhead])
     save_table("tab2_resources", header, rows,
-               "Training cost and regularization (1,250 updates, 40,000 examples, one T4 per run; two runs shared each "
-               "machine). Recovery checkpoint includes optimizer state. ‖θ−θ0‖₂ over all unique parameters at the "
-               "final checkpoint. Final λΩ with λ = 10⁻³; for Full FT, in parentheses, the penalty its weights would "
-               "incur (not optimized).", "tab:t1-resources", align="lrrrrrrrl")
+               "Training cost (1,250 updates, 40,000 examples, one T4 per run; two runs shared each machine) and "
+               "displacement ‖θ−θ0‖₂ over all unique parameters at the final checkpoint.", "tab:t1-resources",
+               align="lrrrrrl")
 
 
 ANNOT = RES / "qualitative" / "annotation_sheet_annotated.csv"
@@ -288,50 +272,44 @@ def tab4_excerpts(ann: list[dict], spec: str | None) -> None:
 # ============================================================================ figures
 
 def fig1_training_tradeoff(s: dict) -> None:
-    fig = plt.figure(figsize=(WIDTH, 2.0))
-    gs = fig.add_gridspec(1, 3, wspace=0.5)
-    ax_a = fig.add_subplot(gs[0])
-    ax_b = fig.add_subplot(gs[1], sharex=ax_a)
-    ax_c = fig.add_subplot(gs[2])
+    """Printed at 5.5 in x 2.3 in (scale 1): loss + LR | L2-SP penalty vs loss | adaptation vs retention."""
+    fig = plt.figure(figsize=(WIDTH, 2.3))
+    gs = fig.add_gridspec(1, 3, wspace=0.42, left=0.07, right=0.995, top=0.9, bottom=0.33)
+    ax_a, ax_b, ax_c = (fig.add_subplot(gs[i]) for i in range(3))
 
     logs = {r: run_log(r) for r in RUNS}
     for r in RUNS:
         u = np.array([x["update"] for x in logs[r]])
         loss = np.array([x["loss"] for x in logs[r]])
         ax_a.plot(u, loss, color=RUN_COLOR[r], alpha=0.12, lw=0.4)
-        ax_a.plot(u, ema(loss), color=RUN_COLOR[r], lw=1.0, label=RUN_LABEL[r])
+        ax_a.plot(u, ema(loss), color=RUN_COLOR[r], lw=1.1)
     ax_a.set_yscale("log")
     plain_log_ticks(ax_a)
     ax_a.set_xlabel("Optimizer update")
     ax_a.set_ylabel("SFT loss (nats/token)")
-    ax_a.set_title("(a) SFT loss and LR schedule")
-    # LR schedule (identical shape for all runs; peaks 2e-5 full, 2e-4 adapters) on a hidden secondary axis
+    ax_a.set_title("(a) Training loss")
     lr = [next(iter(x["lr"].values())) for x in logs["full_ft"]]
     twin = ax_a.twinx()
-    twin.plot([x["update"] for x in logs["full_ft"]], np.array(lr) / max(lr), color="k", ls=":", lw=0.8,
-              label="LR / peak LR")
-    twin.set_ylim(0, 1.5)
+    twin.plot([x["update"] for x in logs["full_ft"]], np.array(lr) / max(lr), color="k", ls=":", lw=0.9)
+    twin.set_ylim(0, 1.6)
     twin.set_yticks([])
     twin.spines["right"].set_visible(False)
-    h1, l1 = ax_a.get_legend_handles_labels()
-    h2, l2_ = twin.get_legend_handles_labels()
-    ax_a.legend(h1 + h2, l1 + l2_, loc="upper right", frameon=False, handlelength=1.2, fontsize=5.3)
 
     l2 = logs["l2sp"]
     u = np.array([x["update"] for x in l2])
-    ax_b.plot(u, ema([x["loss"] for x in l2]), color=RUN_COLOR["l2sp"], lw=1.0, label="SFT loss")
-    ax_b.plot(u, [x["lambda_omega"] for x in l2], color=RUN_COLOR["l2sp"], lw=1.0, ls="--", label="λΩ")
+    ax_b.plot(u, ema([x["loss"] for x in l2]), color=RUN_COLOR["l2sp"], lw=1.1, label="SFT loss")
+    ax_b.plot(u, [x["lambda_omega"] for x in l2], color=RUN_COLOR["l2sp"], lw=1.1, ls="--", label="λΩ")
     st = run_summary("full_ft")["stages"]
     pts = [(rjson_stage("full_ft", k)["update"], 1e-3 * 0.5 * rjson_stage("full_ft", k)["displacement_l2"] ** 2)
            for k in ("midpoint", "final") if k in st]
     if pts:
-        ax_b.plot(*zip(*pts), "o", color=RUN_COLOR["full_ft"], ms=3, label="λΩ of Full FT")
+        ax_b.plot(*zip(*pts), "o", color=RUN_COLOR["full_ft"], ms=4, label="λΩ of Full FT")
     ax_b.set_yscale("log")
     plain_log_ticks(ax_b)
     ax_b.set_xlabel("Optimizer update")
     ax_b.set_ylabel("Objective term (nats/token)")
-    ax_b.set_title("(b) L2-SP: penalty vs. loss")
-    ax_b.legend(loc="lower right", frameon=False, handlelength=1.4, fontsize=5.3, borderaxespad=0.2)
+    ax_b.set_title("(b) L2-SP penalty vs. loss")
+    ax_b.legend(loc="lower right", frameon=False)
 
     ax_c.axhline(0, color="0.8", lw=0.6)
     ax_c.axvline(0, color="0.8", lw=0.6)
@@ -344,14 +322,20 @@ def fig1_training_tradeoff(s: dict) -> None:
         if y is None:
             continue
         xy[c] = (x, y)
-        ax_c.scatter([x], [y], s=16, color=COLOR[c], edgecolor="k", lw=0.3, zorder=3, label=LABEL[c])
+        ax_c.scatter([x], [y], s=24, color=COLOR[c], edgecolor="k", lw=0.4, zorder=3)
     if "full_ft_midpoint" in xy and "full_ft_final" in xy:
         ax_c.annotate("", xy=xy["full_ft_final"], xytext=xy["full_ft_midpoint"],
-                      arrowprops={"arrowstyle": "->", "color": COLOR["full_ft_final"], "lw": 0.7})
-    ax_c.set_xlabel("GSM8K Δ vs. baseline (pp)")
-    ax_c.set_ylabel("Mean non-math Δ (pp)")
+                      arrowprops={"arrowstyle": "->", "color": COLOR["full_ft_final"], "lw": 0.8})
+    ax_c.set_xlabel("GSM8K change (pp)")
+    ax_c.set_ylabel("Mean non-math change (pp)")
     ax_c.set_title("(c) Adaptation vs. retention")
-    ax_c.legend(loc="center left", bbox_to_anchor=(1.0, 0.5), frameon=False, handletextpad=0.2, fontsize=5.5)
+
+    # one shared legend: condition colours (all panels) + the LR line of panel (a)
+    from matplotlib.lines import Line2D
+    handles = [Line2D([], [], color=COLOR[c], marker="o", ms=4, lw=1.1, mec="k", mew=0.3, label=LABEL[c])
+               for c in CONDS]
+    handles.append(Line2D([], [], color="k", ls=":", lw=0.9, label="LR / peak LR (a)"))
+    fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.53, 0.0))
     save_fig(fig, "fig1_training_tradeoff")
 
 
@@ -360,6 +344,7 @@ def rjson_stage(run: str, stage: str) -> dict:
 
 
 def fig2_diagnostics() -> dict:
+    """Printed at 5.45 in x 2.25 in (scale 1), one row. Panels (c) and (d) share one y scale."""
     p = RES / "diagnostics" / "summary.json"
     d = rjson(p)
     layers = d["layers"]
@@ -369,49 +354,54 @@ def fig2_diagnostics() -> dict:
         for r in csv.DictReader(fh):
             act[(r["condition"], int(r["layer"]))][r["set"]].append(float(r["R"]))
     x = np.arange(len(layers))
-    offs = np.linspace(-0.2, 0.2, len(TRAINED))
-    fig, axes = plt.subplots(2, 2, figsize=(WIDTH, 3.0), sharex=True)
-    (a_rho, a_eta), (a_rm, a_rn) = axes
+    offs = np.linspace(-0.3, 0.3, len(TRAINED))
+    fig, axes = plt.subplots(1, 4, figsize=(WIDTH - 0.05, 2.25), sharex=True)
+    a_rho, a_eta, a_rm, a_rn = axes
     a_rn.sharey(a_rm)
     for i, c in enumerate(TRAINED):
-        kw = {"color": COLOR[c], "marker": "o", "ms": 2.8, "ls": "none", "label": LABEL[c]}
+        kw = {"color": COLOR[c], "marker": "o", "ms": 3.5, "ls": "none", "label": LABEL[c]}
         a_rho.plot(x + offs[i], [ws[(c, l)]["rho_k"] for l in layers], **kw)
         a_eta.plot(x + offs[i], [ws[(c, l)]["eta"] for l in layers], **kw)
         for ax, setname in ((a_rm, "math"), (a_rn, "nonmath")):
             med = [np.median(act[(c, l)][setname]) for l in layers]
             lo = [np.percentile(act[(c, l)][setname], 25) for l in layers]
             hi = [np.percentile(act[(c, l)][setname], 75) for l in layers]
-            ax.errorbar(x + offs[i], med, yerr=[np.subtract(med, lo), np.subtract(hi, med)], capsize=1.2,
-                        elinewidth=0.5, **kw)
+            ax.errorbar(x + offs[i], med, yerr=[np.subtract(med, lo), np.subtract(hi, med)], capsize=1.5,
+                        elinewidth=0.6, **kw)
     k, dout = d["k"], d["weight_space"][0]["d_out"]
-    a_rho.axhline(k / dout, color="k", ls=":", lw=0.7)
-    a_rho.text(len(layers) - 0.6, k / dout * 0.93, f"random direction ({k}/{dout})", va="top", ha="right", fontsize=5.5)
-    a_rho.set_ylabel(r"$\rho_k$ (k = %d)" % k)
-    a_rho.set_title(r"(a) Update energy in protected output subspace")
+    a_rho.axhline(k / dout, color="k", ls=":", lw=0.8)
+    a_rho.text(len(layers) - 0.55, k / dout * 0.9, f"random ({k}/{dout})", va="top", ha="right",
+               fontsize=FONT_PT["small"])
+    a_rho.set_ylim(top=max(0.2, a_rho.get_ylim()[1] * 1.25))
+    a_rho.set_ylabel(r"$\rho_k$ ($k$ = %d)" % k)
+    a_rho.set_title(r"(a) Subspace energy $\rho_k$")
     a_eta.set_ylabel(r"$\eta$")
-    a_eta.set_title("(b) Relative update magnitude")
+    a_eta.set_title(r"(b) Update norm $\eta$")
     a_rm.set_yscale("log")
     plain_log_ticks(a_rm)
-    a_rm.set_ylabel(r"$R(z)$ median (IQR)")
-    a_rm.set_title("(c) Activation correction: GSM8K probes")
-    a_rn.set_title("(d) Activation correction: HellaSwag probes")
+    a_rm.set_ylabel(r"$R(z)$, median and IQR")
+    a_rm.set_title(r"(c) $R(z)$, GSM8K")
+    a_rn.set_title(r"(d) $R(z)$, HellaSwag")
     plt.setp(a_rn.get_yticklabels(), visible=False)
-    for ax in (a_rm, a_rn):
+    for ax in axes:
         ax.set_xticks(x)
-        ax.set_xticklabels([f"layer {l}" for l in layers])
+        ax.set_xticklabels([f"L{l}" for l in layers])
+        ax.set_xlabel("Layer")
     for ax in axes.flat:
-        ax.set_xlim(-0.45, len(layers) - 0.55)
+        ax.set_xlim(-0.5, len(layers) - 0.5)
     h, lab = a_rho.get_legend_handles_labels()
-    fig.legend(h, lab, loc="lower center", ncol=len(TRAINED), frameon=False, bbox_to_anchor=(0.5, -0.02))
-    fig.subplots_adjust(hspace=0.45, wspace=0.28, bottom=0.17)
+    fig.legend(h, lab, loc="lower center", ncol=len(TRAINED), frameon=False, bbox_to_anchor=(0.5, 0.0),
+               columnspacing=0.8)
+    fig.subplots_adjust(wspace=0.55, bottom=0.33, left=0.075, right=0.995, top=0.9)
     save_fig(fig, "fig2_diagnostics")
     return d
 
 
 def save_fig(fig, name: str) -> None:
+    """Saved at its drawn size: include with \\includegraphics{...} (scale 1)."""
     FIG.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIG / f"{name}.pdf", bbox_inches="tight")
-    fig.savefig(FIG / f"{name}.png", bbox_inches="tight", dpi=200)
+    fig.savefig(FIG / f"{name}.pdf", bbox_inches="tight", pad_inches=0.02)
+    fig.savefig(FIG / f"{name}.png", bbox_inches="tight", pad_inches=0.02, dpi=200)
     plt.close(fig)
 
 

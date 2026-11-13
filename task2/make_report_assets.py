@@ -46,7 +46,7 @@ from common.config import REPO_ROOT, load_config  # noqa: E402
 from common.logging_utils import read_json  # noqa: E402
 from common.paths import get_paths  # noqa: E402
 from common.publish import try_push  # noqa: E402
-from common.report_utils import TEXT_WIDTH_IN, ema, plain_log_ticks, rcparams, save_fig, save_table  # noqa: E402
+from common.report_utils import FONT_PT, TEXT_WIDTH_IN, ema, plain_log_ticks, rcparams, save_fig, save_table  # noqa: E402
 from task2.vqa_norm import MANUAL_MAP, normalize, soft_accuracy  # noqa: E402
 
 RES = REPO_ROOT / "results" / "task2"
@@ -135,46 +135,50 @@ def stage_marks(ax, d: Data) -> None:
         if i % 2 == 1:
             ax.axvspan(d.offsets[i], d.offsets[i + 1], color="0.94", zorder=-1, lw=0)
         ax.text((d.offsets[i] + d.offsets[i + 1]) / 2, 1.01, STAGE_SHORT[i], transform=ax.get_xaxis_transform(),
-                ha="center", va="bottom", fontsize=5.2, color="0.35")
+                ha="center", va="bottom", fontsize=FONT_PT["small"], color="0.35")
 
 
 def fig1_learning_curves(d: Data) -> None:
+    """Printed at 5.5 in x 2.45 in (scale 1); stages S1-S3 shaded."""
     from matplotlib.lines import Line2D
 
-    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH_IN, 2.15), sharex=True, gridspec_kw={"wspace": 0.45})
+    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH_IN - 0.05, 2.45), sharex=True)
+    fig.subplots_adjust(wspace=0.42, left=0.075, right=0.995, top=0.86, bottom=0.34)
     a, b, c = axes
     for k, recs in enumerate(d.logs):
         x = np.array([r["update"] for r in recs]) + d.offsets[k]
         y = np.array([r["loss"] for r in recs])
         a.plot(x, y, color="0.55", alpha=0.18, lw=0.3)
-        a.plot(x, ema(y, 50), color="k", lw=0.9)
+        a.plot(x, ema(y, 50), color="k", lw=1.0)
     g = [r["global_update"] for r in d.dev]
-    a.plot(g, [r["caption_loss"] for r in d.dev], "s", color="#2ca02c", ms=2.6)
+    a.plot(g, [r["caption_loss"] for r in d.dev], "s", color="#2ca02c", ms=3.5)
     a.set_yscale("log")
     plain_log_ticks(a)
     a.set_ylabel("Loss (nats/token)")
-    for s in SUITES:
+    for s_ in SUITES:
         for cond in ("correct", "partner", "none"):
-            b.plot(g, [r[s][f"nll_{cond}"] for r in d.dev], COND_STYLE[cond], color=SUITE_COLOR[s], lw=0.9,
-                   marker="o", ms=1.8)
-        c.plot(g, [r[s]["delta_nll"] for r in d.dev], "-o", color=SUITE_COLOR[s], lw=0.9, ms=1.8)
+            b.plot(g, [r[s_][f"nll_{cond}"] for r in d.dev], COND_STYLE[cond], color=SUITE_COLOR[s_], lw=1.0,
+                   marker="o", ms=2.5)
+        c.plot(g, [r[s_]["delta_nll"] for r in d.dev], "-o", color=SUITE_COLOR[s_], lw=1.0, ms=2.5)
     b.set_yscale("log")
     plain_log_ticks(b)
     b.set_ylabel("Reference answer NLL")
     c.axhline(0, color="0.6", lw=0.6)
     c.set_ylabel(r"$\Delta$NLL (swap $-$ correct)")
+    ticks = list(range(0, int(d.offsets[-1]) + 1, 1000))   # stage boundaries are shown by the shading
     for ax, title in zip(axes, ("(a) Training and caption loss", "(b) Dev answer NLL", "(c) Image-swap penalty")):
         stage_marks(ax, d)
-        ax.set_title(title, pad=10)
-        ax.set_xlabel("Main-run update")
+        ax.set_title(title, pad=11)
+        ax.set_xlabel("Update")
         ax.set_xlim(-60, d.offsets[-1] + 60)
-    handles = [Line2D([], [], color="k", lw=1, label="train loss (EMA-50)"),
-               Line2D([], [], color="#2ca02c", marker="s", ls="none", ms=3, label="dev caption loss"),
-               *[Line2D([], [], color=SUITE_COLOR[s], lw=1.2, label=SUITES[s]) for s in SUITES],
+        ax.set_xticks(ticks)
+        ax.set_xticklabels([f"{t / 1000:g}k" if t else "0" for t in ticks])
+    handles = [Line2D([], [], color="k", lw=1, label="train loss (EMA)"),
+               Line2D([], [], color="#2ca02c", marker="s", ls="none", ms=3.5, label="dev caption loss"),
+               *[Line2D([], [], color=SUITE_COLOR[x], lw=1.2, label=SUITES[x]) for x in SUITES],
                *[Line2D([], [], color="0.3", ls=COND_STYLE[x], lw=1, label=f"{COND_LABEL[x]} image" if x != "none" else "No image")
                  for x in ("correct", "partner", "none")]]
-    fig.legend(handles=handles, loc="upper center", ncol=4, frameon=False, fontsize=5.4, bbox_to_anchor=(0.5, -0.09),
-               handlelength=1.6, columnspacing=1.0)
+    fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 0.0))
     save_fig(fig, OUT, "fig1_learning_curves")
 
 
@@ -186,17 +190,16 @@ def fmt_ci(v, ci, scale=100.0, nd=1) -> str:
 
 def tab1_final_results(d: Data) -> None:
     lead = d.lead_accuracy()
-    header = ["Suite", "Image", "Accuracy % [95% CI]", "By type %", "Pair acc. %", "Identical %", "Empty %",
-              "Ref. NLL", "ms/ans.", "Lead-ans. %†"]
+    header = ["Suite", "Image", "Accuracy %\n[95% CI]", "Pair\nacc. %", "Identical\n%", "Ref.\nNLL", "ms /\nanswer",
+              "Lead-\nans. %†"]
     rows, breaks = [], []
     for s, name in SUITES.items():
         m = d.metrics["suites"][s]
         for i, c in enumerate(CONDS):
             x = m["conditions"][c]
-            by = " / ".join(f"{100 * x['by_type'][t]['accuracy']:.0f}" for t in TYPES[s] if t in x["by_type"])
             rows.append([name if i == 0 else (f"({m['n_pairs']} pairs)" if i == 1 else ""), COND_LABEL[c],
-                         fmt_ci(x["accuracy"], x["accuracy_ci95"]), by, f"{100 * x['pair_accuracy']:.1f}",
-                         f"{100 * x['identical_answer_rate']:.1f}", f"{100 * x['empty_answer_rate']:.1f}",
+                         fmt_ci(x["accuracy"], x["accuracy_ci95"]), f"{100 * x['pair_accuracy']:.1f}",
+                         f"{100 * x['identical_answer_rate']:.1f}",
                          f"{x['mean_reference_nll']:.2f}", f"{1000 * x['seconds_per_answer']:.0f}",
                          "–" if lead[s][c] is None else f"{100 * lead[s][c]:.1f}"])
         breaks.append(len(rows) - 1)
@@ -204,28 +207,31 @@ def tab1_final_results(d: Data) -> None:
     save_table(OUT, "tab1_final_results", header, rows,
                "Final-test results (stage-3 model; greedy, 16 new tokens). Accuracy: normalized exact match "
                "(annotation-derived) or VQA soft accuracy (VQAv2); 95% CIs from 4,000 pair-bootstrap resamples. "
-               f"By type: {types_note}. Pair acc.: both questions of a pair answered with their own canonical "
+               "Accuracy by question type is in the appendix. Pair acc.: both questions of a pair answered with their own canonical "
                "answer. Identical: both questions of a pair receive the same answer. Ref. NLL: teacher-forced "
                "reference-answer NLL (termination excluded). †Supplementary, not a protocol metric: only the leading "
                "yes/no word or first number is scored (closed-form types), separating answer format from content.",
-               "tab:t2-final", align="llrlrrrrrr", midrules_after=breaks)
+               "tab:t2-final", align="llrrrrrr", midrules_after=breaks)
 
 
 # ============================================================================ figure 2: image use (correct vs swap)
 
 def fig2_image_use(d: Data) -> None:
+    """Printed at 5.5 in x 2.35 in (scale 1). Rows: each suite, then its question types."""
     from matplotlib.patches import Patch
 
+    short = {"grounding": "Grounding", "vqa": "VQAv2"}
     rows = []  # (label, suite, type or None)
-    for s in SUITES:
-        rows.append((f"{SUITES[s]} (all)", s, None))
-        rows += [(f"    {t}", s, t) for t in TYPES[s]]
+    for s_ in SUITES:
+        rows.append((f"{short[s_]} (all)", s_, None))
+        rows += [(f"  {t}", s_, t) for t in TYPES[s_]]
     y = np.arange(len(rows))[::-1].astype(float)
-    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH_IN, 2.2), sharey=True,
-                             gridspec_kw={"wspace": 0.18, "width_ratios": [1, 1, 1.1]})
+    fig, axes = plt.subplots(1, 3, figsize=(TEXT_WIDTH_IN, 2.35), sharey=True,
+                             gridspec_kw={"width_ratios": [1, 1, 1.1]})
+    fig.subplots_adjust(wspace=0.16, left=0.14, right=0.99, top=0.9, bottom=0.3)
     a, b, c = axes
-    for yi, (_, s, t) in zip(y, rows):
-        m = d.metrics["suites"][s]
+    for yi, (_, s_, t) in zip(y, rows):
+        m = d.metrics["suites"][s_]
         if t is None:
             acc = m["correct_image_advantage"]["correct_minus_partner"]["accuracy"]
             nll = m["correct_image_advantage"]["correct_minus_partner"]["nll_advantage"]
@@ -237,8 +243,8 @@ def fig2_image_use(d: Data) -> None:
         for ax, v, scale in ((a, acc, 100.0), (b, nll, 1.0)):
             lo, hi = v["ci95"]
             ax.errorbar(scale * v["mean"], yi, xerr=[[scale * (v["mean"] - lo)], [scale * (hi - v["mean"])]],
-                        fmt="D" if t is None else "o", color=SUITE_COLOR[s], ms=3.2 if t is None else 2.6,
-                        capsize=1.5, elinewidth=0.8)
+                        fmt="D" if t is None else "o", color=SUITE_COLOR[s_], ms=4 if t is None else 3.2,
+                        capsize=1.8, elinewidth=0.9)
         left = 0.0
         for key, col in (("follows_partner_answer", "#4c9f70"), ("keeps_original_answer", "#e0a030"),
                          ("other_answer", "#bbbbbb")):
@@ -251,16 +257,16 @@ def fig2_image_use(d: Data) -> None:
     for lab, r in zip(a.get_yticklabels(), rows):
         if r[2] is None:
             lab.set_fontweight("bold")
-    a.set_xlabel("Δ accuracy (pp)")
-    b.set_xlabel("Δ NLL (swap − correct)")
-    c.set_xlabel("share of answers")
+    a.set_xlabel("Correct $-$ complementary (pp)")
+    b.set_xlabel(r"$\Delta$NLL (swap $-$ correct)")
+    c.set_xlabel("Share of swapped answers")
     c.set_xlim(0, 1)
     a.set_title("(a) Accuracy advantage")
     b.set_title("(b) Likelihood advantage")
     c.set_title("(c) Answers under the swap")
-    c.legend(handles=[Patch(color="#4c9f70", label="partner's answer"), Patch(color="#e0a030", label="original answer"),
-                      Patch(color="#bbbbbb", label="other")], frameon=False, fontsize=5.2,
-             loc="upper center", bbox_to_anchor=(0.5, -0.24), ncol=3, handlelength=1.0, columnspacing=0.8)
+    fig.legend(handles=[Patch(color="#4c9f70", label="partner's reference"), Patch(color="#e0a030", label="original answer"),
+                        Patch(color="#bbbbbb", label="other answer")], frameon=False, loc="lower center",
+               bbox_to_anchor=(0.72, 0.0), ncol=3, handlelength=1.0, columnspacing=0.8)
     save_fig(fig, OUT, "fig2_image_use")
 
 
@@ -339,33 +345,50 @@ def _short(t: str, n: int) -> str:
     return t if len(t) <= n else t[: n - 1] + "…"
 
 
-def qual_figure(picks: list[dict], cfg, name: str, cols: int = 2) -> None:
+def qual_figure(picks: list[dict], cfg, name: str, cols: int = 4) -> None:
+    """Pairs laid out `cols` per row at printed size (scale 1); every text element is 7 pt."""
+    import textwrap
+
     if not picks:
         return
+    fs = FONT_PT["small"]
     rows_n = int(np.ceil(len(picks) / cols))
-    fig = plt.figure(figsize=(TEXT_WIDTH_IN, 2.05 * rows_n))
-    outer = fig.add_gridspec(rows_n, cols, wspace=0.1, hspace=0.85)
+    cell_w = TEXT_WIDTH_IN / cols
+    gap = 0.10                                 # inches between neighbouring pairs
+    img = (cell_w - gap - 0.04) / 2            # two square images per pair
+    chars = int((cell_w - gap) * 72 / (0.44 * fs))  # characters per line that fit the cell at 7 pt
+    title_h, label_h = 0.62, 0.30              # inches above / below the images
+    row_h = title_h + img + label_h
+    fig = plt.figure(figsize=(TEXT_WIDTH_IN, row_h * rows_n))
+    short = {"grounding": "Grounding", "vqa": "VQAv2"}
     for i, p in enumerate(picks):
-        inner = outer[i // cols, i % cols].subgridspec(1, 2, wspace=0.06)
+        r_i, c_i = divmod(i, cols)
         v = p["pair"]
+        top = 1 - (r_i * row_h + title_h) / (row_h * rows_n)
+        q = textwrap.shorten(v[("correct", 0)]["question"], width=2 * chars - 4, placeholder="…")
+        q_lines = textwrap.wrap("Q: " + q, width=chars)[:2]
+        none_ans = textwrap.shorten("no image: " + (v[("none", 0)]["prediction"] or ""), width=chars, placeholder="…")
+        head = [textwrap.shorten(f"{short[p['suite']]}, {p['type']} ({p['rule']})", width=chars, placeholder="…"),
+                *q_lines, none_ans]
+        x_cell = c_i * cell_w + (gap / 2 if c_i else 0.0)
+        fig.text(x_cell / TEXT_WIDTH_IN, top + 0.01 / rows_n, "\n".join(head), fontsize=fs,
+                 va="bottom", ha="left", linespacing=1.15)
         for m in (0, 1):
-            ax = fig.add_subplot(inner[0, m])
+            x0 = (x_cell + m * (img + 0.04)) / TEXT_WIDTH_IN
+            ax = fig.add_axes([x0, top - img / (row_h * rows_n), img / TEXT_WIDTH_IN, img / (row_h * rows_n)])
             r = v[("correct", m)]
             im = fetch_image(r["original_image"], cfg)
             if im is None:
                 ax.set_facecolor("0.85")
-                ax.text(0.5, 0.5, "image\nunavailable", ha="center", va="center", fontsize=5, transform=ax.transAxes)
+                ax.text(0.5, 0.5, "image\nunavailable", ha="center", va="center", fontsize=fs, transform=ax.transAxes)
             else:
                 ax.imshow(im)
             ax.set_xticks([])
             ax.set_yticks([])
-            mark = "(correct)" if r["score"] >= 0.999 else ("(partial)" if r["score"] > 0 else "(wrong)")
-            ax.set_xlabel(f"reference: {_short(r['canonical'], 18)}\nanswer: {_short(r['prediction'], 18)} {mark}",
-                          fontsize=5.0, labelpad=2, linespacing=1.15)
-        ax0 = fig.axes[-2]  # left image of this pair
-        ax0.set_title(f"{SUITES[p['suite']]} · {p['type']} · {p['rule']}\nQ: {_short(v[('correct', 0)]['question'], 52)}\n"
-                      f"no image (both): {_short(v[('none', 0)]['prediction'], 36)}",
-                      fontsize=5.3, loc="left", x=0.0, linespacing=1.15)
+            ok = r["score"] >= 0.999
+            mark = r"$\checkmark$" if ok else (r"$\sim$" if r["score"] > 0 else r"$\times$")
+            ax.set_xlabel(f"ref: {_short(r['canonical'], 12)}\nans: {_short(r['prediction'], 10)} {mark}",
+                          fontsize=fs, labelpad=1.5, linespacing=1.1, color="#1a7f37" if ok else "#b42318")
     save_fig(fig, OUT, name)
 
 
@@ -467,7 +490,7 @@ def main() -> None:
         wanted = [tuple(x.split(":")) for x in args.qual_main.split(",") if x]
         main_picks = [p for w in wanted for p in picks if (p["type"], p["rule"]) == w]
         qual_figure(main_picks, cfg, "fig3_qualitative")
-        qual_figure(picks, cfg, "figA1_qualitative_all")
+        qual_figure(picks, cfg, "figA1_qualitative_all", cols=4)
         sel = [{"suite": p["suite"], "type": p["type"], "rule": p["rule"], "pair_id": p["pair"][("correct", 0)]["pair_id"],
                 "in_main_figure": (p["type"], p["rule"]) in wanted} for p in picks]
         (OUT / "qualitative_selection.json").write_text(json.dumps(sel, indent=2))

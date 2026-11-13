@@ -1,3 +1,4 @@
+\PassOptionsToPackage{numbers,sort&compress}{natbib}
 \documentclass{article}
 
 \usepackage[main, final]{neurips_2026}
@@ -14,7 +15,7 @@
 \usepackage{float}
 \usepackage{graphicx}
 \usepackage{subcaption}
-\usepackage{natbib}
+% natbib loaded by the NeurIPS style (numeric option passed above)
 \usepackage{amsmath, amssymb}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
@@ -26,7 +27,10 @@
 \usepackage{etoolbox}
 \usepackage{adjustbox}
 % ---- Compact float layout (space for the analysis) -------------------------------------------------------
-\usepackage[font=small,labelfont=bf,skip=3pt]{caption}
+\let\captionsizeorig\small       % keep the real \small: tables redefine \small locally
+\usepackage{caption}
+\DeclareCaptionFont{capsize}{\footnotesize}   % 8 pt captions (saves space)
+\captionsetup{font=capsize,labelfont=bf,skip=3pt}
 \setlength{\textfloatsep}{8pt plus 2pt minus 2pt}   % float above/below text
 \setlength{\floatsep}{6pt plus 2pt minus 2pt}       % between two floats
 \setlength{\intextsep}{6pt plus 2pt minus 2pt}
@@ -56,7 +60,7 @@
 % Placeholder marker: every TODO is text you still have to write.
 \newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
 
-\title{\todo{Title}}
+\title{Adapting Pretrained Models: Constrained Fine-Tuning, Multimodal Alignment, and Test-Time Compute}
 
 \author{
   Faaiz Khan \\
@@ -72,15 +76,30 @@
 \suppressfloats[t]   % no floats above the title block
 
 \begin{abstract}
-  \todo{Abstract.}
-  Code: \url{https://github.com/FaaizKhan1999/atml-assignment3}.
+  % ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+  %   Abstract: the problem studied across the three parts, what was done, and the main findings in a few
+  %   sentences. The assignment requires the repository link at the end of the abstract (already in place
+  %   below).
+  % Points the assignment asks you to address here:
+  %   - Keep it to one short paragraph; distinguish percentage-point changes from relative percentages if
+  %   you quote numbers.
+  % -----------------------------------------------------------------------------------------------------
+  We study how parameter constraints, multimodal alignment, and test-time computation affect small pretrained language and vision models across three empirical tasks. First, we fine-tune Qwen3-0.6B on mathematics using Full FT, L2-SP, LoRA, and OPLoRA: full-weight runs achieve the largest GSM8K gains (up to +21.0 percentage points [pp]), whereas rank-16 adapters trade 3.0--3.3 pp of peak math gain for 70--73\% lower peak GPU memory and stronger out-of-domain retention. Second, we train a SigLIP--Qwen3-0.6B vision-language model through a three-stage curriculum; visual sensitivity rises sharply during Stage 2 instruction tuning, and the final model outperforms complementary-image controls by +55.5 pp on grounding and +29.5 pp on VQA, while its strict-metric drop without an image partly reflects full-sentence formatting and counting and pair consistency remain limited. Third, on Qwen2.5 math and multimodal rollouts alongside a 50-question live study on Qwen2.5-3B, large-budget errors stem primarily from misselecting existing correct candidates: rank-weighted consensus significantly improves MATH accuracy by +1.8 pp over self-consistency, adaptive stopping cuts token use by 52--64\% with little or no accuracy loss, and live parallel or refinement decoding shows no significant gain while parallel sampling increases truncation. Code: \url{https://github.com/FaaizKhan1999/atml-assignment3}
 \end{abstract}
 
 % =====================================================================================================
 \section{Introduction}
 \label{sec:intro}
 
-\todo{Introduction.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Introduction (brief): motivate the three questions the study investigates (specialising a small LLM
+%   with limited forgetting; teaching a frozen LLM to use images; spending inference compute well), and
+%   state what the report contributes. Point forward to the sections.
+% Points the assignment asks you to address here:
+%   - The assignment asks for a brief introduction; most space should go to results and interpretation.
+% References that can support this paragraph: qwen3, xiong2026oplora, liu2023llava, kang2025selfcertainty, usman2026visconf, wang2023selfconsistency
+% -----------------------------------------------------------------------------------------------------
+Pretrained language and vision models are strong starting points for downstream tasks, but adapting and using them effectively raises three practical questions. First, when fine-tuning a small language model on a specialized domain like mathematics, parameter updates can overwrite existing capabilities \citep{biderman2024lora}; we must understand how weight penalties, low-rank adapters, and subspace protection trade target-domain adaptation against retention and compute cost \citep{li2018l2sp, xiong2026oplora}. Second, when connecting a frozen vision encoder \citep{zhai2023siglip} to a language model \citep{liu2023llava}, predictions can rely on text shortcuts and language priors rather than visual evidence \citep{goyal2017vqav2}. Third, when weights are fixed at inference time, repeated sampling increases candidate coverage, but it remains unclear how best to select among candidates or when extra rollouts justify their token cost \citep{wang2023selfconsistency, aggarwal2023adaptiveconsistency, kang2025selfcertainty, usman2026visconf, madaan2023selfrefine}.
 
 % =====================================================================================================
 \section{Experimental Setup and Methods}
@@ -89,17 +108,66 @@
 \subsection{Mathematical Fine-Tuning and Parameter-Restricted Adaptation}
 \label{sec:setup-finetuning}
 
-\todo{Setup and methods.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Setup, fine-tuning (concise): model, data selection, shared recipe, the five methods, checkpoints,
+%   evaluation protocol, diagnostics and the qualitative protocol.
+% Evidence to draw on:
+%   - Appendix tables tab:t1-data (data selection), tab:t1-verify (merge / projection checks),
+%   tab:t1-bench-full (all metrics).
+%   - README: implementation notes (response-only loss, chat template with thinking disabled,
+%   leading-newline stripping).
+% Points the assignment asks you to address here:
+%   - State deviations or implementation choices the assignment leaves open, e.g. L2-SP reference
+%   weights kept in pinned CPU memory, BoolQ evaluated at batch size 8, two runs sharing one T4x2
+%   machine (affects timing), vLLM not used.
+%   - Identify baseline, checkpoints, dataset splits and metrics clearly (assignment writing
+%   guideline).
+% References that can support this paragraph: qwen3, yu2024metamath, hu2022lora, li2018l2sp, xiong2026oplora, gao2024lmevalharness, cobbe2021gsm8k, zellers2019hellaswag, clark2019boolq, clark2018arc, betley2025emergent, paszke2019pytorch, wolf2020transformers
+% -----------------------------------------------------------------------------------------------------
+\textbf{Model, Data, and Training.} We initialize five runs from \texttt{Qwen/Qwen3-0.6B} \citep{qwen3} in PyTorch and Transformers \citep{paszke2019pytorch, wolf2020transformers} (seed 6304, \texttt{enable\_\allowbreak thinking=\allowbreak False}, leading response newlines stripped) on the first 40,000 eligible MetaMathQA \citep{yu2024metamath} examples after length and GSM8K-overlap filtering on \texttt{query} and \texttt{original\_\allowbreak question} (Appendix Table~\ref{tab:t1-data}). Each run trains for one epoch (1,250 updates, effective batch 32) using AdamW, cosine decay, gradient checkpointing, FP16 mixed precision, and response-only cross-entropy. All five runs executed on one Kaggle $\text{T4}\times 2$ node across two concurrent per-GPU queues, affecting wall-clock times.
+
+\textbf{Configurations and Evaluation.} We evaluate seven conditions (shared baseline, Full FT midpoint at update 625, and five final models at update 1,250): Full FT ($\text{LR}=2\times 10^{-5}$); L2-SP \citep{li2018l2sp} ($\lambda=10^{-3}$, reference $\theta_0$ in pinned CPU memory); LoRA-4 and LoRA-16 \citep{hu2022lora} ($\text{LR}=2\times 10^{-4}$, $(r,\alpha)\in\{(4,8),(16,32)\}$ on all seven linear projections per layer); and OPLoRA-16 \citep{xiong2026oplora} ($r=16, \alpha=32, k=128$, projecting adapters outside the top-$k$ FP32 singular subspaces of $W_0$; merge and projection checks in Appendix Table~\ref{tab:t1-verify}). Using \texttt{lm-\allowbreak evaluation-\allowbreak harness} \citep{gao2024lmevalharness} in zero-shot FP16, we evaluate GSM8K test \citep{cobbe2021gsm8k} (greedy, 1,024-token cap) and likelihood accuracy on HellaSwag \citep{zellers2019hellaswag}, ARC-Easy \citep{clark2018arc} (both length-normalized), and BoolQ \citep{clark2019boolq} (Appendix Table~\ref{tab:t1-bench-full}). On \texttt{down\_proj} in layers 0, 13, and 27, we compute the protected-subspace energy ratio $\rho_k$, relative update norm $\eta$, and FP32 activation shift $R(z)$ on cached baseline inputs across 32 GSM8K and 32 HellaSwag probes. We also greedily generate 512-token responses on 24 non-math prompts \citep{betley2025emergent} and manually annotate a fixed 42-response subset (unblinded).
 
 \subsection{Vision-Language Interface and Grounding Evaluation}
 \label{sec:setup-vlm}
 
-\todo{Setup and methods.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Setup, vision-language model (concise): architecture (frozen SigLIP features, MLP connector, Qwen3
+%   with LoRA), connector calibration, the three-stage curriculum, data construction and the two
+%   complementary-pair suites, image conditions and metrics.
+% Evidence to draw on:
+%   - Appendix tables tab:t2-data (data and mixture), tab:t2-resources (cost); README notes on
+%   label-quality rules and image-disjoint splits.
+% Points the assignment asks you to address here:
+%   - State choices the assignment leaves open: grounding label rules, VQA pair filters, the initial
+%   loss scale of 1,024, the supplementary lead-answer metric (and that it is not a protocol metric).
+%   - The optional 49-token run was not done: the assignment asks you to state incomplete experiments.
+% References that can support this paragraph: liu2023llava, zhai2023siglip, qwen3, hu2022lora, lin2014coco, chen2015cococaptions, goyal2017vqav2, vqa_eval_code
+% -----------------------------------------------------------------------------------------------------
+\textbf{Architecture, Data, and Curriculum.} Following \citet{liu2023llava}, we cache 196 normalized FP16 patch features from frozen \texttt{siglip-\allowbreak base-\allowbreak patch16-\allowbreak 224} \citep{zhai2023siglip} and map them into \texttt{Qwen/Qwen3-0.6B} \citep{qwen3} via a two-layer MLP connector ($768\to 1024\to 1024$) scaled by a fixed training-derived calibration factor ($0.0555$) to match text-embedding RMS. From image-disjoint COCO 2014 \citep{lin2014coco, chen2015cococaptions} and VQAv2 \citep{goyal2017vqav2} splits (Appendix Table~\ref{tab:t2-data}), we build COCO captions, programmatic presence/counting pairs filtered for label quality, and natural VQAv2 complementary pairs ($\ge 8/10$ consensus). We train sequentially over 4,500 updates (effective batch 16, example-weighted cross-entropy; costs in Appendix Table~\ref{tab:t2-resources}): Stage 1 (2,250 updates) trains only the connector on captions; Stage 2 (1,500 updates) adds attention LoRA ($r=16, \alpha=32$) \citep{hu2022lora} on programmatic grounding with caption replay; and Stage 3 (750 updates) specializes on VQAv2 with replay of all prior tasks.
+
+\textbf{Evaluation and Controls.} We log dev caption loss, answer NLL, and the complementary swap penalty $\Delta\text{NLL}$ across training. Final Stage 3 evaluation (greedy, 16-token cap) tests Correct, Complementary swap, Mismatched (unrelated image), and No image conditions using normalized exact match (grounding), VQA soft consensus accuracy \citep{vqa_eval_code}, pair accuracy, answer NLL, and 4,000-resample pair-bootstrap 95\% CIs. Because no-image responses default to full sentences, we add a supplementary non-protocol lead-answer accuracy scoring the first yes/no word or number (excluding ``other'' questions).
 
 \subsection{Test-Time Compute: Sampling, Selection and Adaptive Inference}
 \label{sec:setup-ttc}
 
-\todo{Setup and methods.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Setup, test-time compute (concise): supplied rollouts, splits and rollout orders, answer
+%   equivalence and grading, quality scores (L, K, V, VisConf), aggregation (highest score,
+%   self-consistency, RWC), adaptive stopping and the live-generation protocol.
+% Evidence to draw on:
+%   - Appendix tables tab:t3-data (scorer details, Math-Verify timeouts), tab:t3-sensitivity (MathVista
+%   scorer check).
+% Points the assignment asks you to address here:
+%   - State the grading choices: Math-Verify grouping without gold answers; MathVista normalisation
+%   turning unparseable extractions into NO_ANSWER; the lenient sensitivity check.
+%   - State that selection and stopping used neither gold answers nor unrevealed rollouts (required
+%   check before submission).
+% References that can support this paragraph: qwen25, bai2025qwen25vl, hendrycks2021math, lu2024mathvista, mathverify, kang2025selfcertainty, usman2026visconf, wang2023selfconsistency, aggarwal2023adaptiveconsistency, madaan2023selfrefine
+% -----------------------------------------------------------------------------------------------------
+\textbf{Rollouts, Grading, and Signals.} We analyze 32 supplied rollouts per question from \texttt{Qwen2.5-\allowbreak 3B-\allowbreak Instruct} \citep{qwen25} on 1,000 MATH problems \citep{hendrycks2021math} and \texttt{Qwen2.5-\allowbreak VL-\allowbreak 3B-\allowbreak Instruct} \citep{bai2025qwen25vl} on 1,000 MathVista \texttt{testmini} problems \citep{lu2024mathvista}, split (seed 6304) into 200 dev and 800 test questions across 10 rollout orders for $N \in \{1, 2, 4, 8, 16, 32\}$. Answers are grouped without gold references: on MATH, \texttt{math-verify} \citep{mathverify} groups non-empty strings (80 timed-out comparisons counted as non-equivalent; Appendix Table~\ref{tab:t3-data}) and maps empty extractions to \texttt{NO\_ANSWER}; on MathVista, metadata normalization maps missing or unparseable extractions to \texttt{NO\_ANSWER} (lenient scorer check in Appendix Table~\ref{tab:t3-sensitivity}). \texttt{NO\_ANSWER} participates in voting and cost accounting but is graded incorrect. Selection, calibration, and stopping never access gold answers or unrevealed rollouts. Per rollout, we compute mean log-probability $L_i$ and self-certainty $K_i$ \citep{kang2025selfcertainty}, plus MathVista visual engagement $V_i$ and VisConf $Z_i = V_i C_i$ \citep{usman2026visconf}. We compare \texttt{FirstAns}, self-consistency \citep{wang2023selfconsistency}, highest-score selection, shortest-length control, and rank-weighted consensus (RWC), with 1,000-resample paired question bootstrap 95\% CIs at $N=32$.
+
+\textbf{Adaptive Stopping and Live Generation.} We evaluate Agreement-based (unique non-\texttt{NO\_ANSWER} plurality $\ge \tau$) and Quality-aware (additionally requiring self-consistency and RWC winners to match with RWC margin $\ge \gamma$) stopping \citep{aggarwal2023adaptiveconsistency} at $n \in \{4, 8, 16\}$ before a forced stop at 32, freezing dev-selected thresholds for test. On 50 held-out MATH questions using live FP16 \texttt{Qwen2.5-\allowbreak 3B-\allowbreak Instruct} on a Kaggle T4 (same sampling as the supplied rollouts, batch size 1, 3,072-token total budget), we compare a Single response (3,072 cap), Parallel $\times 3$ (three 1,024-token rollouts with self-consistency), and Sequential refinement \citep{madaan2023selfrefine} (shared first 1,024-token rollout plus a 2,048-token critique-and-revision pass without oracle feedback).
 
 % =====================================================================================================
 \section{Results and Analysis}
@@ -109,124 +177,311 @@
 \subsection{Specialization, Retention and Restrictions on Adaptation}
 \label{sec:results-finetuning}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (fine-tuning RQ1):
+%   "Specialization and retention. How does mathematical fine-tuning affect the balance between
+%   mathematical performance and other capabilities, and how does this balance vary across methods and
+%   training stages?"
+% Evidence to draw on:
+%   - Table tab:t1-bench: GSM8K vs the three non-math benchmarks for all seven conditions, with pp
+%   change from the baseline; Full FT midpoint vs final shows the stage dimension.
+%   - Appendix tab:t1-bench-full (raw and normalised accuracies), tab:t1-boolq (yes/no answer balance
+%   behind the BoolQ numbers).
+% Points the assignment asks you to address here:
+%   - Organise a connected analysis across the research questions rather than answering each
+%   separately.
+%   - Report percentage-point changes, and note GSM8K extraction failures and truncation separately
+%   from wrong answers.
+% References that can support this paragraph: biderman2024lora, gao2024lmevalharness
+% -----------------------------------------------------------------------------------------------------
+\textbf{Specialization, Progression, and Retention.} Fine-tuning raises GSM8K accuracy by +16.5 to +21.0 percentage points (pp) over the 43.4\% baseline without causing catastrophic forgetting on aggregate non-math benchmarks (Table~\ref{tab:t1-bench}; Appendix Table~\ref{tab:t1-bench-full}) \citep{gao2024lmevalharness}. Extraction artifacts are ruled out, though single-run scores carry roughly $\pm 2.6$ pp of 95\% binomial sampling noise on GSM8K. Full FT acquires two-thirds of its math gain by the midpoint while keeping mean non-math change positive. However, aggregate retention masks opposite mechanisms on BoolQ (Appendix Table~\ref{tab:t1-boolq}): Full FT's $-2.8$ pp raw accuracy drop reflects a shift toward predicting ``no'' (``yes'' rate falling from 57.7\% to 31.5\%) even as its class-balanced accuracy rises. Conversely, LoRA-16 and OPLoRA-16 gain +7.4 pp on BoolQ without a label-bias shift—improving on both classes—driving their higher mean non-math gains \citep{biderman2024lora}.
 
 % Benchmark results: all seven conditions x four benchmarks, change from baseline in pp.
 \input{figs/task1/tab1_benchmarks.tex}
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.82\textwidth]{figs/task1/fig1_training_tradeoff.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task1/fig1_training_tradeoff.pdf}
+  \caption{Training dynamics, regularization, and the adaptation--retention trade-off. L2-SP restricts parameter drift without sacrificing Full FT's mathematical gains, whereas adapters prioritize out-of-domain generalization over peak target-task accuracy.}
   \label{fig:ft-training-tradeoff}
 \end{figure}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (fine-tuning RQ2):
+%   "Restrictions on adaptation. How do proximity regularization, adapter rank, and orthogonal
+%   protection affect the trade-off between adaptation and retention?"
+% Evidence to draw on:
+%   - Fig. fig:ft-training-tradeoff: training loss and learning rate, the L2-SP penalty next to its
+%   loss, and the adaptation-retention view of every condition.
+%   - Table tab:t1-bench: L2-SP vs Full FT, LoRA-4 vs LoRA-16, OPLoRA-16 vs LoRA-16 (matched rank and
+%   initialisation).
+% Points the assignment asks you to address here:
+%   - Compare methods that differ in one factor at a time (proximity regulariser, rank, orthogonal
+%   protection).
+% References that can support this paragraph: li2018l2sp, hu2022lora, xiong2026oplora, biderman2024lora
+% -----------------------------------------------------------------------------------------------------
+\textbf{Controlled Comparisons of Update Restrictions.} First, adding L2-SP \citep{li2018l2sp} to Full FT cuts parameter displacement $\|\theta-\theta_0\|_2$ from 10.65 to 6.26 (Figure~\ref{fig:ft-training-tradeoff}, Table~\ref{tab:t1-resources}), while matching Full FT on GSM8K and non-math tasks (within single-run noise). Second, quadrupling rank from LoRA-4 to LoRA-16 \citep{hu2022lora} improves GSM8K (+16.5 to +17.7 pp) and raises mean non-math change from +2.75 to +5.28 pp, though rank-16 adapters still trail Full FT by 3.0--3.3 pp on GSM8K, consistent with low-rank updates learning less in-domain while perturbing baseline behavior less \citep{biderman2024lora}. Third, OPLoRA-16 matches LoRA-16 \citep{xiong2026oplora} at identical rank and initialization, indicating that orthogonal subspace protection does not noticeably alter benchmark scores at this scale.
 
 % Resources and regularization: trainable parameters, time, memory, checkpoint sizes, displacement, penalty.
 \input{figs/task1/tab2_resources.tex}
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.68\textwidth]{figs/task1/fig2_diagnostics.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task1/fig2_diagnostics.pdf}
+  \caption{Subspace update energy, relative update norm, and activation shift across layers. Unconstrained updates match the random-subspace baseline, whereas OPLoRA eliminates protected-subspace interference while inducing comparable activation shifts.}
   \label{fig:ft-diagnostics}
 \end{figure}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (fine-tuning RQ3):
+%   "Parameter changes and behavior. What relationships exist between the magnitude and geometry of
+%   parameter updates, their activation on different inputs, and changes in model behavior?"
+% Research question (fine-tuning RQ4):
+%   "Performance and computational cost. How do the methods compare in the balance they achieve between
+%   mathematical performance, retention, and computational cost?"
+% Evidence to draw on:
+%   - Table tab:t1-resources: trainable parameters, time, peak memory, checkpoint sizes, displacement
+%   and penalty, method-specific overheads.
+%   - Fig. fig:ft-diagnostics: protected-subspace energy rho_k (random-direction reference k/d_out =
+%   0.125 marked), relative update size eta, and activation correction R(z) on math and non-math
+%   probes.
+%   - Appendix tab:t1-diag-full (all layers and values), tab:t1-verify (merge and projection checks).
+% Points the assignment asks you to address here:
+%   - Relate the size and geometry of updates and their activation on math vs non-math inputs to the
+%   benchmark changes in tab:t1-bench.
+%   - Report compute cost alongside performance (assignment writing guideline); note that two runs
+%   shared each machine when comparing times.
+% References that can support this paragraph: xiong2026oplora, li2018l2sp, hu2022lora
+% -----------------------------------------------------------------------------------------------------
+\textbf{Update Geometry, Activation Shifts, and Resource Trade-Offs.} On \texttt{down\_proj} (Figure~\ref{fig:ft-diagnostics}; Appendix Tables~\ref{tab:t1-verify} and \ref{tab:t1-diag-full}), unconstrained updates place $\rho_k \approx 0.13$ of their energy inside the top-$k$ starting subspace—matching the random-direction baseline $k/d_{\text{out}} = 0.125$—whereas OPLoRA-16 drives $\rho_k$ to 0.0000 \citep{xiong2026oplora} at a similar relative update norm. Local activation shifts $R(z)$ are layer-dependent: in layers 0 and 13, updates respond more strongly to GSM8K than HellaSwag probes, whereas in layer 27 the ratio reverses across all methods, though cached-input $R(z)$ probes measure isolated layer responses rather than causal end-to-end effects. Computationally (Table~\ref{tab:t1-resources}), adapters train just 0.42--1.67\% of parameters and cut peak GPU memory by 70--74\% \citep{hu2022lora}, while L2-SP adds pinned-CPU reference overhead \citep{li2018l2sp} and OPLoRA-16's SVD/QR precomputation and per-step projections increase runtime (under concurrent two-queue execution).
 
 % Qualitative findings: summary of the 42 annotated responses (aligned excerpts: Appendix, Table in app:ft-excerpts).
 \input{figs/task1/tab3_annotation_summary.tex}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (fine-tuning RQ5):
+%   "Behavior beyond benchmark scores. How does mathematical fine-tuning affect responses to unrelated
+%   questions, and to what extent do benchmark scores reflect these behavioral changes?"
+% Evidence to draw on:
+%   - Table tab:t1-annotation: your manual annotation of the 42-response subset per condition.
+%   - Appendix tab:t1-excerpts (aligned excerpts for the prompt you selected) and tab:t1-excerpts-all
+%   (all six prompts), tab:t1-autoflags (automatic checks on all 24 prompts).
+% Points the assignment asks you to address here:
+%   - State how the excerpts were selected (the assignment requires a stated rule) and that the
+%   annotation was not blind.
+%   - Discuss how far the behavioural changes are or are not visible in the benchmark scores.
+% References that can support this paragraph: betley2025emergent
+% -----------------------------------------------------------------------------------------------------
+\textbf{Qualitative Behavior Beyond Benchmark Scores.} Unblinded annotation of the 42-response subset ($n=6$ per condition; Table~\ref{tab:t1-annotation}) and automated flags on all 168 outputs (Appendix Table~\ref{tab:t1-autoflags}; aligned excerpts in Appendix Tables~\ref{tab:t1-excerpts} and \ref{tab:t1-excerpts-all}) expose generative side effects that teacher-forced likelihood benchmarks miss \citep{betley2025emergent}. Full FT lowers coherence through severe repetition and unprompted mathematical framing on non-math prompts; L2-SP eliminates severe repetition but retains math framing, whereas adapters largely avoid math framing and maintain slightly higher coherence (with zero inappropriate content anywhere, though small differences over six unblinded responses reflect single-sample shifts).
 
 % -----------------------------------------------------------------------------------------------------
 \subsection{Learning a Visual Interface and Measuring Visual Grounding}
 \label{sec:results-vlm}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (vision-language RQ1):
+%   "Learning a visual interface. How does the training curriculum affect the model's ability to
+%   describe images and answer visual questions? What carries over or changes between stages?"
+% Evidence to draw on:
+%   - Fig. fig:vlm-learning-curves: training loss with dev caption loss, dev answer NLL under correct /
+%   complementary / no image for both suites, and the swap penalty, with the three stages shaded.
+%   - Appendix tab:t2-dev (all development checkpoints), tab:t2-data (stage mixtures).
+% Points the assignment asks you to address here:
+%   - Describe what carries over or changes between stages, using the stage boundaries.
+% References that can support this paragraph: liu2023llava
+% -----------------------------------------------------------------------------------------------------
+\textbf{Curriculum Progression and Stage Transitions.} In Stage 1 (caption alignment; Figure~\ref{fig:vlm-learning-curves}; Appendix Tables~\ref{tab:t2-data} and \ref{tab:t2-dev}) \citep{liu2023llava}, training only the connector lowers dev caption loss and reduces correct-image answer NLL overall, though answer NLL rebounds after update 1,000 (consistent with prolonged caption training favoring descriptive phrases over short answers) and the swap penalty $\Delta\text{NLL}$ stays near zero. Enabling attention LoRA and programmatic grounding pairs in Stage 2 sharply lowers answer NLL and drives $\Delta\text{NLL}$ up to $+3.39$ on grounding and $+1.39$ on VQA while caption loss stays flat. In Stage 3, VQAv2 specialization raises VQA $\Delta\text{NLL}$ to $+1.58$, while grounding $\Delta\text{NLL}$ moderates to $+2.34$.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.74\textwidth]{figs/task2/fig1_learning_curves.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task2/fig1_learning_curves.pdf}
+  \caption{Multi-stage training trajectories and complementary-image swap penalties. Caption alignment reduces overall answer loss before rebounding, whereas instruction tuning sharply lowers answer loss and widens the correct-over-complementary likelihood gap.}
   \label{fig:vlm-learning-curves}
 \end{figure}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (vision-language RQ2):
+%   "Grounding and generalization. To what extent do answers depend correctly on visual evidence, and
+%   how does this vary between annotation-derived and natural questions?"
+% Evidence to draw on:
+%   - Table tab:t2-final: both suites under the four image conditions, accuracy with CIs, by question
+%   type, pair accuracy, identical and empty answers, reference NLL, time per answer.
+%   - Appendix tab:t2-bytype and tab:t2-advantages (advantages over every control).
+% Points the assignment asks you to address here:
+%   - Contrast annotation-derived (grounding) and natural VQAv2 questions; identify the baseline
+%   condition for each comparison.
+%   - The lead-answer column is supplementary; say so if you use it.
+% References that can support this paragraph: goyal2017vqav2, vqa_eval_code
+% -----------------------------------------------------------------------------------------------------
+\textbf{Visual Grounding Across Question Suites and Controls.} Relative to the correct-image baseline, the Stage 3 model shows strong visual sensitivity, with larger advantages on programmatic grounding than on natural VQAv2 (Table~\ref{tab:t2-final}; Appendix Tables~\ref{tab:t2-bytype} and \ref{tab:t2-advantages}) \citep{goyal2017vqav2, vqa_eval_code}. Swapping to the complementary partner image—keeping question wording and visual-token count fixed while changing the reference answer—cuts accuracy by $55.5$ pp on grounding and $29.5$ pp on VQA. Unrelated mismatched images yield intermediate accuracy and answer NLL because random scenes occasionally share the original answer by chance, whereas complementary partners are constructed to differ. Removing visual tokens collapses strict accuracy to 0.0--1.0\%; however, our supplementary non-protocol lead-answer metric reaches 25.0\% on grounding and 29.2\% on scored yes/no and number VQA prompts, showing that the strict no-image drop combines missing visual evidence with a shift toward full-sentence outputs.
 
 % Final results: both suites x four image conditions, question types, pair diagnostics, NLL, bootstrap CIs.
 \input{figs/task2/tab1_final_results.tex}
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.8\textwidth]{figs/task2/fig2_image_use.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task2/fig2_image_use.pdf}
+  \caption{Bootstrap analysis of visual sensitivity and prediction shifts under complementary swaps. Correct images yield significant accuracy and likelihood gains, and swapping images shifts over half of VQA answers to the partner's reference.}
   \label{fig:vlm-image-use}
 \end{figure}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (vision-language RQ3):
+%   "Measuring image use. How consistent are the conclusions suggested by reference likelihood,
+%   generated answers, pair-level metrics, and qualitative behavior?"
+% Evidence to draw on:
+%   - Fig. fig:vlm-image-use: correct-image advantage in accuracy and in likelihood with bootstrap CIs,
+%   and what answers do under the complementary swap.
+%   - Table tab:t2-final (pair-level metrics) and Fig. fig:vlm-qualitative (examples).
+% Points the assignment asks you to address here:
+%   - Compare the conclusions suggested by likelihood, generated answers, pair-level metrics and
+%   qualitative examples, including where they disagree.
+% References that can support this paragraph: goyal2017vqav2
+% -----------------------------------------------------------------------------------------------------
+\textbf{Consistency Across Likelihood, Generation, and Pair Diagnostics.} Correct images significantly reduce answer NLL over complementary swaps ($+3.09$ on grounding; $+1.45$ on VQA; Figure~\ref{fig:vlm-image-use}, Table~\ref{tab:t2-final}) \citep{goyal2017vqav2}. Under complementary swaps, 53.1\% of VQA answers switch to the partner's reference while 24.0\% retain the original answer (consistent with language priors, ungrounded persistence, or failing to resolve visual differences), whereas on grounding the partner-match rate equals correct-image accuracy by construction. Yet strict pair accuracy—answering both images in a pair correctly—is much lower than single-image accuracy, and removing the image yields 100\% identical predictions across paired prompts, confirming that within-pair divergence under visual conditions is strictly image-driven.
 
 \begin{figure}[t]
   \centering
-  % the PDF's blank band between its two rows of examples (y = 110--154 pt of 266 pt) is trimmed out
-  \includegraphics[width=0.62\textwidth,trim={0 153 0 4},clip]{figs/task2/fig3_qualitative.pdf}\\[2pt]
-  \includegraphics[width=0.62\textwidth,trim={0 6 0 150},clip]{figs/task2/fig3_qualitative.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including the example-selection rule.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task2/fig3_qualitative.pdf}
+  \caption{Predictions across four representative complementary pairs and no-image controls. The model resolves binary presence when given images and reverts to full sentences without an image on most prompts, but misses references on counting and spatial pairs.}
   \label{fig:vlm-qualitative}
 \end{figure}
 
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (vision-language RQ4):
+%   "Capabilities and cost. What capabilities and limitations characterize this VLM, and what
+%   computational costs accompany its training and inference?"
+% Evidence to draw on:
+%   - Fig. fig:vlm-qualitative and appendix Fig. fig:vlm-qualitative-all (stated selection rule).
+%   - Appendix tab:t2-resources: caching, each stage, development and final evaluation, time, memory,
+%   trainable parameters.
+% Points the assignment asks you to address here:
+%   - Summarise capabilities and limitations, and report the computational cost of training and
+%   inference.
+% References that can support this paragraph: liu2023llava, zhai2023siglip
+% -----------------------------------------------------------------------------------------------------
+\textbf{Capabilities, Qualitative Failure Modes, and Computational Cost.} Representative pairs—the first pair in ID order per question type where answers differ and the first where answers match (Figure~\ref{fig:vlm-qualitative}; all 10 pairs across the five question types in Appendix Figure~\ref{fig:vlm-qualitative-all})—show strong binary presence detection (\texttt{yes}/\texttt{no} on broccoli) alongside errors on counting and spatial queries. Computationally (Appendix Table~\ref{tab:t2-resources}, Table~\ref{tab:t2-final}), caching SigLIP features \citep{zhai2023siglip} keeps peak training memory at 1.54--1.56 GB across all stages \citep{liu2023llava}, with total training taking 1.55 h and greedy inference taking 30--42 ms per answer with an image (111--123 ms without).
 
 % -----------------------------------------------------------------------------------------------------
 \subsection{Allocating Test-Time Compute: Sampling, Selection and Stopping}
 \label{sec:results-ttc}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (test-time compute RQ1):
+%   "Exploration and selection. What limits the benefit of repeated sampling, and how does the balance
+%   between candidate coverage and selection quality change with compute?"
+% Evidence to draw on:
+%   - Fig. fig:ttc-compute-curves: accuracy vs candidates N and vs generated tokens for both datasets,
+%   oracle coverage dashed, adaptive policies as markers.
+%   - Table tab:t3-methods: every rule at N = 8 and 32 with the change vs self-consistency and paired
+%   bootstrap CIs.
+% Points the assignment asks you to address here:
+%   - Oracle coverage uses reference answers; it is an analysis upper bound, not a method.
+% References that can support this paragraph: wang2023selfconsistency, kang2025selfcertainty
+% -----------------------------------------------------------------------------------------------------
+\textbf{Exploration Opportunity vs.\ Selection Bottlenecks.} From $N=1$ (\texttt{FirstAns}) to $N=32$, oracle coverage—an upper bound using gold answers rather than a deployable selector—rises substantially (Figure~\ref{fig:ttc-compute-curves}) \citep{wang2023selfconsistency, kang2025selfcertainty}. Yet deployable selectors recover less than half of this gain: at $N=32$, standard self-consistency leaves selection gaps of 17.6 pp on MATH and 27.8 pp on MathVista below oracle coverage while gains largely saturate by $N=8$ (Table~\ref{tab:t3-methods}).
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.56\textwidth]{figs/task3/fig1_compute_curves.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task3/fig1_compute_curves.pdf}
+  \caption{Accuracy scaling across candidate budgets and token costs for fixed and adaptive policies. Self-consistency leaves a wide gap to oracle coverage, while adaptive stopping cuts token use with minimal accuracy loss.}
   \label{fig:ttc-compute-curves}
 \end{figure}
 
 % Compact method comparison at N = 8 and N = 32.
 \input{figs/task3/tab1_methods.tex}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (test-time compute RQ2):
+%   "Evidence and consensus. How do confidence, visual engagement, and answer agreement contribute to
+%   selecting a final answer, and what explains their successes or failures?"
+% Evidence to draw on:
+%   - Table tab:t3-methods: same score with different aggregation, same aggregation with different
+%   score, the length-only control and the tokenwise-fusion ablation.
+%   - Appendix tab:t3-boot (controlled comparisons at every N), tab:t3-curves-math and
+%   tab:t3-curves-mathvista (all rules at all budgets).
+% Points the assignment asks you to address here:
+%   - Separate the effect of the score from the effect of the aggregation rule.
+% References that can support this paragraph: kang2025selfcertainty, usman2026visconf, wang2023selfconsistency
+% -----------------------------------------------------------------------------------------------------
+\textbf{Separating Quality Signals from Consensus Aggregation.} Controlled comparisons at $N=32$ (Table~\ref{tab:t3-methods}; Appendix Tables~\ref{tab:t3-boot}--\ref{tab:t3-curves-mathvista}) show that consensus aggregation matters far more than single-rollout score maximization \citep{wang2023selfconsistency}. Holding the quality signal fixed while switching from best-of-$N$ (max score) to rank-weighted consensus (RWC) jumps accuracy from 70.6\% to 75.5\% for self-certainty on MATH and from 57.8\% to 63.1\% for VisConf on MathVista; every single-best selector and the shortest-response control trail uniform voting. Replacing uniform voting with RWC yields a significant $+1.8$ pp gain on MATH using self-certainty ($[+0.7, +2.8]$) \citep{kang2025selfcertainty}, while holding RWC fixed on MathVista and varying the signal puts VisConf highest, though the MathVista intervals touch or include zero \citep{usman2026visconf}.
 
 \begin{figure}[t]
   \centering
-  \includegraphics[width=0.74\textwidth]{figs/task3/fig2_failures_signals.pdf}
-  \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
+  \includegraphics{figs/task3/fig2_failures_signals.pdf}
+  \caption{Candidate generation versus selection failures and quartile-based signal discrimination. Errors shift from generation misses at small budgets to selection failures at larger budgets, where domain-matched confidence signals discriminate best.}
   \label{fig:ttc-failures-signals}
 \end{figure}
 
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (test-time compute RQ1/RQ2):
+%   "Exploration and selection. What limits the benefit of repeated sampling, and how does the balance
+%   between candidate coverage and selection quality change with compute? / Evidence and consensus. How
+%   do confidence, visual engagement, and answer agreement contribute to selecting a final answer, and
+%   what explains their successes or failures?"
+% Evidence to draw on:
+%   - Fig. fig:ttc-failures-signals: (a, b) correct vs correct-available-but-missed vs
+%   no-correct-candidate per N; (c) top-minus-bottom-quartile correctness per score.
+%   - Appendix tab:t3-signals (length associations, confidence-vision correlation, tokenwise vs
+%   trajectory identity) and Fig. fig:ttc-trajectories.
+% Points the assignment asks you to address here:
+%   - Sampling failures vs selection failures; length and correctness associations; confidence-vision
+%   relationships; tokenwise vs trajectory-level fusion.
+% References that can support this paragraph: usman2026visconf, kang2025selfcertainty
+% -----------------------------------------------------------------------------------------------------
+\textbf{Failure Decomposition and Signal Discrimination.} As $N$ grows, errors shift from lacking any correct candidate at small budgets to misselecting an available correct candidate from $N=16$ on MATH and $N=8$ on MathVista (Figure~\ref{fig:ttc-failures-signals}a,b). Within-question quartile gaps on mixed questions at $N=32$ show why domain-matched signals guide RWC best (Figure~\ref{fig:ttc-failures-signals}c; Appendix Table~\ref{tab:t3-signals} and Figure~\ref{fig:ttc-trajectories}): top-minus-bottom quartile correctness is largest for self-certainty on MATH ($+20.4$ pp) \citep{kang2025selfcertainty} and VisConf on MathVista ($+9.3$ pp, roughly doubling self-certainty or vision alone) \citep{usman2026visconf}. Within MathVista rollouts, token confidence and visual attention correlate negatively (median $r = -0.21$); this negative covariance lowers tokenwise fusion scores $Z_i^{\text{token}}$ relative to trajectory-level $Z_i$, while in practice yielding slightly lower accuracy and nearly identical quartile discrimination.
 
 % Live inference: single response vs parallel sampling vs sequential refinement.
 \input{figs/task3/tab3_live.tex}
 
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (test-time compute RQ3):
+%   "Breadth and refinement. How does spending computation on independent alternatives compare with a
+%   longer response or sequential reconsideration?"
+% Evidence to draw on:
+%   - Table tab:t3-live: single response vs three parallel responses vs initial + critique-revision on
+%   50 MATH questions; accuracy with CIs, input/output tokens, time, truncation, extraction failures,
+%   revision transitions in the caption.
+% Points the assignment asks you to address here:
+%   - Report actual tokens and runtime alongside accuracy; the shared initial response is charged to
+%   both parallel and refinement.
+%   - With 50 questions the intervals are wide; discuss inconclusive results as such.
+% References that can support this paragraph: madaan2023selfrefine, wang2023selfconsistency, yao2023treeofthoughts, lightman2024verify
+% -----------------------------------------------------------------------------------------------------
+\textbf{Live Breadth vs.\ Sequential Refinement.} On the 50-question live MATH study under a 3,072-token cap (Table~\ref{tab:t3-live}), accuracy differences are statistically inconclusive given wide intervals: charging the shared 1,024-token initial rollout to both multi-call arms, parallel $\times 3$ and sequential refinement \citep{madaan2023selfrefine} consume 2.3--2.5$\times$ as many tokens. Splitting the allowance into three 1,024-token parallel calls raises truncation from 4\% to 16\% \citep{wang2023selfconsistency}, whereas refinement keeps truncation at 5\% but yields zero net gain, trading 1 wrong$\to$correct recovery against 1 correct$\to$wrong corruption across 6 changed answers \citep{yao2023treeofthoughts, lightman2024verify}.
 
 % Adaptive inference: development-selected thresholds and held-out accuracy-cost results.
 \input{figs/task3/tab4_adaptive.tex}
 
-\todo{Analysis.}
-
-% Qualitative findings: selection disagreement, revision, premature stopping.
-\input{figs/task3/tab5_examples.tex}
-
-\todo{Analysis.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+% Research question (test-time compute RQ4):
+%   "Adaptive allocation. When is another rollout useful, and how effectively can the observed evidence
+%   guide stopping without access to correctness?"
+% Evidence to draw on:
+%   - Table tab:t3-adaptive: development-selected settings and held-out accuracy, tokens, rollouts and
+%   stopping distribution next to fixed-N self-consistency.
+%   - Appendix tab:t3-grid (development grids) and Fig. fig:ttc-stopping (stopping vs fraction of
+%   correct rollouts, retrospective).
+% Points the assignment asks you to address here:
+%   - Thresholds were chosen on the development split and frozen; gold answers are used only
+%   retrospectively.
+% References that can support this paragraph: aggarwal2023adaptiveconsistency, usman2026visconf
+% -----------------------------------------------------------------------------------------------------
+\textbf{Adaptive Early Stopping and Failure Modes.} With dev-selected thresholds frozen for evaluation (Appendix Table~\ref{tab:t3-grid}), agreement and quality-aware stopping cut mean token cost by 52.5--64.1\% (Table~\ref{tab:t3-adaptive}) \citep{aggarwal2023adaptiveconsistency, usman2026visconf}. Three policies match fixed-32 self-consistency with CIs spanning zero while achieving higher point-estimate accuracy than fixed $N=8$ or $N=16$ budgets at comparable cost (Figure~\ref{fig:ttc-compute-curves}); only MATH quality-aware stopping incurs a small significant loss ($-0.6$ pp $[-1.2, -0.1]$). Retrospectively (Appendix Figure~\ref{fig:ttc-stopping}), quality-aware stopping halts at 4.0 rollouts when all 32 candidates are correct, but spends the most compute (18.5 rollouts on MATH, 23.9 on MathVista) on 0\%-correct questions where scattered wrong answers prevent agreement and no correct candidate exists. Representative cases (Appendix Table~\ref{tab:t3-examples}) show how each mechanism can fail: VisConf + RWC upweights an incorrect cluster over self-consistency's correct plurality; the live study's sole wrong$\to$correct revision recovers from an unboxed \texttt{NO\_ANSWER} initial rollout; and stopping at $n=4$ locks in an initial wrong consensus that 32-rollout voting overturns.
 
 % =====================================================================================================
 \section{Conclusion}
 \label{sec:conclusion}
 
-\todo{Conclusion.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Conclusion (brief): the main findings of each part and their limitations; incomplete experiments or
+%   deviations if not already stated.
+% Points the assignment asks you to address here:
+%   - A cross-task discussion is not required by the assignment.
+% -----------------------------------------------------------------------------------------------------
+This study examined parameter constraints in domain fine-tuning, multi-stage vision-language alignment, and test-time compute allocation. First, on \texttt{Qwen3-0.6B}, full-weight fine-tuning maximizes GSM8K gains while rank-16 adapters cut GPU memory by over 70\%, improve BoolQ accuracy across both classes, and largely avoid unprompted math-template bleed on general prompts. Second, staged instruction tuning and VQAv2 specialization establish strong visual sensitivity over complementary-image controls, yet low strict pair accuracy and weaker object counting than binary presence remain key bottlenecks, and the optional 49-token compression run was omitted. Third, errors stem mainly from misselecting existing correct candidates: rank-weighted consensus significantly improves MATH accuracy over uniform voting, and adaptive stopping cuts token cost by more than half with minimal accuracy loss, though offline token counts omit prefill and attention-extraction overhead.
 
 \clearpage
 
@@ -247,37 +502,67 @@
 
 \subsection{Training Data Selection}
 \label{app:ft-data}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
+%   selection: how the 40,000 examples were chosen, exclusions by reason, GSM8K-test decontamination
+%   (tab:t1-data).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA6_data.tex}
 
 \subsection{Complete Benchmark Metrics}
 \label{app:ft-bench}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Complete
+%   metrics behind tab:t1-bench, including raw and normalised accuracies (tab:t1-bench-full).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA1_benchmarks_full.tex}
 
 \subsection{Yes/No Answer Balance on Reading Comprehension}
 \label{app:ft-boolq}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Yes/no
+%   prediction balance on BoolQ against the gold balance (tab:t1-boolq); referenced from the retention
+%   discussion.
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA2_boolq.tex}
 
 \subsection{Weight-Space and Activation Diagnostics}
 \label{app:ft-diagnostics}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. All
+%   diagnostic values per method and layer (tab:t1-diag-full); definitions of rho_k, eta and R(z).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA3_diagnostics.tex}
 
 \subsection{Numerical Verification of Merging and Orthogonal Projection}
 \label{app:ft-verification}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it.
+%   Merged-vs-unmerged agreement and OPLoRA projection residuals (tab:t1-verify) as correctness checks.
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA4_verification.tex}
 
 \subsection{Automatic Checks on All Qualitative Prompts}
 \label{app:ft-autoflags}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Automatic
+%   flags over all 24 prompts (tab:t1-autoflags) and how each flag is computed.
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task1/tabA5_auto_flags.tex}
 
 \subsection{Annotated Excerpts}
 \label{app:ft-excerpts}
-\todo{Text.}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. The aligned
+%   excerpts (tab:t1-excerpts, tab:t1-excerpts-all) and the rule used to choose the main-text example.
+% -----------------------------------------------------------------------------------------------------
+Referenced from Section~\ref{sec:results-finetuning}, we selected the \texttt{enough\_of\_my\_husband} template prompt for Table~\ref{tab:t1-excerpts} (with all six annotated prompts shown in Table~\ref{tab:t1-excerpts-all}) because it illustrates both template-slot adherence (\texttt{idea\_1}, \texttt{idea\_3}) and the main math-training artifact: Full FT, L2-SP, and OPLoRA-16 append or prepend MetaMathQA's ``\texttt{The answer is:}'' phrase on an unrelated advice prompt, whereas LoRA-16 fills the template cleanly and LoRA-4 avoids the phrase but ignores the template slots.
 \input{figs/task1/tab4_excerpts.tex}
 % Long table: may need to be split or converted to longtable if it overflows the page.
 \input{figs/task1/tabA7_excerpts_all.tex}
@@ -288,32 +573,53 @@
 
 \subsection{Data Construction, Curriculum Mixture and Connector Calibration}
 \label{app:vlm-data}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
+%   construction, label-quality rules, stage mixtures and connector calibration (tab:t2-data).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task2/tabA3_data_mixture.tex}
 
 \subsection{Development Metrics Across Training}
 \label{app:vlm-dev}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Development
+%   metrics at every checkpoint (tab:t2-dev) behind Fig. fig:vlm-learning-curves.
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
-\input{figs/task2/tabA2_dev_curve.tex}  % wide table: own landscape page
+\input{figs/task2/tabA2_dev_curve.tex}
 
 \subsection{Results by Question Type and Advantages over All Image Controls}
 \label{app:vlm-bytype}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Results by
+%   question type and correct-image advantages over every control (tab:t2-bytype, tab:t2-advantages).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task2/tabA1_results_by_type.tex}
 \input{figs/task2/tabA1b_advantages.tex}
 
 \subsection{Computational Cost}
 \label{app:vlm-cost}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it.
+%   Computational cost of caching, training stages and evaluation (tab:t2-resources); referenced from
+%   the capabilities-and-cost discussion.
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 % moved from the main body to save space
 \input{figs/task2/tab2_resources.tex}
 
 \subsection{Additional Complementary-Pair Examples}
 \label{app:vlm-qualitative}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. All
+%   complementary-pair examples and their selection rule (Fig. fig:vlm-qualitative-all).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task2/figA1_qualitative_all.pdf}
+  \includegraphics{figs/task2/figA1_qualitative_all.pdf}
   \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including the example-selection rule.} \todo{Conclusion to draw.}}
   \label{fig:vlm-qualitative-all}
 \end{figure}
@@ -324,57 +630,95 @@
 
 \subsection{Data, Answer Equivalence and Scorer Details}
 \label{app:ttc-data}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Data
+%   statistics, scorer version, Math-Verify timeouts and metadata checksum (tab:t3-data).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task3/tabA5_data_scorer.tex}
 
 \subsection{Scorer Sensitivity}
 \label{app:ttc-sensitivity}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. MathVista
+%   scorer sensitivity: official vs lenient normalisation (tab:t3-sensitivity).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task3/tabA2_scorer_sensitivity.tex}
 
 \subsection{All Selection Rules at All Budgets}
 \label{app:ttc-curves}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Every rule
+%   at every budget for both datasets (tab:t3-curves-math, tab:t3-curves-mathvista, Fig.
+%   fig:ttc-all-methods).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task3/tabA1_curves_math.tex}
 \input{figs/task3/tabA1_curves_mathvista.tex}
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA1_all_methods.pdf}
+  \includegraphics{figs/task3/figA1_all_methods.pdf}
   \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
   \label{fig:ttc-all-methods}
 \end{figure}
 
 \subsection{Controlled Comparisons of Scores and Aggregation}
 \label{app:ttc-bootstrap}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Controlled
+%   score / aggregation comparisons with paired bootstrap CIs at every N (tab:t3-boot).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \input{figs/task3/tabA3_bootstrap.tex}
 
 \subsection{Signal Analysis Details}
 \label{app:ttc-signals}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Length
+%   associations, confidence-vision correlation and the tokenwise vs trajectory identity check
+%   (tab:t3-signals).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 % moved from the main body to save space
 \input{figs/task3/tab2_signals.tex}
 
 \subsection{Token-Level Signal Trajectories}
 \label{app:ttc-trajectories}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Token-level
+%   confidence and visual-engagement trajectories and how they were selected (Fig.
+%   fig:ttc-trajectories).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA3_trajectories.pdf}
+  \includegraphics{figs/task3/figA3_trajectories.pdf}
   \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown, including how the trajectories were selected.} \todo{Conclusion to draw.}}
   \label{fig:ttc-trajectories}
 \end{figure}
 
 \subsection{Adaptive Stopping: Development Grids and Stopping Behaviour}
 \label{app:ttc-adaptive}
+% ---- WHAT TO WRITE HERE (guidance only; comments never reach the PDF) ------------------------------
+%   Appendix: briefly say what this supplement shows and where the main text refers to it. Development
+%   grids for both stopping families and stopping behaviour vs fraction of correct rollouts
+%   (tab:t3-grid, Fig. fig:ttc-stopping).
+% -----------------------------------------------------------------------------------------------------
 \todo{Text.}
 % Long table: may need to be split or converted to longtable if it overflows the page.
 \input{figs/task3/tabA4_adaptive_grid.tex}
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth,height=0.85\textheight,keepaspectratio]{figs/task3/figA2_stopping_vs_correct.pdf}
+  \includegraphics{figs/task3/figA2_stopping_vs_correct.pdf}
   \caption{\todo{Figure title.} \todo{1--2 sentences describing what is shown.} \todo{Conclusion to draw.}}
   \label{fig:ttc-stopping}
 \end{figure}
+
+
+\subsection{Representative Cases}
+\label{app:ttc-examples}
+% moved from the main body to save space; the main text describes all three cases
+\input{figs/task3/tab5_examples.tex}
 
 \end{document}

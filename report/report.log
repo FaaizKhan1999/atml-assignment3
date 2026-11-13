@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.19)  12 NOV 2026 00:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.2.19)  13 NOV 2026 07:12
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -483,24 +483,24 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 69.
-LaTeX Font Info:    ... okay on input line 69.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -568,24 +568,24 @@ LaTeX Font Info:    ... okay on input line 69.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 69.
+Package hyperref Info: Link coloring OFF on input line 73.
 (./report.out) (./report.out)
 \@outlinefile=\write3
 \openout3 = `report.out'.
 
-LaTeX Info: Redefining \microtypecontext on input line 69.
-Package microtype Info: Applying patch `item' on input line 69.
-Package microtype Info: Applying patch `toc' on input line 69.
-Package microtype Info: Applying patch `eqnum' on input line 69.
-Package microtype Info: Applying patch `footnote' on input line 69.
-Package microtype Info: Applying patch `verbatim' on input line 69.
+LaTeX Info: Redefining \microtypecontext on input line 73.
+Package microtype Info: Applying patch `item' on input line 73.
+Package microtype Info: Applying patch `toc' on input line 73.
+Package microtype Info: Applying patch `eqnum' on input line 73.
+Package microtype Info: Applying patch `footnote' on input line 73.
+Package microtype Info: Applying patch `verbatim' on input line 73.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: Automatic font expansion enabled (level 2),
 (microtype)             stretch: 20, shrink: 20, step: 1, non-selected.
 Package microtype Info: Using default expansion set `alltext-nott'.
-LaTeX Info: Redefining \showhyphens on input line 69.
+LaTeX Info: Redefining \showhyphens on input line 73.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
@@ -619,19 +619,19 @@ Package caption Info: End \AtBeginDocument code.
  (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 76.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 72.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 76.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texlive/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 72.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 76.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
@@ -639,107 +639,108 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `cmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- (./figs/task1/tab1_benchmarks.tex)
-<figs/task1/fig1_training_tradeoff.pdf, id=133, 411.28969pt x 162.49646pt>
-File: figs/task1/fig1_training_tradeoff.pdf Graphic file (type pdf)
-<use figs/task1/fig1_training_tradeoff.pdf>
-Package pdftex.def Info: figs/task1/fig1_training_tradeoff.pdf  used on input line 119.
-(pdftex.def)             Requested size: 325.9406pt x 128.77742pt.
- (./figs/task1/tab2_resources.tex)
-<figs/task1/fig2_diagnostics.pdf, id=134, 389.64633pt x 218.44423pt>
-File: figs/task1/fig2_diagnostics.pdf Graphic file (type pdf)
-<use figs/task1/fig2_diagnostics.pdf>
-Package pdftex.def Info: figs/task1/fig2_diagnostics.pdf  used on input line 131.
-(pdftex.def)             Requested size: 270.28687pt x 151.53331pt.
- (./figs/task1/tab3_annotation_summary.tex
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4.
- (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
-File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-))
-<figs/task2/fig1_learning_curves.pdf, id=135, 363.9699pt x 200.79178pt>
-File: figs/task2/fig1_learning_curves.pdf Graphic file (type pdf)
-<use figs/task2/fig1_learning_curves.pdf>
-Package pdftex.def Info: figs/task2/fig1_learning_curves.pdf  used on input line 151.
-(pdftex.def)             Requested size: 294.14107pt x 162.26666pt.
- (./figs/task2/tab1_final_results.tex)
-<figs/task2/fig2_image_use.pdf, id=136, 439.12794pt x 190.03215pt>
-File: figs/task2/fig2_image_use.pdf Graphic file (type pdf)
-<use figs/task2/fig2_image_use.pdf>
-Package pdftex.def Info: figs/task2/fig2_image_use.pdf  used on input line 163.
-(pdftex.def)             Requested size: 317.9892pt x 137.60884pt.
-<figs/task2/fig3_qualitative.pdf, id=137, 324.00826pt x 266.76846pt>
-File: figs/task2/fig3_qualitative.pdf Graphic file (type pdf)
-<use figs/task2/fig3_qualitative.pdf>
-Package pdftex.def Info: figs/task2/fig3_qualitative.pdf  used on input line 173.
-(pdftex.def)             Requested size: 246.43874pt x 83.0421pt.
-File: figs/task2/fig3_qualitative.pdf Graphic file (type pdf)
-<use figs/task2/fig3_qualitative.pdf>
-Package pdftex.def Info: figs/task2/fig3_qualitative.pdf  used on input line 174.
-(pdftex.def)             Requested size: 246.43874pt x 83.80557pt.
-<figs/task3/fig1_compute_curves.pdf, id=140, 354.54599pt x 296.02333pt>
-File: figs/task3/fig1_compute_curves.pdf Graphic file (type pdf)
-<use figs/task3/fig1_compute_curves.pdf>
-Package pdftex.def Info: figs/task3/fig1_compute_curves.pdf  used on input line 190.
-(pdftex.def)             Requested size: 222.5906pt x 185.85426pt.
  [1
 
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}] (./figs/task3/tab1_methods.tex)
-<figs/task3/fig2_failures_signals.pdf, id=151, 357.45189pt x 201.57753pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2] (./figs/task1/tab1_benchmarks.tex)
+<figs/task1/fig1_training_tradeoff.pdf, id=245, 411.28969pt x 162.49646pt>
+File: figs/task1/fig1_training_tradeoff.pdf Graphic file (type pdf)
+<use figs/task1/fig1_training_tradeoff.pdf>
+Package pdftex.def Info: figs/task1/fig1_training_tradeoff.pdf  used on input line 204.
+(pdftex.def)             Requested size: 267.33513pt x 105.62143pt.
+ (./figs/task1/tab2_resources.tex)
+<figs/task1/fig2_diagnostics.pdf, id=252, 389.64633pt x 218.44423pt>
+File: figs/task1/fig2_diagnostics.pdf Graphic file (type pdf)
+<use figs/task1/fig2_diagnostics.pdf>
+Package pdftex.def Info: figs/task1/fig2_diagnostics.pdf  used on input line 230.
+(pdftex.def)             Requested size: 253.2671pt x 141.98706pt.
+ [3 <./figs/task1/fig1_training_tradeoff.pdf>] (./figs/task1/tab3_annotation_summary.tex) [4 <./figs/task1/fig2_diagnostics.pdf>]
+<figs/task2/fig1_learning_curves.pdf, id=341, 363.9699pt x 200.79178pt>
+File: figs/task2/fig1_learning_curves.pdf Graphic file (type pdf)
+<use figs/task2/fig1_learning_curves.pdf>
+Package pdftex.def Info: figs/task2/fig1_learning_curves.pdf  used on input line 297.
+(pdftex.def)             Requested size: 236.57762pt x 130.5131pt.
+ (./figs/task2/tab1_final_results.tex)
+<figs/task2/fig2_image_use.pdf, id=347, 439.12794pt x 190.03215pt>
+File: figs/task2/fig2_image_use.pdf Graphic file (type pdf)
+<use figs/task2/fig2_image_use.pdf>
+Package pdftex.def Info: figs/task2/fig2_image_use.pdf  used on input line 323.
+(pdftex.def)             Requested size: 285.42978pt x 123.51942pt.
+ [5 <./figs/task2/fig1_learning_curves.pdf> <./figs/task2/fig2_image_use.pdf>]
+<figs/task2/fig3_qualitative.pdf, id=393, 324.00826pt x 266.76846pt>
+File: figs/task2/fig3_qualitative.pdf Graphic file (type pdf)
+<use figs/task2/fig3_qualitative.pdf>
+Package pdftex.def Info: figs/task2/fig3_qualitative.pdf  used on input line 346.
+(pdftex.def)             Requested size: 246.24387pt x 82.97546pt.
+File: figs/task2/fig3_qualitative.pdf Graphic file (type pdf)
+<use figs/task2/fig3_qualitative.pdf>
+Package pdftex.def Info: figs/task2/fig3_qualitative.pdf  used on input line 347.
+(pdftex.def)             Requested size: 246.24387pt x 83.73831pt.
+<figs/task3/fig1_compute_curves.pdf, id=406, 354.54599pt x 296.02333pt>
+File: figs/task3/fig1_compute_curves.pdf Graphic file (type pdf)
+<use figs/task3/fig1_compute_curves.pdf>
+Package pdftex.def Info: figs/task3/fig1_compute_curves.pdf  used on input line 389.
+(pdftex.def)             Requested size: 230.45216pt x 192.41287pt.
+ (./figs/task3/tab1_methods.tex) [6 <./figs/task2/fig3_qualitative.pdf>]
+<figs/task3/fig2_failures_signals.pdf, id=447, 357.45189pt x 201.57753pt>
 File: figs/task3/fig2_failures_signals.pdf Graphic file (type pdf)
 <use figs/task3/fig2_failures_signals.pdf>
-Package pdftex.def Info: figs/task3/fig2_failures_signals.pdf  used on input line 202.
-(pdftex.def)             Requested size: 294.14107pt x 165.87904pt.
- (./figs/task3/tab3_live.tex [2 <./figs/task1/fig1_training_tradeoff.pdf> <./figs/task1/fig2_diagnostics.pdf>]) (./figs/task3/tab4_adaptive.tex) (./figs/task3/tab5_examples.tex) [3 <./figs/task2/fig1_learning_curves.pdf>] [4 <./figs/task2/fig2_image_use.pdf> <./figs/task3/fig1_compute_curves.pdf> <./figs/task2/fig3_qualitative.pdf>] [5 <./figs/task3/fig2_failures_signals.pdf>] [6] (./report.bbl [7
+Package pdftex.def Info: figs/task3/fig2_failures_signals.pdf  used on input line 414.
+(pdftex.def)             Requested size: 232.34096pt x 131.02383pt.
+ (./figs/task3/tab3_live.tex) (./figs/task3/tab4_adaptive.tex [7 <./figs/task3/fig1_compute_curves.pdf> <./figs/task3/fig2_failures_signals.pdf>]) [8] (./report.bbl [9
 
-]) [8] (./figs/task1/tabA6_data.tex) (./figs/task1/tabA1_benchmarks_full.tex) (./figs/task1/tabA2_boolq.tex) (./figs/task1/tabA3_diagnostics.tex) (./figs/task1/tabA4_verification.tex) (./figs/task1/tabA5_auto_flags.tex) [9
+]) [10] (./figs/task1/tabA6_data.tex) (./figs/task1/tabA1_benchmarks_full.tex) (./figs/task1/tabA2_boolq.tex) (./figs/task1/tabA3_diagnostics.tex) (./figs/task1/tabA4_verification.tex) (./figs/task1/tabA5_auto_flags.tex
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+)) [11
 
-] (./figs/task1/tab4_excerpts.tex) (./figs/task1/tabA7_excerpts_all.tex) (./figs/task2/tabA3_data_mixture.tex) (./figs/task2/tabA2_dev_curve.tex) (./figs/task2/tabA1_results_by_type.tex) (./figs/task2/tabA1b_advantages.tex) [10] (./figs/task2/tab2_resources.tex)
-<figs/task2/figA1_qualitative_all.pdf, id=406, 324.00826pt x 617.84874pt>
+] (./figs/task1/tab4_excerpts.tex) (./figs/task1/tabA7_excerpts_all.tex) (./figs/task2/tabA3_data_mixture.tex) (./figs/task2/tabA2_dev_curve.tex) [12] (./figs/task2/tabA1_results_by_type.tex) (./figs/task2/tabA1b_advantages.tex) (./figs/task2/tab2_resources.tex)
+<figs/task2/figA1_qualitative_all.pdf, id=557, 324.00826pt x 617.84874pt>
 File: figs/task2/figA1_qualitative_all.pdf Graphic file (type pdf)
 <use figs/task2/figA1_qualitative_all.pdf>
-Package pdftex.def Info: figs/task2/figA1_qualitative_all.pdf  used on input line 316.
+Package pdftex.def Info: figs/task2/figA1_qualitative_all.pdf  used on input line 624.
 (pdftex.def)             Requested size: 289.94849pt x 552.90048pt.
  (./figs/task3/tabA5_data_scorer.tex) (./figs/task3/tabA2_scorer_sensitivity.tex) (./figs/task3/tabA1_curves_math.tex)
 (./figs/task3/tabA1_curves_mathvista.tex)
-<figs/task3/figA1_all_methods.pdf, id=407, 404.78476pt x 189.90285pt>
+<figs/task3/figA1_all_methods.pdf, id=558, 404.78476pt x 189.90285pt>
 File: figs/task3/figA1_all_methods.pdf Graphic file (type pdf)
 <use figs/task3/figA1_all_methods.pdf>
-Package pdftex.def Info: figs/task3/figA1_all_methods.pdf  used on input line 342.
+Package pdftex.def Info: figs/task3/figA1_all_methods.pdf  used on input line 663.
 (pdftex.def)             Requested size: 397.48312pt x 186.47731pt.
  (./figs/task3/tabA3_bootstrap.tex) (./figs/task3/tab2_signals.tex)
-<figs/task3/figA3_trajectories.pdf, id=408, 355.07968pt x 195.11671pt>
+<figs/task3/figA3_trajectories.pdf, id=559, 355.07968pt x 195.11671pt>
 File: figs/task3/figA3_trajectories.pdf Graphic file (type pdf)
 <use figs/task3/figA3_trajectories.pdf>
-Package pdftex.def Info: figs/task3/figA3_trajectories.pdf  used on input line 363.
+Package pdftex.def Info: figs/task3/figA3_trajectories.pdf  used on input line 698.
 (pdftex.def)             Requested size: 397.50232pt x 218.428pt.
  (./figs/task3/tabA4_adaptive_grid.tex)
-<figs/task3/figA2_stopping_vs_correct.pdf, id=409, 348.64941pt x 162.49646pt>
+<figs/task3/figA2_stopping_vs_correct.pdf, id=560, 348.64941pt x 162.49646pt>
 File: figs/task3/figA2_stopping_vs_correct.pdf Graphic file (type pdf)
 <use figs/task3/figA2_stopping_vs_correct.pdf>
-Package pdftex.def Info: figs/task3/figA2_stopping_vs_correct.pdf  used on input line 375.
+Package pdftex.def Info: figs/task3/figA2_stopping_vs_correct.pdf  used on input line 715.
 (pdftex.def)             Requested size: 397.507pt x 185.2677pt.
- [11] [12] [13] [14] [15 <./figs/task2/figA1_qualitative_all.pdf>] [16 <./figs/task3/figA1_all_methods.pdf>] [17 <./figs/task3/figA3_trajectories.pdf> <./figs/task3/figA2_stopping_vs_correct.pdf>] [18] (./report.aux)
+ [13] (./figs/task3/tab5_examples.tex [14]) [15] [16] [17 <./figs/task2/figA1_qualitative_all.pdf>] [18 <./figs/task3/figA1_all_methods.pdf>] [19 <./figs/task3/figA3_trajectories.pdf> <./figs/task3/figA2_stopping_vs_correct.pdf>] [20] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 336117E4505FF8996CBD963337A32C30;8507.
+(rerunfilecheck)             Checksum: 233526E8E4C9ECA3A726DDCB6073FF27;8669.
  ) 
 Here is how much of TeX's memory you used:
- 17926 strings out of 474222
- 289820 string characters out of 5748733
+ 18039 strings out of 474222
+ 290875 string characters out of 5748733
  2062975 words of memory out of 5000000
- 39380 multiletter control sequences out of 15000+600000
- 607336 words of font info for 278 fonts, out of 8000000 for 9000
+ 39389 multiletter control sequences out of 15000+600000
+ 612790 words of font info for 346 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,19n,79p,1003b,656s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on report.pdf (18 pages, 4095130 bytes).
+ 75i,19n,79p,1560b,655s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on report.pdf (20 pages, 4185138 bytes).
 PDF statistics:
- 634 PDF objects out of 1000 (max. 8388607)
- 428 compressed objects within 5 object streams
- 124 named destinations out of 1000 (max. 500000)
- 47428 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 795 PDF objects out of 1000 (max. 8388607)
+ 574 compressed objects within 6 object streams
+ 127 named destinations out of 1000 (max. 500000)
+ 49484 words of extra memory for PDF output out of 51595 (max. 10000000)
 

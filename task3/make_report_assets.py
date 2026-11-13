@@ -40,7 +40,7 @@ import numpy as np  # noqa: E402
 from common.config import REPO_ROOT  # noqa: E402
 from common.logging_utils import read_json  # noqa: E402
 from common.publish import try_push  # noqa: E402
-from common.report_utils import TEXT_WIDTH_IN, rcparams, save_fig, save_table  # noqa: E402
+from common.report_utils import FONT_PT, TEXT_WIDTH_IN, rcparams, save_fig, save_table  # noqa: E402
 
 RES = REPO_ROOT / "results" / "task3"
 SPL = REPO_ROOT / "splits" / "task3"
@@ -71,36 +71,42 @@ def pct(v, nd=1):
 # ============================================================================ figure 1: accuracy vs N and vs cost
 
 def fig1_compute_curves(R: dict) -> None:
-    fig, axes = plt.subplots(2, 2, figsize=(TEXT_WIDTH_IN, 3.9), sharey=True, gridspec_kw={"hspace": 0.48, "wspace": 0.08})
+    """Printed at 5.45 in x 2.35 in (scale 1). One shared accuracy axis for all four panels; the two N panels
+    and the two token panels also share their x scales, so MATH and MathVista compare at a glance."""
+    fig, axes = plt.subplots(1, 4, figsize=(TEXT_WIDTH_IN - 0.05, 2.35), sharey=True)
+    fig.subplots_adjust(wspace=0.12, left=0.075, right=0.995, top=0.88, bottom=0.42)
+    axes[1].sharex(axes[0])
+    axes[3].sharex(axes[2])
     for col, ds in enumerate(DS):
         c = R[ds]["summary"]["curves"]["eval"]
         N = c["N"]
-        top, bot = axes[0, col], axes[1, col]
-        top.plot(N, c["oracle_coverage"], "k--", lw=1.0, label="Oracle coverage")
+        a_n, a_t = axes[col], axes[2 + col]
+        a_n.plot(N, c["oracle_coverage"], "k--", lw=1.0, label="Oracle coverage")
+        a_t.plot(c["token_cost"]["sc"], c["oracle_coverage"], "k--", lw=1.0)
         for m in MAIN_METHODS[ds]:
-            top.plot(N, c["accuracy"][m], "-o", color=COLOR[m], lw=1.0, ms=2.6, label=LABEL[m])
-            bot.plot(c["token_cost"][m], c["accuracy"][m], "-o", color=COLOR[m], lw=1.0, ms=2.6)
-        bot.plot(c["token_cost"]["sc"], c["oracle_coverage"], "k--", lw=1.0)
+            a_n.plot(N, c["accuracy"][m], "-o", color=COLOR[m], ms=2.8, label=LABEL[m])
+            a_t.plot(c["token_cost"][m], c["accuracy"][m], "-o", color=COLOR[m], ms=2.8)
         ad = R[ds]["adaptive"]
         for fam, mk in (("agreement", "*"), ("quality", "P")):
             e = ad[fam]["eval"]
-            bot.plot(e["mean_cost"], e["accuracy"], mk, color="k", ms=6 if mk == "*" else 4.5, zorder=5,
+            a_t.plot(e["mean_cost"], e["accuracy"], mk, color="k", ms=7 if mk == "*" else 5.5, zorder=5,
                      label=f"Adaptive ({fam})")
-        top.set_xscale("log", base=2)
-        top.set_xticks(N)
-        top.set_xticklabels([str(n) for n in N])
-        bot.set_xscale("log")
-        top.set_title(DS[ds])
-        top.set_xlabel("Candidates N")
-        bot.set_xlabel("Mean generated tokens per question (log)")
-        for ax in (top, bot):
-            ax.grid(alpha=0.25, lw=0.4)
-    axes[0, 0].set_ylabel("Accuracy (held-out)")
-    axes[1, 0].set_ylabel("Accuracy (held-out)")
-    h1, l1 = axes[0, 1].get_legend_handles_labels()
-    h2, l2 = axes[1, 1].get_legend_handles_labels()
-    fig.legend(h1 + h2, l1 + l2, loc="upper center", ncol=4, frameon=False, fontsize=5.4, bbox_to_anchor=(0.5, 0.02),
-               handlelength=1.6, columnspacing=1.0)
+        name = DS[ds].split(" ")[0]
+        a_n.set_title(f"({'ab'[col]}) {name}: vs. N")
+        a_t.set_title(f"({'cd'[col]}) {name}: vs. tokens")
+        a_n.set_xscale("log", base=2)
+        a_n.set_xticks(N)
+        a_n.set_xticklabels([str(n) for n in N])
+        a_n.set_xlabel("Candidates N")
+        a_t.set_xscale("log")
+        a_t.set_xlabel("Tokens / question")
+    for ax in axes:
+        ax.grid(alpha=0.25, lw=0.4)
+    axes[0].set_ylabel("Held-out accuracy")
+    h1, l1 = axes[1].get_legend_handles_labels()
+    h2, l2 = axes[3].get_legend_handles_labels()
+    fig.legend(h1 + h2, l1 + l2, loc="lower center", ncol=5, frameon=False, bbox_to_anchor=(0.5, 0.0),
+               columnspacing=0.9)
     save_fig(fig, OUT, "fig1_compute_curves")
 
 
@@ -115,8 +121,8 @@ def _boot(R, ds, m, n):
 
 def tab1_methods(R: dict) -> None:
     methods = R["mathvista"]["summary"]["methods"]
-    header = ["Method", "MATH N=8", "MATH N=32", "MATH Δ vs SC @32 [95% CI]", "MathVista N=8", "MathVista N=32",
-              "MathVista Δ vs SC @32 [95% CI]"]
+    header = ["Method", "MATH\nN = 8", "MATH\nN = 32", "MATH Δ vs SC\n@32 [95% CI]", "MathVista\nN = 8",
+              "MathVista\nN = 32", "MathVista Δ vs SC\n@32 [95% CI]"]
     rows = []
     for m in methods:
         row = [LABEL[m]]
@@ -144,11 +150,16 @@ def tab1_methods(R: dict) -> None:
 # ============================================================================ figure 2: failures + signals
 
 def fig2_failures_signals(R: dict) -> None:
-    fig = plt.figure(figsize=(TEXT_WIDTH_IN, 2.25))
-    gs = fig.add_gridspec(1, 3, width_ratios=[1, 1, 1.15], wspace=0.75)
+    """Printed at 5.45 in x 2.45 in (scale 1). (a) and (b) share the 0-1 share axis."""
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+
+    fig = plt.figure(figsize=(TEXT_WIDTH_IN - 0.05, 2.45))
+    gs = fig.add_gridspec(1, 4, width_ratios=[1, 1, 0.62, 1.15], wspace=0.08, left=0.075, right=0.99, top=0.88,
+                          bottom=0.33)   # an empty column keeps (c)'s row labels clear of (b)
     axa = fig.add_subplot(gs[0])
     axb = fig.add_subplot(gs[1], sharey=axa)
-    axc = fig.add_subplot(gs[2])
+    axc = fig.add_subplot(gs[3])
     cols = {"correct": "#4c9f70", "selection_failure": "#e0a030", "sampling_failure": "#c44e52"}
     for ax, ds in ((axa, "math"), (axb, "mathvista")):
         fd = R[ds]["summary"]["failure_decomposition_eval"]
@@ -163,36 +174,33 @@ def fig2_failures_signals(R: dict) -> None:
         ax.set_xticks(x)
         ax.set_xticklabels([str(n) for n in N])
         ax.set_xlabel("Candidates N")
-        ax.set_title(f"({'a' if ds == 'math' else 'b'}) {DS[ds].split(' ')[0]}", fontsize=6.8)
+        ax.set_title(f"({'a' if ds == 'math' else 'b'}) {DS[ds].split(' ')[0]}")
         ax.set_ylim(0, 1)
     axa.set_ylabel("Share of question-orders")
-    axa.text(0.0, 1.13, "left bar: self-consistency; hatched: best RWC rule", transform=axa.transAxes, fontsize=5.2,
-             color="0.35")
     plt.setp(axb.get_yticklabels(), visible=False)
-    from matplotlib.patches import Patch
-    axb.legend(handles=[Patch(color=cols["correct"], label="correct"), Patch(color=cols["selection_failure"], label="correct available, missed"),
-                        Patch(color=cols["sampling_failure"], label="no correct candidate")],
-               loc="upper center", bbox_to_anchor=(-0.35, -0.24), ncol=3, frameon=False, fontsize=5.3)
     scores = [("K", "Self-certainty"), ("L", "Mean log-prob"), ("shortness", "Shortness"), ("V", "Vision"),
-              ("Z", "VisConf"), ("Z_token", "VisConf tokenwise")]
+              ("Z", "VisConf"), ("Z_token", "VisConf (tokenwise)")]
     y = np.arange(len(scores))[::-1]
     for off, ds in ((0.15, "math"), (-0.15, "mathvista")):
         q = R[ds]["signals"]["top_minus_bottom_quartile_correctness"]
         qm = R[ds]["signals"]["top_minus_bottom_quartile_correctness_mixed_questions"]
+        col = "#1f77b4" if ds == "math" else "#d62728"
         for yi, (k, _) in zip(y, scores):
             if q.get(k):
-                axc.plot(100 * q[k]["mean"], yi + off, "o", color="#1f77b4" if ds == "math" else "#d62728", ms=3.2)
-                axc.plot(100 * qm[k]["mean"], yi + off, "o", mfc="none", color="#1f77b4" if ds == "math" else "#d62728", ms=3.2)
+                axc.plot(100 * q[k]["mean"], yi + off, "o", color=col, ms=4)
+                axc.plot(100 * qm[k]["mean"], yi + off, "o", mfc="none", color=col, ms=4)
     axc.axvline(0, color="0.5", lw=0.6)
     axc.set_yticks(y)
-    axc.set_yticklabels([s[1] for s in scores])
-    axc.set_xlabel("Top − bottom quartile correctness (pp)")
-    axc.set_title("(c) Signal quality (N = 32)", fontsize=6.8)
-    from matplotlib.lines import Line2D
-    axc.legend(handles=[Line2D([], [], color="#1f77b4", marker="o", ls="none", ms=3, label="MATH"),
-                        Line2D([], [], color="#d62728", marker="o", ls="none", ms=3, label="MathVista"),
-                        Line2D([], [], color="0.3", marker="o", mfc="none", ls="none", ms=3, label="mixed questions only")],
-               loc="lower right", ncol=1, frameon=False, fontsize=5.0, handletextpad=0.2)
+    axc.set_yticklabels([x_[1] for x_ in scores])
+    axc.set_xlabel("Top $-$ bottom quartile correctness (pp)")
+    axc.set_title("(c) Signal quality at N = 32")
+    handles = [Patch(color=cols["correct"], label="correct"), Patch(color=cols["selection_failure"], label="correct available, missed"),
+               Patch(color=cols["sampling_failure"], label="no correct candidate"),
+               Patch(facecolor="white", edgecolor="0.3", hatch="////", label="best RWC rule (hatched)"),
+               Line2D([], [], color="#1f77b4", marker="o", ls="none", ms=4, label="MATH"),
+               Line2D([], [], color="#d62728", marker="o", ls="none", ms=4, label="MathVista"),
+               Line2D([], [], color="0.3", marker="o", mfc="none", ls="none", ms=4, label="mixed questions only")]
+    fig.legend(handles=handles, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 0.0), columnspacing=0.9)
     save_fig(fig, OUT, "fig2_failures_signals")
 
 
@@ -229,16 +237,16 @@ def tab2_signals(R: dict) -> None:
 
 def tab3_live() -> None:
     s = read_json(RES / "live" / "summary.json")
-    header = ["Strategy", "Accuracy %", "Δ vs single [95% CI]", "Input tok.", "Output tok.", "Total tok.", "s / question",
-              "Truncated calls %", "No extraction %"]
+    header = ["Strategy", "Acc. %", "Δ vs single\n[95% CI]", "Input\ntokens", "Output\ntokens", "Total\ntokens",
+              "s /\nquestion", "Truncated\ncalls %"]
     rows = []
-    for k, lab in (("single", "Single response (≤3,072)"), ("parallel", "Parallel ×3 (≤1,024) + SC"),
-                   ("refinement", "Initial + critique-revision (≤2,048)")):
+    for k, lab in (("single", "Single (≤3,072)"), ("parallel", "Parallel ×3 + SC"),
+                   ("refinement", "Refinement")):
         d = s["strategies"][k]
         b = s["paired_bootstrap"].get(f"{k}_minus_single")
         rows.append([lab, pct(d["accuracy"]), "–" if b is None else f"{100 * b['diff']:+.0f} [{100 * b['ci95'][0]:+.0f}, {100 * b['ci95'][1]:+.0f}]",
                      f"{d['mean_input_tokens']:.0f}", f"{d['mean_output_tokens']:.0f}", f"{d['mean_total_tokens']:.0f}",
-                     f"{d['mean_seconds']:.1f}", pct(d["call_truncation_rate"]), pct(d["call_extraction_failure_rate"])])
+                     f"{d['mean_seconds']:.1f}", pct(d["call_truncation_rate"])])
     t = s["refinement_transitions"]
     save_table(OUT, "tab3_live", header, rows,
                f"Live generation on {s['n_questions']} held-out MATH questions (Qwen2.5-3B-Instruct, FP16, batch 1, one T4; "
@@ -247,14 +255,14 @@ def tab3_live() -> None:
                f"Revision transitions vs the shared initial answer (initial accuracy {100 * t['initial_accuracy']:.0f}%): "
                f"wrong→correct {t['wrong_to_correct']}, correct→wrong {t['correct_to_wrong']}, answer changed "
                f"{t['answer_changed']}. Paired bootstrap over questions (1,000 resamples).",
-               "tab:t3-live", align="lrrrrrrrr")
+               "tab:t3-live", align="lrrrrrrr")
 
 
 # ============================================================================ table 4: adaptive
 
 def tab4_adaptive(R: dict) -> None:
-    header = ["Dataset", "Policy", "Setting (dev)", "Accuracy %", "Δ vs SC@32 [95% CI]", "Tokens / q.", "Rollouts",
-              "Stops at 4 / 8 / 16 / 32 (%)"]
+    header = ["Dataset", "Policy", "Setting\n(dev)", "Acc. %", "Δ vs SC@32\n[95% CI]", "Tokens\n/ q.", "Roll-\nouts",
+              "Stops at\n4 / 8 / 16 / 32 (%)"]
     rows, breaks = [], []
     for ds in DS:
         ad = R[ds]["adaptive"]
@@ -421,38 +429,44 @@ def tabA5_data_scorer(R: dict) -> None:
 
 
 def figA1_all_methods(R: dict) -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH_IN, 2.2), sharey=True, gridspec_kw={"wspace": 0.08})
+    """Printed at 5.45 in x 3.1 in. Shared y; the legend sits in its own band below the axis labels."""
+    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH_IN - 0.05, 3.1), sharey=True)
+    fig.subplots_adjust(wspace=0.08, left=0.08, right=0.99, top=0.92, bottom=0.42)
     for ax, ds in zip(axes, DS):
         c = R[ds]["summary"]["curves"]["eval"]
         ax.plot(c["N"], c["oracle_coverage"], "k--", lw=1.0, label="Oracle coverage")
         for m in c["accuracy"]:
-            ax.plot(c["N"], c["accuracy"][m], "-o", color=COLOR[m], lw=0.9, ms=2.2, label=LABEL[m])
+            ax.plot(c["N"], c["accuracy"][m], "-o", color=COLOR[m], ms=2.8, label=LABEL[m])
         ax.set_xscale("log", base=2)
         ax.set_xticks(c["N"])
         ax.set_xticklabels([str(n) for n in c["N"]])
         ax.set_title(DS[ds])
         ax.set_xlabel("Candidates N")
         ax.grid(alpha=0.25, lw=0.4)
-    axes[0].set_ylabel("Accuracy (held-out)")
+    axes[0].set_ylabel("Held-out accuracy")
     h, l = axes[1].get_legend_handles_labels()
-    fig.legend(h, l, loc="upper center", ncol=5, frameon=False, fontsize=5.2, bbox_to_anchor=(0.5, 0.02))
+    fig.legend(h, l, loc="lower center", ncol=3, frameon=False, bbox_to_anchor=(0.5, 0.0), columnspacing=1.2)
     save_fig(fig, OUT, "figA1_all_methods")
 
 
 def figA2_stopping_vs_correct() -> None:
-    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH_IN, 2.0), sharey=True, gridspec_kw={"wspace": 0.08})
+    """Printed at 5.45 in x 2.5 in. Shared axes; each panel keeps its labels inside its own space."""
+    fig, axes = plt.subplots(1, 2, figsize=(TEXT_WIDTH_IN - 0.05, 2.5), sharey=True, sharex=True)
+    fig.subplots_adjust(wspace=0.12, left=0.09, right=0.99, top=0.9, bottom=0.3)
     for ax, ds in zip(axes, DS):
         rows = [r for r in csv.DictReader(open(RES / ds / "per_question.csv")) if r["split"] == "eval"]
         x = np.array([float(r["fraction_correct_rollouts"]) for r in rows])
-        for fam, col, mk in (("agreement", "#1f77b4", "o"), ("quality", "#d62728", "^")):
-            y = np.array([float(r[f"mean_stop_{fam}"]) for r in rows])
-            ax.scatter(x, y + (0.25 if fam == "quality" else -0.25), s=4, alpha=0.35, color=col, marker=mk, lw=0, label=fam)
-        ax.set_xlabel("Fraction of correct rollouts in the full pool (retrospective)")
+        for fam, col, mk, dy in (("agreement", "#1f77b4", "o", -0.3), ("quality", "#d62728", "^", 0.3)):
+            yv = np.array([float(r[f"mean_stop_{fam}"]) for r in rows])
+            ax.scatter(x, yv + dy, s=7, alpha=0.4, color=col, marker=mk, lw=0, label={"agreement": "agreement-based stopping", "quality": "quality-aware stopping"}[fam])
+        ax.set_xlabel("Correct share of the 32 rollouts")
         ax.set_title(DS[ds])
         ax.set_yticks([4, 8, 16, 32])
+        ax.set_xlim(-0.03, 1.03)
         ax.grid(alpha=0.25, lw=0.4)
-    axes[0].set_ylabel("Mean candidates consumed")
-    axes[1].legend(frameon=False, fontsize=5.5, markerscale=2)
+    axes[0].set_ylabel("Mean rollouts consumed")
+    h, l = axes[0].get_legend_handles_labels()
+    fig.legend(h, l, loc="lower center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 0.0), markerscale=2)
     save_fig(fig, OUT, "figA2_stopping_vs_correct")
 
 
@@ -475,7 +489,7 @@ def figA3_trajectories(cfg_path: str) -> str:
     pooled = np.concatenate(d["k_tok"]).astype(np.float64)
     lo, hi = np.quantile(pooled, [0.05, 0.95])
     picks = [i for i in range(32) if corr[i]][:2] + [i for i in range(32) if not corr[i]][:2]
-    fig, axes = plt.subplots(2, 1, figsize=(TEXT_WIDTH_IN, 2.6), sharex=True, gridspec_kw={"hspace": 0.15})
+    fig, axes = plt.subplots(2, 1, figsize=(TEXT_WIDTH_IN - 0.05, 3.0), sharex=True, gridspec_kw={"hspace": 0.12})
     w = 15
     for i in picks:
         c = np.clip((d["k_tok"][i] - lo) / max(hi - lo, 1e-8), 0, 1)
@@ -485,11 +499,13 @@ def figA3_trajectories(cfg_path: str) -> str:
         col = "#2ca02c" if corr[i] else "#d62728"
         axes[0].plot(sm(c), style, color=col, lw=0.8, label=f"rollout {i} ({'correct' if corr[i] else 'wrong'})")
         axes[1].plot(sm(v), style, color=col, lw=0.8)
-    axes[0].set_ylabel("confidence c_t")
-    axes[1].set_ylabel("visual engagement v_t")
+    axes[0].set_ylabel(r"confidence $c_t$")
+    axes[1].set_ylabel(r"visual engagement $v_t$")
     axes[1].set_xlabel(f"generated token (moving average over {w})")
-    axes[0].legend(frameon=False, fontsize=5.2, ncol=2)
-    axes[0].set_title(f"MathVista question {q}: token-level signals of two correct and two incorrect rollouts", fontsize=6.5)
+    h, l = axes[0].get_legend_handles_labels()
+    fig.legend(h, l, loc="lower center", ncol=4, frameon=False, bbox_to_anchor=(0.5, 0.0))
+    fig.subplots_adjust(bottom=0.2, top=0.92, left=0.1, right=0.99)
+    axes[0].set_title(f"MathVista question {q}: two correct and two incorrect rollouts")
     save_fig(fig, OUT, "figA3_trajectories")
     return f"question {q}, rollouts {picks}"
 
