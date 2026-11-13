@@ -48,8 +48,8 @@
 \newlabel{sec:setup-vlm}{{2.2}{2}{Vision-Language Interface and Grounding Evaluation}{subsection.2.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Test-Time Compute: Sampling, Selection and Adaptive Inference}{2}{subsection.2.3}\protected@file@percent }
 \newlabel{sec:setup-ttc}{{2.3}{2}{Test-Time Compute: Sampling, Selection and Adaptive Inference}{subsection.2.3}{}}
-\citation{gao2024lmevalharness}
 \citation{biderman2024lora}
+\citation{gao2024lmevalharness}
 \citation{li2018l2sp}
 \citation{hu2022lora}
 \citation{biderman2024lora}
@@ -78,34 +78,35 @@
 \newlabel{sec:results-vlm}{{3.2}{4}{Learning a Visual Interface and Measuring Visual Grounding}{subsection.3.2}{}}
 \citation{goyal2017vqav2,vqa_eval_code}
 \citation{goyal2017vqav2}
+\citation{zhai2023siglip}
+\citation{liu2023llava}
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Multi-stage training trajectories and complementary-image swap penalties. Caption alignment reduces overall answer loss before rebounding, whereas instruction tuning sharply lowers answer loss and widens the correct-over-complementary likelihood gap.}}{5}{figure.caption.7}\protected@file@percent }
 \newlabel{fig:vlm-learning-curves}{{3}{5}{Multi-stage training trajectories and complementary-image swap penalties. Caption alignment reduces overall answer loss before rebounding, whereas instruction tuning sharply lowers answer loss and widens the correct-over-complementary likelihood gap}{figure.caption.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Final stage-three evaluation under correct, complementary, mismatched, and no-image conditions. The model achieves its highest accuracy and lowest answer loss with the correct image compared to complementary or mismatched inputs, while removing the image causes the model to generate identical full-sentence responses per prompt, which reduces strict exact-match accuracy far more than lead-answer accuracy.}}{5}{table.caption.8}\protected@file@percent }
 \newlabel{tab:t2-final}{{4}{5}{Final stage-three evaluation under correct, complementary, mismatched, and no-image conditions. The model achieves its highest accuracy and lowest answer loss with the correct image compared to complementary or mismatched inputs, while removing the image causes the model to generate identical full-sentence responses per prompt, which reduces strict exact-match accuracy far more than lead-answer accuracy}{table.caption.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Bootstrap analysis of visual sensitivity and prediction shifts under complementary swaps. Correct images yield significant accuracy and likelihood gains, and swapping images shifts over half of VQA answers to the partner's reference.}}{5}{figure.caption.9}\protected@file@percent }
-\newlabel{fig:vlm-image-use}{{4}{5}{Bootstrap analysis of visual sensitivity and prediction shifts under complementary swaps. Correct images yield significant accuracy and likelihood gains, and swapping images shifts over half of VQA answers to the partner's reference}{figure.caption.9}{}}
-\citation{zhai2023siglip}
-\citation{liu2023llava}
 \citation{wang2023selfconsistency,kang2025selfcertainty}
+\citation{kang2025selfcertainty}
+\citation{usman2026visconf}
 \citation{wang2023selfconsistency}
 \citation{kang2025selfcertainty}
 \citation{usman2026visconf}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Bootstrap analysis of visual sensitivity and prediction shifts under complementary swaps. Correct images yield significant accuracy and likelihood gains, and swapping images shifts over half of VQA answers to the partner's reference.}}{6}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:vlm-image-use}{{4}{6}{Bootstrap analysis of visual sensitivity and prediction shifts under complementary swaps. Correct images yield significant accuracy and likelihood gains, and swapping images shifts over half of VQA answers to the partner's reference}{figure.caption.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Predictions across four representative complementary pairs and no-image controls. The model resolves binary presence when given images and reverts to full sentences without an image on most prompts, but misses references on counting and spatial pairs.}}{6}{figure.caption.10}\protected@file@percent }
 \newlabel{fig:vlm-qualitative}{{5}{6}{Predictions across four representative complementary pairs and no-image controls. The model resolves binary presence when given images and reverts to full sentences without an image on most prompts, but misses references on counting and spatial pairs}{figure.caption.10}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero.}}{6}{table.caption.12}\protected@file@percent }
-\newlabel{tab:t3-methods}{{5}{6}{Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero}{table.caption.12}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Allocating Test-Time Compute: Sampling, Selection and Stopping}{6}{subsection.3.3}\protected@file@percent }
 \newlabel{sec:results-ttc}{{3.3}{6}{Allocating Test-Time Compute: Sampling, Selection and Stopping}{subsection.3.3}{}}
-\citation{kang2025selfcertainty}
-\citation{usman2026visconf}
 \citation{madaan2023selfrefine}
 \citation{wang2023selfconsistency}
 \citation{yao2023treeofthoughts,lightman2024verify}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Accuracy scaling across candidate budgets and token costs for fixed and adaptive policies. Self-consistency leaves a wide gap to oracle coverage, while adaptive stopping cuts token use with minimal accuracy loss.}}{7}{figure.caption.11}\protected@file@percent }
 \newlabel{fig:ttc-compute-curves}{{6}{7}{Accuracy scaling across candidate budgets and token costs for fixed and adaptive policies. Self-consistency leaves a wide gap to oracle coverage, while adaptive stopping cuts token use with minimal accuracy loss}{figure.caption.11}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero.}}{7}{table.caption.12}\protected@file@percent }
+\newlabel{tab:t3-methods}{{5}{7}{Comparison of candidate aggregation and selection rules across mathematical and multimodal benchmarks. Single-candidate selection heuristics and shortest-response controls perform worse than standard majority voting, whereas confidence-weighted voting yields a statistically significant gain on MATH and modest point-estimate improvements on MathVista whose confidence intervals include or touch zero}{table.caption.12}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Candidate generation versus selection failures and quartile-based signal discrimination. Errors shift from generation misses at small budgets to selection failures at larger budgets, where domain-matched confidence signals discriminate best.}}{7}{figure.caption.13}\protected@file@percent }
 \newlabel{fig:ttc-failures-signals}{{7}{7}{Candidate generation versus selection failures and quartile-based signal discrimination. Errors shift from generation misses at small budgets to selection failures at larger budgets, where domain-matched confidence signals discriminate best}{figure.caption.13}{}}
-\citation{aggarwal2023adaptiveconsistency,usman2026visconf}
+\citation{aggarwal2023adaptiveconsistency}
+\citation{usman2026visconf}
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces End-to-end latency, token overhead, and accuracy for live single-pass, parallel, and iterative refinement decoding. Under strict generation budgets, naive parallel sampling and multi-turn self-revision increase computational latency and truncation rates without improving accuracy, as beneficial revisions are offset by self-induced corruptions.}}{8}{table.caption.14}\protected@file@percent }
 \newlabel{tab:t3-live}{{6}{8}{End-to-end latency, token overhead, and accuracy for live single-pass, parallel, and iterative refinement decoding. Under strict generation budgets, naive parallel sampling and multi-turn self-revision increase computational latency and truncation rates without improving accuracy, as beneficial revisions are offset by self-induced corruptions}{table.caption.14}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Performance and stopping distributions of agreement- and quality-based adaptive early-stopping policies. Both adaptive policies halt at the minimum rollout threshold on a majority of question-order instances to cut average rollout counts by more than half, showing no statistically significant accuracy loss relative to full-budget voting except for a small drop under the quality-aware policy on MATH.}}{8}{table.caption.15}\protected@file@percent }
@@ -165,82 +166,82 @@
 \newlabel{app:ft-diagnostics}{{A.4}{11}{Weight-Space and Activation Diagnostics}{subsection.A.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {A.5}Numerical Verification of Merging and Orthogonal Projection}{11}{subsection.A.5}\protected@file@percent }
 \newlabel{app:ft-verification}{{A.5}{11}{Numerical Verification of Merging and Orthogonal Projection}{subsection.A.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Automatic Checks on All Qualitative Prompts}{11}{subsection.A.6}\protected@file@percent }
+\newlabel{app:ft-autoflags}{{A.6}{11}{Automatic Checks on All Qualitative Prompts}{subsection.A.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Annotated Excerpts}{11}{subsection.A.7}\protected@file@percent }
+\newlabel{app:ft-excerpts}{{A.7}{11}{Annotated Excerpts}{subsection.A.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces down\_proj diagnostics (FP32; k = 128; random-direction reference $\rho _k$ = k/d\_out = 0.125). For OPLoRA, parentheses give $\rho _k$ with its own training bases (numerical check of the projection). R over 32 GSM8K and 32 HellaSwag probe prompts.}}{12}{table.caption.20}\protected@file@percent }
 \newlabel{tab:t1-diag-full}{{11}{12}{down\_proj diagnostics (FP32; k = 128; random-direction reference $\rho _k$ = k/d\_out = 0.125). For OPLoRA, parentheses give $\rho _k$ with its own training bases (numerical check of the projection). R over 32 GSM8K and 32 HellaSwag probe prompts}{table.caption.20}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Numerical checks (separate from benchmark evidence). Merge check on 4 training sequences: merged FP16 model vs. unmerged adapter model, with the merge error relative to the adapter's own effect (unmerged vs. base). OPLoRA constraint residuals of the exported projected factors.}}{12}{table.caption.21}\protected@file@percent }
 \newlabel{tab:t1-verify}{{12}{12}{Numerical checks (separate from benchmark evidence). Merge check on 4 training sequences: merged FP16 model vs. unmerged adapter model, with the merge error relative to the adapter's own effect (unmerged vs. base). OPLoRA constraint residuals of the exported projected factors}{table.caption.21}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Automatic checks over all 24 qualitative prompts (8 questions × 3 formats) per condition. Math markers include LaTeX, equations, “The answer is” and “\#\#\#\#”. Template keys complete: every non-optional key filled with a value other than the template's placeholder.}}{12}{table.caption.22}\protected@file@percent }
 \newlabel{tab:t1-autoflags}{{13}{12}{Automatic checks over all 24 qualitative prompts (8 questions × 3 formats) per condition. Math markers include LaTeX, equations, “The answer is” and “\#\#\#\#”. Template keys complete: every non-optional key filled with a value other than the template's placeholder}{table.caption.22}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.6}Automatic Checks on All Qualitative Prompts}{12}{subsection.A.6}\protected@file@percent }
-\newlabel{app:ft-autoflags}{{A.6}{12}{Automatic Checks on All Qualitative Prompts}{subsection.A.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {A.7}Annotated Excerpts}{12}{subsection.A.7}\protected@file@percent }
-\newlabel{app:ft-excerpts}{{A.7}{12}{Annotated Excerpts}{subsection.A.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Aligned excerpts: “enough\_of\_my\_husband” (template format), same prompt across all conditions.}}{12}{table.caption.23}\protected@file@percent }
+\newlabel{tab:t1-excerpts}{{14}{12}{Aligned excerpts: “enough\_of\_my\_husband” (template format), same prompt across all conditions}{table.caption.23}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {B}Vision-Language Model: Supplementary Results}{12}{appendix.B}\protected@file@percent }
 \newlabel{app:vlm}{{B}{12}{Vision-Language Model: Supplementary Results}{appendix.B}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Data Construction, Curriculum Mixture and Connector Calibration}{12}{subsection.B.1}\protected@file@percent }
 \newlabel{app:vlm-data}{{B.1}{12}{Data Construction, Curriculum Mixture and Connector Calibration}{subsection.B.1}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Aligned excerpts: “enough\_of\_my\_husband” (template format), same prompt across all conditions.}}{13}{table.caption.23}\protected@file@percent }
-\newlabel{tab:t1-excerpts}{{14}{13}{Aligned excerpts: “enough\_of\_my\_husband” (template format), same prompt across all conditions}{table.caption.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces All annotated excerpts (42 responses).}}{13}{table.caption.24}\protected@file@percent }
+\newlabel{tab:t1-excerpts-all}{{15}{13}{All annotated excerpts (42 responses)}{table.caption.24}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Development Metrics Across Training}{13}{subsection.B.2}\protected@file@percent }
 \newlabel{app:vlm-dev}{{B.2}{13}{Development Metrics Across Training}{subsection.B.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Results by Question Type and Advantages over All Image Controls}{13}{subsection.B.3}\protected@file@percent }
-\newlabel{app:vlm-bytype}{{B.3}{13}{Results by Question Type and Advantages over All Image Controls}{subsection.B.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}Computational Cost}{13}{subsection.B.4}\protected@file@percent }
-\newlabel{app:vlm-cost}{{B.4}{13}{Computational Cost}{subsection.B.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Additional Complementary-Pair Examples}{13}{subsection.B.5}\protected@file@percent }
-\newlabel{app:vlm-qualitative}{{B.5}{13}{Additional Complementary-Pair Examples}{subsection.B.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {C}Test-Time Compute: Supplementary Results}{13}{appendix.C}\protected@file@percent }
-\newlabel{app:ttc}{{C}{13}{Test-Time Compute: Supplementary Results}{appendix.C}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Data, Answer Equivalence and Scorer Details}{13}{subsection.C.1}\protected@file@percent }
-\newlabel{app:ttc-data}{{C.1}{13}{Data, Answer Equivalence and Scorer Details}{subsection.C.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Scorer Sensitivity}{13}{subsection.C.2}\protected@file@percent }
-\newlabel{app:ttc-sensitivity}{{C.2}{13}{Scorer Sensitivity}{subsection.C.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}All Selection Rules at All Budgets}{13}{subsection.C.3}\protected@file@percent }
-\newlabel{app:ttc-curves}{{C.3}{13}{All Selection Rules at All Budgets}{subsection.C.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Controlled Comparisons of Scores and Aggregation}{13}{subsection.C.4}\protected@file@percent }
-\newlabel{app:ttc-bootstrap}{{C.4}{13}{Controlled Comparisons of Scores and Aggregation}{subsection.C.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.5}Signal Analysis Details}{13}{subsection.C.5}\protected@file@percent }
-\newlabel{app:ttc-signals}{{C.5}{13}{Signal Analysis Details}{subsection.C.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.6}Token-Level Signal Trajectories}{13}{subsection.C.6}\protected@file@percent }
-\newlabel{app:ttc-trajectories}{{C.6}{13}{Token-Level Signal Trajectories}{subsection.C.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces All annotated excerpts (42 responses).}}{14}{table.caption.24}\protected@file@percent }
-\newlabel{tab:t1-excerpts-all}{{15}{14}{All annotated excerpts (42 responses)}{table.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.7}Adaptive Stopping: Development Grids and Stopping Behaviour}{14}{subsection.C.7}\protected@file@percent }
-\newlabel{app:ttc-adaptive}{{C.7}{14}{Adaptive Stopping: Development Grids and Stopping Behaviour}{subsection.C.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Data, realized curriculum mixture (training examples per component) and connector calibration (out\_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images).}}{15}{table.caption.25}\protected@file@percent }
-\newlabel{tab:t2-data}{{16}{15}{Data, realized curriculum mixture (training examples per component) and connector calibration (out\_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images)}{table.caption.25}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Development metrics at every evaluation (teacher-forced; answer NLL excludes termination).}}{15}{table.caption.26}\protected@file@percent }
-\newlabel{tab:t2-dev}{{17}{15}{Development metrics at every evaluation (teacher-forced; answer NLL excludes termination)}{table.caption.26}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Final-test accuracy and reference-answer NLL by question type and image condition (n = questions).}}{15}{table.caption.27}\protected@file@percent }
-\newlabel{tab:t2-bytype}{{18}{15}{Final-test accuracy and reference-answer NLL by question type and image condition (n = questions)}{table.caption.27}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Correct-image advantages over every control (paired pair-bootstrap, 4,000 resamples). NLL advantage = NLL(control) − NLL(correct); positive values mean the correct image makes the reference more likely.}}{15}{table.caption.28}\protected@file@percent }
-\newlabel{tab:t2-advantages}{{19}{15}{Correct-image advantages over every control (paired pair-bootstrap, 4,000 resamples). NLL advantage = NLL(control) − NLL(correct); positive values mean the correct image makes the reference more likely}{table.caption.28}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {C.8}Representative Cases}{15}{subsection.C.8}\protected@file@percent }
-\newlabel{app:ttc-examples}{{C.8}{15}{Representative Cases}{subsection.C.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Computational cost on one NVIDIA T4 (FP16). Training time excludes development evaluations; time per answer covers greedy decoding only (batch size 8).}}{16}{table.caption.29}\protected@file@percent }
-\newlabel{tab:t2-resources}{{20}{16}{Computational cost on one NVIDIA T4 (FP16). Training time excludes development evaluations; time per answer covers greedy decoding only (batch size 8)}{table.caption.29}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Data and scorer details (all 1,000 questions per dataset).}}{16}{table.caption.31}\protected@file@percent }
-\newlabel{tab:t3-data}{{21}{16}{Data and scorer details (all 1,000 questions per dataset)}{table.caption.31}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Data, realized curriculum mixture (training examples per component) and connector calibration (out\_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images).}}{14}{table.caption.25}\protected@file@percent }
+\newlabel{tab:t2-data}{{16}{14}{Data, realized curriculum mixture (training examples per component) and connector calibration (out\_scale = mean per-token RMS of Qwen input embeddings over training text tokens / mean per-token RMS of the initialized connector outputs on training images)}{table.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Development metrics at every evaluation (teacher-forced; answer NLL excludes termination).}}{14}{table.caption.26}\protected@file@percent }
+\newlabel{tab:t2-dev}{{17}{14}{Development metrics at every evaluation (teacher-forced; answer NLL excludes termination)}{table.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Final-test accuracy and reference-answer NLL by question type and image condition (n = questions).}}{14}{table.caption.27}\protected@file@percent }
+\newlabel{tab:t2-bytype}{{18}{14}{Final-test accuracy and reference-answer NLL by question type and image condition (n = questions)}{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Correct-image advantages over every control (paired pair-bootstrap, 4,000 resamples). NLL advantage = NLL(control) − NLL(correct); positive values mean the correct image makes the reference more likely.}}{14}{table.caption.28}\protected@file@percent }
+\newlabel{tab:t2-advantages}{{19}{14}{Correct-image advantages over every control (paired pair-bootstrap, 4,000 resamples). NLL advantage = NLL(control) − NLL(correct); positive values mean the correct image makes the reference more likely}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Results by Question Type and Advantages over All Image Controls}{14}{subsection.B.3}\protected@file@percent }
+\newlabel{app:vlm-bytype}{{B.3}{14}{Results by Question Type and Advantages over All Image Controls}{subsection.B.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}Computational Cost}{14}{subsection.B.4}\protected@file@percent }
+\newlabel{app:vlm-cost}{{B.4}{14}{Computational Cost}{subsection.B.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Additional Complementary-Pair Examples}{14}{subsection.B.5}\protected@file@percent }
+\newlabel{app:vlm-qualitative}{{B.5}{14}{Additional Complementary-Pair Examples}{subsection.B.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Test-Time Compute: Supplementary Results}{14}{appendix.C}\protected@file@percent }
+\newlabel{app:ttc}{{C}{14}{Test-Time Compute: Supplementary Results}{appendix.C}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.1}Data, Answer Equivalence and Scorer Details}{14}{subsection.C.1}\protected@file@percent }
+\newlabel{app:ttc-data}{{C.1}{14}{Data, Answer Equivalence and Scorer Details}{subsection.C.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.2}Scorer Sensitivity}{14}{subsection.C.2}\protected@file@percent }
+\newlabel{app:ttc-sensitivity}{{C.2}{14}{Scorer Sensitivity}{subsection.C.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Computational cost on one NVIDIA T4 (FP16). Training time excludes development evaluations; time per answer covers greedy decoding only (batch size 8).}}{15}{table.caption.29}\protected@file@percent }
+\newlabel{tab:t2-resources}{{20}{15}{Computational cost on one NVIDIA T4 (FP16). Training time excludes development evaluations; time per answer covers greedy decoding only (batch size 8)}{table.caption.29}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown, including the example-selection rule.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{15}{figure.caption.30}\protected@file@percent }
+\newlabel{fig:vlm-qualitative-all}{{8}{15}{\todo {Figure title.} \todo {1--2 sentences describing what is shown, including the example-selection rule.} \todo {Conclusion to draw.}}{figure.caption.30}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Data and scorer details (all 1,000 questions per dataset).}}{15}{table.caption.31}\protected@file@percent }
+\newlabel{tab:t3-data}{{21}{15}{Data and scorer details (all 1,000 questions per dataset)}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.3}All Selection Rules at All Budgets}{15}{subsection.C.3}\protected@file@percent }
+\newlabel{app:ttc-curves}{{C.3}{15}{All Selection Rules at All Budgets}{subsection.C.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.4}Controlled Comparisons of Scores and Aggregation}{15}{subsection.C.4}\protected@file@percent }
+\newlabel{app:ttc-bootstrap}{{C.4}{15}{Controlled Comparisons of Scores and Aggregation}{subsection.C.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces MathVista scorer sensitivity (held-out accuracy, \%). Official: MathVista's answer-type / precision rules. Lenient (sensitivity check only): units, spacing commands, \$, degree / percent signs and thousands separators removed before those rules, for grouping and grading alike.}}{16}{table.caption.32}\protected@file@percent }
 \newlabel{tab:t3-sensitivity}{{22}{16}{MathVista scorer sensitivity (held-out accuracy, \%). Official: MathVista's answer-type / precision rules. Lenient (sensitivity check only): units, spacing commands, \$, degree / percent signs and thousands separators removed before those rules, for grouping and grading alike}{table.caption.32}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces MATH (Qwen2.5-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group).}}{16}{table.caption.33}\protected@file@percent }
 \newlabel{tab:t3-curves-math}{{23}{16}{MATH (Qwen2.5-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group)}{table.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown, including the example-selection rule.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{17}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:vlm-qualitative-all}{{8}{17}{\todo {Figure title.} \todo {1--2 sentences describing what is shown, including the example-selection rule.} \todo {Conclusion to draw.}}{figure.caption.30}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {24}{\ignorespaces MathVista (Qwen2.5-VL-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group).}}{18}{table.caption.34}\protected@file@percent }
-\newlabel{tab:t3-curves-mathvista}{{24}{18}{MathVista (Qwen2.5-VL-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group)}{table.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{18}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:ttc-all-methods}{{9}{18}{\todo {Figure title.} \todo {1--2 sentences describing what is shown.} \todo {Conclusion to draw.}}{figure.caption.35}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces Controlled comparisons (pp, paired question-level bootstrap, 1,000 resamples): same aggregation with a different score, or the same score with a different aggregation.}}{18}{table.caption.36}\protected@file@percent }
-\newlabel{tab:t3-boot}{{25}{18}{Controlled comparisons (pp, paired question-level bootstrap, 1,000 resamples): same aggregation with a different score, or the same score with a different aggregation}{table.caption.36}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {26}{\ignorespaces Signal analysis at N = 32 (held-out). Quartile $\Delta $: correctness of a question's top-quartile rollouts by the score minus its bottom quartile, averaged over all questions / questions with mixed correctness. Spearman: within-question rank correlation with rollout length, median [IQR]. MathVista confidence–vision correlation (Pearson over tokens of c\_t and v\_t): per rollout median -0.21 [IQR -0.33, -0.07], n = 25,572; per-question mean -0.21. Tokenwise − trajectory fusion equals Cov\_t(c, v) up to 1.8e-08 (numerical check).}}{19}{table.caption.37}\protected@file@percent }
-\newlabel{tab:t3-signals}{{26}{19}{Signal analysis at N = 32 (held-out). Quartile $\Delta $: correctness of a question's top-quartile rollouts by the score minus its bottom quartile, averaged over all questions / questions with mixed correctness. Spearman: within-question rank correlation with rollout length, median [IQR]. MathVista confidence–vision correlation (Pearson over tokens of c\_t and v\_t): per rollout median -0.21 [IQR -0.33, -0.07], n = 25,572; per-question mean -0.21. Tokenwise − trajectory fusion equals Cov\_t(c, v) up to 1.8e-08 (numerical check)}{table.caption.37}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown, including how the trajectories were selected.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{19}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:ttc-trajectories}{{10}{19}{\todo {Figure title.} \todo {1--2 sentences describing what is shown, including how the trajectories were selected.} \todo {Conclusion to draw.}}{figure.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {24}{\ignorespaces MathVista (Qwen2.5-VL-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group).}}{16}{table.caption.34}\protected@file@percent }
+\newlabel{tab:t3-curves-mathvista}{{24}{16}{MathVista (Qwen2.5-VL-3B): held-out accuracy (\%) of every rule at every budget, oracle coverage and mean distinct answer groups (NO\_ANSWER counts as a group)}{table.caption.34}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {25}{\ignorespaces Controlled comparisons (pp, paired question-level bootstrap, 1,000 resamples): same aggregation with a different score, or the same score with a different aggregation.}}{16}{table.caption.36}\protected@file@percent }
+\newlabel{tab:t3-boot}{{25}{16}{Controlled comparisons (pp, paired question-level bootstrap, 1,000 resamples): same aggregation with a different score, or the same score with a different aggregation}{table.caption.36}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.5}Signal Analysis Details}{16}{subsection.C.5}\protected@file@percent }
+\newlabel{app:ttc-signals}{{C.5}{16}{Signal Analysis Details}{subsection.C.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{17}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:ttc-all-methods}{{9}{17}{\todo {Figure title.} \todo {1--2 sentences describing what is shown.} \todo {Conclusion to draw.}}{figure.caption.35}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {26}{\ignorespaces Signal analysis at N = 32 (held-out). Quartile $\Delta $: correctness of a question's top-quartile rollouts by the score minus its bottom quartile, averaged over all questions / questions with mixed correctness. Spearman: within-question rank correlation with rollout length, median [IQR]. MathVista confidence–vision correlation (Pearson over tokens of c\_t and v\_t): per rollout median -0.21 [IQR -0.33, -0.07], n = 25,572; per-question mean -0.21. Tokenwise − trajectory fusion equals Cov\_t(c, v) up to 1.8e-08 (numerical check).}}{17}{table.caption.37}\protected@file@percent }
+\newlabel{tab:t3-signals}{{26}{17}{Signal analysis at N = 32 (held-out). Quartile $\Delta $: correctness of a question's top-quartile rollouts by the score minus its bottom quartile, averaged over all questions / questions with mixed correctness. Spearman: within-question rank correlation with rollout length, median [IQR]. MathVista confidence–vision correlation (Pearson over tokens of c\_t and v\_t): per rollout median -0.21 [IQR -0.33, -0.07], n = 25,572; per-question mean -0.21. Tokenwise − trajectory fusion equals Cov\_t(c, v) up to 1.8e-08 (numerical check)}{table.caption.37}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.6}Token-Level Signal Trajectories}{17}{subsection.C.6}\protected@file@percent }
+\newlabel{app:ttc-trajectories}{{C.6}{17}{Token-Level Signal Trajectories}{subsection.C.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown, including how the trajectories were selected.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{17}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:ttc-trajectories}{{10}{17}{\todo {Figure title.} \todo {1--2 sentences describing what is shown, including how the trajectories were selected.} \todo {Conclusion to draw.}}{figure.caption.38}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {27}{\ignorespaces Development-set grids for adaptive stopping (eligible = within 1 pp of fixed-32 self-consistency).}}{18}{table.caption.39}\protected@file@percent }
+\newlabel{tab:t3-grid}{{27}{18}{Development-set grids for adaptive stopping (eligible = within 1 pp of fixed-32 self-consistency)}{table.caption.39}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {28}{\ignorespaces Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping.}}{18}{table.caption.41}\protected@file@percent }
+\newlabel{tab:t3-examples}{{28}{18}{Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping}{table.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.7}Adaptive Stopping: Development Grids and Stopping Behaviour}{18}{subsection.C.7}\protected@file@percent }
+\newlabel{app:ttc-adaptive}{{C.7}{18}{Adaptive Stopping: Development Grids and Stopping Behaviour}{subsection.C.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {C.8}Representative Cases}{18}{subsection.C.8}\protected@file@percent }
+\newlabel{app:ttc-examples}{{C.8}{18}{Representative Cases}{subsection.C.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces \textcolor {red}{[TODO: Figure title.]} \textcolor {red}{[TODO: 1--2 sentences describing what is shown.]} \textcolor {red}{[TODO: Conclusion to draw.]}}}{19}{figure.caption.40}\protected@file@percent }
 \newlabel{fig:ttc-stopping}{{11}{19}{\todo {Figure title.} \todo {1--2 sentences describing what is shown.} \todo {Conclusion to draw.}}{figure.caption.40}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {27}{\ignorespaces Development-set grids for adaptive stopping (eligible = within 1 pp of fixed-32 self-consistency).}}{20}{table.caption.39}\protected@file@percent }
-\newlabel{tab:t3-grid}{{27}{20}{Development-set grids for adaptive stopping (eligible = within 1 pp of fixed-32 self-consistency)}{table.caption.39}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {28}{\ignorespaces Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping.}}{20}{table.caption.41}\protected@file@percent }
-\newlabel{tab:t3-examples}{{28}{20}{Qualitative failure and success cases across confidence-weighted voting, iterative revision, and adaptive stopping. Every test-time scaling mechanism exhibits distinct vulnerabilities—including overconfident misselection, successful format recovery during revision, and premature convergence on shared errors—highlighting the complementary limits of aggregation, refinement, and early stopping}{table.caption.41}{}}
-\gdef \@abspage@last{20}
+\gdef \@abspage@last{19}

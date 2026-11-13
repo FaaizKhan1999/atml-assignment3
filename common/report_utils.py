@@ -2,12 +2,15 @@
 from __future__ import annotations
 
 import csv
+import re
 from pathlib import Path
 
 TEXT_WIDTH_IN = 5.5  # NeurIPS text width
 
 # Unicode notation in headers/captions -> LaTeX (applied via placeholders before escaping)
-TEX_TOKENS = [("‖θ−θ0‖₂", r"$\|\theta-\theta_0\|_2$"), ("ΔNLL", r"$\Delta$NLL"), ("Δ", r"$\Delta$"), ("±", r"$\pm$"),
+TEX_TOKENS = [("‖θ−θ0‖₂", r"$\|\theta-\theta_0\|_2$"), ("‖ΔW‖F", r"$\|\Delta W\|_F$"),
+              ("‖Uk^T B~‖", r"$\|U_k^\top \tilde B\|$"), ("‖A~ Vk‖", r"$\|\tilde A V_k\|$"),
+              ("λ = 10⁻³", r"$\lambda = 10^{-3}$"), ("λΩ", r"$\lambda\Omega$"), ("ρk", r"$\rho_k$"), ("η", r"$\eta$"), ("ΔNLL", r"$\Delta$NLL"), ("Δ", r"$\Delta$"), ("±", r"$\pm$"),
               ("→", r"$\to$"), ("≥", r"$\geq$"), ("×", r"$\times$"), ("λ", r"$\lambda$"), ("θ0", r"$\theta_0$"),
               ("†", r"$^\dagger$"), ("−", r"$-$"), ("≤", r"$\leq$"), ("γ", r"$\gamma$"), ("τ", r"$\tau$"),
               ("·", r"$\cdot$")]
@@ -34,7 +37,8 @@ def header_cell(h) -> str:
     parts = str(h).split("\n")
     if len(parts) == 1:
         return tex_escape(parts[0])
-    return r"\makecell{" + r"\\".join(tex_escape(x) for x in parts) + "}"
+    # "\\" followed by "[" would be read as \\[<length>] and hang LaTeX; "{}" stops that
+    return r"\makecell{" + r"\\{}".join(tex_escape(x) for x in parts) + "}"
 
 
 def existing_caption(path: Path) -> str | None:
@@ -56,6 +60,7 @@ def write_table(path: Path, header: list[str], rows: list[list], caption: str, l
                 midrules_after: list[int] | None = None, keep_caption: bool = True) -> None:
     """booktabs table; header cells may contain "\\n" (two-line header). An existing caption is kept."""
     cap = existing_caption(path) if keep_caption else None
+    align = re.sub(r"(?<!\\arraybackslash\})p\{", r">{\\raggedright\\arraybackslash}p{", align)
     tex = [r"\begin{table}[t]", r"\centering", r"\small", r"\caption{" + (cap if cap is not None else tex_escape(caption)) + "}",
            rf"\label{{{label}}}", rf"\begin{{tabular}}{{{align}}}", r"\toprule",
            " & ".join(header_cell(h) for h in header) + r" \\", r"\midrule"]

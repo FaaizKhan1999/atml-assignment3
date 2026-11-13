@@ -293,11 +293,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmb8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
-INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./figs/task1/tab3_annotation_summary.tex
 INPUT ./figs/task1/tab3_annotation_summary.tex
 INPUT figs/task1/tab3_annotation_summary.tex
+INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/times/ptmr8t.vf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmr8r.tfm
 INPUT ./figs/task2/fig1_learning_curves.pdf
 INPUT ./figs/task2/fig1_learning_curves.pdf
 INPUT ./figs/task2/fig1_learning_curves.pdf
@@ -311,10 +311,6 @@ INPUT ./figs/task2/fig2_image_use.pdf
 INPUT ./figs/task2/fig2_image_use.pdf
 INPUT ./figs/task2/fig2_image_use.pdf
 INPUT ./figs/task2/fig2_image_use.pdf
-INPUT ./figs/task2/fig3_qualitative.pdf
-INPUT ./figs/task2/fig3_qualitative.pdf
-INPUT ./figs/task2/fig3_qualitative.pdf
-INPUT ./figs/task2/fig3_qualitative.pdf
 INPUT ./figs/task2/fig3_qualitative.pdf
 INPUT ./figs/task2/fig3_qualitative.pdf
 INPUT ./figs/task2/fig3_qualitative.pdf
