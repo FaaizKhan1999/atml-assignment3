@@ -3,9 +3,9 @@
 \small
 \caption{Computational cost on one NVIDIA T4 (FP16). Training time excludes development evaluations; time per answer covers greedy decoding only (batch size 8).}
 \label{tab:t2-resources}
-\begin{tabular}{>{\raggedright\arraybackslash}p{3.4cm}rrrr}
+\begin{tabular}{lrrrr}
 \toprule
-Step & \makecell{Trainable\\params} & \makecell{Updates\\/ items} & Time & \makecell{Peak GPU\\mem.} \\
+Step & Trainable params & Updates / items & Time & Peak GPU mem. \\
 \midrule
 COCO image download & – & 9,258 images & 0.5 min & – \\
 SigLIP feature caching (2.60 GB, FP16) & – (frozen) & 9,258 images & 3.3 min & 0.83 GB \\
