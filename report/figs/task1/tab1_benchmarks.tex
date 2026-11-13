@@ -1,7 +1,7 @@
 \begin{table}[t]
 \centering
 \small
-\caption{Zero-shot benchmark evaluation across mathematical and general reasoning tasks. While full-parameter fine-tuning and L2-SP achieve the largest in-domain mathematical gains at the expense of specific reading comprehension skills, low-rank adapters—particularly higher-rank LoRA and OPLoRA—deliver substantial mathematical improvements alongside positive transfer to out-of-domain benchmarks.}
+\caption{Zero-shot benchmark evaluation across mathematical and general reasoning tasks. Full-parameter fine-tuning and L2-SP achieve the largest in-domain mathematical gains alongside a raw BoolQ drop driven by a ``no'' prediction bias (while class-balanced BoolQ accuracy rises), whereas rank-16 LoRA and OPLoRA adapters deliver strong mathematical improvements and gain on BoolQ across both answer classes.}
 \label{tab:t1-bench}
 \begin{tabular}{lrrrrrrr}
 \toprule
